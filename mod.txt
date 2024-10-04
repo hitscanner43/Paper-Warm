@@ -5,4 +5,8 @@
 	"priority" : 900,
 	"color" : "0 0 0",
 	"version" : "0.1",
+	"updates" : [{
+		"identifier" : "paper_warm_overhaul",
+		"host" : { "meta" : "https://raw.githubusercontent.com/hitscanner43/Paper-Warm/main/meta.json" }
+	}]
 }
