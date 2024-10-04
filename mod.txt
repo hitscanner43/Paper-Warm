@@ -7,6 +7,6 @@
 	"version" : "0.1",
 	"updates" : [{
 		"identifier" : "paper_warm_overhaul",
-		"host" : { "meta" : "https://raw.githubusercontent.com/hitscanner43/Paper-Warm/main/meta.json" }
+		"host" : { "meta" : "https://raw.githubusercontent.com/hitscanner43/Paper-Warm/f7ac5b906524d26f2d4a999916e07f21ba10e28f/meta.json?token=GHSAT0AAAAAACWKYCX5SYRUTRI663XZMHFOZX7V4EQ" }
 	}]
 }
