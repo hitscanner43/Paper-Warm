@@ -1,0 +1,859 @@
+<?xml version="1.0"?>
+<mod name="Paper Warm Overhaul">
+
+	<tweak definition="tweak/animation.xml"/>
+	<tweak definition="tweak/effects.xml"/>
+	<tweak definition="tweak/network.xml"/>
+	<tweak definition="tweak/units.xml"/>
+	<tweak definition="tweak/tweak.xml"/>
+	
+	<hooks script_path="mod.lua">
+
+		<group hook_id="core/lib/">
+			<post :hook_id="managers/coreenvironmentcontrollermanager"/>
+			<post :hook_id="managers/coreworldinstancemanager"/>
+			<post :hook_id="units/coreunitdamage"/>
+		</group>
+
+		<group hook_id="lib/">
+			<post :hook_id="utils/inventorydescription"/>			
+			<group :hook_id="managers/">
+				<group :hook_id="group_ai_states/">
+					<post :hook_id="groupaistatebase"/>
+					<post :hook_id="groupaistatebesiege"/>
+				</group>
+				<group :hook_id="mission/">
+					<post :hook_id="elementareatrigger"/>
+					<post :hook_id="elementspawnenemydummy"/>
+					<post :hook_id="elementspawncivilian"/>
+					<post :hook_id="elementspawnenemygroup"/>
+					<post :hook_id="elementspecialobjective"/>
+				</group>
+				<group :hook_id="hud/">
+					<post :hook_id="hudmissionbriefing"/>
+					<post :hook_id="hudstageendscreen"/>
+					<post :hook_id="hudhitconfirm"/>
+				</group>
+				<group :hook_id="menu/">
+					<post :hook_id="blackmarketgui"/>
+					<post :hook_id="playerinventorygui"/>
+					<post :hook_id="skilltreegui"/>
+				</group>	
+				<post :hook_id="dynamicresourcemanager"/>						
+				<post :hook_id="blackmarketmanager"/>
+				<post :hook_id="missionmanager"/>
+				<post :hook_id="hudmanager"/>
+				<post :hook_id="menumanager"/>
+				<post :hook_id="savefilemanager"/>
+				<post :hook_id="achievmentmanager"/>
+				<post :hook_id="tangomanager"/>
+				<post :hook_id="sidejobgenericdlcmanager"/>
+				<post :hook_id="sidejobeventmanager"/>
+				<post :hook_id="player/snipergrazedamage"/>
+				<post :hook_id="playermanager"/>
+				<post :hook_id="dlcmanager"/>
+				<post :hook_id="killzonemanager"/>					
+				<post :hook_id="gameplaycentralmanager"/>
+				<post :hook_id="explosionmanager"/>		
+				<post :hook_id="statisticsmanager"/>					
+			</group>
+
+			<post :hook_id="modifiers/modifierheavies"/>
+			
+			<group :hook_id="network/">
+				<post :hook_id="handlers/unitnetworkhandler"/>
+				<post :hook_id="base/networkmanager"/>
+			</group>
+
+			<group :hook_id="tweak_data/">
+				<post :hook_id="blackmarket/projectilestweakdata"/>
+				<post :hook_id="blackmarket/meleeweaponstweakdata"/>
+				<post :hook_id="carrytweakdata"/>
+				<post :hook_id="charactertweakdata"/>
+				<post :hook_id="groupaitweakdata"/>
+				<post :hook_id="playertweakdata"/>
+				<post :hook_id="weapontweakdata"/>
+				<post :hook_id="upgradestweakdata"/>
+				<post :hook_id="interactiontweakdata"/>
+				<post :hook_id="enveffecttweakdata"/>
+				<post :hook_id="skilltreetweakdata"/>
+				<post :hook_id="weaponfactorytweakdata"/>
+				<post :hook_id="blackmarkettweakdata"/>
+				<post :hook_id="guitweakdata"/>
+				<post :hook_id="levelstweakdata"/>
+				<post :hook_id="tweakdata"/>
+				<post :hook_id="timespeedeffecttweakdata"/>		
+				<post :hook_id="preplanningtweakdata"/>		
+				<post :hook_id="equipmentstweakdata"/>		
+				<post :hook_id="skirmishtweakdata"/>	
+				<post :hook_id="dottweakdata"/>		
+				<post :hook_id="firetweakdata"/>			
+				<post :hook_id="infamytweakdata"/>			
+				<post :hook_id="tipstweakdata"/>	
+			</group>
+
+			<group :hook_id="units/">
+				<group :hook_id="beings/player/">
+					<post :hook_id="playerdamage"/>
+					<post :hook_id="huskplayerdamage"/>				
+					<post :hook_id="playercamera"/>		
+					<post :hook_id="playerequipment"/>						
+					<post :hook_id="states/playerstandard"/>
+					<post :hook_id="states/playertased"/>
+					<post :hook_id="states/playerdriving"/>
+					<post :hook_id="states/playerbleedout"/>
+					<post :hook_id="states/playercarry"/>
+					<post :hook_id="states/playerbipod"/>
+				</group>
+				<group :hook_id="civilians/">
+					<group :hook_id="logics/">
+						<post :hook_id="civilianlogicflee"/>
+						<post :hook_id="civilianlogicsurrender"/>
+						<post :hook_id="civilianlogictravel"/>
+					</group>
+
+					<post :hook_id="civilianbrain"/>
+					<post :hook_id="civiliandamage"/>
+				</group>
+				
+				<post :hook_id="characters/characterattentionobject"/>
+				
+				<group :hook_id="enemies/">
+					<post :hook_id="boss/logics/bosslogicattack"/>
+
+					<group :hook_id="cop/">
+						<post :hook_id="actions/full_body/copactionhurt"/>
+
+						<group :hook_id="actions/lower_body/">
+							<post :hook_id="copactionidle"/>
+							<post :hook_id="copactionwalk"/>
+						</group>
+
+						<group :hook_id="actions/upper_body/">
+							<post :hook_id="copactionshoot"/>
+							<post :hook_id="copactiontase"/>
+						</group>
+
+						<group :hook_id="logics/">
+							<post :hook_id="coplogicarrest"/>
+							<post :hook_id="coplogicattack"/>
+							<post :hook_id="coplogicbase"/>
+							<post :hook_id="coplogicidle"/>
+							<post :hook_id="coplogicinactive"/>
+							<post :hook_id="coplogicintimidated"/>
+							<post :hook_id="coplogicsniper"/>
+							<post :hook_id="coplogictrade"/>
+							<post :hook_id="coplogictravel"/>
+						</group>
+
+						<post :hook_id="copbase"/>
+						<post :hook_id="copbrain"/>
+						<post :hook_id="copdamage"/>
+						<post :hook_id="copinventory"/>
+						<post :hook_id="copmovement"/>
+						<post :hook_id="copsound"/>
+						<post :hook_id="huskcopbrain"/>
+					</group>
+					
+					<group :hook_id="spooc/">
+						<post :hook_id="actions/lower_body/actionspooc"/>
+						<post :hook_id="logics/spooclogicattack"/>
+					</group>
+
+					<group :hook_id="tank/">
+						<post :hook_id="logics/tankcoplogicattack"/>
+						<post :hook_id="tankcopdamage"/>
+						<post :hook_id="husktankcopdamage"/>
+						<post :hook_id="husktankmediccopdamage"/>
+					</group>
+
+					<post :hook_id="taser/logics/taserlogicattack"/>
+					<post :hook_id="shield/logics/shieldlogicattack"/>
+					<post :hook_id="medic/medicdamage"/>
+				</group>
+
+				<group :hook_id="equipment/">
+					<post :hook_id="sentry_gun/sentrygunbase"/>
+					<post :hook_id="sentry_gun/sentrygunbrain"/>
+					<post :hook_id="ammo_bag/ammobagbase"/>
+					<post :hook_id="grenade_crate/grenadecratebase"/>
+					<post :hook_id="doctor_bag/doctorbagbase"/>
+				</group>
+
+				<group :hook_id="player_team/">
+					<post :hook_id="actions/lower_body/criminalactionwalk"/>
+					<post :hook_id="logics/teamailogicidle"/>
+					<post :hook_id="teamaidamage"/>
+					<post :hook_id="teamaimovement"/>
+				</group>
+				
+				<post :hook_id="environment/environmentfire"/>			
+				<post :hook_id="vehicles/animatedvehiclebase"/>
+				<post :hook_id="cameras/fpcameraplayerbase"/>
+
+				<group :hook_id="props/">
+					<post :hook_id="carrydata"/>
+					<post :hook_id="timergui"/>
+					<post :hook_id="drill"/>
+				</group>
+				
+				<group :hook_id="weapons/">
+					<group :hook_id="grenades/">
+						<post :hook_id="quickcsgrenade"/>
+						<post :hook_id="quickflashgrenade"/>
+						<post :hook_id="quicksmokegrenade"/>
+						<post :hook_id="fraggrenade"/>
+						<post :hook_id="incendiaryburstgrenade"/>
+						<post :hook_id="concussiongrenade"/>
+					</group>
+					<post :hook_id="sawweaponbase"/>
+					<post :hook_id="shotgun/shotgunbase"/>
+					<post :hook_id="trip_mine/tripminebase"/>				
+					<post :hook_id="sentrygunweapon"/>
+					<post :hook_id="akimboweaponbase"/>
+					<post :hook_id="raycastweaponbase"/>
+					<post :hook_id="newraycastweaponbase"/>
+					<post :hook_id="newnpcraycastweaponbase"/>
+					<post :hook_id="npcraycastweaponbase"/>
+					<post :hook_id="newflamethrowerbase"/>
+				</group>
+			</group>
+		</group>
+	</hooks>
+
+	<assets base_path="assets/">
+	
+		<file name="effects/particles/weapons/sniper_glint.effect"/>
+		<file name="effects/textures/weapons/sniper_glint.dds"/>
+
+		<file name="units/weapons/smoke_grenade_quick/smoke_grenade_quick.object" force="true"/>	
+		
+		<group name="levels/narratives/">
+			<file :name="classics/flat/nav_manager_data.nav_data"/>
+			<file :name="dentist/hox/stage_2/nav_manager_data.nav_data"/>
+			<file :name="dentist/mia/stage2/nav_manager_data.nav_data"/>
+			<file :name="e_framing_frame/stage_1/nav_manager_data.nav_data"/>
+			<file :name="e_framing_frame/stage_3/nav_manager_data.nav_data"/>
+			<file :name="h_alex_must_die/stage_1/nav_manager_data.nav_data"/>
+			<file :name="skm/skm_big2/nav_manager_data.nav_data"/>
+		</group>
+
+		<group name="units/" dyn_package="false">
+			<group :name="pd2_dlc_friend/characters/ene_drug_lord_boss/">
+				<file :name="ene_drug_lord_boss.object"/>
+				<file :name="ene_drug_lord_boss.unit"/>
+				<file :name="ene_drug_lord_boss_husk.unit"/>
+			</group>
+
+			<group :name="pd2_dlc_pent/characters/npc_male_yufuwang_armored/">
+				<file :name="npc_male_yufuwang_armored.object"/>
+				<file :name="npc_male_yufuwang_armored.unit"/>
+				<file :name="npc_male_yufuwang_armored_husk.unit"/>
+			</group>
+		</group>
+
+		<group name="units/pd2_crimefest_2016/fez1/weapons/">	
+			<file :name="wpn_npc_gre_pressure/wpn_npc_gre_pressure.object"/>
+			<file :name="wpn_npc_gre_pressure/wpn_npc_gre_pressure.unit"/>
+			<file :name="wpn_npc_gre_pressure/wpn_npc_gre_pressure_husk.unit" />
+		</group>
+		
+		<group name="units/payday2/equipment/">	
+			<file :name="gen_equipment_sentry/gen_equipment_sentry.model"/>
+			<file :name="gen_equipment_sentry/gen_equipment_sentry.object"/>
+			<file :name="gen_equipment_sentry/gen_equipment_sentry_silent.unit"/>
+			
+			<file :name="gen_equipment_armorbag/gen_equipment_armorbag.cooked_physics"/>
+			<file :name="gen_equipment_armorbag/gen_equipment_armorbag.material_config"/>
+			<file :name="gen_equipment_armorbag/gen_equipment_armorbag.model"/>
+			<file :name="gen_equipment_armorbag/gen_equipment_armorbag.object"/>
+			<file :name="gen_equipment_armorbag/gen_equipment_armorbag.sequence_manager"/>
+			<file :name="gen_equipment_armorbag/gen_equipment_armorbag.unit"/>
+			<file :name="gen_equipment_armorbag/gen_equipment_armorbag_dummy_unit.unit"/>
+			<file :name="gen_equipment_armorbag/gen_equipment_armorbag_df.texture"/>
+			<file :name="gen_equipment_armorbag/gen_equipment_armorbag_nm.texture"/>
+			<file :name="gen_equipment_armorbag/plate_df.texture"/>
+			<file :name="gen_equipment_armorbag/plate_nm.texture"/>
+		</group>
+
+		<group name="units/payday2/weapons/">		
+			<!--NPC Mosconi from SH-->
+			<file :name="wpn_npc_sawnoff_shotgun/sawnoff_df.texture"/>
+			<file :name="wpn_npc_sawnoff_shotgun/sawnoff_nm.texture"/>
+			<file :name="wpn_npc_sawnoff_shotgun/wpn_npc_sawnoff_shotgun.model"/>
+			
+			<file :name="wpn_npc_ump/wpn_npc_ump.unit" dyn_package="false"/>
+
+			<file :name="wpn_npc_frag_grenade/wpn_npc_frag_grenade.unit"/>
+			<file :name="wpn_npc_frag_grenade/wpn_npc_frag_grenade_husk.unit" />
+
+			<file :name="wpn_npc_mp5/mp5_df.texture" />
+			<file :name="wpn_npc_mp5/mp5_nm.texture" />
+			<file :name="wpn_npc_mp5/wpn_npc_mp5.model"/>
+
+			<file :name="wpn_npc_mp5_tactical/wpn_npc_mp5_tactical.model"/>
+			<file :name="wpn_npc_mp5_tactical/wpn_npc_mp5_tactical.object"/>
+			
+			<file :name="wpn_npc_aa12/aa12_df.texture" />
+			<file :name="wpn_npc_aa12/aa12_nm.texture" />
+			<file :name="wpn_npc_aa12/wpn_npc_aa12.unit"/>
+			<file :name="wpn_npc_aa12/wpn_npc_aa12.material_config" />
+			<file :name="wpn_npc_aa12/wpn_npc_aa12_contour.material_config" />
+			<file :name="wpn_npc_aa12/wpn_npc_aa12.model" />
+			<file :name="wpn_npc_aa12/wpn_npc_aa12.cooked_physics" />
+			<file :name="wpn_npc_aa12/wpn_npc_aa12.object" />	
+		</group>
+
+		<group name="units/payday2/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="shared_textures/swat_body_df.texture" />		
+			<file :name="shared_textures/swat_body_nm.texture" />	
+			<file :name="shared_textures/heads_atlas_df.texture" />		
+			<file :name="shared_textures/heads_atlas_nm.texture" />	
+			<file :name="shared_textures/spook_heavy_df.texture" />		
+			<file :name="shared_textures/spook_heavy_nm.texture" />			
+			<file :name="shared_textures/ene_medic_df.texture" />		
+			<file :name="shared_textures/ene_medic_nm.texture" />	
+			<file :name="shared_textures/bulldozer_df.texture" />		
+			<file :name="shared_textures/bulldozer_nm.texture" />	
+			
+			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.material_config" />
+			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.model" />
+
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.material_config" />
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.model" />
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.object" />
+			
+			<file :name="ene_acc_fbi_swat_cap/ene_acc_fbi_swat_cap.cooked_physics" />
+			<file :name="ene_acc_fbi_swat_cap/ene_acc_fbi_swat_cap.model" />
+			<file :name="ene_acc_fbi_swat_cap/ene_acc_fbi_swat_cap.object" />
+			<file :name="ene_acc_fbi_swat_cap/ene_acc_fbi_swat_cap.unit" />
+
+			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.model" />
+			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.object" />
+		
+			<file :name="ene_acc_shield_mask/ene_acc_shield_mask.cooked_physics" />
+			<file :name="ene_acc_shield_mask/ene_acc_shield_mask.model" />
+			<file :name="ene_acc_shield_mask/ene_acc_shield_mask.object" />
+			<file :name="ene_acc_shield_mask/ene_acc_shield_mask.unit" />
+
+			<file :name="ene_acc_city_swat_helmet/ene_acc_city_swat_helmet.model" />
+			<file :name="ene_acc_city_swat_helmet/ene_acc_city_swat_helmet.object" />
+		
+			<file :name="ene_swat_1/ene_swat_1.material_config" />	
+			<file :name="ene_swat_1/ene_swat_1_contour.material_config" />
+			<file :name="ene_swat_1/ene_swat_1.model" />
+			<file :name="ene_swat_1/ene_swat_1.object" />	
+
+			<file :name="ene_swat_2/ene_swat_2.model" />
+			<file :name="ene_swat_2/ene_swat_2.object" />
+
+			<file :name="ene_swat_3/ene_swat_3.model" />
+			<file :name="ene_swat_3/ene_swat_3.object" />
+			<file :name="ene_swat_3/ene_swat_3.unit" />
+			<file :name="ene_swat_3/ene_swat_3_husk.unit" />
+
+			<file :name="ene_sniper_1/ene_sniper_1.model" />
+			<file :name="ene_sniper_1/ene_sniper_1.object" />
+			<file :name="ene_sniper_1/ene_sniper_1.unit" />
+			<file :name="ene_sniper_1/ene_sniper_1_husk.unit" />
+
+			<file :name="ene_sniper_2/ene_sniper_2.model" />
+			<file :name="ene_sniper_2/ene_sniper_2.object" />
+			<file :name="ene_sniper_2/ene_sniper_2.unit" />
+			<file :name="ene_sniper_2/ene_sniper_2_husk.unit" />
+			
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.material_config" />	
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1_contour.material_config" />
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.model" />
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.object" />
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.unit" />
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1_husk.unit" />
+
+			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.cooked_physics" />
+			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.model" />
+			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.object" />
+			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.unit" />
+			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870_husk.unit" />
+
+			<file :name="ene_shield_1/ene_shield_1.model" />
+			<file :name="ene_shield_1/ene_shield_1.object" />
+			<file :name="ene_shield_1/ene_shield_1.unit" />
+			<file :name="ene_shield_1/ene_shield_1_husk.unit" />
+			
+			<file :name="ene_shield_2/ene_shield_2.model" />
+			<file :name="ene_shield_2/ene_shield_2.object" />
+			<file :name="ene_shield_2/ene_shield_2.unit" />
+			<file :name="ene_shield_2/ene_shield_2_husk.unit" />
+
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.model" />
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.object" />
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.unit" />
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1_husk.unit" />
+						
+			<file :name="ene_fbi_swat_2/ene_fbi_swat_2.model" />
+			<file :name="ene_fbi_swat_2/ene_fbi_swat_2.object" />
+			<file :name="ene_fbi_swat_2/ene_fbi_swat_2.unit" />
+			
+			<file :name="ene_fbi_swat_3/ene_fbi_swat_3.cooked_physics" />
+			<file :name="ene_fbi_swat_3/ene_fbi_swat_3.model" />
+			<file :name="ene_fbi_swat_3/ene_fbi_swat_3.object" />		
+			<file :name="ene_fbi_swat_3/ene_fbi_swat_3.unit" />		
+			<file :name="ene_fbi_swat_3/ene_fbi_swat_3_husk.unit" />	
+
+			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.material_config" />	
+			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1_contour.material_config" />
+			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.model" />
+			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.object" />
+			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.unit" />
+			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1_husk.unit" />
+
+			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.material_config" />	
+			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870_contour.material_config" />
+			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.cooked_physics" />
+			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.model" />
+			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.object" />		
+			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.unit" />		
+			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk.unit" />	
+
+			<file :name="ene_tazer_1/ene_tazer_1.material_config" />	
+			<file :name="ene_tazer_1/ene_tazer_1_contour.material_config" />			
+			<file :name="ene_tazer_1/ene_tazer_1.model" />
+			<file :name="ene_tazer_1/ene_tazer_1.object" />
+			<file :name="ene_tazer_1/ene_tazer_1.unit" />
+			<file :name="ene_tazer_1/ene_tazer_1_husk.unit" />
+	
+			<file :name="ene_grenadier/ene_grenadier.cooked_physics" />
+			<file :name="ene_grenadier/ene_grenadier.model" />
+			<file :name="ene_grenadier/ene_grenadier.object" />
+			<file :name="ene_grenadier/ene_grenadier.unit" />
+			<file :name="ene_grenadier/ene_grenadier_husk.unit" />
+
+			<file :name="ene_spook_1/ene_spook_1.model" />
+			<file :name="ene_spook_1/ene_spook_1.object" />
+			
+			<file :name="ene_medic_m4/ene_medic_m4.material_config" />	
+			<file :name="ene_medic_m4/ene_medic_m4_contour.material_config" />
+			<file :name="ene_medic_m4/ene_medic_m4.model" />
+			<file :name="ene_medic_m4/ene_medic_m4.object" />	
+
+			<file :name="ene_commander/ene_commander.unit" />		
+			<file :name="ene_commander/ene_commander_husk.unit" />
+			
+			<file :name="ene_city_swat_1/ene_city_swat_1.model" />
+			<file :name="ene_city_swat_1/ene_city_swat_1.object" />	
+
+			<file :name="ene_city_swat_2/ene_city_swat_2.model" />
+			<file :name="ene_city_swat_2/ene_city_swat_2.object" />	
+
+			<file :name="ene_city_swat_3/ene_city_swat_3.model" />
+			<file :name="ene_city_swat_3/ene_city_swat_3.object" />	
+			<file :name="ene_city_swat_3/ene_city_swat_3.unit" />
+			<file :name="ene_city_swat_3/ene_city_swat_3_husk.unit" />
+
+			<file :name="ene_acc_bulldozer_back/ene_acc_bulldozer_back.material_config" />		
+			<file :name="ene_acc_bulldozer_back/ene_acc_bulldozer_back.model" />
+			<file :name="ene_acc_bulldozer_back/ene_acc_bulldozer_back.object" />
+
+			<file :name="ene_acc_bulldozer_back_2/ene_acc_bulldozer_back_2.model" />
+			<file :name="ene_acc_bulldozer_back_2/ene_acc_bulldozer_back_2.object" />
+
+			<file :name="ene_acc_bulldozer_chest/ene_acc_bulldozer_chest.model" />
+			<file :name="ene_acc_bulldozer_chest/ene_acc_bulldozer_chest.object" />
+
+			<file :name="ene_acc_bulldozer_chest_2/ene_acc_bulldozer_chest_2.model" />
+			<file :name="ene_acc_bulldozer_chest_2/ene_acc_bulldozer_chest_2.object" />
+
+			<file :name="ene_acc_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate.model" />
+			<file :name="ene_acc_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate.object" />
+
+			<file :name="ene_acc_bulldozer_helmet_plate_2/ene_acc_bulldozer_helmet_plate_2.model" />
+			<file :name="ene_acc_bulldozer_helmet_plate_2/ene_acc_bulldozer_helmet_plate_2.object" />
+
+			<file :name="ene_acc_bulldozer_helmet_plate_3/ene_acc_bulldozer_helmet_plate_3.model" />
+			<file :name="ene_acc_bulldozer_helmet_plate_3/ene_acc_bulldozer_helmet_plate_3.object" />
+
+			<file :name="ene_acc_bulldozer_neck/ene_acc_bulldozer_neck.model" />
+			<file :name="ene_acc_bulldozer_neck/ene_acc_bulldozer_neck.object" />
+
+			<file :name="ene_acc_bulldozer_neck_2/ene_acc_bulldozer_neck_2.model" />
+			<file :name="ene_acc_bulldozer_neck_2/ene_acc_bulldozer_neck_2.object" />
+
+			<file :name="ene_acc_bulldozer_neck_3/ene_acc_bulldozer_neck_3.model" />
+			<file :name="ene_acc_bulldozer_neck_3/ene_acc_bulldozer_neck_3.object" />
+
+			<file :name="ene_acc_bulldozer_stomache/ene_acc_bulldozer_stomache.model" />
+			<file :name="ene_acc_bulldozer_stomache/ene_acc_bulldozer_stomache.object" />
+
+			<file :name="ene_acc_bulldozer_stomache_2/ene_acc_bulldozer_stomache_2.model" />
+			<file :name="ene_acc_bulldozer_stomache_2/ene_acc_bulldozer_stomache_2.object" />
+
+			<file :name="ene_acc_bulldozer_throat/ene_acc_bulldozer_throat.model" />
+			<file :name="ene_acc_bulldozer_throat/ene_acc_bulldozer_throat.object" />
+
+			<file :name="ene_acc_bulldozer_throat_2/ene_acc_bulldozer_throat_2.model" />
+			<file :name="ene_acc_bulldozer_throat_2/ene_acc_bulldozer_throat_2.object" />
+
+			<file :name="ene_acc_bulldozer_throat_3/ene_acc_bulldozer_throat_3.model" />
+			<file :name="ene_acc_bulldozer_throat_3/ene_acc_bulldozer_throat_3.object" />
+		
+			<file :name="ene_bulldozer_1/ene_bulldozer_1.material_config" />	
+			<file :name="ene_bulldozer_1/ene_bulldozer_1_contour.material_config" />		
+			<file :name="ene_bulldozer_1/ene_bulldozer_1.model" />
+			<file :name="ene_bulldozer_1/ene_bulldozer_1.object" />
+
+			<file :name="ene_bulldozer_2/ene_bulldozer_2.model" />
+			<file :name="ene_bulldozer_2/ene_bulldozer_2.object" />
+
+			<file :name="ene_bulldozer_3/ene_bulldozer_3.model" />
+			<file :name="ene_bulldozer_3/ene_bulldozer_3.object" />
+		</group>
+
+		<group name="units/pd2_dlc_bex/weapons/">	
+			<file :name="wpn_npc_hk21/hk21_df.texture" />	
+			<file :name="wpn_npc_hk21/hk21_nm.texture" />	
+			<file :name="wpn_npc_hk21/wpn_npc_hk21.cooked_physics" />	
+			<file :name="wpn_npc_hk21/wpn_npc_hk21.material_config" />	
+			<file :name="wpn_npc_hk21/wpn_npc_hk21_contour.material_config" />	
+			<file :name="wpn_npc_hk21/wpn_npc_hk21.model" />
+			<file :name="wpn_npc_hk21/wpn_npc_hk21.object" />	
+			<file :name="wpn_npc_hk21/wpn_npc_hk21.unit" />
+
+			<file :name="wpn_npc_hajk/hajk_df.texture" />	
+			<file :name="wpn_npc_hajk/hajk_nm.texture" />	
+			<file :name="wpn_npc_hajk/wpn_npc_hajk.cooked_physics" />	
+			<file :name="wpn_npc_hajk/wpn_npc_hajk.material_config" />	
+			<file :name="wpn_npc_hajk/wpn_npc_hajk_contour.material_config" />	
+			<file :name="wpn_npc_hajk/wpn_npc_hajk.model" />
+			<file :name="wpn_npc_hajk/wpn_npc_hajk.object" />	
+			<file :name="wpn_npc_hajk/wpn_npc_hajk.unit" />
+
+			<file :name="wpn_npc_fal/fal_df.texture" />	
+			<file :name="wpn_npc_fal/fal_nm.texture" />	
+			<file :name="wpn_npc_fal/wpn_npc_fal.cooked_physics" />	
+			<file :name="wpn_npc_fal/wpn_npc_fal.material_config" />	
+			<file :name="wpn_npc_fal/wpn_npc_fal_contour.material_config" />	
+			<file :name="wpn_npc_fal/wpn_npc_fal.model" />
+			<file :name="wpn_npc_fal/wpn_npc_fal.object" />	
+			<file :name="wpn_npc_fal/wpn_npc_fal.unit" />
+		</group>
+		
+		<group name="units/pd2_dlc_bex/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="shared_textures/heads_atlas_df.texture" />		
+			<file :name="shared_textures/heads_atlas_nm.texture" />
+			<file :name="shared_textures/police_df.texture" />		
+			<file :name="shared_textures/police_nm.texture" />
+			<file :name="shared_textures/swat_body_df.texture" />		
+			<file :name="shared_textures/swat_body_nm.texture" />
+			<file :name="shared_textures/taser_heavy_body_df.texture" />		
+			<file :name="shared_textures/taser_heavy_body_nm.texture" />
+			<file :name="shared_textures/bulldozer_df.texture" />		
+			<file :name="shared_textures/bulldozer_nm.texture" />
+			<file :name="shared_textures/spook_body_df.texture" />		
+			<file :name="shared_textures/spook_body_nm.texture" />
+			<file :name="shared_textures/medic_body_df.texture" />
+
+			<file :name="ene_acc_bulldozer_throat_akan_1/ene_acc_bulldozer_throat_akan_1.material_config" />	
+			<file :name="ene_acc_bulldozer_throat_akan_1/ene_acc_bulldozer_throat_akan_1.model" />
+
+			<file :name="ene_acc_bulldozer_stomache_akan_1/ene_acc_bulldozer_stomache_akan_1.material_config" />	
+			<file :name="ene_acc_bulldozer_stomache_akan_1/ene_acc_bulldozer_stomache_akan_1.model" />
+	
+			<file :name="ene_acc_bulldozer_neck_akan_1/ene_acc_bulldozer_neck_akan_1.material_config" />	
+			<file :name="ene_acc_bulldozer_neck_akan_1/ene_acc_bulldozer_neck_akan_1.model" />
+	
+			<file :name="ene_acc_bulldozer_helmet_plate_akan_1/ene_acc_bulldozer_helmet_plate_akan_1.material_config" />	
+			<file :name="ene_acc_bulldozer_helmet_plate_akan_1/ene_acc_bulldozer_helmet_plate_akan_1.model" />
+	
+			<file :name="ene_acc_bulldozer_chest_akan_1/ene_acc_bulldozer_chest_akan_1.material_config" />	
+			<file :name="ene_acc_bulldozer_chest_akan_1/ene_acc_bulldozer_chest_akan_1.model" />
+	
+			<file :name="ene_acc_bulldozer_back_akan_1/ene_acc_bulldozer_back_akan_1.material_config" />	
+			<file :name="ene_acc_bulldozer_back_akan_1/ene_acc_bulldozer_back_akan_1.model" />
+
+			<file :name="ene_acc_bulldozer_throat_akan_2/ene_acc_bulldozer_throat_akan_2.material_config" />	
+			<file :name="ene_acc_bulldozer_throat_akan_2/ene_acc_bulldozer_throat_akan_2.model" />
+
+			<file :name="ene_acc_bulldozer_stomache_akan_2/ene_acc_bulldozer_stomache_akan_2.material_config" />	
+			<file :name="ene_acc_bulldozer_stomache_akan_2/ene_acc_bulldozer_stomache_akan_2.model" />
+	
+			<file :name="ene_acc_bulldozer_neck_akan_2/ene_acc_bulldozer_neck_akan_2.material_config" />	
+			<file :name="ene_acc_bulldozer_neck_akan_2/ene_acc_bulldozer_neck_akan_2.model" />
+	
+			<file :name="ene_acc_bulldozer_helmet_plate_akan_2/ene_acc_bulldozer_helmet_plate_akan_2.material_config" />	
+			<file :name="ene_acc_bulldozer_helmet_plate_akan_2/ene_acc_bulldozer_helmet_plate_akan_2.model" />
+	
+			<file :name="ene_acc_bulldozer_chest_akan_2/ene_acc_bulldozer_chest_akan_2.material_config" />	
+			<file :name="ene_acc_bulldozer_chest_akan_2/ene_acc_bulldozer_chest_akan_2.model" />
+	
+			<file :name="ene_acc_bulldozer_back_akan_2/ene_acc_bulldozer_back_akan_2.material_config" />	
+			<file :name="ene_acc_bulldozer_back_akan_2/ene_acc_bulldozer_back_akan_2.model" />
+
+			<file :name="ene_acc_bulldozer_throat_3/ene_acc_bulldozer_throat_3.material_config" />	
+			<file :name="ene_acc_bulldozer_throat_3/ene_acc_bulldozer_throat_3.model" />
+
+			<file :name="ene_acc_bulldozer_stomache_2/ene_acc_bulldozer_stomache_2.material_config" />	
+			<file :name="ene_acc_bulldozer_stomache_2/ene_acc_bulldozer_stomache_2.model" />
+	
+			<file :name="ene_acc_bulldozer_neck_3/ene_acc_bulldozer_neck_3.material_config" />	
+			<file :name="ene_acc_bulldozer_neck_3/ene_acc_bulldozer_neck_3.model" />
+	
+			<file :name="ene_acc_bulldozer_helmet_plate_3/ene_acc_bulldozer_helmet_plate_3.material_config" />	
+			<file :name="ene_acc_bulldozer_helmet_plate_3/ene_acc_bulldozer_helmet_plate_3.model" />
+	
+			<file :name="ene_acc_bulldozer_chest_2/ene_acc_bulldozer_chest_2.material_config" />	
+			<file :name="ene_acc_bulldozer_chest_2/ene_acc_bulldozer_chest_2.model" />
+	
+			<file :name="ene_acc_bulldozer_back_2/ene_acc_bulldozer_back_2.material_config" />	
+			<file :name="ene_acc_bulldozer_back_2/ene_acc_bulldozer_back_2.model" />
+			
+			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.cooked_physics" />	
+			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.material_config" />	
+			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.model" />
+			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.object" />	
+			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.unit" />
+
+			<file :name="ene_acc_cop_cap/ene_acc_cop_cap.cooked_physics" />	
+			<file :name="ene_acc_cop_cap/ene_acc_cop_cap.model" />
+			<file :name="ene_acc_cop_cap/ene_acc_cop_cap.object" />	
+			<file :name="ene_acc_cop_cap/ene_acc_cop_cap.unit" />
+
+			<file :name="ene_acc_agent_cap/ene_acc_agent_cap.cooked_physics" />	
+			<file :name="ene_acc_agent_cap/ene_acc_agent_cap.model" />
+			<file :name="ene_acc_agent_cap/ene_acc_agent_cap.object" />	
+			<file :name="ene_acc_agent_cap/ene_acc_agent_cap.unit" />
+				
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.cooked_physics" />	
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.material_config" />	
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.model" />
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.object" />	
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.unit" />
+
+			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.cooked_physics" />	
+			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.model" />
+			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.object" />	
+			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.unit" />
+			
+			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.cooked_physics" />	
+			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.model" />
+			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.object" />	
+			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.unit" />
+
+			<file :name="ene_acc_fbi_swat_mask/ene_acc_fbi_swat_mask.cooked_physics" />	
+			<file :name="ene_acc_fbi_swat_mask/ene_acc_fbi_swat_mask.model" />
+			<file :name="ene_acc_fbi_swat_mask/ene_acc_fbi_swat_mask.object" />	
+			<file :name="ene_acc_fbi_swat_mask/ene_acc_fbi_swat_mask.unit" />
+
+			<file :name="ene_acc_fbi_swat_cap/ene_acc_fbi_swat_cap.cooked_physics" />	
+			<file :name="ene_acc_fbi_swat_cap/ene_acc_fbi_swat_cap.model" />
+			<file :name="ene_acc_fbi_swat_cap/ene_acc_fbi_swat_cap.object" />	
+			<file :name="ene_acc_fbi_swat_cap/ene_acc_fbi_swat_cap.unit" />
+		
+			<file :name="ene_acc_sniper_hat/ene_acc_sniper_hat.cooked_physics" />	
+			<file :name="ene_acc_sniper_hat/ene_acc_sniper_hat.model" />
+			<file :name="ene_acc_sniper_hat/ene_acc_sniper_hat.object" />	
+			<file :name="ene_acc_sniper_hat/ene_acc_sniper_hat.unit" />
+		
+			<file :name="ene_policia_cop_1/ene_policia_cop_1.cooked_physics" />				
+			<file :name="ene_policia_cop_1/ene_policia_cop_1.material_config" />	
+			<file :name="ene_policia_cop_1/ene_policia_cop_1_contour.material_config" />
+			<file :name="ene_policia_cop_1/ene_policia_cop_1.model" />
+			<file :name="ene_policia_cop_1/ene_policia_cop_1.object" />	
+			<file :name="ene_policia_cop_1/ene_policia_cop_1.unit" />
+			<file :name="ene_policia_cop_1/ene_policia_cop_1_husk.unit" />
+
+			<file :name="ene_policia_cop_2/ene_policia_cop_2.cooked_physics" />				
+			<file :name="ene_policia_cop_2/ene_policia_cop_2.model" />
+			<file :name="ene_policia_cop_2/ene_policia_cop_2.object" />	
+			<file :name="ene_policia_cop_2/ene_policia_cop_2.unit" />
+			<file :name="ene_policia_cop_2/ene_policia_cop_2_husk.unit" />
+
+			<file :name="ene_policia_cop_3/ene_policia_cop_3.cooked_physics" />				
+			<file :name="ene_policia_cop_3/ene_policia_cop_3.model" />
+			<file :name="ene_policia_cop_3/ene_policia_cop_3.object" />	
+			<file :name="ene_policia_cop_3/ene_policia_cop_3.unit" />
+			<file :name="ene_policia_cop_3/ene_policia_cop_3_husk.unit" />
+
+			<file :name="ene_policia_cop_4/ene_policia_cop_4.cooked_physics" />				
+			<file :name="ene_policia_cop_4/ene_policia_cop_4.model" />
+			<file :name="ene_policia_cop_4/ene_policia_cop_4.object" />	
+			<file :name="ene_policia_cop_4/ene_policia_cop_4.unit" />
+			<file :name="ene_policia_cop_4/ene_policia_cop_4_husk.unit" />
+			
+			<file :name="ene_swat_policia_federale/ene_swat_policia_federale.material_config" />	
+			<file :name="ene_swat_policia_federale/ene_swat_policia_federale_contour.material_config" />
+			<file :name="ene_swat_policia_federale/ene_swat_policia_federale.model" />
+			<file :name="ene_swat_policia_federale/ene_swat_policia_federale.object" />	
+			<file :name="ene_swat_policia_federale/ene_swat_policia_federale.unit" />
+			<file :name="ene_swat_policia_federale/ene_swat_policia_federale_husk.unit" />	
+
+			<file :name="ene_swat_policia_federale_r870/ene_swat_policia_federale_r870.cooked_physics" />
+			<file :name="ene_swat_policia_federale_r870/ene_swat_policia_federale_r870.model" />
+			<file :name="ene_swat_policia_federale_r870/ene_swat_policia_federale_r870.object" />	
+			<file :name="ene_swat_policia_federale_r870/ene_swat_policia_federale_r870.unit" />
+			<file :name="ene_swat_policia_federale_r870/ene_swat_policia_federale_r870_husk.unit" />		
+
+			<file :name="ene_swat_policia_federale_mp5/ene_swat_policia_federale_mp5.cooked_physics" />
+			<file :name="ene_swat_policia_federale_mp5/ene_swat_policia_federale_mp5.model" />
+			<file :name="ene_swat_policia_federale_mp5/ene_swat_policia_federale_mp5.object" />	
+			<file :name="ene_swat_policia_federale_mp5/ene_swat_policia_federale_mp5.unit" />
+			<file :name="ene_swat_policia_federale_mp5/ene_swat_policia_federale_mp5_husk.unit" />		
+				
+			<file :name="ene_swat_heavy_policia_federale/ene_swat_heavy_policia_federale.material_config" />	
+			<file :name="ene_swat_heavy_policia_federale/ene_swat_heavy_policia_federale_contour.material_config" />
+			<file :name="ene_swat_heavy_policia_federale/ene_swat_heavy_policia_federale.model" />
+			<file :name="ene_swat_heavy_policia_federale/ene_swat_heavy_policia_federale.object" />	
+			<file :name="ene_swat_heavy_policia_federale/ene_swat_heavy_policia_federale.unit" />
+			<file :name="ene_swat_heavy_policia_federale/ene_swat_heavy_policia_federale_husk.unit" />	
+
+			<file :name="ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870.cooked_physics" />
+			<file :name="ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870.model" />
+			<file :name="ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870.object" />	
+			<file :name="ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870.unit" />
+			<file :name="ene_swat_heavy_policia_federale_r870/ene_swat_heavy_policia_federale_r870_husk.unit" />		
+
+			<file :name="ene_swat_policia_sniper/ene_swat_policia_sniper.model" />
+			<file :name="ene_swat_policia_sniper/ene_swat_policia_sniper.object" />	
+			<file :name="ene_swat_policia_sniper/ene_swat_policia_sniper.unit" />
+			<file :name="ene_swat_policia_sniper/ene_swat_policia_sniper_husk.unit" />		
+
+			<file :name="ene_swat_shield_policia_federale_c45/ene_swat_shield_policia_federale_c45.model" />
+			<file :name="ene_swat_shield_policia_federale_c45/ene_swat_shield_policia_federale_c45.object" />	
+			<file :name="ene_swat_shield_policia_federale_c45/ene_swat_shield_policia_federale_c45.unit" />
+			<file :name="ene_swat_shield_policia_federale_c45/ene_swat_shield_policia_federale_c45_husk.unit" />	
+
+			<file :name="ene_swat_tazer_policia_federale/ene_swat_tazer_policia_federale.material_config" />	
+			<file :name="ene_swat_tazer_policia_federale/ene_swat_tazer_policia_federale_contour.material_config" />
+			<file :name="ene_swat_tazer_policia_federale/ene_swat_tazer_policia_federale.model" />
+			<file :name="ene_swat_tazer_policia_federale/ene_swat_tazer_policia_federale.object" />	
+			<file :name="ene_swat_tazer_policia_federale/ene_swat_tazer_policia_federale.unit" />
+			<file :name="ene_swat_tazer_policia_federale/ene_swat_tazer_policia_federale_husk.unit" />	
+
+			<file :name="ene_swat_dozer_policia_federale_r870/ene_swat_dozer_policia_federale_r870.material_config" />	
+			<file :name="ene_swat_dozer_policia_federale_r870/ene_swat_dozer_policia_federale_r870_contour.material_config" />
+			<file :name="ene_swat_dozer_policia_federale_r870/ene_swat_dozer_policia_federale_r870.model" />
+			<file :name="ene_swat_dozer_policia_federale_r870/ene_swat_dozer_policia_federale_r870.object" />	
+
+			<file :name="ene_swat_dozer_policia_federale_saiga/ene_swat_dozer_policia_federale_saiga.model" />
+			<file :name="ene_swat_dozer_policia_federale_saiga/ene_swat_dozer_policia_federale_saiga.object" />	
+			
+			<file :name="ene_swat_dozer_policia_federale_m249/ene_swat_dozer_policia_federale_m249.model" />
+			<file :name="ene_swat_dozer_policia_federale_m249/ene_swat_dozer_policia_federale_m249.object" />	
+	
+			<file :name="ene_policia_agent_1/ene_policia_agent_1.cooked_physics" />				
+			<file :name="ene_policia_agent_1/ene_policia_agent_1.model" />
+			<file :name="ene_policia_agent_1/ene_policia_agent_1.object" />	
+			<file :name="ene_policia_agent_1/ene_policia_agent_1.unit" />
+			<file :name="ene_policia_agent_1/ene_policia_agent_1_husk.unit" />
+
+			<file :name="ene_policia_agent_2/ene_policia_agent_2.cooked_physics" />				
+			<file :name="ene_policia_agent_2/ene_policia_agent_2.model" />
+			<file :name="ene_policia_agent_2/ene_policia_agent_2.object" />	
+			<file :name="ene_policia_agent_2/ene_policia_agent_2.unit" />
+			<file :name="ene_policia_agent_2/ene_policia_agent_2_husk.unit" />
+
+			<file :name="ene_policia_agent_3/ene_policia_agent_3.cooked_physics" />				
+			<file :name="ene_policia_agent_3/ene_policia_agent_3.model" />
+			<file :name="ene_policia_agent_3/ene_policia_agent_3.object" />	
+			<file :name="ene_policia_agent_3/ene_policia_agent_3.unit" />
+			<file :name="ene_policia_agent_3/ene_policia_agent_3_husk.unit" />
+			
+			<file :name="ene_swat_policia_federale_fbi/ene_swat_policia_federale_fbi.cooked_physics" />
+			<file :name="ene_swat_policia_federale_fbi/ene_swat_policia_federale_fbi.model" />
+			<file :name="ene_swat_policia_federale_fbi/ene_swat_policia_federale_fbi.object" />	
+			<file :name="ene_swat_policia_federale_fbi/ene_swat_policia_federale_fbi.unit" />
+			<file :name="ene_swat_policia_federale_fbi/ene_swat_policia_federale_fbi_husk.unit" />	
+
+			<file :name="ene_swat_policia_federale_fbi_r870/ene_swat_policia_federale_fbi_r870.cooked_physics" />
+			<file :name="ene_swat_policia_federale_fbi_r870/ene_swat_policia_federale_fbi_r870.model" />
+			<file :name="ene_swat_policia_federale_fbi_r870/ene_swat_policia_federale_fbi_r870.object" />	
+			<file :name="ene_swat_policia_federale_fbi_r870/ene_swat_policia_federale_fbi_r870.unit" />
+			<file :name="ene_swat_policia_federale_fbi_r870/ene_swat_policia_federale_fbi_r870_husk.unit" />	
+
+			<file :name="ene_swat_policia_federale_fbi_mp5/ene_swat_policia_federale_fbi_mp5.cooked_physics" />
+			<file :name="ene_swat_policia_federale_fbi_mp5/ene_swat_policia_federale_fbi_mp5.model" />
+			<file :name="ene_swat_policia_federale_fbi_mp5/ene_swat_policia_federale_fbi_mp5.object" />	
+			<file :name="ene_swat_policia_federale_fbi_mp5/ene_swat_policia_federale_fbi_mp5.unit" />
+			<file :name="ene_swat_policia_federale_fbi_mp5/ene_swat_policia_federale_fbi_mp5_husk.unit" />		
+			
+			<file :name="ene_swat_policia_sniper_fbi/ene_swat_policia_sniper_fbi.cooked_physics" />
+			<file :name="ene_swat_policia_sniper_fbi/ene_swat_policia_sniper_fbi.model" />
+			<file :name="ene_swat_policia_sniper_fbi/ene_swat_policia_sniper_fbi.object" />	
+			<file :name="ene_swat_policia_sniper_fbi/ene_swat_policia_sniper_fbi.unit" />
+			<file :name="ene_swat_policia_sniper_fbi/ene_swat_policia_sniper_fbi_husk.unit" />	
+
+			<file :name="ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9.model" />
+			<file :name="ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9.object" />	
+			<file :name="ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9.unit" />
+			<file :name="ene_swat_shield_policia_federale_mp9/ene_swat_shield_policia_federale_mp9_husk.unit" />
+			
+			<file :name="ene_swat_heavy_policia_federale_fbi/ene_swat_heavy_policia_federale_fbi.material_config" />	
+			<file :name="ene_swat_heavy_policia_federale_fbi/ene_swat_heavy_policia_federale_fbi_contour.material_config" />
+			<file :name="ene_swat_heavy_policia_federale_fbi/ene_swat_heavy_policia_federale_fbi.model" />
+			<file :name="ene_swat_heavy_policia_federale_fbi/ene_swat_heavy_policia_federale_fbi.object" />	
+			<file :name="ene_swat_heavy_policia_federale_fbi/ene_swat_heavy_policia_federale_fbi.unit" />
+			<file :name="ene_swat_heavy_policia_federale_fbi/ene_swat_heavy_policia_federale_fbi_husk.unit" />
+			
+			<file :name="ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870.cooked_physics" />
+			<file :name="ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870.material_config" />	
+			<file :name="ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870_contour.material_config" />
+			<file :name="ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870.model" />
+			<file :name="ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870.object" />	
+			<file :name="ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870.unit" />
+			<file :name="ene_swat_heavy_policia_federale_fbi_r870/ene_swat_heavy_policia_federale_fbi_r870_husk.unit" />			 	 
+			
+			<file :name="ene_swat_cloaker_policia_federale/ene_swat_cloaker_policia_federale.material_config" />	
+			<file :name="ene_swat_cloaker_policia_federale/ene_swat_cloaker_policia_federale_contour.material_config" />
+			<file :name="ene_swat_cloaker_policia_federale/ene_swat_cloaker_policia_federale.model" />
+			<file :name="ene_swat_cloaker_policia_federale/ene_swat_cloaker_policia_federale.object" />	
+
+			<file :name="ene_swat_grenadier_policia_federale/ene_swat_grenadier_policia_federale.cooked_physics" />
+			<file :name="ene_swat_grenadier_policia_federale/ene_swat_grenadier_policia_federale.model" />
+			<file :name="ene_swat_grenadier_policia_federale/ene_swat_grenadier_policia_federale.object" />	
+			<file :name="ene_swat_grenadier_policia_federale/ene_swat_grenadier_policia_federale.unit" />
+			<file :name="ene_swat_grenadier_policia_federale/ene_swat_grenadier_policia_federale_husk.unit" />
+			
+			<file :name="ene_swat_medic_policia_federale/ene_swat_medic_policia_federale.material_config" />	
+			<file :name="ene_swat_medic_policia_federale/ene_swat_medic_policia_federale_contour.material_config" />
+			<file :name="ene_swat_medic_policia_federale/ene_swat_medic_policia_federale.model" />
+			<file :name="ene_swat_medic_policia_federale/ene_swat_medic_policia_federale.object" />	
+
+			<file :name="ene_swat_policia_federale_city/ene_swat_policia_federale_city.cooked_physics" />
+			<file :name="ene_swat_policia_federale_city/ene_swat_policia_federale_city.model" />
+			<file :name="ene_swat_policia_federale_city/ene_swat_policia_federale_city.object" />	
+			<file :name="ene_swat_policia_federale_city/ene_swat_policia_federale_city.unit" />
+			<file :name="ene_swat_policia_federale_city/ene_swat_policia_federale_city_husk.unit" />	
+
+			<file :name="ene_swat_policia_federale_city_r870/ene_swat_policia_federale_city_r870.cooked_physics" />
+			<file :name="ene_swat_policia_federale_city_r870/ene_swat_policia_federale_city_r870.model" />
+			<file :name="ene_swat_policia_federale_city_r870/ene_swat_policia_federale_city_r870.object" />	
+			<file :name="ene_swat_policia_federale_city_r870/ene_swat_policia_federale_city_r870.unit" />
+			<file :name="ene_swat_policia_federale_city_r870/ene_swat_policia_federale_city_r870_husk.unit" />	
+			
+			<file :name="ene_swat_policia_federale_city_mp5/ene_swat_policia_federale_city_mp5.cooked_physics" />
+			<file :name="ene_swat_policia_federale_city_mp5/ene_swat_policia_federale_city_mp5.model" />
+			<file :name="ene_swat_policia_federale_city_mp5/ene_swat_policia_federale_city_mp5.object" />	
+			<file :name="ene_swat_policia_federale_city_mp5/ene_swat_policia_federale_city_mp5.unit" />
+			<file :name="ene_swat_policia_federale_city_mp5/ene_swat_policia_federale_city_mp5_husk.unit" />		
+
+			<file :name="ene_swat_policia_marksman/ene_swat_policia_marksman.cooked_physics" />
+			<file :name="ene_swat_policia_marksman/ene_swat_policia_marksman.model" />
+			<file :name="ene_swat_policia_marksman/ene_swat_policia_marksman.object" />	
+			<file :name="ene_swat_policia_marksman/ene_swat_policia_marksman.unit" />
+			<file :name="ene_swat_policia_marksman/ene_swat_policia_marksman_husk.unit" />	
+		</group>
+
+		<group name="units/pd2_dlc_pex/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_male_office_cop_01/ene_male_office_cop_01.material_config" />	
+			<file :name="ene_male_office_cop_01/ene_male_office_cop_01_contour.material_config" />
+			<file :name="ene_male_office_cop_01/ene_male_office_cop_01.model" />
+			<file :name="ene_male_office_cop_01/ene_male_office_cop_01.object" />	
+			<file :name="ene_male_office_cop_01/ene_male_office_cop_01.unit" />
+			<file :name="ene_male_office_cop_01/ene_male_office_cop_01_husk.unit" />	
+
+			<file :name="ene_male_office_cop_02/ene_male_office_cop_02.model" />
+			<file :name="ene_male_office_cop_02/ene_male_office_cop_02.object" />	
+			<file :name="ene_male_office_cop_02/ene_male_office_cop_02.unit" />
+			<file :name="ene_male_office_cop_02/ene_male_office_cop_02_husk.unit" />	
+		</group>		
+	</assets>
+</mod>

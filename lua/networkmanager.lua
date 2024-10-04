@@ -1,0 +1,2 @@
+NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY = NetworkMatchMakingSTEAM._BUILD_SEARCH_INTEREST_KEY .. "_paper_warm"
+NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY = NetworkMatchMakingEPIC._BUILD_SEARCH_INTEREST_KEY .. "_paper_warm"

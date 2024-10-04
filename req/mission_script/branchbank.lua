@@ -1,0 +1,1 @@
+return PaperWarm:require("mission_script/firestarter_3")

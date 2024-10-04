@@ -1,0 +1,183 @@
+{
+	"bm_wp_g3_b_short": "Fallschirmjäger Barrel",
+	"bm_wp_g3_b_sniper": "Scharfschütze Barrel",
+	"bm_wp_shepheard_m_standard": "Compact Magazine",
+	
+	"menu_dmr": "Battle Rifle",
+	"bm_menu_pickup": "Pickup",
+	"bm_menu_falloff": "Falloff",
+	"bm_menu_ads_time": "Aim Time",
+	"bm_menu_swap_time": "Swap Time",
+	
+	"pw_menu_main" : "Paper Warm Overhaul",
+	"pw_menu_extra_player_styles": "Heist outfits",
+	"pw_menu_extra_player_styles_desc": "Enables heist-specific player outfits.",
+
+	"pw_menu_sway_adjustments": "Weapon Screenshake Adjustments",
+	"pw_menu_sway_adjustments_desc": "Screenshake when shooting now scales based on weapon damage.",	
+
+	"menu_stat_job_completed": "",
+	"menu_max_progress": "Max account progression",
+	"menu_max_progress_help": "Max out your account progression and skip the grind.",
+	"menu_progress_msg": "Are you sure you want to max out your progress? This will max out your level, infamy, cash, and unlock all available items.",
+	
+	"menu_equipment_armor_bag": "Armor Bag",
+	
+	"menu_toggle_one_down": "Pro-Job",
+	"menu_one_down": "Pro-Job",
+	"menu_toggle_one_down_lobbies": "Allow Pro-Job Lobbies"
+	
+	"bm_wp_fla_mk2_mag_rare_desc": "Increases fire damage over time.",
+	"bm_wp_fla_mk2_mag_welldone_desc": "Decreases fire damage over time.",
+
+	"bm_wp_system_m_low_desc": "Increases fire damage over time.",
+	"bm_wp_system_m_high_desc": "Decreases fire damage over time.",
+	
+	"hud_assault_commander_diff_increase": "Heavy units incoming!",
+
+	"menu_combat_medic_beta_desc": 
+	"BASIC: ##$basic##\nYou are ##$multibasic## less likely to be targeted while reviving a teammate.\n\nACE: ##$pro##\nReviving a teammate gives them ##$multipro## more health.",
+
+	"menu_tea_time_beta": "Code Blue",	
+	"menu_tea_time_beta_desc": 
+	"BASIC: ##$basic##\nYour move speed is increased by ##$multibasic## for every currently downed teammate. This bonus stacks up to ##$multibasic2## times and diminishes when teammates are revived or taken into custody.\n\nACE: ##$pro##\nYou gain a ##$multipro## damage reduction for every currently downed teammate. This reduction stacks up to ##$multibasic2## times and diminishes when teammates are revived or taken into custody.",
+	
+	"menu_inspire_beta_desc": 
+	"BASIC: ##$basic##\nShouting at your teammates increases their movement and reload speed by ##$multibasic## for ##$multibasic2## seconds. This cannot occur more than once every ##$multibasic3## seconds.\n\nACE: ##$pro##\nShouting at downed teammates at a distance of up to ##$multipro## meters revives them instantly. This cannot occur more than once every ##$multipro2## seconds.",
+	
+	"menu_triathlete_beta_desc": 
+	"BASIC: ##$basic##\nYour supply of cable ties is increased by ##$multibasic##. You also cable tie hostages ##$multibasic2## faster.\n\nACE: ##$pro##\nYou can now have up to ##$multipro## hostages following you at once.",
+
+	"menu_cable_guy_beta": "Control freak",	
+	"menu_cable_guy_beta_desc": 
+	"BASIC: ##$basic##\nThe power and range of your intimidation is increased by ##$multibasic##.\n\nACE: ##$pro##\nCivilians are intimidated by the noise you make.", 
+
+	"menu_joker_beta_desc": 
+	"BASIC: ##$basic##\nYou can convert a non-special enemy to fight on your side. This can not be done during stealth and the enemy must have surrendered in order for you to convert them.\n\nYou can only convert one non-special enemy at a time.\n\nYour converted enemy takes ##$multibasic## less damage by default.\n\nACE: ##$pro##\nYour converted enemy deals ##$multipro## more damage. ",
+	
+	"menu_stockholm_syndrome_beta_desc": 
+	"BASIC: ##$basic##\n.\n\nACE: ##$pro##\nYour hostages will not flee when they have been rescued by law enforcers. Whenever you get into custody, your hostages will trade themselves for your safe return. This effect can occur during assaults, but only once during a heist.", 
+
+	"menu_control_freak_beta_desc": 
+	"BASIC: ##$basic##\nHaving a converted enemy increases your movement speed by ##$multibasic##.\n\nYour converted enemy takes ##$multibasic2## less damage.\n\nACE: ##$pro##\nHaving a converted enemy increases your health by ##$multipro##.\n\nYour converted enemy takes an additional ##$multipro2## less damage.",
+
+	"menu_black_marketeer_beta_desc": 
+	"BASIC: ##$basic##\nYou gain ##$multibasic## stamina for each hostage up to ##$multibasic2## times.\n\nNote: Converted enemies do not count toward the total amount of hostages.\n\nACE: ##$pro##\nYou regenerate ##$multipro## health every ##$multipro2## for each hostage up to ##$multibasic2## times.\n\nBonuses provided by this skill are now increased by ##$multipro3## when you are within ##$multipro4## meters of a hostage.",
+
+	"menu_rifleman_beta": "Steady Aim",
+	"menu_rifleman_beta_desc": 
+	"BASIC: ##$basic##\nYou aim your weapon ##$multibasic## faster.\n\nACE: ##$pro##\nReduces camera shake when damage by ##$multipro## while aiming.", 
+
+	"menu_sharpshooter_beta_desc": 
+	"BASIC: ##$basic##\n\n\nACE: ##$pro##\nThe higher your equipped sight's magnification, the more stable your Assault Rifles, DMRs and Sniper Rifles are when aiming.", 
+
+	"menu_fast_fire_beta": "Disturbing The Peace",	
+	"menu_fast_fire_beta_desc": 
+	"BASIC: ##$basic##\nYour unsilenced firearms have a chance to cause suppressed enemies to panic.\n\nACE: ##$pro##\nPanic chance is increased by ##$multipro##.",
+
+	"menu_single_shot_ammo_return_beta": "High Value Target",
+	"menu_single_shot_ammo_return_beta_desc": "BASIC: ##$basic##\nEnemies you mark are outlined ##$multibasic## longer. You can now mark enemies by aiming at them.\n\nACE: ##$pro##\nEnemies you mark take ##$multipro## damage.",
+		
+	"menu_overkill_beta_desc": 
+	"BASIC: ##$basic##\nKilling an enemy in close range with a Shotgun has a ##$multibasic## chance to cause nearby enemies to panic. This cannot occur more than once every ##$multibasic2## seconds.\n\nACE: ##$pro##\nKilling an enemy in close range with a Shotgun increases its damage by ##$multipro## for ##$multipro2## seconds.",
+
+	"menu_oppressor_beta": "Stun Resistance",	
+	"menu_oppressor_beta_desc": 
+	"BASIC: ##$basic##\nReduces the visual effect duration of Flashbangs by ##$multibasic##.\n\nACE: ##$pro##\nReduces the visual effect duration by an additional ##$multipro##.",
+
+	"menu_show_of_force_beta": "Resilience",	
+	"menu_show_of_force_beta_desc": 
+	"BASIC: ##$basic##\nReduces camera shake when damaged by ##$multibasic##.\n\nACE: ##$pro##\nYour armor recovers ##$multipro## faster.",
+
+	"menu_pack_mule_beta": "Pack Mule",	
+	"menu_pack_mule_beta_desc": 
+	"BASIC: ##$basic##\nYou move ##$multibasic## faster while carrying bags.\n\nACE: ##$pro##\nYou can run with any bag.",
+
+	"menu_iron_man_beta": "Tough Guy",	
+	"menu_iron_man_beta_desc": 
+	"BASIC: ##$basic##\nYour health is increased by ##$multibasic##.\n\nACE: ##$pro##\nYour health is increased by an additional ##$multipro##.",
+
+	"menu_juggernaut_beta": "Shock and Awe",	
+	"menu_juggernaut_beta_desc": 
+	"BASIC: ##$basic##\nYou can knock down Shield enemies with melee attacks.\n\nACE: ##$pro##\nYour ranged weapons now have a chance to knock back Shield enemies as well. The higher the weapon's total damage the higher the knock back chance.",
+
+	"menu_ammo_reservoir_beta": "Fully Loaded",	
+	"menu_ammo_reservoir_beta_desc": 
+	"BASIC: ##$basic##\nThe heavier your equipped armor, the more ammo you carry.\n\nACE: ##$pro##\nYou gain ##$multipro## more ammo from ammo boxes.",
+	
+	"menu_bandoliers_beta": "Bulletstorm",	
+	"menu_bandoliers_beta_desc": 
+	"BASIC: ##$basic##\nAmmo bags placed by you grant players the ability to shoot without depleting their ammunition for up to ##$multibasic## seconds after interacting with it. The more ammo players replenish, the longer the duration of the effect.\n\nYour equipped weapons are also reloaded after interacting with an Ammo Bag.\n\nACE: ##$pro##\nIncreases the base duration of the effect by up to ##$multipro## seconds.",
+	
+	"menu_defense_up_beta": "Nerves of Steel",	
+	"menu_defense_up_beta_desc": 
+	"BASIC: ##$basic##\nYou can aim your weapons while in bleedout.\n\nACE: ##$pro##\nYou take ##$multipro## less damage while interacting.",
+			
+	"menu_eco_sentry_beta": "Transporter",	
+	"menu_eco_sentry_beta_desc": 
+	"BASIC: ##$basic##\nYou interact with bags ##$multibasic## faster.\n\nACE: ##$pro##\nYou throw bags ##$multipro## farther.",
+
+	"menu_jack_of_all_trades_beta_desc": 
+	"BASIC: ##$basic##\nYou deploy and interact with all deployable ##$multibasic## faster.\n\nACE: ##$pro##\nYou can now equip a secondary deployable to bring with you. If your deployable is equipped as a secondary deployable, you can only bring half of what you should bring if it was equipped as a primary deployable.\n\nYou move ##$multipro## while carrying a secondary deployable. Deploying any of your selected deployables removes the move speed penalty.",
+
+	"menu_tower_defense_beta": "Bulletproof",	
+	"menu_tower_defense_beta_desc": 
+	"BASIC: ##$basic##\nYou gain ##$multibasic## more armor.\n\nACE: ##$pro##\nWhenever your armor is broken you become immune to health damage for ##$multipro## seconds. This cannot occur more than once every ##$multipro2## seconds.",
+
+	"menu_fast_fire_beta": "Disturbing The Peace",	
+	"menu_fast_fire_beta_desc": 
+	"BASIC: ##$basic##\nYour unsilenced firearms have a chance to cause suppressed enemies to panic.\n\nACE: ##$pro##\nPanic chance is increased by ##$multipro##.",
+
+	"menu_hardware_expert_beta_desc": 
+	"BASIC: ##$basic##\nYou fix drills and saws ##$multibasic## faster.\n\nACE: ##$pro##\nDrills and saws you place are silent. Civilians and guards must see the drill or saw in order to become alerted.",
+
+	"menu_drill_expert_beta_desc": 
+	"BASIC: ##$basic##\nDrills and saws you place have their timers reduced by ##$multibasic##.\n\nACE: ##$pro##\nReduces drill and saw timers by an additional ##$multipro##.",
+
+	"menu_chameleon_beta": "Hidden Kevlar",	
+	"menu_chameleon_beta_desc": 
+	"BASIC: ##$basic##\nIncreases concealment of armors by ##$multibasic##.\n\nACE: ##$pro##\nYour move speed is ##$multipro## less affected while wearing armor.\n\nNote: Skill does not affect the Two-piece Suit.",
+	
+	"menu_second_chances_beta_desc": 
+	"BASIC: ##$basic##\nYou answer pagers ##$multibasic## faster. The time it takes for you to uncuff yourself is reduced by ##$multibasic2##.\n\nACE: ##$pro##\nYou pick locks ##$multipro## faster.",
+	
+	"menu_sprinter_beta": "Sprinter",	
+	"menu_sprinter_beta_desc": 
+	"BASIC: ##$basic##\nYou regenerate stamina ##$multibasic## faster. You also start regenerating stamina ##$multibasic2## earlier.\n\nACE: ##$pro##\nYou move ##$multipro## faster while sprinting.",
+
+	"menu_awareness_beta": "Duck and Cover",	
+	"menu_awareness_beta_desc": 
+	"BASIC: ##$basic##\nYou move ##$multibasic## faster while crouching.\n\nACE: ##$pro##\nYour dodge is increased by ##$multipro## while crouching.\n\nDodged shots ricochet back at the enemy that fired them.",
+
+	"menu_dire_need_beta": "Second Wind",	
+	"menu_dire_need_beta_desc": 
+	"BASIC: ##$basic##\nWhen your armor is broken your movement speed is increased by ##$multibasic## for ##$multibasic2## seconds. This cannot occur more than once every ##$multibasic3## seconds.\n\nACE: ##$pro##\nWhen your armor is broken your dodge chance is increased by ##$multipro## for ##$multipro2## seconds. This cannot occur more than once every ##$multibasic3## seconds.",
+
+	"menu_insulation_beta_desc": 
+	"BASIC: ##$basic##\nWhen tased, the shock effect has a ##$multibasic## chance to backfire at the Taser, knocking them back.\n\nYou also resist firing your weapon when tased.\n\nACE: ##$pro##\nWhen tased, you are able to free yourself from the taser by interacting with it within ##$multipro## seconds of getting tased.",
+
+	"menu_scavenger_beta": "Silent Assassin",	
+	"menu_scavenger_beta_desc": 
+	"BASIC: ##$basic##\nYou are ##$multibasic## less likely to be targeted by enemies while crouching.\n\nACE: ##$pro##\nYou gain ##$multipro## concealment for each equipped silenced weapon.",
+
+	"menu_silence_expert_beta": "The Professional",	
+	"menu_silence_expert_beta_desc": 
+	"BASIC: ##$basic##\nYour silenced weapons are ##$multibasic## more accurate. You also aim silenced weapons ##$multibasic2## faster.\n\nACE: ##$pro##\nYour silenced weapons gain a ##$multipro## chance to pierce body armor.",
+
+	"menu_spotter_teamwork_beta": "Specialized Killing",	
+	"menu_spotter_teamwork_beta_desc": 
+	"BASIC: ##$basic##\nSpecial enemies you kill with silenced weapons drop an extra ammo box.\n\nACE: ##$pro##\nYour silenced weapons deal ##$multipro## more damage to special enemies.",
+
+	"menu_akimbo_skill_beta": "Ambidexterity",	
+	"menu_akimbo_skill_beta_desc": 
+	"BASIC: ##$basic##\nYou can now dual wield select weapons.\n\nACE: ##$pro##\nYour akimbo weapons gain ##$multipro## ammo capacity.",
+
+	"menu_dance_instructor": "Quickdraw",	
+	"menu_dance_instructor_desc": 
+	"BASIC: ##$basic##\nWhen your equipped weapon's magazine is emptied, your holstered Pistol's switch speed is increased by ##$multibasic##. This cannot occur more than once every ##$multibasic2## seconds. Increased switch speed is lost upon switching to the holstered Pistol.\n\nACE: ##$pro##\nKilling ##$multipro## enemies with your equipped weapon instantly reloads your holstered Pistol.", 
+
+	"menu_nine_lives_beta": "Daredevil",	
+	"menu_nine_lives_beta_desc": 
+	"BASIC: ##$basic##\nYou gain a ##$multibasic## increase to your bleedout health.\n\nACE: ##$pro##\nKilling an enemy while in bleedout restores ##$multipro## seconds to your bleedout timer.",
+}
+

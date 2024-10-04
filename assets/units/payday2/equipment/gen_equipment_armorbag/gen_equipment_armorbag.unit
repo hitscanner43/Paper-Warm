@@ -1,0 +1,15 @@
+<unit type="item" slot="14" >
+    <object file="units/payday2/equipment/gen_equipment_armorbag/gen_equipment_armorbag" />
+   <network sync="spawn" />
+  <extensions>
+    <extension name="unit_data" class="ScriptUnitData" />
+    <extension name="base" class="ArmorBagBase" />
+    <extension name="damage" class="UnitDamage" />
+    <extension name="interaction" class="DoctorBagBaseInteractionExt" >
+    	<var name="tweak_data" value="armor_bag" />
+    </extension>
+  </extensions>
+   <sounds>
+    <default_soundsource source="rp_gen_equipment_armorbag"/>
+  </sounds>
+</unit>

@@ -1,0 +1,17 @@
+<dynamic_object>
+    <diesel orientation_object="rp_gen_equipment_armorbag" materials="units/payday2/equipment/gen_equipment_armorbag/gen_equipment_armorbag" />
+	<sequence_manager file="units/payday2/equipment/gen_equipment_armorbag/gen_equipment_armorbag" />
+		<bodies>
+			<body name="dynamic" enabled="false" template="dynamic_no_ray" collision_class="bag" collides_with_mover="false" >
+				<object name="rp_gen_equipment_armorbag" />
+				<object name="c_box_1" collision_type="box" padding="-2.5" />
+				<object name="c_box_2" collision_type="box" padding="-2.5" />
+			</body>
+		</bodies>
+    <graphics>
+        <object name="g_armor_bag" enabled="true" />
+        <object name="g_plate_2" enabled="true" />
+        <object name="g_plate_3" enabled="true" />
+        <object name="g_plate_4" enabled="true" />
+    </graphics>
+</dynamic_object>

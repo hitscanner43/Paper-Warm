@@ -1,0 +1,8 @@
+{
+	"name" : "Paper Warm",
+	"description" : "Julesyes.",
+	"author" : "Hitscanner",
+	"priority" : 900,
+	"color" : "0 0 0",
+	"version" : "0.1",
+}

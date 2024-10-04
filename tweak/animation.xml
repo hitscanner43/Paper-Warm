@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<tweaks>
+	<!-- Restore old dozer punch animation -->
+	<tweak version="2" name="anims/units/enemies/cop/std" extension="animation_states">
+		<search>
+			<xml/>
+			<state name="upper_body/melee"/>
+			<anim name="cbt_rifle_melee"/>
+		</search>
+		<target mode="attributes">
+			<attr name="weight" value="rifle * (1 - tank)"/>
+		</target>
+	</tweak>
+
+	<tweak version="2" name="anims/units/enemies/cop/std" extension="animation_states">
+		<search>
+			<xml/>
+			<state name="upper_body/melee"/>
+		</search>
+		<target mode="attach">
+			<anim name="tank_melee" weight="tank"/>
+		</target>
+	</tweak>
+
+	<!-- Improve blending on some animations -->
+	<tweak version="2" name="anims/units/enemies/cop/std" extension="animation_states">
+		<search>
+			<xml/>
+			<state name="upper_body/empty"/>
+		</search>
+		<target mode="attach">
+			<from name="upper_body/equip" blend="10"/>
+		</target>
+	</tweak>
+
+	<tweak version="2" name="anims/units/enemies/cop/std" extension="animation_states">
+		<search>
+			<xml/>
+			<state name="upper_body/empty"/>
+			<keys/>
+			<key at="6"/>
+		</search>
+		<target mode="attributes">
+			<attr name="at" value="30"/>
+		</target>
+	</tweak>
+
+	<tweak version="2" name="anims/units/enemies/cop/std" extension="animation_states">
+		<search>
+			<xml/>
+			<state name="std/stand/still/idle/look"/>
+		</search>
+		<target mode="attach">
+			<from name="std/stand/still/attached_collar/enter" blend="30"/>
+		</target>
+	</tweak>
+
+	<!-- Disable recoil animations during dodge -->
+	<tweak version="2" name="anims/units/enemies/cop/std" extension="animation_states">
+		<search>
+			<xml/>
+			<state name="std/dodge"/>
+			<keys/>
+		</search>
+		<target mode="attach">
+			<key at="enter" set_extension="anim_data" extension_key="base_no_recoil" extension_value="true"/>
+			<key at="exit" set_extension="anim_data" extension_key="base_no_recoil" extension_value="false"/>
+		</target>
+	</tweak>
+</tweaks>

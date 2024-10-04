@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<tweaks>
+	<tweak version="2" name="settings/camera_shakes" extension="camera_shakes">
+		<search>
+			<camera_shakes/>
+			<shake name="player_bullet_damage"/>
+		</search>
+		<target mode="replace">
+			<shake name="player_bullet_damage" spin="(rnd()-0.5) * 0.01" roll="0" tilt="1 / 50" frequency="1" amplitude="1" attack="0.1" sustain="0" decay="0.4"/>
+		</target>
+	</tweak>
+	
+	
+	<tweak version="2" name="settings/camera_shakes" extension="camera_shakes">
+		<search>
+			<camera_shakes/>
+			<shake name="player_fall_damage"/>
+		</search>
+		<target mode="replace">
+			<shake name="player_fall_damage" spin="sin(t)/50" tilt="cos(t)/50" frequency="100.0" amplitude="1.0" attack="0.0" sustain="0.0" decay="0.5" />
+		</target>
+	</tweak>
+	
+	<tweak version="2" name="units/payday2/weapons/wpn_npc_sniper/wpn_npc_sniper" extension="object">
+		<search>
+			<?xml version="1.0"?>
+			<dynamic_object/>
+			<effects/>
+		</search>
+		<target mode="attach">
+			<effect_spawner name="sniper_glare" object="a_effect_flashlight" effect="effects/particles/weapons/sniper_glint" enabled="false" assign_parent="true"/>
+		</target>
+	</tweak>
+
+	<tweak version="2" name="units/pd2_dlc_mad/weapons/wpn_npc_svd/wpn_npc_svd" extension="object">
+		<search>
+			<?xml version="1.0"?>
+			<dynamic_object/>
+			<effects/>
+		</search>
+		<target mode="attach">
+			<effect_spawner name="sniper_glare" object="a_effect_flashlight" effect="effects/particles/weapons/sniper_glint" enabled="false" assign_parent="true"/>
+		</target>
+	</tweak>
+
+	<tweak version="2" name="units/pd2_dlc_spa/weapons/wpn_npc_svd_silenced/wpn_npc_svd_silenced" extension="object">
+		<search>
+			<?xml version="1.0"?>
+			<dynamic_object/>
+			<effects/>
+		</search>
+		<target mode="attach">
+			<effect_spawner name="sniper_glare" object="a_effect_flashlight" effect="effects/particles/weapons/sniper_glint" enabled="false" assign_parent="true"/>
+		</target>
+	</tweak>
+
+	<tweak version="2" name="units/payday2/weapons/wpn_npc_sniper/wpn_npc_sniper" extension="unit">
+		<search>
+			<?xml version="1.0"?>
+			<unit/>
+			<extensions/>
+			<extension name="base"/>
+		</search>
+		<target mode="attributes">
+			<attr name="class" value="NPCSniperRifleBase"/>
+		</target>
+	</tweak>
+
+	<tweak version="2" name="units/pd2_dlc_mad/weapons/wpn_npc_svd/wpn_npc_svd" extension="unit">
+		<search>
+			<?xml version="1.0"?>
+			<unit/>
+			<extensions/>
+			<extension name="base"/>
+		</search>
+		<target mode="attributes">
+			<attr name="class" value="NPCSniperRifleBase"/>
+		</target>
+	</tweak>
+
+	<tweak version="2" name="units/pd2_dlc_spa/weapons/wpn_npc_svd_silenced/wpn_npc_svd_silenced" extension="unit">
+		<search>
+			<?xml version="1.0"?>
+			<unit/>
+			<extensions/>
+			<extension name="base"/>
+		</search>
+		<target mode="attributes">
+			<attr name="class" value="NPCSniperRifleBase"/>
+		</target>
+	</tweak>
+</tweaks>

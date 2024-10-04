@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_bex/characters/ene_acc_swat_helmet/ene_acc_swat_helmet" orientation_object="rp_ene_acc_sniper_cap_green" />
+	
+	<bodies>
+		<body name="static_body" enabled="true" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
+			<object name="rp_ene_acc_sniper_cap_green" />
+			<object name="c_convex" collision_type="convex" mass="1.5" />
+		</body>
+	</bodies>
+
+	<decal_surfaces default_material="cloth">
+	</decal_surfaces>
+
+	<graphics>
+		<lod_object name="lod_ene_acc_sniper_cap_green">
+			<object name="g_hat" enabled="true">
+				<material materials="mtr_helmet" max_distance="1500" />
+				<material materials="mtr_helmet_lod_1" /> 
+			</object>
+		</lod_object>
+	</graphics>
+	
+</dynamic_object>

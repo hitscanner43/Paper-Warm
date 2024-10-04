@@ -1,0 +1,14 @@
+<materials version="3">
+    <material unique="true" name="mtr_armor" render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/payday2/equipment/gen_equipment_armorbag/gen_equipment_armorbag_df"/>
+        <bump_normal_texture file="units/payday2/equipment/gen_equipment_armorbag/gen_equipment_armorbag_nm"/>
+		<variable value="1" type="scalar" name="contour_opacity"/>
+		<variable value="0 1 0" type="vector3" name="contour_color"/>
+    </material>
+    <material unique="true" name="mtr_plate" render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+        <diffuse_texture file="units/payday2/equipment/gen_equipment_armorbag/plate_df"/>
+        <bump_normal_texture file="units/payday2/equipment/gen_equipment_armorbag/plate_nm"/>
+		<variable value="1" type="scalar" name="contour_opacity"/>
+		<variable value="0 1 0" type="vector3" name="contour_color"/>
+    </material>
+</materials>

@@ -1,0 +1,10 @@
+<materials version="3" group="wpn_npc_m4">
+    <material name="mtr_hajk" version="2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_3RD_WEAPONS">
+        <bump_normal_texture file="units/pd2_dlc_bex/weapons/wpn_npc_hajk/hajk_nm"/>
+        <diffuse_texture file="units/pd2_dlc_bex/weapons/wpn_npc_hajk/hajk_df"/>
+    </material>
+    <material name="weapon_lod1" version="2" render_template="generic:DIFFUSE_TEXTURE:RL_3RD_WEAPONS">
+        <bump_normal_texture file="units/pd2_dlc_bex/weapons/wpn_npc_hajk/hajk_nm" mip="3"/>
+        <diffuse_texture file="units/pd2_dlc_bex/weapons/wpn_npc_hajk/hajk_df" mip="3"/>
+    </material>
+</materials>
