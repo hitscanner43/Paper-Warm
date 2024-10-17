@@ -46,29 +46,31 @@ local triads_pent = { "deagle", "m4", "mp5" }
 
 
 local weapon_mapping = {
-	--fix faction weapons
-	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = "mp5",	
-	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"):key()] = "mp5",	
-	[("units/pd2_dlc_bph/characters/ene_murkywater_medic/ene_murkywater_medic"):key()] = "mp5",
-	[("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"):key()] = "mp5",
-	[("units/pd2_dlc_mad/characters/ene_akan_medic_ak47_ass/ene_akan_medic_ak47_ass"):key()] = "akmsu_smg",
-
-	[("units/payday2/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = "aa12",	
-	
+	--make CS tier SWAT units use rifles
 	[("units/payday2/characters/ene_swat_1/ene_swat_1"):key()] = "m4",		
 	[("units/pd2_dlc_hvh/characters/ene_swat_hvh_1/ene_swat_hvh_1"):key()] = "m4",	
 	[("units/pd2_dlc_bph/characters/ene_murkywater_light/ene_murkywater_light"):key()] = "m4",	
 	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale/ene_swat_policia_federale"):key()] = "m4",		
 	[("units/pd2_dlc_mad/characters/ene_akan_cs_swat_ak47_ass/ene_akan_cs_swat_ak47_ass"):key()] = "ak47_ass",
 
+	--make Medics use SMGs
+	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = "mp5",	
+	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"):key()] = "mp5",	
+	[("units/pd2_dlc_bph/characters/ene_murkywater_medic/ene_murkywater_medic"):key()] = "mp5",
+	[("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"):key()] = "mp5",
+	[("units/pd2_dlc_mad/characters/ene_akan_medic_ak47_ass/ene_akan_medic_ak47_ass"):key()] = "akmsu_smg",
+
+	--make non-Russian Killdozers use more appropriate weapons
+	[("units/payday2/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = "aa12",	
+	
+	--fix Murky Shield's weapon
 	[("units/pd2_dlc_bph/characters/ene_murkywater_shield/ene_murkywater_shield"):key()] = "c45",
 
-	--Set Federales weapons
-	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_city/ene_swat_policia_federale_city"):key()] = "hajk",
-	[("units/pd2_dlc_bex/characters/ene_swat_policia_marksman/ene_swat_policia_marksman"):key()] = "fal",
-	[("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_saiga/ene_swat_dozer_policia_federale_saiga"):key()] = "aa12",
-	[("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_m249/ene_swat_dozer_policia_federale_m249"):key()] = "hk21",
-	
+	--make FBI guard use more appropriate weapons
+	[("units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_1/ene_hoxton_breakout_guard_1"):key()] = "mp5",	
+	[("units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_2/ene_hoxton_breakout_guard_2"):key()] = "m4",	
+		
+	--make a bunch of units use random weapons 
 	[("units/payday2/characters/ene_fbi_office_1/ene_fbi_office_1"):key()] = hoxout_fbi_male,
 	[("units/payday2/characters/ene_fbi_office_2/ene_fbi_office_2"):key()] = hoxout_fbi_male,
 	[("units/payday2/characters/ene_fbi_office_3/ene_fbi_office_3"):key()] = hoxout_fbi_male,
@@ -132,6 +134,13 @@ local weapon_mapping = {
 	[("units/pd2_dlc_pent/characters/ene_male_triad_penthouse_2/ene_male_triad_penthouse_2"):key()] = triads_pent,
 	[("units/pd2_dlc_pent/characters/ene_male_triad_penthouse_3/ene_male_triad_penthouse_3"):key()] = triads_pent,
 	[("units/pd2_dlc_pent/characters/ene_male_triad_penthouse_4/ene_male_triad_penthouse_4"):key()] = triads_pent,
+
+	--set Federales weapons
+	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_city/ene_swat_policia_federale_city"):key()] = "hajk",
+	[("units/pd2_dlc_bex/characters/ene_swat_policia_marksman/ene_swat_policia_marksman"):key()] = "fal",
+	[("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_saiga/ene_swat_dozer_policia_federale_saiga"):key()] = "aa12",
+	[("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_m249/ene_swat_dozer_policia_federale_m249"):key()] = "hk21",
+
 }
 
 

@@ -26,7 +26,7 @@ local roof_spawn = {
 	groups = tweak_data.group_ai:allowed_groups("no_cops")
 }
 return {
-	--restore roof access blockade (from Resmod)
+	--restore roof access blockade
 	[100095] = {
 		on_executed = {
 			{ id = 100569, remove = true },
@@ -123,11 +123,21 @@ return {
 	[104516] = sniper_kills,
 	[104692] = sniper_kills,
 	[104693] = sniper_kills,
-	-- re-allow sniper respawns
+	--re-allow sniper respawns
 	[104556] = disabled,
 	[101599] = enabled,
 	[101521] = enabled,
-	--ambush line fix ?  hasnt been working for me since forever
+	--don't remove ground level spawns at any point
+	[102092] = disabled, 
+	[102097] = disabled,
+	--add new cloakers groups
+	[104185] = disabled,	
+	[102087] = {  -- add back spawns
+		values = {
+			spawn_groups = { 400003, 400004, 100270, 100287 }
+		}
+	},
+	--ambush line fix?  hasnt been working for me since forever
 	[100501] = {
 		values = {
 			use_play_func = true
@@ -157,7 +167,12 @@ return {
 			})
 		end
 	},
-	[100270] = alley_spawn,
+	[100270] = {
+		interval = 20,
+		values = {
+			elements = { 101669, 103217, 103225, 103226 } 
+		}
+	},
 	[100287] = alley_spawn,
 	[100509] = roof_spawn,
 	[100396] = roof_spawn,

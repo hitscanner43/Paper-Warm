@@ -64,7 +64,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hits_init", function (self)
 		"player_mask_off_pickup",
 		"ecm_jammer_can_open_sec_doors",
 		"player_regain_throwable_from_ammo_1",
-		"player_smoke_screen_ally_dodge_bonus"
+		"player_smoke_screen_ally_dodge_bonus",
 		
 		"temporary_stim_shot",
 		"stim_shot",

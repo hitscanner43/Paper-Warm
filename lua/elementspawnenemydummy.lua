@@ -15,6 +15,7 @@ ElementSpawnEnemyDummy.faction_mapping = {
 		heavy_2 = "units/payday2/characters/ene_swat_heavy_r870/ene_swat_heavy_r870",
 		shield = "units/payday2/characters/ene_shield_2/ene_shield_2",
 		sniper = "units/payday2/characters/ene_sniper_1/ene_sniper_1",
+		bulldozer = "units/payday2/characters/ene_bulldozer_1/ene_bulldozer_1",
 		
 		bex_cop_1 = "units/pd2_dlc_bex/characters/ene_policia_cop_1/ene_policia_cop_1",
 		bex_cop_2 = "units/pd2_dlc_bex/characters/ene_policia_cop_2/ene_policia_cop_2",
@@ -36,6 +37,10 @@ ElementSpawnEnemyDummy.faction_mapping = {
 		heavy_2 = "units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870",
 		shield = "units/payday2/characters/ene_shield_1/ene_shield_1",
 		sniper = "units/payday2/characters/ene_sniper_2/ene_sniper_2",
+		bulldozer = {
+			"units/payday2/characters/ene_bulldozer_1/ene_bulldozer_1",
+			"units/payday2/characters/ene_bulldozer_2/ene_bulldozer_2"
+		},
 		
 		bex_cop_1 = "units/pd2_dlc_bex/characters/ene_policia_cop_1/ene_policia_cop_1",
 		bex_cop_2 = "units/pd2_dlc_bex/characters/ene_policia_cop_2/ene_policia_cop_2",
@@ -58,6 +63,11 @@ ElementSpawnEnemyDummy.faction_mapping = {
 		heavy_2 = "units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870",
 		shield = "units/payday2/characters/ene_shield_1/ene_shield_1",
 		sniper = "units/payday2/characters/ene_sniper_2/ene_sniper_2",
+		bulldozer = {
+			"units/payday2/characters/ene_bulldozer_1/ene_bulldozer_1",
+			"units/payday2/characters/ene_bulldozer_2/ene_bulldozer_2",
+			"units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"
+		},
 		
 		bex_cop_1 = "units/pd2_dlc_bex/characters/ene_policia_cop_1/ene_policia_cop_1",
 		bex_cop_2 = "units/pd2_dlc_bex/characters/ene_policia_cop_2/ene_policia_cop_2",
@@ -77,9 +87,9 @@ ElementSpawnEnemyDummy.faction_mapping.overkill_290 = ElementSpawnEnemyDummy.fac
 ElementSpawnEnemyDummy.faction_mapping.sm_wish = ElementSpawnEnemyDummy.faction_mapping.easy_wish
 
 ElementSpawnEnemyDummy.enemy_mapping = {
-	[Idstring("units/payday2/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = "dozer_1",
-	[Idstring("units/payday2/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = "dozer_2",
-	[Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"):key()] = "dozer_3",
+	[Idstring("units/payday2/characters/ene_bulldozer_1/ene_bulldozer_1"):key()] = "bulldozer",
+	[Idstring("units/payday2/characters/ene_bulldozer_2/ene_bulldozer_2"):key()] = "bulldozer",
+	[Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"):key()] = "bulldozer",
 	[Idstring("units/payday2/characters/ene_city_heavy_g36/ene_city_heavy_g36"):key()] = "heavy_1",
 	[Idstring("units/payday2/characters/ene_city_heavy_r870/ene_city_heavy_r870"):key()] = "heavy_2",
 	[Idstring("units/payday2/characters/ene_city_shield/ene_city_shield"):key()] = "shield",

@@ -89,7 +89,7 @@ function PlayerStandard:_end_action_running(t)
 	if not self._end_running_expire_t then
 		local weap_base = self._equipped_unit:base()	
 		
-		local speed_multiplier = weap_base:exit_run_speed_multiplier() * weap_base:concealment_to_sprint_exit_speed()
+		local speed_multiplier = weap_base:exit_run_speed_multiplier() * (weap_base:concealment_to_sprint_exit_speed() or 1)
 		
 		self._end_running_expire_t = t + 0.4 / speed_multiplier
 		

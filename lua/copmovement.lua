@@ -1,7 +1,9 @@
 CopMovement._action_variants.security_heavy = CopMovement._action_variants.swat
 CopMovement._action_variants.security_army = CopMovement._action_variants.swat
+CopMovement._action_variants.hrt = CopMovement._action_variants.swat
 CopMovement._action_variants.soldier = CopMovement._action_variants.swat
 CopMovement._action_variants.murkywater = CopMovement._action_variants.swat
+CopMovement._action_variants.security_mcmansion = CopMovement._action_variants.swat
 CopMovement._action_variants.grenadier = CopMovement._action_variants.swat
 CopMovement._action_variants.commander = CopMovement._action_variants.swat
 CopMovement._action_variants.marksman = CopMovement._action_variants.marshal_marksman

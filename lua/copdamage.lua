@@ -122,6 +122,22 @@ local damage_bullet = CopDamage.damage_bullet
 function CopDamage:damage_bullet(attack_data, ...)
 	local char_tweak = self._char_tweak
 	
+	local damage = attack_data.damage 
+
+	local attacker_weap_base = attack_data and attack_data.weapon_unit and attack_data.weapon_unit:base()
+	local attacker_weap_tweak = attacker_weap_base:weapon_tweak_data()
+
+	local head = self._head_body_name and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_head_body_name
+
+	if head then
+		damage = damage * (attacker_weap_base:headshot_dmg_multiplier() or 1)
+	end
+	
+	--add a damage reduction on armour plate pierce
+	if self._has_plate and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_plate_name and not attack_data.armor_piercing then
+		damage = damage * (attacker_weap_tweak.penetration_damage_mul and attacker_weap_tweak.penetration_damage_mul.armor or 1)
+	end
+
 	if attack_data.attacker_unit == managers.player:player_unit() then
 		mvector3.set(mvec_1, self._unit:position())
 		mvector3.subtract(mvec_1, attack_data.attacker_unit:position())
@@ -131,26 +147,26 @@ function CopDamage:damage_bullet(attack_data, ...)
 		local from_behind = mvector3.dot(mvec_1, mvec_2) >= 0
 
 		if from_behind then
-			attack_data.damage = attack_data.damage * managers.player:upgrade_value("weapon", "silencer_back_damage_multiplier", 1)
+			if managers.groupai:state():is_enemy_special(self._unit) and attacker_weap_base:got_silencer() then
+				damage = damage * managers.player:upgrade_value("weapon", "silencer_back_damage_multiplier", 1)
+			end
 			
 			if char_tweak.back_bullet_damage_mul then
-				attack_data.damage = attack_data.damage * self._char_tweak.back_bullet_damage_mul
+				damage = damage * char_tweak.back_bullet_damage_mul
 			end
 		end
 	end
-	
-	local attacker_weapon_base = attack_data and attack_data.weapon_unit and attack_data.weapon_unit:base()
-	
+		
 	--Give enemies damage resistances to specific weapon categories
-	for _, category in ipairs(attacker_weapon_base:weapon_tweak_data().categories) do
+	for _, category in ipairs(attacker_weap_tweak.categories) do
 		local category_damage_mul = category .. "_damage_mul"
 		if char_tweak.category_damage_mul then
-			attack_data.damage = attack_data.damage * char_tweak.category_damage_mul	
+			damage = damage * char_tweak.category_damage_mul	
 		end
 	end
 	
-    if managers.groupai:state():is_enemy_special(self._unit) and attacker_weapon_base:got_silencer() then
-        attack_data.damage = attack_data.damage * managers.player:upgrade_value("weapon", "silencer_special_damage_multiplier", 1)
+    if managers.groupai:state():is_enemy_special(self._unit) and attacker_weap_base:got_silencer() then
+        damage = damage * managers.player:upgrade_value("weapon", "silencer_special_damage_multiplier", 1)
     end
 
     return damage_bullet(self, attack_data, ...)

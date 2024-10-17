@@ -1,8 +1,3 @@
-if Global.editor_mode then
-	PaperWarm:log("Editor mode is active, mission script changes disabled")
-	return
-end
-
 local mission_add = PaperWarm:mission_script_add()
 if mission_add then
 	-- Load the elements from the file
@@ -101,20 +96,22 @@ MissionManager.mission_script_patch_funcs.chance = function(self, element, data)
 	element._chance = data
 end
 
-MissionManager.mission_script_patch_funcs.start_ponr = function(self, element, data)
-	Hooks:PostHook(element, "on_executed", "sh_on_executed_ponr_" .. element:id(), function()
-		for _, v in pairs(data) do
-			managers.groupai:state():set_point_of_no_return_timer(v.time, v.id, 0)		
-		end
-	end )
+MissionManager.mission_script_patch_funcs.ponr = function(self, element, data)
+	local function set_ponr()
+		managers.groupai:state():set_point_of_no_return_timer(data, 0)
+	end
+		
+	Hooks:PostHook(element, "on_executed", "on_executed_ponr_start_" .. element:id(), set_ponr)
+	Hooks:PostHook(element, "client_on_executed", "client_on_executed_ponr_start_" .. element:id(), set_ponr)
 end
 
-MissionManager.mission_script_patch_funcs.end_ponr = function(self, element, data)
-	Hooks:PostHook(element, "on_executed", "sh_on_executed_ponr_" .. element:id(), function()
-		for _, v in pairs(data) do
-			managers.groupai:state():set_point_of_no_return_timer(v.id)		
-		end
-	end )
+MissionManager.mission_script_patch_funcs.ponr_end = function(self, element, data)
+	Hooks:PostHook(element, "on_executed", "on_executed_ponr_end_" .. element:id(), function()
+		managers.groupai:state():remove_point_of_no_return_timer(0)
+	end)
+	Hooks:PostHook(element, "client_on_executed", "client_on_executed_ponr_end_" .. element:id(), function()
+		managers.groupai:state():remove_point_of_no_return_timer(0)
+	end)
 end
 
 MissionManager.mission_script_patch_funcs.hunt = function(self, element, data)

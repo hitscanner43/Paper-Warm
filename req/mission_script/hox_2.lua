@@ -43,6 +43,9 @@ return {
 				force = 4,
 				position = Vector3(-200, 4250, -500)
 			}
+		},
+		on_executed = {
+			{ id = 400008, delay = 25, delay_rand = 15 }
 		}
 	},
 	[100732] = { 
@@ -75,7 +78,7 @@ return {
 	--scripted dozer
 	[102218] = {
 		values = {
-			chance = hard and 60 or normal and 30 or 0
+			chance = hard and 75 or normal and 45 or 0
 		}
 	},
 	[101662] = side_building_01,

@@ -14,17 +14,56 @@ local disable_open_roof_access = {
 		100569
 	}
 }
+local cloaker_ground_group = {
+	enabled = true,
+	interval = 60,
+	spawn_type = "random",
+	elements = {
+		102844
+	},	
+	preferred_spawn_groups = {
+		"single_spooc"
+	}
+}
+local cloaker_roof_group = {
+	enabled = true,
+	interval = 60,
+	spawn_type = "random",
+	elements = {
+		100289
+	},	
+	preferred_spawn_groups = {
+		"single_spooc"
+	}
+}
+local add_cloaker_groups = {
+	enabled = true,
+	spawn_groups = {
+		400003,
+		400004,
+	}
+}
 return {
     elements = {
 		PaperWarm:gen_missionscript(
             400001,
             "roof_access_blockade",
-            Roof_access_block
+            roof_access_block
         ),
 		PaperWarm:gen_toggleelement(
             400002,
             "disable_open_roof_access",
             disable_open_roof_access
-        )
+        ),
+		PaperWarm:gen_spawngroup(
+            400003,
+            "cloaker_roof_group",
+            cloaker_roof_group
+        ),
+		PaperWarm:gen_spawngroup(
+            400004,
+            "cloaker_ground_group",
+            cloaker_ground_group
+        ),
 	}
 }

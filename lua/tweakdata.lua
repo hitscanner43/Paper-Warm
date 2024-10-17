@@ -34,7 +34,7 @@ tweak_data.player.stances.contender.steelsight.shakers.breathing.amplitude = 0
 
 local base_curve_pow = 2
 
-tweak_data.projectiles.frag.damage = 48
+tweak_data.projectiles.frag.damage = 36
 tweak_data.projectiles.frag.curve_pow = base_curve_pow
 tweak_data.projectiles.frag.range = 400
 tweak_data.projectiles.frag.launch_speed = 350
@@ -42,30 +42,31 @@ tweak_data.projectiles.frag.launch_speed = 350
 tweak_data.projectiles.frag_npc = clone(tweak_data.projectiles.frag)
 tweak_data.projectiles.frag_npc.timer = 3
 
-tweak_data.projectiles.frag_com.damage = 48
+tweak_data.projectiles.frag_com.damage = 36
 tweak_data.projectiles.frag_com.curve_pow = base_curve_pow
 tweak_data.projectiles.frag_com.range = 400
 
-tweak_data.projectiles.dada_com.damage = 48
+tweak_data.projectiles.dada_com.damage = 36
 tweak_data.projectiles.dada_com.curve_pow = base_curve_pow
 tweak_data.projectiles.dada_com.range = 400
 
-tweak_data.projectiles.dynamite.damage = 48
+tweak_data.projectiles.dynamite.damage = 36
 tweak_data.projectiles.dynamite.curve_pow = base_curve_pow
 tweak_data.projectiles.dynamite.range = 400
 
-tweak_data.projectiles.sticky_grenade.damage = 48
+tweak_data.projectiles.sticky_grenade.damage = 36
 tweak_data.projectiles.sticky_grenade.curve_pow = base_curve_pow
 tweak_data.projectiles.sticky_grenade.range = 400
 tweak_data.projectiles.sticky_grenade.detonate_timer = 3
 
-tweak_data.projectiles.concussion.damage = 1
+tweak_data.projectiles.concussion.damage = 2
 tweak_data.projectiles.concussion.curve_pow = base_curve_pow
 tweak_data.projectiles.concussion.range = 600
 tweak_data.projectiles.concussion.duration = { additional = 10, min = 5 }
 
 tweak_data.projectiles.concussion_npc = clone(tweak_data.projectiles.concussion)
 tweak_data.projectiles.concussion_npc.timer = 3
+
 --[[
 tweak_data.projectiles.concussion_npc.light_range = tweak_data.group_ai.flash_grenade.light_range
 tweak_data.projectiles.concussion_npc.light_color = tweak_data.group_ai.flash_grenade.light_color
@@ -75,13 +76,13 @@ tweak_data.projectiles.concussion_npc.beep_fade_speed = tweak_data.group_ai.flas
 tweak_data.projectiles.concussion_npc.beep_speed = tweak_data.group_ai.flash_grenade.beep_speed
 ]]
 
-tweak_data.projectiles.molotov.damage = 2
+tweak_data.projectiles.molotov.damage = 4
 tweak_data.projectiles.molotov.curve_pow = base_curve_pow
 tweak_data.projectiles.molotov.range = 200
 tweak_data.projectiles.molotov.burn_duration = 10
 tweak_data.projectiles.molotov.burn_tick_period = 0.25
 		
-tweak_data.projectiles.fir_com.damage = 2
+tweak_data.projectiles.fir_com.damage = 4
 tweak_data.projectiles.fir_com.curve_pow = base_curve_pow
 tweak_data.projectiles.fir_com.range = 200
 tweak_data.projectiles.fir_com.burn_duration = 10
@@ -112,7 +113,7 @@ tweak_data.projectiles.wpn_prj_ace.launch_speed = 1500
 tweak_data.projectiles.wpn_prj_four.damage = 4
 tweak_data.projectiles.wpn_prj_four.launch_speed = 1500
 		
-tweak_data.projectiles.wpn_prj_jav.damage = 16
+tweak_data.projectiles.wpn_prj_jav.damage = 18
 tweak_data.projectiles.wpn_prj_jav.launch_speed = 1500
 
 tweak_data.projectiles.wpn_prj_hur.damage = 12
@@ -137,7 +138,7 @@ tweak_data.projectiles.launcher_poison.poison_gas_fade_time = 1
 
 --Launcher Frag
 --M79
-tweak_data.projectiles.launcher_frag.damage = 48
+tweak_data.projectiles.launcher_frag.damage = 36
 tweak_data.projectiles.launcher_frag.curve_pow = base_curve_pow
 tweak_data.projectiles.launcher_frag.range = 400
 
@@ -156,7 +157,7 @@ tweak_data.projectiles.launcher_incendiary.burn_duration = 6
 tweak_data.projectiles.launcher_incendiary.burn_tick_period = 0.25
 	
 --M32
-tweak_data.projectiles.launcher_frag_m32.damage = 24
+tweak_data.projectiles.launcher_frag_m32.damage = 18
 tweak_data.projectiles.launcher_frag_m32.curve_pow = base_curve_pow
 tweak_data.projectiles.launcher_frag_m32.range = 400
 
@@ -215,7 +216,7 @@ tweak_data.projectiles.launcher_incendiary_china.burn_duration = 6
 
 --Arbiter
 tweak_data.projectiles.launcher_frag_arbiter = deep_clone(tweak_data.projectiles.launcher_frag)
-tweak_data.projectiles.launcher_frag_arbiter.damage = 24
+tweak_data.projectiles.launcher_frag_arbiter.damage = 18
 tweak_data.projectiles.launcher_frag_arbiter.launch_speed = tweak_data.projectiles.launcher_frag.launch_speed * 3
 tweak_data.projectiles.launcher_frag_arbiter.range = 200
 
@@ -239,7 +240,7 @@ tweak_data.projectiles.launcher_incendiary_arbiter.burn_duration = 6
 
 --MS3GL
 tweak_data.projectiles.launcher_frag_ms3gl = deep_clone(tweak_data.projectiles.launcher_frag)
-tweak_data.projectiles.launcher_frag_ms3gl.damage = 24
+tweak_data.projectiles.launcher_frag_ms3gl.damage = 18
 
 tweak_data.projectiles.launcher_poison_ms3gl_conversion = deep_clone(tweak_data.projectiles.launcher_poison)
 tweak_data.projectiles.launcher_poison_ms3gl_conversion.damage = 6
@@ -256,12 +257,12 @@ tweak_data.projectiles.launcher_incendiary_ms3gl.damage = 6
 tweak_data.projectiles.launcher_incendiary_ms3gl.burn_duration = 6
 
 --HRL
-tweak_data.projectiles.launcher_rocket.damage = 200
+tweak_data.projectiles.launcher_rocket.damage = 480
 tweak_data.projectiles.launcher_rocket.curve_pow = base_curve_pow
 tweak_data.projectiles.launcher_rocket.range = 600
 
 tweak_data.projectiles.rocket_ray_frag = deep_clone(tweak_data.projectiles.launcher_rocket)
-tweak_data.projectiles.rocket_ray_frag.damage = 100
+tweak_data.projectiles.rocket_ray_frag.damage = 120
 tweak_data.projectiles.rocket_ray_frag.curve_pow = base_curve_pow
 tweak_data.projectiles.rocket_ray_frag.range = 600
 

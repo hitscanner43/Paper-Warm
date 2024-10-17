@@ -46,7 +46,7 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "hits_update_stats_
 	self._exit_run_speed_multiplier = weapon_tweak.exit_run_speed_multiplier or 1
 	
 	self._falloff_range_multiplier = weapon_tweak.falloff_range_multiplier or 1
-		
+			
 	self._standing_hipfire_recoil_mul = (weapon_tweak.recoil_multiplier and weapon_tweak.recoil_multiplier.standing and weapon_tweak.recoil_multiplier.standing.hipfire) or 1
 	self._standing_crouching_recoil_mul = (weapon_tweak.recoil_multiplier and weapon_tweak.recoil_multiplier.standing and weapon_tweak.recoil_multiplier.standing.crouching) or 1
 	self._standing_steelsight_recoil_mul = (weapon_tweak.recoil_multiplier and weapon_tweak.recoil_multiplier.standing and weapon_tweak.recoil_multiplier.standing.steelsight) or 1
@@ -88,7 +88,11 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "hits_update_stats_
 
 		if stats.falloff_range_multiplier then
 			self._falloff_range_multiplier = self._falloff_range_multiplier * stats.falloff_range_multiplier
-		end			
+		end	
+
+		if stats.headshot_dmg_mul then
+			self._headshot_dmg_mul = self._headshot_dmg_mul * stats.headshot_dmg_mul
+		end		
 	end
 	
 	self._shield_knock = managers.player:has_category_upgrade("player", "gun_shield_knock")
@@ -114,6 +118,18 @@ end
 
 --Calculate sprint exit speed based on concealment 
 function NewRaycastWeaponBase:concealment_to_sprint_exit_speed()
+	local parts_stats = managers.weapon_factory:get_stats(self._factory_id, self._blueprint)
+	local concealment_stat = parts_stats and parts_stats.concealment or 0
+	
+	local multiplier = 1
+	multiplier = multiplier * math.clamp(1 + (concealment_stat * 0.05), 0.5, 1.5)
+	
+	return multiplier
+end
+
+
+--Calculate sprint exit speed based on concealment 
+function NewRaycastWeaponBase:concealment_to_steelsight_speed()
 	local parts_stats = managers.weapon_factory:get_stats(self._factory_id, self._blueprint)
 	local concealment_stat = parts_stats and parts_stats.concealment or 0
 	
@@ -170,7 +186,9 @@ function NewRaycastWeaponBase:headshot_dmg_multiplier()
 	local multiplier = 1
 
 	local weapon_tweak = self:weapon_tweak_data()
-	
+
+	local fire_modes = weapon_tweak.fire_mode_data and weapon_tweak.fire_mode_data.toggable 
+
 	for _, fire_mode in ipairs(fire_modes) do
 		if self:fire_mode() == fire_mode then
 			multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].headshot_dmg_mul or 1)
@@ -469,6 +487,8 @@ function NewRaycastWeaponBase:enter_steelsight_speed_multiplier()
 	local categories = weapon_tweak.categories
 	
 	local multiplier = (tweak_data.player.TRANSITION_DURATION or 0.35) / self._steelsight_time
+	
+	multiplier = multiplier * (self:concealment_to_steelsight_speed() or 1)
 	
 	for _, category in ipairs(categories) do
 		multiplier = multiplier * managers.player:upgrade_value(category, "enter_steelsight_speed_multiplier", 1)

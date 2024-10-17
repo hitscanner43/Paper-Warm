@@ -173,8 +173,10 @@ Hooks:PostHook(LevelsTweakData, "init", "hits_init_levels", function(self)
 
 	self.watchdogs_2.flashlights_on = true
 	self.watchdogs_2.force_mult = level_sizes.large
-
+	self.watchdogs_2.package = { "packages/narr_hox_3", "packages/narr_watchdogs2" }
+	
 	self.watchdogs_2_day.force_mult = level_sizes.large
+	self.watchdogs_2_day.package = { "packages/narr_hox_3", "packages/narr_watchdogs2_day" }
 	
 	self.firestarter_1.flashlights_on = true
 
@@ -194,10 +196,12 @@ Hooks:PostHook(LevelsTweakData, "init", "hits_init_levels", function(self)
 	--Escapes
 	self.escape_overpass_night.flashlights_on = true
 
-	--Dentist heists
+	--Dentist heists	
 	self.mus.force_mult = level_sizes.small
 	
 	self.mia_2.force_mult = level_sizes.very_small
+
+	self.hox_2.package = { "packages/narr_hox_3", "packages/narr_hox_2" }
 
 	self.kenaz.force_mult = level_sizes.large
 	

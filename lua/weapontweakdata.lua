@@ -284,7 +284,8 @@ function WeaponTweakData:_init_weapons()
 				weap_data.rays = 8
 				weap_data.headshot_dmg_mul = 0.6
 				weap_data.steelsight_speed_mul = 0.75							
-	
+				weap_data.headshot_dmg_mul = 0.5						
+		
 				weap_data.muzzleflash = "effects/payday2/particles/weapons/shotgun/sho_muzzleflash"
 		
 				weap_data.spread_multiplier = {
@@ -2410,7 +2411,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.hailstorm.fire_mode_data.volley.rays = 15
 	
 	self.m32.CLIP_AMMO_MAX = 6
-	self.m32.stats.damage = 24
+	self.m32.stats.damage = 18
 	self.m32.stats.spread = 21
 	self.m32.stats.recoil = 25
 	self.m32.stats.concealment = 22
@@ -2420,7 +2421,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.arbiter.use_data.selection_index = 2
 	self.arbiter.CLIP_AMMO_MAX = 5
-	self.arbiter.stats.damage = 24
+	self.arbiter.stats.damage = 18
 	self.arbiter.stats.spread = 25
 	self.arbiter.stats.recoil = 25
 	self.arbiter.stats.concealment = 22
@@ -2428,7 +2429,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.arbiter.stats_modifiers = { damage = 10 }
 
 	self.ms3gl.CLIP_AMMO_MAX = 3
-	self.ms3gl.stats.damage = 24
+	self.ms3gl.stats.damage = 18
 	self.ms3gl.stats.spread = 21
 	self.ms3gl.stats.recoil = 25
 	self.ms3gl.stats.concealment = 26
@@ -2440,7 +2441,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.gre_m79.use_data.selection_index = 1
 	self.gre_m79.CLIP_AMMO_MAX = 1
-	self.gre_m79.stats.damage = 48
+	self.gre_m79.stats.damage = 36
 	self.gre_m79.stats.spread = 25
 	self.gre_m79.stats.recoil = 25
 	self.gre_m79.stats.concealment = 24
@@ -2449,7 +2450,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.china.use_data.selection_index = 2
 	self.china.CLIP_AMMO_MAX = 3
-	self.china.stats.damage = 48
+	self.china.stats.damage = 36
 	self.china.stats.spread = 23
 	self.china.stats.recoil = 25
 	self.china.stats.concealment = 20
@@ -2457,7 +2458,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.china.stats_modifiers = { damage = 10 }
 
 	self.contraband_m203.CLIP_AMMO_MAX = 1
-	self.contraband_m203.stats.damage = 48
+	self.contraband_m203.stats.damage = 36
 	self.contraband_m203.stats.spread = 25
 	self.contraband_m203.stats.recoil = 25
 	self.contraband_m203.stats.concealment = 1
@@ -2465,7 +2466,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.contraband_m203.stats_modifiers = { damage = 10 }
 
 	self.groza_underbarrel.CLIP_AMMO_MAX = 1
-	self.groza_underbarrel.stats.damage = 48
+	self.groza_underbarrel.stats.damage = 36
 	self.groza_underbarrel.stats.spread = 25
 	self.groza_underbarrel.stats.recoil = 25
 	self.groza_underbarrel.stats.concealment = 1
@@ -2474,7 +2475,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.groza_underbarrel.stats_modifiers = { damage = 10 }
 	
 	self.slap.CLIP_AMMO_MAX = 1
-	self.slap.stats.damage = 48
+	self.slap.stats.damage = 36
 	self.slap.stats.spread = 23
 	self.slap.stats.recoil = 25
 	self.slap.stats.concealment = 26
@@ -2482,12 +2483,12 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.slap.fire_mode_data.fire_rate = 60 / 60
 	self.slap.timers.reload_not_empty = 3.1
 	self.slap.timers.reload_empty = self.slap.timers.reload_not_empty
-	self.slap.stats_modifiers = {damage = 10}
+	self.slap.stats_modifiers = { damage = 10 }
 	
 	self.rpg7.use_data.selection_index = 2
 	self.rpg7.categories = { "rocket_launcher" }
 	self.rpg7.CLIP_AMMO_MAX = 1
-	self.rpg7.stats.damage = 24
+	self.rpg7.stats.damage = 48
 	self.rpg7.stats.spread = 25
 	self.rpg7.stats.recoil = 25
 	self.rpg7.stats.concealment = 16
@@ -2534,7 +2535,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.kacchainsaw_flamethrower.dot_data_name = "weapon_kacchainsaw_flamethrower"
 
 	self.money.use_data.selection_index = 2
-	self.money.CLIP_AMMO_MAX = 300
+	self.money.CLIP_AMMO_MAX = 200
 	self.money.stats.damage = 15
 	self.money.stats.spread = 0
 	self.money.stats.recoil = 0

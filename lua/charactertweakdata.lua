@@ -795,7 +795,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.security_heavy = deep_clone(self.security)	
 	self.security_heavy.HEALTH_INIT = 6
-	self.security_heavy.headshot_dmg_mul = 3
+	self.security_heavy.headshot_dmg_mul = 2.5
 	table.insert(self._enemy_list, "security_heavy")
 
 	self.security_undominatable = deep_clone(self.security)		
@@ -824,7 +824,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security_army.no_arrest = true
 	table.insert(self._enemy_list, "security_army")
 
-	self.cop.HEALTH_INIT = 4
+	self.cop.HEALTH_INIT = 5
 	self.cop.headshot_dmg_mul = 2.5
 	self.cop.melee_weapon = "baton"
 	self.cop.access = { "cop", "fbi" }
@@ -853,7 +853,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.cop_female.speech_prefix_count = 1
 
 	self.fbi = deep_clone(self.cop)
-	self.fbi.HEALTH_INIT = 5
+	self.fbi.HEALTH_INIT = 6
 	self.fbi.headshot_dmg_mul = 2.5
 	self.fbi.weapon = self.presets.weapon.fbi
 	self.fbi.melee_weapon = "weapon"	
@@ -863,6 +863,11 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.fbi_female.speech_prefix_p2 = "n"
 	self.fbi_female.speech_prefix_count = 1
 
+	self.hrt = deep_clone(self.fbi)
+	self.hrt.HEALTH_INIT = 8
+	self.hrt.headshot_dmg_mul = 2.5
+	table.insert(self._enemy_list, "hrt")
+	
 	self.gangster.HEALTH_INIT = 6
 	self.gangster.headshot_dmg_mul = 2.5
 	self.gangster.melee_weapon = "fists"
@@ -947,11 +952,10 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.zeal_swat = deep_clone(self.city_swat)
 	self.zeal_swat.speech_prefix_p2 = "n" 
 	
-	self.soldier = deep_clone(self.swat)	
-	self.soldier.HEALTH_INIT = 16
-	self.soldier.headshot_dmg_mul = 2.5
+	self.soldier = deep_clone(self.fbi_swat)	
+	self.soldier.HEALTH_INIT = 12
+	self.soldier.headshot_dmg_mul = 2
 	self.soldier.melee_weapon = "knife_1"
-	self.soldier.weapon = self.presets.weapon.soldier
 	self.soldier.surrender = self.presets.surrender.hard
 	self.soldier.no_arrest = true
 	table.insert(self._enemy_list, "soldier")
@@ -960,6 +964,12 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.murkywater.radio_prefix = "fri_"
 	self.murkywater.has_alarm_pager = true
 	table.insert(self._enemy_list, "murkywater")
+	
+	self.security_mcmansion = deep_clone(self.fbi_swat)	
+	self.security_mcmansion.HEALTH_INIT = 12
+	self.security_mcmansion.headshot_dmg_mul = 2
+	self.security_mcmansion.has_alarm_pager = true
+	table.insert(self._enemy_list, "security_mcmansion")
 
 	self.heavy_swat = deep_clone(self.swat)
 	self.heavy_swat.HEALTH_INIT = 12
@@ -1359,9 +1369,11 @@ function CharacterTweakData:_set_presets()
 	
 	self.tank.armor_damage_mul = 1 / armor_hp_mul
 
-	self.tank_medic.armor_damage_mul = 1 / (armor_hp_mul * 0.75)
+	self.tank_hw.armor_damage_mul = self.tank.armor_damage_mul
 
-	self.tank_mini.armor_damage_mul = 1 / (armor_hp_mul * 1.5)
+	self.tank_medic.armor_damage_mul = self.tank.armor_damage_mul / 0.75
+
+	self.tank_mini.armor_damage_mul = self.tank.armor_damage_mul / 1.5
 	
 	self.tank_armor_balance_mul = { 0.7, 0.8, 0.9, 1 }
 end

@@ -1,5 +1,4 @@
 local difficulty_index = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
-local f = math.max(0, difficulty_index - 2) / 4
 
 -- Tasers are now EVIL
 local _check_action_shock_original = PlayerTased._check_action_shock

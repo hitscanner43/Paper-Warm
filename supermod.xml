@@ -854,6 +854,16 @@
 			<file :name="ene_male_office_cop_02/ene_male_office_cop_02.object" />	
 			<file :name="ene_male_office_cop_02/ene_male_office_cop_02.unit" />
 			<file :name="ene_male_office_cop_02/ene_male_office_cop_02_husk.unit" />	
+
+			<file :name="ene_male_office_cop_03/ene_male_office_cop_03.model" />
+			<file :name="ene_male_office_cop_03/ene_male_office_cop_03.object" />	
+			<file :name="ene_male_office_cop_03/ene_male_office_cop_03.unit" />
+			<file :name="ene_male_office_cop_03/ene_male_office_cop_03_husk.unit" />
+
+			<file :name="ene_male_office_cop_04/ene_male_office_cop_04.model" />
+			<file :name="ene_male_office_cop_04/ene_male_office_cop_04.object" />	
+			<file :name="ene_male_office_cop_04/ene_male_office_cop_04.unit" />
+			<file :name="ene_male_office_cop_04/ene_male_office_cop_04_husk.unit" />
 		</group>		
 	</assets>
 </mod>

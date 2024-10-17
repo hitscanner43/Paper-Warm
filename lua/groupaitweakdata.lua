@@ -1915,7 +1915,7 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "hits_init_unit_catego
 			},
 			access = access_type_walk_only
 		}
-	elseif difficulty_index <= 5 then
+	elseif difficulty_index <= 4 then
 		self.unit_categories.Bulldozer = {
 			special_type = "tank",
 			unit_types = {
@@ -2171,34 +2171,26 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 	
 	self.enemy_spawn_groups = {}
 
-	local cop_random_tactics = { self._tactics.cop_snk, self._tactics.cop_def }
+	local cop_random_tactics = { self._tactics.cop_snk, self._tactics.cop_def, self._tactics.cop_def }
 	
 	if not NO_COPS_FBI then
 		self.enemy_spawn_groups.CS_assault_a = {
 			amount = { 3, 3 },
 			spawn = {
 				{
-					amount_min = 1,
-					freq_by_diff = { 1, 1, 0 },
-					rank = 2,
-					unit = "CS_Cop_1",
-					tactics = self._tactics.cop_def
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 0.4, 0.4, 0 },
-					rank = 1,
-					unit = "CS_Cop_2",
-					tactics = self._tactics.cop_def
-				},
-				{
 					amount_max = 2,
+					freq_by_diff = { 0, 0.5, 1 },
+					rank = 2,
+					unit = "CS_Light",
+					tactics = self._tactics.swat_def
+				},
+				{
 					freq_by_diff = { 
-						difficulty_index / 6, 
-						difficulty_index / 4, 
-						1 
+						8 / (difficulty_index ^ 2), 
+						4 / (difficulty_index ^ 2),  
+						0 
 					},
-					rank = 3,
+					rank = 1,
 					unit = "CS_Cop_3_4",
 					random_tactics = cop_random_tactics
 				}
@@ -2209,24 +2201,11 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 			amount = { 3, 3 },
 			spawn = {
 				{
-					freq = 1,
+					freq_by_diff = { 0, 0.5, 1 },
 					rank = 1,
-					unit = "CS_Light_1",
-					tactics = self._tactics.cop_def
-				},
-				{
-					freq = 1,
-					rank = 2,
-					unit = "CS_Light_3",
-					tactics = self._tactics.cop_def
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 0.5, 1, 1 },
-					rank = 3,
-					unit = "CS_Light_2",
-					random_tactics = cop_random_tactics
-				},
+					unit = "CS_Light",
+					tactics = self._tactics.swat_def
+				}
 			}
 		}
 	end		

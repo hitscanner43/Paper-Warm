@@ -101,6 +101,64 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 		table.delete(self[wpn_id].uses_parts, "wpn_fps_upg_m4_m_straight_vanilla")
 	end
 
+	--Increase part parity for weapons of the same type
+	local glock = {
+		"wpn_fps_pis_g17",
+		"wpn_fps_pis_x_g17",
+		"wpn_fps_pis_g26",
+		"wpn_fps_jowi",
+	}
+
+	for i, wpn_id in pairs(glock) do
+		table.insert(self[wpn_id].uses_parts, "wpn_fps_pis_g18c_co_1")
+		table.insert(self[wpn_id].uses_parts, "wpn_fps_pis_g18c_co_comp_2")
+	end
+	
+	local crosskill = {
+		"wpn_fps_pis_shrew",
+		"wpn_fps_pis_x_shrew",
+		"wpn_fps_pis_m1911",
+		"wpn_fps_pis_x_m1911",
+	}
+
+	for i, wpn_id in pairs(crosskill) do
+		table.insert(self[wpn_id].uses_parts, "wpn_fps_pis_1911_co_1")
+		table.insert(self[wpn_id].uses_parts, "wpn_fps_pis_1911_co_2")
+	end
+
+	local pis_co_override_1 = {
+		parent = "barrel"
+	}	 
+	
+	self.wpn_fps_pis_shrew.override.wpn_fps_pis_1911_co_1 = pis_co_override_1
+	self.wpn_fps_pis_shrew.override.wpn_fps_pis_1911_co_2 = pis_co_override_1
+
+	self.wpn_fps_pis_x_shrew.override.wpn_fps_pis_1911_co_1 = pis_co_override_1
+	self.wpn_fps_pis_x_shrew.override.wpn_fps_pis_1911_co_2 = pis_co_override_1
+	
+	local pis_co_override_2 = {
+		a_obj = "a_ns",
+		parent = "barrel"
+	}	 
+	
+	self.wpn_fps_pis_m1911.override.wpn_fps_pis_1911_co_1 = pis_co_override_2
+	self.wpn_fps_pis_m1911.override.wpn_fps_pis_1911_co_2 = pis_co_override_2
+
+	self.wpn_fps_pis_x_m1911.override.wpn_fps_pis_1911_co_1 = pis_co_override_2
+	self.wpn_fps_pis_x_m1911.override.wpn_fps_pis_1911_co_2 = pis_co_override_2
+	
+	table.insert(self.wpn_fps_pis_beer.uses_parts, "wpn_fps_pis_beretta_co_co1")
+	table.insert(self.wpn_fps_pis_beer.uses_parts, "wpn_fps_pis_beretta_co_co2")
+
+	table.insert(self.wpn_fps_pis_x_beer.uses_parts, "wpn_fps_pis_beretta_co_co1")
+	table.insert(self.wpn_fps_pis_x_beer.uses_parts, "wpn_fps_pis_beretta_co_co2")
+
+	self.wpn_fps_pis_beer.override.wpn_fps_pis_beretta_co_co1 = pis_co_override_2
+	self.wpn_fps_pis_beer.override.wpn_fps_pis_beretta_co_co2 = pis_co_override_2
+
+	self.wpn_fps_pis_x_beer.override.wpn_fps_pis_beretta_co_co1 = pis_co_override_2
+	self.wpn_fps_pis_x_beer.override.wpn_fps_pis_beretta_co_co2 = pis_co_override_2
+
 	--loop to make all barrel extensions obey paper warm balancing
 	for i, part_id in pairs(self.parts) do
 		part_id.custom_stats = {}
