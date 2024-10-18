@@ -1209,7 +1209,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.olympic.stats.spread = 12
 	self.olympic.stats.recoil = 15
 	self.olympic.stats.concealment = 24
-	self.olympic.fire_mode_data.fire_rate = 60 / 800
+	self.olympic.fire_mode_data.fire_rate = 60 / 850
 	
 	self.ak74.CLIP_AMMO_MAX = 30
 	self.ak74.stats.damage = 25
