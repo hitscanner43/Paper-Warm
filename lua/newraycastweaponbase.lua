@@ -574,7 +574,7 @@ function NewRaycastWeaponBase:reload_speed_multiplier()
 	return multiplier
 end
 
-
+--[[
 function NewRaycastWeaponBase:reload_exit_expire_t(is_not_empty)
 	if self._use_shotgun_reload then
 		local shotgun_reload_tweak = self:_get_shotgun_reload_tweak_data(is_not_empty)
@@ -596,7 +596,7 @@ function NewRaycastWeaponBase:reload_exit_expire_t(is_not_empty)
 
 	return self:weapon_tweak_data().timers.reload_exit_empty or nil
 end
-
+--]]
 
 function NewRaycastWeaponBase:get_damage_falloff(damage, col_ray, user_unit)
 	local damage_mul = 1
@@ -604,9 +604,9 @@ function NewRaycastWeaponBase:get_damage_falloff(damage, col_ray, user_unit)
 	local weapon_tweak = self:weapon_tweak_data()		
 	local penetration_dmg_mul = weapon_tweak.penetration_damage_mul
 	
-	if col_ray and col_ray.unit:in_slot(managers.slot:get_mask("enemy_shield_check")) then
+	if col_ray and col_ray.unit and col_ray.unit:in_slot(managers.slot:get_mask("enemy_shield_check")) then
 		damage_mul = damage_mul * (penetration_dmg_mul and penetration_dmg_mul.shield or 1)
-	elseif scol_ray and col_ray.unit:in_slot(managers.slot:get_mask("world_geometry")) then
+	elseif col_ray and col_ray.unit and col_ray.unit:in_slot(managers.slot:get_mask("world_geometry")) then
 		damage_mul = damage_mul * (penetration_dmg_mul and penetration_dmg_mul.wall or 1)
 	end
 	

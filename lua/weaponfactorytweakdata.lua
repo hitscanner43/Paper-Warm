@@ -2386,7 +2386,9 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.reload = 0
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.concealment = 2
 		self.parts.wpn_fps_ass_g3_body_hk33.custom_stats = {ammo_pickup_min_mul = 3.6, ammo_pickup_max_mul = 3.6, fire_rate_multiplier = 1.272727272727273}
-		
+
+		self.parts.wpn_fps_smg_olympic_body_hk416c.stats = {}
+		self.parts.wpn_fps_smg_olympic_body_hk416c.custom_stats = {}	
 	end
 	
 end)

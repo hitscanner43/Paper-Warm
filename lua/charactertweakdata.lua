@@ -1194,7 +1194,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.chavez_boss.HEALTH_INIT = 200
 	self.chavez_boss.player_health_scaling_mul = 1.25
 	self.chavez_boss.weapon = self.presets.weapon.boss
-	self.chavez_boss.headshot_dmg_mul = 0.5
+	self.chavez_boss.headshot_dmg_mul = 0.75
 	self.chavez_boss.ecm_vulnerability = 0
 	self.chavez_boss.no_headshot_add_mul = true
 	self.chavez_boss.DAMAGE_CLAMP_BULLET = nil
@@ -1207,7 +1207,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.chavez_boss.no_run_stop = true
 	self.chavez_boss.can_be_healed = false
 
-	self.drug_lord_boss_stealth.HEALTH_INIT = 15
+	self.drug_lord_boss_stealth.HEALTH_INIT = 6
 	self.drug_lord_boss_stealth.headshot_dmg_mul = 2.5
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_BULLET = nil
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_EXPLOSION = nil
@@ -1261,7 +1261,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.mobster_boss.HEALTH_INIT = 200
 	self.mobster_boss.player_health_scaling_mul = 1.25
 	self.mobster_boss.weapon = self.presets.weapon.boss
-	self.mobster_boss.headshot_dmg_mul = 1.5
+	self.mobster_boss.headshot_dmg_mul = 0.75
 	self.mobster_boss.ecm_vulnerability = 0
 	self.mobster_boss.no_headshot_add_mul = true
 	self.mobster_boss.DAMAGE_CLAMP_BULLET = nil
@@ -1289,7 +1289,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.triad_boss.HEALTH_INIT = 300
 	self.triad_boss.player_health_scaling_mul = 1.25
 	self.triad_boss.weapon = self.presets.weapon.boss
-	self.triad_boss.headshot_dmg_mul = 1.5
+	self.triad_boss.headshot_dmg_mul = 0.5
 	self.triad_boss.ecm_vulnerability = 0
 	self.triad_boss.no_headshot_add_mul = true
 	self.triad_boss.DAMAGE_CLAMP_BULLET = nil
@@ -1308,7 +1308,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.deep_boss.HEALTH_INIT = 400
 	self.deep_boss.player_health_scaling_mul = 1.25
 	self.deep_boss.weapon = self.presets.weapon.boss
-	self.deep_boss.headshot_dmg_mul = 1.5
+	self.deep_boss.headshot_dmg_mul = 0.5
 	self.deep_boss.ecm_vulnerability = 0
 	self.deep_boss.no_headshot_add_mul = true
 	self.deep_boss.DAMAGE_CLAMP_BULLET = nil
