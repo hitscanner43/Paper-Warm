@@ -105,12 +105,14 @@ function WeaponTweakData:_init_weapons()
 				recoil = 1.2,
 				spread = 0.4,
 				falloff_range = 1.5,
-				fire_rate = math.min(500 / ROF, 1)
+				fire_rate = math.min(500 / ROF, 1),
+				headshot_dmg_mul = 1.25
 			},
 			burst = {
 				recoil = 0.8,
 				spread = 0.6,
-				falloff_range = 1.25
+				falloff_range = 1.25,
+				headshot_dmg_mul = 1.25
 			},
 			volley = {}
 		}
@@ -128,7 +130,7 @@ function WeaponTweakData:_init_weapons()
 
 				weap_data.steelsight_speed_mul = 0.75
 					
-				weap_data.spread_multiplier = {
+		weap_data.spread_multiplier = {
 					standing = {
 						hipfire = 1,
 						crouching = 0.8,

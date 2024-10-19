@@ -189,9 +189,11 @@ function NewRaycastWeaponBase:headshot_dmg_multiplier()
 
 	local fire_modes = weapon_tweak.fire_mode_data and weapon_tweak.fire_mode_data.toggable 
 
-	for _, fire_mode in ipairs(fire_modes) do
-		if self:fire_mode() == fire_mode then
-			multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].headshot_dmg_mul or 1)
+	if fire_modes then
+		for _, fire_mode in ipairs(fire_modes) do
+			if self:fire_mode() == fire_mode then
+				multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].headshot_dmg_mul or 1)
+			end
 		end
 	end
 
@@ -225,12 +227,14 @@ function NewRaycastWeaponBase:recoil_multiplier()
 	local weapon_tweak = self:weapon_tweak_data()
 
 	local fire_modes = weapon_tweak.fire_mode_data and weapon_tweak.fire_mode_data.toggable 
-			
-	for _, fire_mode in ipairs(fire_modes) do
-		if self:fire_mode() == fire_mode then
-			multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].recoil or 1)
+
+	if fire_modes then		
+		for _, fire_mode in ipairs(fire_modes) do
+			if self:fire_mode() == fire_mode then
+				multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].recoil or 1)
+			end
 		end
-	end
+	end	
 	
 	if not is_moving then
 		if not in_steelsight then 
@@ -314,10 +318,12 @@ function NewRaycastWeaponBase:spread_multiplier()
 	local weapon_tweak = self:weapon_tweak_data()
 
 	local fire_modes = weapon_tweak.fire_mode_data and weapon_tweak.fire_mode_data.toggable
-	
-	for _, fire_mode in ipairs(fire_modes) do
-		if self:fire_mode() == fire_mode then
-			multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].spread or 1)
+
+	if fire_modes then	
+		for _, fire_mode in ipairs(fire_modes) do
+			if self:fire_mode() == fire_mode then
+				multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].spread or 1)
+			end
 		end
 	end
 	
@@ -401,10 +407,12 @@ function NewRaycastWeaponBase:fire_rate_multiplier()
 	local weapon_tweak = self:weapon_tweak_data()
 
 	local fire_modes = weapon_tweak.fire_mode_data and weapon_tweak.fire_mode_data.toggable
-	
-	for _, fire_mode in ipairs(fire_modes) do
-		if self:fire_mode() == fire_mode then
-			multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].fire_rate or 1)
+
+	if fire_modes then
+		for _, fire_mode in ipairs(fire_modes) do
+			if self:fire_mode() == fire_mode then
+				multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].fire_rate or 1)
+			end
 		end
 	end
 	
@@ -427,9 +435,11 @@ function NewRaycastWeaponBase:damage_multiplier()
 
 	local fire_modes = weapon_tweak.fire_mode_data and weapon_tweak.fire_mode_data.toggable
 
-	for _, fire_mode in ipairs(fire_modes) do
-		if self:fire_mode() == fire_mode then
-			multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].damage or 1)
+	if fire_modes then
+		for _, fire_mode in ipairs(fire_modes) do
+			if self:fire_mode() == fire_mode then
+				multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].damage or 1)
+			end
 		end
 	end
 	
@@ -457,10 +467,12 @@ function NewRaycastWeaponBase:falloff_range_multiplier()
 	local weapon_tweak = self:weapon_tweak_data()
 
 	local fire_modes = weapon_tweak.fire_mode_data and weapon_tweak.fire_mode_data.toggable
-	
-	for _, fire_mode in ipairs(fire_modes) do
-		if self:fire_mode() == fire_mode then
-			multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].falloff_range or 1)
+
+	if fire_modes then
+		for _, fire_mode in ipairs(fire_modes) do
+			if self:fire_mode() == fire_mode then
+				multiplier = multiplier * (weapon_tweak.fire_mode_mul and weapon_tweak.fire_mode_mul[fire_mode].falloff_range or 1)
+			end
 		end
 	end
 	

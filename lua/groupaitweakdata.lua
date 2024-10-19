@@ -2186,8 +2186,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				},
 				{
 					freq_by_diff = { 
-						8 / (difficulty_index ^ 2), 
-						4 / (difficulty_index ^ 2),  
+						4 / (difficulty_index ^ 2), 
+						2 / (difficulty_index ^ 2),  
 						0 
 					},
 					rank = 1,
@@ -2275,13 +2275,17 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 					tactics = self._tactics.none
 				},
 				{
-					freq = 0.4,
+					freq = 0.5,
 					rank = 1,
 					unit = "CS_Cop_2",
 					tactics = self._tactics.none
 				},
 				{
-					freq = 0.6,
+					freq_by_diff = { 
+						difficulty_index ^ 2 / 12, 
+						difficulty_index ^ 2 / 8, 
+						difficulty_index ^ 2 / 4 
+					},
 					rank = 2,
 					unit = "CS_Cop_3_4",
 					tactics = self._tactics.none
