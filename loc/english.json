@@ -147,7 +147,7 @@
 
 	"menu_awareness_beta": "Duck and Cover",	
 	"menu_awareness_beta_desc": 
-	"BASIC: ##$basic##\nYou move ##$multibasic## faster while crouching.\n\nACE: ##$pro##\nYour dodge is increased by ##$multipro## while crouching.\n\nDodged shots ricochet back at the enemy that fired them.",
+	"BASIC: ##$basic##\nYou move ##$multibasic## faster while crouching.\n\nACE: ##$pro##\nYour dodge is increased by ##$multipro## while crouching.\n\nDodged shots have a ##$multipro2## chance to ricochet back at the enemy that fired them.",
 
 	"menu_dire_need_beta": "Second Wind",	
 	"menu_dire_need_beta_desc": 

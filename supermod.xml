@@ -38,8 +38,10 @@
 					<post :hook_id="blackmarketgui"/>
 					<post :hook_id="playerinventorygui"/>
 					<post :hook_id="skilltreegui"/>
+					<post :hook_id="stageendscreentabcrimespree"/>
 				</group>	
-				<post :hook_id="dynamicresourcemanager"/>						
+				<post :hook_id="dynamicresourcemanager"/>		
+				<post :hook_id="crimespreemanager"/>				
 				<post :hook_id="blackmarketmanager"/>
 				<post :hook_id="missionmanager"/>
 				<post :hook_id="hudmanager"/>

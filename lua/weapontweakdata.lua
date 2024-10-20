@@ -130,7 +130,7 @@ function WeaponTweakData:_init_weapons()
 
 				weap_data.steelsight_speed_mul = 0.75
 					
-		weap_data.spread_multiplier = {
+				weap_data.spread_multiplier = {
 					standing = {
 						hipfire = 1,
 						crouching = 0.8,
@@ -1026,7 +1026,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.total_damage = weap_data.total_damage * 2
 								
 			elseif cat_map.shotgun then
-				weap_data.total_damage = weap_data.total_damage * 1.85	
+				weap_data.total_damage = weap_data.total_damage * 1.7
 				
 			elseif cat_map.pistol or cat_map.flamethrower or cat_map.revolver then
 				weap_data.total_damage = weap_data.total_damage * 1.5
@@ -1040,7 +1040,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.total_damage = weap_data.total_damage * 1.5
 			end
 			
-			--set pickup damage based on total damage		
+			--set pickup damage	
 			weap_data.pickup_damage = 12
 			
 			--modify total damage based on weapon slot 
@@ -1054,8 +1054,11 @@ function WeaponTweakData:_init_weapons()
 				weap_data.total_damage = weap_data.total_damage / 3
 			end	
 			
-			if weap_data.FIRE_MODE == "burst" and not table.contains(weap_data.fire_mode_data.toggable, "auto") then 
-				local total_damage_mul = 0.75 + ((weap_data.BURST_COUNT or 1) * 0.25)
+			local burst_only = weap_data.FIRE_MODE == "burst" and not table.contains(weap_data.fire_mode_data.toggable, "auto") 
+			local burst_count = weap_data.BURST_COUNT or 1
+			
+			if burst_only then 
+				local total_damage_mul = 0.75 + (burst_count * 0.25)
 				weap_data.total_damage = weap_data.total_damage * total_damage_mul
 			end
 			
@@ -1090,8 +1093,8 @@ function WeaponTweakData:_init_weapons()
 				weap_data.pickup_damage = weap_data.pickup_damage / 2
 			end		
 			
-			if weap_data.FIRE_MODE == "burst" and not table.contains(weap_data.fire_mode_data.toggable, "auto") then 
-				local total_damage_mul = 0.5 + ((weap_data.BURST_COUNT or 1) * 0.5)
+			if burst_only then 
+				local total_damage_mul = 1 + (burst_count - 1) * 0.25
 				weap_data.pickup_damage = weap_data.pickup_damage * total_damage_mul
 			end
 
@@ -1172,16 +1175,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.s552.fire_mode_data.toggable = { "auto", "burst", "single" }
 	self.s552.FIRE_MODE = "auto"
 	self.s552.BURST_COUNT = 3
-
-	self.famas.CLIP_AMMO_MAX = 25
-	self.famas.stats.damage = 20
-	self.famas.stats.spread = 14
-	self.famas.stats.recoil = 16
-	self.famas.stats.concealment = 22
-	self.famas.fire_mode_data.fire_rate = 60 / 1100
-	self.famas.fire_mode_data.toggable = { "burst", "single" }
-	self.famas.FIRE_MODE = "burst"
-	self.famas.BURST_COUNT = 3
 	
 	self.corgi.CLIP_AMMO_MAX = 30
 	self.corgi.stats.damage = 20
@@ -1228,6 +1221,16 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.ak5.stats.concealment = 20
 	self.ak5.fire_mode_data.fire_rate = 60 / 700
 
+	self.famas.CLIP_AMMO_MAX = 25
+	self.famas.stats.damage = 25
+	self.famas.stats.spread = 14
+	self.famas.stats.recoil = 16
+	self.famas.stats.concealment = 22
+	self.famas.fire_mode_data.fire_rate = 60 / 1000
+	self.famas.fire_mode_data.toggable = { "burst", "single" }
+	self.famas.FIRE_MODE = "burst"
+	self.famas.BURST_COUNT = 3
+	
 	self.vhs.CLIP_AMMO_MAX = 30
 	self.vhs.stats.damage = 25
 	self.vhs.stats.spread = 16

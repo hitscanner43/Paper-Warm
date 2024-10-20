@@ -1852,7 +1852,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 		"wpn_fps_sho_boot"
 	}
 	
-	self.parts.wpn_fps_upg_a_custom.stats = { damage = 30, spread = 0, total_ammo_mod = -25 }
+	self.parts.wpn_fps_upg_a_custom.stats = { damage = 30, spread = 0, recoil = -2, total_ammo_mod = -25 }
 	self.parts.wpn_fps_upg_a_custom.custom_stats = { 
 		ammo_pickup_max_mul = 1, 
 		ammo_pickup_min_mul = 1,
@@ -2376,19 +2376,34 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 		self.parts.wpn_fps_smg_shepheard_body_ar45.stats.recoil = -2
 		self.parts.wpn_fps_smg_shepheard_body_ar45.stats.reload = 0
 		self.parts.wpn_fps_smg_shepheard_body_ar45.stats.concealment = -2
-		self.parts.wpn_fps_smg_shepheard_body_ar45.custom_stats = {ammo_pickup_min_mul = 0.875, ammo_pickup_max_mul = 0.875, fire_rate_multiplier = 0.8823529411764706}
+		self.parts.wpn_fps_smg_shepheard_body_ar45.custom_stats = { ammo_pickup_min_mul = 0.875, ammo_pickup_max_mul = 0.875, fire_rate_multiplier = 0.8823529411764706 }
 
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.total_ammo_mod = 100
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.extra_ammo = 5
-		self.parts.wpn_fps_ass_g3_body_hk33.stats.damage = -70
+		self.parts.wpn_fps_ass_g3_body_hk33.stats.damage = -50
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.spread = -4
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.recoil = 4
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.reload = 0
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.concealment = 2
-		self.parts.wpn_fps_ass_g3_body_hk33.custom_stats = {ammo_pickup_min_mul = 3.6, ammo_pickup_max_mul = 3.6, fire_rate_multiplier = 1.272727272727273}
+		self.parts.wpn_fps_ass_g3_body_hk33.custom_stats = { ammo_pickup_min_mul = 3.6, ammo_pickup_max_mul = 3.6, fire_rate_multiplier = 1.272727272727273 }
 
 		self.parts.wpn_fps_smg_olympic_body_hk416c.stats = {}
 		self.parts.wpn_fps_smg_olympic_body_hk416c.custom_stats = {}	
+		
+		if self.parts.wpn_fps_ass_s552_body_s550 then
+			self.parts.wpn_fps_ass_s552_body_s550.stats.total_ammo_mod = 0
+			self.parts.wpn_fps_ass_s552_body_s550.stats.damage = 0
+			self.parts.wpn_fps_ass_s552_body_s550.stats.spread = 2
+			self.parts.wpn_fps_ass_s552_body_s550.stats.recoil = 0
+			self.parts.wpn_fps_ass_s552_body_s550.stats.reload = 0
+			self.parts.wpn_fps_ass_s552_body_s550.stats.concealment = -2
+			self.parts.wpn_fps_ass_s552_body_s550.custom_stats = { }	
+
+			self.parts.wpn_fps_ass_s552_m_s550.stats.extra_ammo = -5
+			self.parts.wpn_fps_ass_s552_m_s550.stats.concealment = 1
+			self.parts.wpn_fps_ass_s552_m_s550.stats.reload = 10
+			self.parts.wpn_fps_ass_s552_m_s550.custom_stats = {}		
+		end
 	end
 	
 end)

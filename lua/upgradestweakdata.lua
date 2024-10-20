@@ -680,8 +680,13 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 	self.values.player.crouch_speed_multiplier = { 1.1 }
 	self.values.player.crouch_dodge_chance = { 0.15 }
 
+	self.values.player.dodge_ricochet_bullets = {
+		{ 0.5, 0 }
+	}
+	
 	self.skill_descs.awareness.multibasic = "10%"
 	self.skill_descs.awareness.multipro = "15%"
+	self.skill_descs.awareness.multipro2 = "50%"
 	
 	--Dire Need --> Second Wind
 	self.armor_broken_bonus_cooldown = 10
@@ -787,7 +792,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 		}
 	}
 
-	self.skill_descs.spotter_teamwork.multipro = "15%"
+	self.skill_descs.hitman.multipro = "15%"
 	
 	--Akimbo
 	self.values.akimbo.extra_ammo_multiplier = { 1.5, 1.5 }

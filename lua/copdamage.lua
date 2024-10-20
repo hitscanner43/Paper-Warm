@@ -125,17 +125,19 @@ function CopDamage:damage_bullet(attack_data, ...)
 	local damage = attack_data.damage 
 
 	local attacker_weap_base = attack_data and attack_data.weapon_unit and attack_data.weapon_unit:base()
-	local attacker_weap_tweak = attacker_weap_base:weapon_tweak_data()
+	local attacker_weap_tweak = attacker_weap_base and attacker_weap_base:weapon_tweak_data()
 
-	local head = self._head_body_name and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_head_body_name
-
+--[[
+	local head = self._head_body_name and attack_data and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_head_body_name
+	
 	if head then
 		damage = damage * (attacker_weap_base:headshot_dmg_multiplier() or 1)
 	end
+]]--
 	
 	--add a damage reduction on armour plate pierce
 	if self._has_plate and attack_data.col_ray.body and attack_data.col_ray.body:name() == self._ids_plate_name and not attack_data.armor_piercing then
-		damage = damage * (attacker_weap_tweak.penetration_damage_mul and attacker_weap_tweak.penetration_damage_mul.armor or 1)
+		damage = damage * (attacker_weap_tweak and attacker_weap_tweak.penetration_damage_mul and attacker_weap_tweak.penetration_damage_mul.armor or 1)
 	end
 
 	if attack_data.attacker_unit == managers.player:player_unit() then
@@ -156,12 +158,14 @@ function CopDamage:damage_bullet(attack_data, ...)
 			end
 		end
 	end
-		
-	--Give enemies damage resistances to specific weapon categories
-	for _, category in ipairs(attacker_weap_tweak.categories) do
-		local category_damage_mul = category .. "_damage_mul"
-		if char_tweak.category_damage_mul then
-			damage = damage * char_tweak.category_damage_mul	
+
+	--Give enemies damage resistances to specific weapon categories		
+	if attacker_weap_tweak then
+		for _, category in ipairs(attacker_weap_tweak.categories) do
+			local category_damage_mul = category .. "_damage_mul"
+			if char_tweak.category_damage_mul then
+				damage = damage * char_tweak.category_damage_mul	
+			end
 		end
 	end
 	
@@ -207,3 +211,22 @@ function CopDamage:die(attack_data, ...)
 
     return die(self, attack_data, ...)
 end
+
+--[[
+function CopDamage:set_damage_reduction_multiplier()
+	self._damage_reduction_multiplier = (self._damage_reduction_multiplier or 1) * (self._unit:base():get_total_buff("damage_reduction") or 1)
+end
+
+
+Hooks:PostHook(CopDamage, "accuracy_multiplier", "hits_accuracy_multiplier", function (self)
+	return Hooks:GetReturn() * (self._unit:base():get_total_buff("accuracy") or 1)
+end)
+
+
+local dmg_load = CopDamage.load
+function CopDamage:load(data, ...)
+	self:set_damage_reduction_multiplier()
+	
+    return dmg_load(self, data, ...)
+end
+]]

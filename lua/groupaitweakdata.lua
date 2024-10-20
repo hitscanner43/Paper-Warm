@@ -2137,8 +2137,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 			"grenadier"
 		},	
 		medic = {
-			"unit_cover",
-			"ranged_fire"
+			"unit_cover"
 		},	
 		commander = {
 			"shield_cover",
