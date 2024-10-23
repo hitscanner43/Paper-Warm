@@ -1,12 +1,12 @@
 {
 	"name" : "Paper Warm",
 	"description" : "Julesyes.",
-	"author" : "Hitscanner",
+	"author" : "hitscanner",
 	"priority" : 900,
 	"color" : "0 0 0",
-	"version" : "0.1",
+	"version" : "0.15",
 	"updates" : [{
 		"identifier" : "paper_warm_overhaul",
-		"host" : { "meta" : "https://raw.githubusercontent.com/hitscanner43/Paper-Warm/f7ac5b906524d26f2d4a999916e07f21ba10e28f/meta.json?token=GHSAT0AAAAAACWKYCX5SYRUTRI663XZMHFOZX7V4EQ" }
+		"host" : { "meta" : "https://raw.githubusercontent.com/hitscanner43/Paper-Warm/refs/heads/main/meta.json?token=GHSAT0AAAAAACWKYCX44YUYD6RIH6KQP57CZYZFWNQ" }
 	}]
 }
