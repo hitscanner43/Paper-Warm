@@ -824,7 +824,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security_army.no_arrest = true
 	table.insert(self._enemy_list, "security_army")
 
-	self.cop.HEALTH_INIT = 5
+	self.cop.HEALTH_INIT = 4
 	self.cop.headshot_dmg_mul = 2.5
 	self.cop.melee_weapon = "baton"
 	self.cop.access = { "cop", "fbi" }
@@ -853,7 +853,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.cop_female.speech_prefix_count = 1
 
 	self.fbi = deep_clone(self.cop)
-	self.fbi.HEALTH_INIT = 6
+	self.fbi.HEALTH_INIT = 5
 	self.fbi.headshot_dmg_mul = 2.5
 	self.fbi.weapon = self.presets.weapon.fbi
 	self.fbi.melee_weapon = "weapon"	
@@ -864,11 +864,11 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.fbi_female.speech_prefix_count = 1
 
 	self.hrt = deep_clone(self.fbi)
-	self.hrt.HEALTH_INIT = 8
+	self.hrt.HEALTH_INIT = 6
 	self.hrt.headshot_dmg_mul = 2.5
 	table.insert(self._enemy_list, "hrt")
 	
-	self.gangster.HEALTH_INIT = 6
+	self.gangster.HEALTH_INIT = 5
 	self.gangster.headshot_dmg_mul = 2.5
 	self.gangster.melee_weapon = "fists"
 	self.gangster.speech_prefix_p1 = "lt"
@@ -1237,7 +1237,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.drug_lord_boss.can_be_healed = false
 	self.drug_lord_boss.collateral_damage = true
 
-	self.hector_boss_no_armor.HEALTH_INIT = 6
+	self.hector_boss_no_armor.HEALTH_INIT = 5
 	self.hector_boss_no_armor.headshot_dmg_mul = 2.5
 	
 	self.hector_boss.HEALTH_INIT = 300
@@ -1276,7 +1276,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.mobster_boss.immune_to_concussion = true
 	self.mobster_boss.can_be_healed = false
 
-	self.triad_boss_no_armor.HEALTH_INIT = 6
+	self.triad_boss_no_armor.HEALTH_INIT = 5
 	self.triad_boss_no_armor.headshot_dmg_mul = 2.5
 	self.triad_boss_no_armor.DAMAGE_CLAMP_BULLET = nil
 	self.triad_boss_no_armor.DAMAGE_CLAMP_EXPLOSION = nil
