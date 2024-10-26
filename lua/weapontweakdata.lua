@@ -283,8 +283,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.35
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or weap_data.CAN_TOGGLE_FIREMODE and { "auto", "single" } or { "single" }
 				
-				weap_data.rays = 12
-				weap_data.headshot_dmg_mul = 0.6
+				weap_data.rays = 8
 				weap_data.steelsight_speed_mul = 0.75							
 				weap_data.headshot_dmg_mul = 0.5						
 		
@@ -335,6 +334,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.can_shoot_through_enemy = true
 				weap_data.armor_piercing_chance = 1
 				weap_data.steelsight_speed_mul = cat_map.keltec and 0.75 or 0.6
+				weap_data.headshot_dmg_mul = cat_map.keltec and 1.5 or 1
 			
 				weap_data.FIRE_MODE = "single"
 				
@@ -393,9 +393,9 @@ function WeaponTweakData:_init_weapons()
 				weap_data.bipod_camera_pitch_limit = 15		
 				weap_data.bipod_range_multiplier = 1.5
 
-				weap_data.headshot_dmg_mul = 0.75
 				weap_data.steelsight_speed_mul = 0.5
-	
+				weap_data.headshot_dmg_mul = 0.75
+		
 				if weap_data.no_steelsight then
 					weap_data.spread_multiplier = {
 						standing = {
@@ -603,8 +603,8 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.5
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "auto" }
 
-				weap_data.headshot_dmg_mul = 0.75
 				weap_data.steelsight_speed_mul = 0.5
+				weap_data.headshot_dmg_mul = 0.75
 				
 				if weap_data.no_steelsight then
 					weap_data.spread_multiplier = {
@@ -675,9 +675,10 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.35		
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
 						
-				weap_data.rays = 12
+				weap_data.rays = 8
 				weap_data.steelsight_speed_mul = 0.75
-
+				weap_data.headshot_dmg_mul = 0.5
+	
 				weap_data.spread_multiplier = {
 					standing = {
 						hipfire = 1,
@@ -1075,7 +1076,10 @@ function WeaponTweakData:_init_weapons()
 			if cat_map.shotgun then
 				weap_data.pickup_damage = weap_data.pickup_damage * 2.5
 
-			elseif cat_map.smg or cat_map.lmg or cat_map.minigun or cat_map.snp then
+			elseif cat_map.lmg or cat_map.minigun then
+				weap_data.pickup_damage = weap_data.pickup_damage * 2
+		
+			elseif cat_map.smg or cat_map.snp then
 				weap_data.pickup_damage = weap_data.pickup_damage * 1.5
 		
 			elseif cat_map.grenade_launcher or cat_map.flamethrower or cat_map.rocket_launcher then
