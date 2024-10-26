@@ -764,7 +764,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	}
 	
 	presets.base.surrender_break_time = { 10, 15 }
-	presets.base.limb_dmg_mul = 0.6
+	presets.base.limb_dmg_mul = 1
 
 	return presets
 end
@@ -779,6 +779,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.security.HEALTH_INIT = 4
 	self.security.headshot_dmg_mul = 2.5
+	self.security.limb_dmg_mul = 0.7
 	self.security.melee_weapon = "weapon"
 	self.security.surrender_break_time = { 15, 20 }
 	self.security.weapon = self.presets.weapon.security
@@ -794,10 +795,11 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security.no_arrest = nil
 	self.security.steal_loot = nil
 	self.security.rescue_hostages = false
-
+	
 	self.security_heavy = deep_clone(self.security)	
 	self.security_heavy.HEALTH_INIT = 6
 	self.security_heavy.headshot_dmg_mul = 2.5
+	self.security_heavy.limb_dmg_mul = 0.8
 	table.insert(self._enemy_list, "security_heavy")
 
 	self.security_undominatable = deep_clone(self.security)		
@@ -828,6 +830,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.cop.HEALTH_INIT = 4
 	self.cop.headshot_dmg_mul = 2.5
+	self.cop.limb_dmg_mul = 0.7
 	self.cop.melee_weapon = "baton"
 	self.cop.access = { "cop", "fbi" }
 	self.cop.surrender_break_time = { 10, 15 }
@@ -872,6 +875,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.gangster.HEALTH_INIT = 5
 	self.gangster.headshot_dmg_mul = 2.5
+	self.gangster.limb_dmg_mul = 0.7
 	self.gangster.melee_weapon = "fists"
 	self.gangster.speech_prefix_p1 = "lt"
 	self.gangster.speech_prefix_p2 = nil
@@ -927,6 +931,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.swat.HEALTH_INIT = 8
 	self.swat.headshot_dmg_mul = 2
+	self.swat.limb_dmg_mul = 0.6
 	self.swat.melee_weapon = "weapon"
 	self.swat.speech_prefix_p2 = "n" 
 	self.swat.surrender_break_time = { 5, 10 }
@@ -957,6 +962,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.soldier = deep_clone(self.fbi_swat)	
 	self.soldier.HEALTH_INIT = 12
 	self.soldier.headshot_dmg_mul = 2
+	self.soldier.limb_dmg_mul = 0.7
 	self.soldier.melee_weapon = "knife_1"
 	self.soldier.surrender = self.presets.surrender.hard
 	self.soldier.no_arrest = true
@@ -976,6 +982,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.heavy_swat = deep_clone(self.swat)
 	self.heavy_swat.HEALTH_INIT = 12
 	self.heavy_swat.headshot_dmg_mul = 2
+	self.heavy_swat.limb_dmg_mul = 0.6
 	self.heavy_swat.move_speed = self.presets.move_speed.fast
 	self.heavy_swat.dodge = self.presets.dodge.heavy
 	self.heavy_swat.surrender = self.presets.surrender.hard
@@ -987,6 +994,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.fbi_heavy_swat = deep_clone(self.heavy_swat)	
 	self.fbi_heavy_swat.HEALTH_INIT = 16
 	self.fbi_heavy_swat.headshot_dmg_mul = 2
+	self.fbi_heavy_swat.limb_dmg_mul = 0.5
 	self.fbi_heavy_swat.weapon = self.presets.weapon.fbi_swat
 	self.fbi_heavy_swat.hurt_severity = self.presets.hurt_severities.tough
 
@@ -1024,6 +1032,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.medic.HEALTH_INIT = 20
 	self.medic.headshot_dmg_mul = 2
+	self.medic.limb_dmg_mul = 0.7
 	self.medic.weapon = self.presets.weapon.medic
 	self.medic.move_speed = self.presets.move_speed.fast
 	self.medic.dodge = self.presets.dodge.poor
@@ -1036,6 +1045,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.taser.HEALTH_INIT = 24
 	self.taser.headshot_dmg_mul = 1.5
+	self.taser.limb_dmg_mul = 0.7
 	self.taser.melee_weapon = "taser"
 	self.taser.weapon = self.presets.weapon.taser
 	self.taser.move_speed = self.presets.move_speed.fast
@@ -1066,6 +1076,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.spooc.HEALTH_INIT = 16
 	self.spooc.headshot_dmg_mul = 2.5
+	self.spooc.limb_dmg_mul = 0.7
 	self.spooc.melee_weapon = "baton"
 	self.spooc.weapon = self.presets.weapon.spooc
 	self.spooc.move_speed = self.presets.move_speed.lightning
@@ -1110,6 +1121,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.tank.HEALTH_INIT = 200
 	self.tank.headshot_dmg_mul = 20
+	self.tank.limb_dmg_mul = 1
 	self.tank.weapon = self.presets.weapon.tank
 	self.tank.move_speed = self.presets.move_speed.slow
 	--self.tank.no_run_start = false 
@@ -1179,6 +1191,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.biker_boss.player_health_scaling_mul = 1.25
 	self.biker_boss.weapon = self.presets.weapon.boss
 	self.biker_boss.headshot_dmg_mul = 0.5
+	self.biker_boss.limb_dmg_mul = 1
 	self.biker_boss.ecm_vulnerability = 0
 	self.biker_boss.no_headshot_add_mul = true
 	self.biker_boss.DAMAGE_CLAMP_BULLET = nil
@@ -1197,6 +1210,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.chavez_boss.player_health_scaling_mul = 1.25
 	self.chavez_boss.weapon = self.presets.weapon.boss
 	self.chavez_boss.headshot_dmg_mul = 0.75
+	self.chavez_boss.limb_dmg_mul = 1
 	self.chavez_boss.ecm_vulnerability = 0
 	self.chavez_boss.no_headshot_add_mul = true
 	self.chavez_boss.DAMAGE_CLAMP_BULLET = nil
@@ -1211,6 +1225,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.drug_lord_boss_stealth.HEALTH_INIT = 6
 	self.drug_lord_boss_stealth.headshot_dmg_mul = 2.5
+	self.drug_lord_boss_stealth.limb_dmg_mul = 0.7
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_BULLET = nil
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_EXPLOSION = nil
 	self.drug_lord_boss_stealth.immune_to_knock_down = nil
@@ -1223,6 +1238,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.drug_lord_boss.player_health_scaling_mul = 1.25
 	self.drug_lord_boss.weapon = self.presets.weapon.boss
 	self.drug_lord_boss.headshot_dmg_mul = 0.5
+	self.drug_lord_boss.limb_dmg_mul = 1
 	self.drug_lord_boss.ecm_vulnerability = 0
 	self.drug_lord_boss.no_headshot_add_mul = true
 	self.drug_lord_boss.DAMAGE_CLAMP_BULLET = nil
@@ -1241,11 +1257,13 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.hector_boss_no_armor.HEALTH_INIT = 5
 	self.hector_boss_no_armor.headshot_dmg_mul = 2.5
+	self.hector_boss_no_armor.limb_dmg_mul = 0.7
 	
 	self.hector_boss.HEALTH_INIT = 300
 	self.hector_boss.player_health_scaling_mul = 1.25
 	self.hector_boss.weapon = self.presets.weapon.boss
 	self.hector_boss.headshot_dmg_mul = 0.5
+	self.hector_boss.limb_dmg_mul = 1
 	self.hector_boss.ecm_vulnerability = 0
 	self.hector_boss.no_headshot_add_mul = true
 	self.hector_boss.DAMAGE_CLAMP_BULLET = nil
@@ -1264,6 +1282,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.mobster_boss.player_health_scaling_mul = 1.25
 	self.mobster_boss.weapon = self.presets.weapon.boss
 	self.mobster_boss.headshot_dmg_mul = 0.75
+	self.mobster_boss.limb_dmg_mul = 1
 	self.mobster_boss.ecm_vulnerability = 0
 	self.mobster_boss.no_headshot_add_mul = true
 	self.mobster_boss.DAMAGE_CLAMP_BULLET = nil
@@ -1280,6 +1299,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.triad_boss_no_armor.HEALTH_INIT = 5
 	self.triad_boss_no_armor.headshot_dmg_mul = 2.5
+	self.triad_boss_no_armor.limb_dmg_mul = 0.7
 	self.triad_boss_no_armor.DAMAGE_CLAMP_BULLET = nil
 	self.triad_boss_no_armor.DAMAGE_CLAMP_EXPLOSION = nil
 	self.triad_boss_no_armor.immune_to_knock_down = nil
@@ -1292,6 +1312,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.triad_boss.player_health_scaling_mul = 1.25
 	self.triad_boss.weapon = self.presets.weapon.boss
 	self.triad_boss.headshot_dmg_mul = 0.5
+	self.triad_boss.limb_dmg_mul = 1
 	self.triad_boss.ecm_vulnerability = 0
 	self.triad_boss.no_headshot_add_mul = true
 	self.triad_boss.DAMAGE_CLAMP_BULLET = nil
@@ -1311,6 +1332,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.deep_boss.player_health_scaling_mul = 1.25
 	self.deep_boss.weapon = self.presets.weapon.boss
 	self.deep_boss.headshot_dmg_mul = 0.5
+	self.deep_boss.limb_dmg_mul = 1
 	self.deep_boss.ecm_vulnerability = 0
 	self.deep_boss.no_headshot_add_mul = true
 	self.deep_boss.DAMAGE_CLAMP_BULLET = nil
