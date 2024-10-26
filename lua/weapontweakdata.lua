@@ -283,7 +283,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.35
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or weap_data.CAN_TOGGLE_FIREMODE and { "auto", "single" } or { "single" }
 				
-				weap_data.rays = 8
+				weap_data.rays = 12
 				weap_data.headshot_dmg_mul = 0.6
 				weap_data.steelsight_speed_mul = 0.75							
 				weap_data.headshot_dmg_mul = 0.5						
@@ -603,6 +603,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.5
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "auto" }
 
+				weap_data.headshot_dmg_mul = 0.75
 				weap_data.steelsight_speed_mul = 0.5
 				
 				if weap_data.no_steelsight then
@@ -674,7 +675,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.35		
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
 						
-				weap_data.rays = 8
+				weap_data.rays = 12
 				weap_data.steelsight_speed_mul = 0.75
 
 				weap_data.spread_multiplier = {
@@ -1888,7 +1889,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	--DMRs	
 	self.sub2000.categories = { "dmr", "keltec" }
 	self.sub2000.CLIP_AMMO_MAX = 33
-	self.sub2000.stats.damage = 40
+	self.sub2000.stats.damage = 30
 	self.sub2000.stats.spread = 19
 	self.sub2000.stats.recoil = 16
 	self.sub2000.stats.concealment = 26
@@ -1992,9 +1993,17 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.basset.stats.recoil = 13
 	self.basset.stats.concealment = 24
 	self.basset.fire_mode_data.fire_rate = 60 / 350
+
+	self.striker.CLIP_AMMO_MAX = 12
+	self.striker.stats.damage = 150
+	self.striker.stats.spread = 11
+	self.striker.stats.recoil = 9
+	self.striker.stats.concealment = 24
+	self.striker.stats.reload = 120
+	self.striker.fire_mode_data.fire_rate = 60 / 300
 	
 	self.sko12.CLIP_AMMO_MAX = 25
-	self.sko12.stats.damage = 120
+	self.sko12.stats.damage = 150
 	self.sko12.stats.spread = 13
 	self.sko12.stats.recoil = 11
 	self.sko12.stats.concealment = 14
@@ -2009,14 +2018,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.benelli.stats.recoil = 9
 	self.benelli.stats.concealment = 18
 	self.benelli.fire_mode_data.fire_rate = 60 / 300
-
-	self.striker.CLIP_AMMO_MAX = 12
-	self.striker.stats.damage = 180
-	self.striker.stats.spread = 11
-	self.striker.stats.recoil = 9
-	self.striker.stats.concealment = 24
-	self.striker.stats.reload = 120
-	self.striker.fire_mode_data.fire_rate = 60 / 300
 	
 	self.spas12.CLIP_AMMO_MAX = 8
 	self.spas12.stats.damage = 180
@@ -2289,7 +2290,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.m95.stats.recoil = 3
 	self.m95.stats.concealment = 12
 	self.m95.fire_mode_data.fire_rate = 60 / 50
-	self.m95.head_explosion = true
 
 	--LMGs
 	self.m249.CLIP_AMMO_MAX = 200
