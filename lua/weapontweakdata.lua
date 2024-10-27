@@ -316,6 +316,7 @@ function WeaponTweakData:_init_weapons()
 				
 				weap_data.fire_mode_mul = nil
 				
+				--[[
 				weap_data.damage_falloff = {
 					optimal_distance = 0, 
 					optimal_range = 1500, 
@@ -324,7 +325,10 @@ function WeaponTweakData:_init_weapons()
 					near_multiplier = 1, 
 					far_multiplier = 0.5
 				}	
+				]]
 
+				weap_data.damage_falloff = no_falloff
+				
 			elseif cat_map.dmr then
 				weap_data.stats.suppression = cat_map.keltec and 16 or 1
 				weap_data.stats.alert_size = cat_map.keltec and 14 or 19
@@ -706,14 +710,18 @@ function WeaponTweakData:_init_weapons()
 
 				weap_data.fire_mode_mul = nil
 				
+				--[[
 				weap_data.damage_falloff = {
 					optimal_distance = 0, 
-					optimal_range = 2500, 
+					optimal_range = 1500, 
 					near_falloff = 0, 
 					far_falloff = 500, 
 					near_multiplier = 1, 
 					far_multiplier = 0.5
-				}		
+				}	
+				]]
+
+				weap_data.damage_falloff = no_falloff	
 				
 			elseif cat_map.flamethrower then
 				weap_data.stats.suppression = 1

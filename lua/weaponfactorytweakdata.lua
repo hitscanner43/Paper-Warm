@@ -1868,7 +1868,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 		falloff_range_multiplier = 1.25, 
 		ammo_pickup_max_mul = 1, 
 		ammo_pickup_min_mul = 1,
-		rays = 12, 
+		rays = 8, 
 	}
 
 	self.parts.wpn_fps_upg_a_slug.stats = { damage = -60, spread = 4, total_ammo_mod = -25 }
@@ -1901,7 +1901,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 		ammo_pickup_max_mul = 0.8, 
 		ammo_pickup_min_mul = 0.8, 
 		armor_piercing_add = 1,
-		rays = 12,
+		rays = 8,
 		dot_data_name = "ammo_dragons_breath",
 		can_shoot_through_shield = true,
 		ignore_statistic = true
@@ -2403,6 +2403,17 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 			self.parts.wpn_fps_ass_s552_m_s550.stats.concealment = 1
 			self.parts.wpn_fps_ass_s552_m_s550.stats.reload = 10
 			self.parts.wpn_fps_ass_s552_m_s550.custom_stats = {}		
+		end
+	
+		if self.parts.wpn_fps_ass_m14_body_ac556 then
+			self.parts.wpn_fps_ass_m14_body_ac556.stats.total_ammo_mod = 100
+			self.parts.wpn_fps_ass_m14_body_ac556.stats.extra_ammo = 5
+			self.parts.wpn_fps_ass_m14_body_ac556.stats.damage = -50
+			self.parts.wpn_fps_ass_m14_body_ac556.stats.spread = -3
+			self.parts.wpn_fps_ass_m14_body_ac556.stats.recoil = 5
+			self.parts.wpn_fps_ass_m14_body_ac556.stats.reload = 0
+			self.parts.wpn_fps_ass_m14_body_ac556.stats.concealment = 5
+			self.parts.wpn_fps_ass_m14_body_ac556.custom_stats = { headshot_dmg_mul = 1.25, ammo_pickup_min_mul = 2.66666666667, ammo_pickup_max_mul = 2.66666666667 }		
 		end
 	end
 	
