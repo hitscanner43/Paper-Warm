@@ -53,18 +53,25 @@ ElementSpawnEnemyGroup.group_mapping = {
 		"Grenadier",
 		"Marksman",
 		"Soldiers",
+		"SKM_assault",
+		"SKM_grenadier",
+		"SKM_marksman",
 	},
 	tac_shield_wall = {
-		"Shield"
+		"Shield",
+		"SKM_shield"
 	},
 	tac_tazer_flanking = {
-		"Taser"
+		"Taser",
+		"SKM_taser"
 	},
 	FBI_spoocs = {
-		"Cloaker"
+		"Cloaker",
+		"SKM_cloaker"
 	},
 	tac_bull_rush = {
-		"Bulldozer"
+		"Bulldozer",
+		"SKM_bulldozer"
 	}
 }
 ElementSpawnEnemyGroup.group_mapping.tac_swat_rifle_flank = ElementSpawnEnemyGroup.group_mapping.tac_swat_rifle

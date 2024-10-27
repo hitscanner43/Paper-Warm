@@ -1076,7 +1076,7 @@ function GroupAIStateBesiege:_choose_best_group(best_groups, total_weight)
 	return best_grp, best_grp_type
 end
 
-
+	
 -- Save spawn group element in group description for debugging stuck groups
 function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_objective, ai_task)
 	local spawn_group_desc = tweak_data.group_ai.enemy_spawn_groups[spawn_group_type]
@@ -1107,6 +1107,9 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 
 	table.insert(self._spawning_groups, spawn_task)
 
+	local is_skirmish = managers.skirmish:is_skirmish()
+	local current_wave = managers.skirmish:current_wave_number()
+
 	local function _add_unit_type_to_spawn_task(i, spawn_entry)
 		local add_amount = 1
 		if spawn_entry.amount_min then
@@ -1131,7 +1134,8 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 		if spawn_entry.amount_max then
 			if add_amount >= spawn_entry.amount_max then
 				table.remove(valid_unit_types, i)
-				total_weight = total_weight - (spawn_entry.freq_by_diff and self:_get_difficulty_dependent_value(spawn_entry.freq_by_diff) or spawn_entry.freq)
+			
+				total_weight = total_weight - (is_skirmish and spawn_entry.freq_by_wave and spawn_entry.freq_by_wave[current_wave] or spawn_entry.freq_by_diff and self:_get_difficulty_dependent_value(spawn_entry.freq_by_diff) or spawn_entry.freq)
 				return true
 			else
 				spawn_entry.amount_max = spawn_entry.amount_max - add_amount
@@ -1143,7 +1147,7 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 	while wanted_nr_units > 0 and i <= #valid_unit_types do
 		local spawn_entry = valid_unit_types[i]
 
-		total_weight = total_weight + (spawn_entry.freq_by_diff and self:_get_difficulty_dependent_value(spawn_entry.freq_by_diff) or spawn_entry.freq)
+		total_weight = total_weight + (is_skirmish and spawn_entry.freq_by_wave and spawn_entry.freq_by_wave[current_wave] or spawn_entry.freq_by_diff and self:_get_difficulty_dependent_value(spawn_entry.freq_by_diff) or spawn_entry.freq)
 
 		local entry_removed = spawn_entry.amount_min and spawn_entry.amount_min > 0 and _add_unit_type_to_spawn_task(i, spawn_entry)
 		if not entry_removed then
@@ -1160,7 +1164,7 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 		repeat
 			rand_entry = valid_unit_types[i]
 
-			roll = roll - (rand_entry.freq_by_diff and self:_get_difficulty_dependent_value(rand_entry.freq_by_diff) or rand_entry.freq)
+			roll = roll - (is_skirmish and rand_entry.freq_by_wave and rand_entry.freq_by_wave[current_wave] or rand_entry.freq_by_diff and self:_get_difficulty_dependent_value(rand_entry.freq_by_diff) or rand_entry.freq)
 			i = i + 1
 		until roll <= 0
 
@@ -1169,7 +1173,7 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 
 		if special_type and managers.job:current_spawn_limit(special_type) <= self:_get_special_unit_type_count(special_type) then
 			table.remove(valid_unit_types, i - 1)
-			total_weight = total_weight - (rand_entry.freq_by_diff and self:_get_difficulty_dependent_value(rand_entry.freq_by_diff) or rand_entry.freq)
+			total_weight = total_weight - (is_skirmish and rand_entry.freq_by_wave and rand_entry.freq_by_wave[current_wave] or rand_entry.freq_by_diff and self:_get_difficulty_dependent_value(rand_entry.freq_by_diff) or rand_entry.freq)
 		else
 			_add_unit_type_to_spawn_task(i - 1, rand_entry)
 		end

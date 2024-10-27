@@ -26,6 +26,12 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "hits_update_stats_
 			end
 		end
 	end
+
+	if self._ammo_data and self._ammo_data.muzzleflash ~= nil then
+		self._shell_ejection_effect = Idstring(self._ammo_data.shell_ejection)
+	else
+		self._shell_ejection_effect = Idstring(self:weapon_tweak_data().shell_ejection or "effects/payday2/particles/weapons/shells/shell_556")
+	end
 	
 	self._sniper_scope = managers.weapon_factory:has_perk("sniper_scope", self._factory_id, self._blueprint)
 
@@ -34,6 +40,8 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "hits_update_stats_
 	self._sprint_exit_time = weapon_tweak.sprint_exit_time or 0.4
 
 	self._headshot_dmg_mul = weapon_tweak.headshot_dmg_mul or 1
+	
+	self._total_ammo_multiplier = weapon_tweak.total_ammo_multiplier or 1
 	
 	self._ads_speed_multiplier = weapon_tweak.ads_speed_multiplier or 1
 	
@@ -92,6 +100,10 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "hits_update_stats_
 
 		if stats.headshot_dmg_mul then
 			self._headshot_dmg_mul = self._headshot_dmg_mul * stats.headshot_dmg_mul
+		end		
+
+		if stats.total_ammo_multiplier then
+			self._total_ammo_multiplier = self._total_ammo_multiplier * stats.total_ammo_multiplier
 		end		
 	end
 	
@@ -188,7 +200,9 @@ function NewRaycastWeaponBase:headshot_dmg_multiplier()
 	local weapon_tweak = self:weapon_tweak_data()
 
 	local fire_modes = weapon_tweak.fire_mode_data and weapon_tweak.fire_mode_data.toggable 
-
+	
+	multiplier = multiplier * self._headshot_dmg_mul  
+	
 	if fire_modes then
 		for _, fire_mode in ipairs(fire_modes) do
 			if self:fire_mode() == fire_mode then
@@ -202,6 +216,8 @@ function NewRaycastWeaponBase:headshot_dmg_multiplier()
 	for _, category in ipairs(categories) do
 		multiplier = multiplier * managers.player:upgrade_value(category, "headshot_damage_multiplier", 1)
 	end
+
+	multiplier = multiplier * managers.player:upgrade_value("weapon", "passive_headshot_damage_multiplier", 1)
 	
 	if self._alt_fire_active and self._alt_fire_data then
 		multiplier = multiplier * (self._alt_fire_data.headshot_dmg_mul or 1)
@@ -660,7 +676,7 @@ function NewRaycastWeaponBase:is_weak_hit(distance, user_unit)
 
 	local f = math.clamp(math.max( 0, (distance - optimal_end) ) / far_dist, 0, 1)
 	
-	scale_mul = math.lerp(1, 0.25, f)
+	scale_mul = math.lerp(1, 0.5, f)
 
 	return scale_mul
 end

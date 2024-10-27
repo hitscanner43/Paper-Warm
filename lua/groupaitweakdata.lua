@@ -37,6 +37,14 @@ function GroupAITweakData:allowed_groups_table()
 				Marksman = true,
 				Soldiers = true,
 				
+				SKM_assault = true,
+				SKM_shield = true,
+				SKM_taser = true,
+				SKM_bulldozer = true,
+				SKM_cloaker = true,
+				SKM_grenadier = true,
+				SKM_marksman = true,
+				
 				single_spooc = true
 			},
 			no_shields = { 				
@@ -70,6 +78,14 @@ function GroupAITweakData:allowed_groups_table()
 				Grenadier = true,
 				Marksman = true,
 				Soldiers = true,
+				
+				SKM_assault = true,
+				SKM_shield = false,
+				SKM_taser = true,
+				SKM_bulldozer = true,
+				SKM_cloaker = true,
+				SKM_grenadier = true,
+				SKM_marksman = true,
 				
 				single_spooc = true
 			},
@@ -105,6 +121,14 @@ function GroupAITweakData:allowed_groups_table()
 				Marksman = true,
 				Soldiers = true,
 				
+				SKM_assault = true,
+				SKM_shield = true,
+				SKM_taser = true,
+				SKM_bulldozer = true,
+				SKM_cloaker = true,
+				SKM_grenadier = true,
+				SKM_marksman = true,
+				
 				single_spooc = true
 			},
 			no_shields_tanks = { 	
@@ -138,6 +162,14 @@ function GroupAITweakData:allowed_groups_table()
 				Grenadier = true,
 				Marksman = true,
 				Soldiers = true,
+				
+				SKM_assault = true,
+				SKM_shield = false,
+				SKM_taser = true,
+				SKM_bulldozer = false,
+				SKM_cloaker = true,
+				SKM_grenadier = true,
+				SKM_marksman = true,
 				
 				single_spooc = true
 			},
@@ -173,6 +205,14 @@ function GroupAITweakData:allowed_groups_table()
 				Marksman = true,
 				Soldiers = true,
 				
+				SKM_assault = true,
+				SKM_shield = false,
+				SKM_taser = true,
+				SKM_bulldozer = false,
+				SKM_cloaker = true,
+				SKM_grenadier = true,
+				SKM_marksman = true,
+								
 				single_spooc = true
 			},
 			lights_heavies_only = { 		
@@ -207,6 +247,14 @@ function GroupAITweakData:allowed_groups_table()
 				Marksman = false,
 				Soldiers = false,
 				
+				SKM_assault = true,
+				SKM_shield = false,
+				SKM_taser = false,
+				SKM_bulldozer = false,
+				SKM_cloaker = false,
+				SKM_grenadier = false,
+				SKM_marksman = false,
+						
 				single_spooc = false
 			},
 			spooc_only = { 				
@@ -240,6 +288,14 @@ function GroupAITweakData:allowed_groups_table()
 				Grenadier = false,
 				Marksman = false,
 				Soldiers = false,
+				
+				SKM_assault = false,
+				SKM_shield = false,
+				SKM_taser = false,
+				SKM_bulldozer = false,
+				SKM_cloaker = false,
+				SKM_grenadier = false,
+				SKM_marksman = false,
 				
 				single_spooc = true
 			},
@@ -3351,5 +3407,221 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 			}
 		}
 	}
+
+	--Holdout related crap begins here
 	
+	local heavy_freq_by_wave_1 = {}
+	for i = 0, 6, 1 do
+		local wave_factor = i - 1
+		table.insert(heavy_freq_by_wave_1, 0 + (i * 0.6))
+	end 
+
+	local heavy_freq_by_wave_2 = {}
+	for i = 0, 6, 1 do
+		local wave_factor = i - 1
+		table.insert(heavy_freq_by_wave_2, 0 + (i * 0.3))
+	end 
+	
+	local medic_freq_by_wave_1 = {}
+	for i = 0, 9, 1 do
+		local wave_factor = i - 1
+		table.insert(medic_freq_by_wave_1, -1 + (i * 0.25))
+	end 
+
+	local cop_freq_by_wave = {}
+	for i = 0, 6, 1 do
+		local wave_factor = i - 1
+		table.insert(cop_freq_by_wave, 2 - (i * 0.4))
+	end 
+		
+	local skirmish_swat_random_tactics_1 = { self._tactics.swat_def, self._tactics.swat_def, self._tactics.swat_snk }
+	local skirmish_swat_random_tactics_2 = { self._tactics.swat_agg, self._tactics.swat_agg, self._tactics.swat_snk }
+
+	self.enemy_spawn_groups.SKM_assault = {
+		amount = { 3, 4 },
+		spawn = {
+			{
+				freq_by_wave = heavy_freq_by_wave_1,
+				rank = 3,
+				unit = "CS_Heavy_1",
+				random_tactics = skirmish_swat_random_tactics_1
+			},
+			{
+				freq_by_wave = heavy_freq_by_wave_2,
+				rank = 3,
+				unit = "CS_Heavy_2",
+				random_tactics = skirmish_swat_random_tactics_2
+			},
+			{
+				amount_min = 1,
+				freq = 2,
+				rank = 2,
+				unit = "CS_Light_1",
+				random_tactics = skirmish_swat_random_tactics_1
+			},
+			{
+				freq = 1,
+				rank = 2,
+				unit = "CS_Light_2",
+				random_tactics = skirmish_swat_random_tactics_2
+			},
+			{
+				freq = 1.5,
+				rank = 2,
+				unit = "CS_Light_3",
+				random_tactics = skirmish_swat_random_tactics_1
+			},
+			{
+				amount_max = 1,
+				freq_by_wave = medic_freq_by_wave_1,
+				rank = 1,
+				unit = "Medic",
+				tactics = self._tactics.medic
+			},
+			{
+				amount_max = 2,
+				freq_by_wave = cop_freq_by_wave,
+				rank = 1,
+				unit = "CS_Cop_1_2",
+				tactics = self._tactics.agent_snk
+			}
+		}
+	}
+
+	local medic_freq_by_wave_2 = {}
+	for i = 0, 9, 1 do
+		local wave_factor = i - 1
+		table.insert(medic_freq_by_wave_2, -0.5 + (i * 0.125))
+	end 
+
+	local light_freq_by_wave = {}
+	for i = 0, 6, 1 do
+		local wave_factor = i - 1
+		table.insert(light_freq_by_wave, 1 - (i * 0.15))
+	end 
+
+	local heavy_freq_by_wave_3 = {}
+	for i = 0, 6, 1 do
+		local wave_factor = i - 1
+		table.insert(heavy_freq_by_wave_3, -0.5 - (i * 0.3))
+	end 
+	
+	self.enemy_spawn_groups.SKM_shield = {
+		amount = { 4, 4 },
+		spawn = {
+			{
+				freq_by_wave = light_freq_by_wave,
+				rank = 2,
+				unit = "CS_Light",
+				tactics = self._tactics.shield_support
+			},
+			{
+				freq_by_wave = heavy_freq_by_wave_3,
+				rank = 2,
+				unit = "CS_Heavy",
+				tactics = self._tactics.shield_support
+			},
+			{
+				amount_min = 1,
+				freq = 1,
+				amount_max = 1,
+				rank = 3,
+				unit = "CS_Shield",
+				random_tactics = shield_random_tactics
+			},
+			{
+				amount_max = 1,
+				freq_by_wave = medic_freq_by_wave_2,
+				rank = 1,
+				unit = "Medic",
+				tactics = self._tactics.medic
+			}				
+		}
+	}
+	
+	self.enemy_spawn_groups.SKM_taser = {
+		amount = { 3, 3 },
+		spawn = {
+			{
+				freq = 1,
+				rank = 2,
+				unit = "CS_Light",
+				random_tactics = taser_random_tactics
+			},
+			{
+				amount_min = 1,
+				freq = 1,
+				amount_max = 1,
+				rank = 3,
+				unit = "Taser",
+				random_tactics = taser_random_tactics
+			},
+			{
+				amount_max = 1,
+				freq_by_wave = medic_freq_by_wave_2,
+				rank = 1,
+				unit = "Medic",
+				tactics = self._tactics.medic
+			}		
+		}
+	}
+
+	self.enemy_spawn_groups.SKM_bulldozer = {
+		amount = { 3, 4 },
+		spawn = {
+			{
+				freq = 1,
+				rank = 2,
+				unit = "CS_Heavy",
+				tactics = self._tactics.bulldozer_support
+			},
+			{
+				amount_min = 1,
+				freq = 1,
+				amount_max = 1,
+				rank = 3,
+				unit = "Bulldozer",
+				tactics = self._tactics.bulldozer
+			},
+			{
+				amount_max = 1,
+				freq_by_wave = medic_freq_by_wave_2,
+				rank = 1,
+				unit = "Medic",
+				tactics = self._tactics.medic
+			}		
+		}
+	}
+		
+	self.enemy_spawn_groups.SKM_grenadier = {
+		amount = { 3, 3 },
+		spawn = {
+			{
+				freq = 1,
+				rank = 2,
+				unit = "CS_Light",
+				random_tactics = grenadier_random_tactics
+			},
+			{
+				amount_min = 1,
+				freq = 1,
+				amount_max = 1,
+				rank = 3,
+				unit = "Grenadier",
+				random_tactics = grenadier_random_tactics
+			},
+			{
+				amount_max = 1,
+				freq_by_wave = medic_freq_by_wave_2,
+				rank = 1,
+				unit = "Medic",
+				tactics = self._tactics.medic
+			}		
+		}
+	}
+		
+	self.enemy_spawn_groups.SKM_cloaker = deep_clone(self.enemy_spawn_groups.Cloaker)
+
+	self.enemy_spawn_groups.SKM_marksman = deep_clone(self.enemy_spawn_groups.Marksman)
+		
 end)

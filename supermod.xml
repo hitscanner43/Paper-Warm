@@ -42,6 +42,7 @@
 				</group>	
 				<post :hook_id="dynamicresourcemanager"/>		
 				<post :hook_id="crimespreemanager"/>				
+				<post :hook_id="skirmishmanager"/>
 				<post :hook_id="blackmarketmanager"/>
 				<post :hook_id="missionmanager"/>
 				<post :hook_id="hudmanager"/>
