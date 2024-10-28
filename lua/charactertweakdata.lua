@@ -138,8 +138,8 @@ local _presets_original = CharacterTweakData._presets
 function CharacterTweakData:_presets(tweak_data, ...)
 	local presets = _presets_original(self, tweak_data, ...)
 
-	local dmg_mul_tbl = { 0.5, 0.5, 0.75, 1, 1.25, 1.5, 1.5, 1.5 }
-	local dmg_mul_lin_tbl = { 0.5, 0.5, 0.75, 1, 1.5, 2, 2, 2 }
+	local dmg_mul_tbl = { 0.5, 0.5, 0.75, 1, 1.5, 2, 2, 2 }
+	local dmg_mul_lin_tbl = { 0.5, 0.5, 0.75, 1, 1.25, 1.5, 1.5, 1.5 }
 	local special_dmg_mul_tbl = { 0.4, 0.4, 0.55, 0.7, 0.85, 1, 1, 1 }
 	local aim_delay_mul_tbl = { 1.125, 1, 0.875, 0.75, 0.625, 0.5, 0.375, 0.25 }
 
@@ -409,7 +409,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	presets.weapon.tank.is_lmg.autofire_rounds = { 20, 40 }	
 	presets.weapon.tank.is_lmg.FALLOFF = {
 		{ dmg_mul = 3 * special_dmg_mul, r = 0, acc = { 0.3, 0.6 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 1 * special_dmg_mul, r = 3000, acc = { 0.2, 0.4 }, recoil = { 2, 3 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 1.5 * special_dmg_mul, r = 3000, acc = { 0.2, 0.4 }, recoil = { 2, 3 }, mode = { 1, 0, 0, 0 } }
 	}
 
 	presets.weapon.tank.mini.no_autofire_stop = true
