@@ -414,12 +414,12 @@ function WeaponTweakData:_init_weapons()
 					weap_data.spread_multiplier = {
 						standing = {
 							hipfire = 1,
-							crouching = 0.7,
+							crouching = 0.6,
 							steelsight = 1
 						},
 						moving = {
 							hipfire = 2,
-							crouching = 0.7,
+							crouching = 0.6,
 							steelsight = 1
 						}
 					}
@@ -452,12 +452,12 @@ function WeaponTweakData:_init_weapons()
 						standing = {
 							hipfire = 1.2,
 							crouching = 0.8,
-							steelsight = 1
+							steelsight = 0.8
 						},
 						moving = {
 							hipfire = 1.5,
 							crouching = 0.8,
-							steelsight = 1.2
+							steelsight = 1
 						}
 					}
 				end		
@@ -627,12 +627,12 @@ function WeaponTweakData:_init_weapons()
 					weap_data.spread_multiplier = {
 						standing = {
 							hipfire = 1,
-							crouching = 0.7,
+							crouching = 0.6,
 							steelsight = 1
 						},
 						moving = {
 							hipfire = 2,
-							crouching = 0.7,
+							crouching = 0.6,
 							steelsight = 1
 						}
 					}
@@ -665,12 +665,12 @@ function WeaponTweakData:_init_weapons()
 						standing = {
 							hipfire = 1.2,
 							crouching = 0.8,
-							steelsight = 1
+							steelsight = 0.8
 						},
 						moving = {
 							hipfire = 1.5,
 							crouching = 0.8,
-							steelsight = 1.2
+							steelsight = 1
 						}
 					}
 				end			
