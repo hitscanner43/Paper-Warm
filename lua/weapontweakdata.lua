@@ -111,10 +111,17 @@ function WeaponTweakData:_init_weapons()
 			burst = {
 				recoil = 0.8,
 				spread = 0.6,
-				falloff_range = 1.25,
+				falloff_range = 1,
 				headshot_dmg_mul = 1.25
 			},
 			volley = {}
+		}
+		
+		local base_penetration_damage_mul = {
+			shield = 0.5,
+			wall = 0.4,
+			armor = 0.6,
+			enemy = 0.8
 		}
 	
 		if type(weap_data) == "table" and weap_data.stats then
@@ -293,7 +300,7 @@ function WeaponTweakData:_init_weapons()
 					standing = {
 						hipfire = 1,
 						crouching = 1,
-						steelsight = 0.8
+						steelsight = 0.6
 					},
 					moving = {
 						hipfire = 1.5,
@@ -303,12 +310,12 @@ function WeaponTweakData:_init_weapons()
 				}
 				weap_data.recoil_multiplier = {
 					standing = {
-						hipfire = 1.2,
+						hipfire = 1,
 						crouching = 1,
-						steelsight = 1
+						steelsight = 0.8
 					},
 					moving = {
-						hipfire = 1.4,
+						hipfire = 1.2,
 						crouching = 1,
 						steelsight = 1
 					}
@@ -384,6 +391,9 @@ function WeaponTweakData:_init_weapons()
 					}
 				}
 
+				weap_data.penetration_damage_mul = base_penetration_damage_mul
+				weap_data.penetration_damage_mul.armor = 0.8
+
 				weap_data.damage_falloff = no_falloff
 				
 			elseif cat_map.lmg then
@@ -440,13 +450,13 @@ function WeaponTweakData:_init_weapons()
 					}
 					weap_data.recoil_multiplier = {
 						standing = {
-							hipfire = 1.4,
-							crouching = 0.7,
+							hipfire = 1.2,
+							crouching = 0.8,
 							steelsight = 1
 						},
 						moving = {
-							hipfire = 1.8,
-							crouching = 0.7,
+							hipfire = 1.5,
+							crouching = 0.8,
 							steelsight = 1.2
 						}
 					}
@@ -498,6 +508,9 @@ function WeaponTweakData:_init_weapons()
 						steelsight = 1
 					}
 				}
+				
+				weap_data.penetration_damage_mul = base_penetration_damage_mul
+				weap_data.penetration_damage_mul.armor = 0.8
 
 				if weap_data.fire_mode_data and weap_data.fire_mode_data.fire_rate > 1 then
 					weap_data.fire_rate_multiplier = weap_data.fire_mode_data.fire_rate 
@@ -650,13 +663,13 @@ function WeaponTweakData:_init_weapons()
 					}
 					weap_data.recoil_multiplier = {
 						standing = {
-							hipfire = 1.4,
-							crouching = 0.7,
+							hipfire = 1.2,
+							crouching = 0.8,
 							steelsight = 1
 						},
 						moving = {
-							hipfire = 1.8,
-							crouching = 0.7,
+							hipfire = 1.5,
+							crouching = 0.8,
 							steelsight = 1.2
 						}
 					}
@@ -687,22 +700,22 @@ function WeaponTweakData:_init_weapons()
 					standing = {
 						hipfire = 1,
 						crouching = 1,
-						steelsight = 0.8
+						steelsight = 0.6
 					},
 					moving = {
-						hipfire = 2,
+						hipfire = 1.5,
 						crouching = 1,
 						steelsight = 1
 					}
 				}
 				weap_data.recoil_multiplier = {
 					standing = {
-						hipfire = 1.2,
+						hipfire = 1,
 						crouching = 1,
-						steelsight = 1
+						steelsight = 0.8
 					},
 					moving = {
-						hipfire = 1.4,
+						hipfire = 1.2,
 						crouching = 1,
 						steelsight = 1
 					}
@@ -932,12 +945,7 @@ function WeaponTweakData:_init_weapons()
 			weap_data.panic_suppression_chance = 0.2
 			weap_data.in_air_spread_multiplier = 5
 			weap_data.sprint_exit_time = weap_data.sprint_exit_time or 0.4		
-			weap_data.penetration_damage_mul = {
-				shield = 0.5,
-				wall = 0.4,
-				armor = 0.6,
-				enemy = 0.8
-			}
+			weap_data.penetration_damage_mul = weap_data.penetration_damage_mul or base_penetration_damage_mul
 			
 			if weap_data.stats and weap_data.stats.reload == 11 then
 				weap_data.stats.reload = 100
@@ -954,16 +962,16 @@ function WeaponTweakData:_init_weapons()
 	
 			if weap_data.kick then
 				if cat_map.assault_rifle then
-					weap_data.kick.standing = { 0.6, 0.8, -0.6, 0.6 }	
+					weap_data.kick.standing = { 0.6, 0.8, -0.5, 0.5 }	
 					
 				elseif cat_map.smg then
-					weap_data.kick.standing = { 0.4, 0.6, -0.8, 0.8 }	
+					weap_data.kick.standing = { 0.4, 0.5, -0.6, 0.6 }	
 				
 				elseif cat_map.lmg then
-					weap_data.kick.standing = { 0.2, 0.4, -1, 1 }	
+					weap_data.kick.standing = { 0.2, 0.3, -0.8, 0.8 }	
 					
 				elseif cat_map.minigun then
-					weap_data.kick.standing = { 0.1, 0.2, -0.4, 0.4 }	
+					weap_data.kick.standing = { 0.1, 0.15, -0.4, 0.4 }	
 					
 				elseif cat_map.pistol or cat_map.dmr then
 					weap_data.kick.standing = { 1, 1.5, -0.4, 0.2 }	
