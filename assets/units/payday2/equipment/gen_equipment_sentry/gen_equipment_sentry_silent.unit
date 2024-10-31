@@ -30,7 +30,7 @@
 			<var name="_spin_stop_snd_event" value="turret_spin_stop" />
 			<var name="_attention_acquired_snd_event" value="turret_alert" />
 		</extension>
-    <extension name="weapon" class="SilentSentryGunBase" >
+    <extension name="weapon" class="SilentSentryGunWeapon" >
     	<var name="name_id" value="sentry_gun" />
 			<var name="_fire_start_snd_event" value="turret_fire_sup" />
 			<var name="_fire_stop_snd_event" value="turret_fire_sup_end" />

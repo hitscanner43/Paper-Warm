@@ -5,9 +5,9 @@ Hooks:PostHook(SentryGunWeapon, "setup", "setup_sentry_tweaks", function (self)
 	end
 end)
 
-SiolentSentryGunWeapon = SiolentSentryGunWeapon or class(SentryGunWeapon)
+SilentSentryGunWeapon = SilentSentryGunWeapon or class(SentryGunWeapon)
 
-function SiolentSentryGunWeapon:_fire_raycast(from_pos, direction, shoot_player, target_unit)
+function SilentSentryGunWeapon:_fire_raycast(from_pos, direction, shoot_player, target_unit)
 	local result = {}
 	local hit_unit, col_ray = nil
 
