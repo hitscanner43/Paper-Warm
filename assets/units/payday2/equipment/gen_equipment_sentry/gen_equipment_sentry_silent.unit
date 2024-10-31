@@ -20,7 +20,7 @@
     </extension>
     <extension name="contour" class="ContourExt" />
     <extension name="network" class="NetworkBaseExtension" />
-    <extension name="brain" class="SilentSentryGunBrain" />
+    <extension name="brain" class="SentryGunBrain" />
 		<extension name="movement" class="SentryGunMovement">
 			<var name="_spin_obj_name" value="a_shield" />
 			<var name="_pitch_obj_name" value="a_gun" />

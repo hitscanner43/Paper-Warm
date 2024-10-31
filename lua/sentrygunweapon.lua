@@ -7,6 +7,7 @@ end)
 
 SilentSentryGunWeapon = SilentSentryGunWeapon or class(SentryGunWeapon)
 
+--[[
 function SilentSentryGunWeapon:_fire_raycast(from_pos, direction, shoot_player, target_unit)
 	local result = {}
 	local hit_unit, col_ray = nil
@@ -21,12 +22,16 @@ function SilentSentryGunWeapon:_fire_raycast(from_pos, direction, shoot_player, 
 	if not self._setup.ignore_units then
 		return
 	end
-	
-	local col_rays = World:raycast_all("ray", from_pos, mvec_to, "slot_mask", self._bullet_slotmask, "ignore_unit", self._setup.ignore_units)
-	col_ray = col_rays[1]
 
-	if col_ray and col_ray.unit:in_slot(8) and alive(col_ray.unit:parent()) then
-		col_ray = col_rays[2] or col_ray
+	if self._use_armor_piercing then
+		local col_rays = World:raycast_all("ray", from_pos, mvec_to, "slot_mask", self._bullet_slotmask, "ignore_unit", self._setup.ignore_units)
+		col_ray = col_rays[1]
+
+		if col_ray and col_ray.unit:in_slot(8) and alive(col_ray.unit:parent()) then
+			col_ray = col_rays[2] or col_ray
+		end
+	else
+		col_ray = World:raycast("ray", from_pos, mvec_to, "slot_mask", self._bullet_slotmask, "ignore_unit", self._setup.ignore_units)
 	end
 
 	local player_hit, player_ray_data = nil
@@ -64,3 +69,4 @@ function SilentSentryGunWeapon:_fire_raycast(from_pos, direction, shoot_player, 
 
 	return result
 end
+]]--
