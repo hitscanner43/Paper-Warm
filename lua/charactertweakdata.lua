@@ -1119,8 +1119,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.commander.die_sound_event = "mga_death_scream"
 	table.insert(self._enemy_list, "commander")
 	
-	self.tank.HEALTH_INIT = 200
-	self.tank.headshot_dmg_mul = 20
+	self.tank.HEALTH_INIT = 400
+	self.tank.headshot_dmg_mul = 25
 	self.tank.limb_dmg_mul = 1
 	self.tank.weapon = self.presets.weapon.tank
 	self.tank.move_speed = self.presets.move_speed.slow
@@ -1389,7 +1389,7 @@ function CharacterTweakData:_set_presets()
 	self.spooc.spooc_attack_timeout = { math.lerp(6, 2, f), math.lerp(8, 4, f) }
 	self.shadow_spooc.shadow_spooc_attack_timeout = self.spooc.spooc_attack_timeout
 	
-	local armor_hp_mul = math.lerp(1, 3, f)
+	local armor_hp_mul = math.lerp(1, 4, f)
 	
 	self.tank.armor_damage_mul = 1 / armor_hp_mul
 
