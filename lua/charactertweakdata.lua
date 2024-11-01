@@ -384,7 +384,9 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		aim_delay_throw = { 0, 2 * aim_delay_mul }
 	})
 	
-	presets.weapon.spooc = based_on(presets.weapon.swat)
+	presets.weapon.spooc = based_on(presets.weapon.swat, {
+		range = { close = 500, optimal = 1000, far = 2000 },
+	})
 
 	recoil_multiplier(presets.weapon.spooc, 0.75)
 	
@@ -459,7 +461,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	presets.weapon.gang_member.is_lmg.no_autofire_stop = true
 	presets.weapon.gang_member.mini.no_autofire_stop = true
 
-	presets.gang_member_damage.HEALTH_INIT = 30 + ((diff_i - 2) * 15)
+	presets.gang_member_damage.HEALTH_INIT = 40 + ((diff_i - 2) * 20)
 	presets.gang_member_damage.FRIENDLY_FIRE_DAMAGE_MUL = presets.gang_member_damage.HEALTH_INIT / 30
 	presets.gang_member_damage.MIN_DAMAGE_INTERVAL = 0.05
 	presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = presets.gang_member_damage.HEALTH_INIT / 10
@@ -1024,7 +1026,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.shield.damage.explosion_damage_mul = 1
 	self.shield.weapon = self.presets.weapon.shield
 	self.shield.move_speed = self.presets.move_speed.very_fast
-	self.shield.move_speed.crouch = self.shield.move_speed.stand
 	self.shield.min_obj_interrupt_dis = 600
 	self.shield.ecm_vulnerability = 0
 	self.shield.spawn_sound_event = "shield_identification" 
@@ -1067,9 +1068,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.grenadier.chatter = self.presets.enemy_chatter.no_chatter
 	self.grenadier.special_deaths = nil
 	self.grenadier.spawn_sound_event = nil
-	--self.grenadier.no_grenade_anim = true
-	self.grenadier.recoil_grenade_anim = true
-	--self.grenadier.throwable = nil --until i properly implement them
+	self.grenadier.recoil_grenade_anim = true --used for groupai grenades
+	self.grenadier.throwable = "concussion_npc"
 	--self.grenadier.throwable_lethal = nil --for now...
 	--self.grenadier.throwable_target_verified = true
 	table.insert(self._enemy_list, "grenadier")
@@ -1389,7 +1389,7 @@ function CharacterTweakData:_set_presets()
 	self.spooc.spooc_attack_timeout = { math.lerp(6, 2, f), math.lerp(8, 4, f) }
 	self.shadow_spooc.shadow_spooc_attack_timeout = self.spooc.spooc_attack_timeout
 	
-	local armor_hp_mul = math.lerp(1, 4, f)
+	local armor_hp_mul = math.lerp(1, 3, f)
 	
 	self.tank.armor_damage_mul = 1 / armor_hp_mul
 
