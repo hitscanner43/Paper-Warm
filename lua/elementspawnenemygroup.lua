@@ -33,44 +33,35 @@ end
 -- Update preferred spawn groups to contain new groups and add intervals to groups with special spawn actions
 ElementSpawnEnemyGroup.group_mapping = {
 	tac_swat_rifle = {
-		"CS_assault_a",
-		"CS_assault_b",		
-		"CS_assault_c",
-		"CS_reinforce_a",
-		"CS_reinforce_b",	
-		"CS_reinforce_c",		
-		"CS_recon_a",	
-		"CS_recon_b",			
-		"FBI_assault_a",
-		"FBI_assault_b",		
-		"FBI_assault_c",
-		"FBI_assault_d",
-		"FBI_reinforce_a",
-		"FBI_reinforce_b",	
-		"FBI_reinforce_c",		
-		"FBI_recon_a",	
-		"FBI_recon_b",	
-		"Grenadier",
-		"Marksman",
-		"Soldiers",
+		"assault_a",
+		"assault_b",		
+		"assault_c",
+		"reinforce_a",
+		"reinforce_b",	
+		"reinforce_c",		
+		"recon_a",	
+		"recon_b",			
+		"grenadier",
+		"marksman",
+		"soldiers",
 		"SKM_assault",
 		"SKM_grenadier",
 		"SKM_marksman",
 	},
 	tac_shield_wall = {
-		"Shield",
+		"shield",
 		"SKM_shield"
 	},
 	tac_tazer_flanking = {
-		"Taser",
+		"taser",
 		"SKM_taser"
 	},
 	FBI_spoocs = {
-		"Cloaker",
+		"cloaker",
 		"SKM_cloaker"
 	},
 	tac_bull_rush = {
-		"Bulldozer",
+		"bulldozer",
 		"SKM_bulldozer"
 	}
 }

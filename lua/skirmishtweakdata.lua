@@ -1,4 +1,4 @@
--- Scale assault duration based on wave number and shorten time in between assaults
+--[[ Scale assault duration based on wave number and shorten time in between assaults
 Hooks:PostHook(SkirmishTweakData, "init", "hits_init", function (self, tweak_data)
 	local skirmish_data = tweak_data.group_ai.skirmish
 	skirmish_data.assault.build_duration = 10
@@ -40,8 +40,7 @@ end)
 
 -- Reduce the amount of enemies in Holdout as the mission area is small and it is wave based
 Hooks:PostHook(SkirmishTweakData, "_init_group_ai_data", "hits_init_group_ai_data", function (self, tweak_data)
-	local 
-	= tweak_data.group_ai.skirmish
+	local skirmish_data = tweak_data.group_ai.skirmish
 
 	local lvl_tweak_data = Global.level_data and Global.level_data.level_id and tweak_data.levels[Global.level_data.level_id]
 	
@@ -79,8 +78,8 @@ Hooks:PostHook(SkirmishTweakData, "_init_group_ai_data", "hits_init_group_ai_dat
 	
 	skirmish_data.recon.force = { 0, 0, 0 }
 	
-    skirmish_data.spawn_rate = nil
-    setmetatable(skirmish_data.assault, {
+    tweak_data.group_ai.spawn_rate = nil
+    setmetatable(tweak_data.group_ai, {
         __index = function (t, k)
             if k == "spawn_rate" then
                 local spawn_rate = 2.5 - (managers.skirmish:current_wave_number() - 1) * 0.1875
@@ -90,8 +89,8 @@ Hooks:PostHook(SkirmishTweakData, "_init_group_ai_data", "hits_init_group_ai_dat
         end
     })
 	
-    skirmish_data.no_grenade_push_delay = nil
-    setmetatable(skirmish_data.assault, {
+    tweak_data.group_ai.no_grenade_push_delay = nil
+    setmetatable(tweak_data.group_ai, {
         __index = function (t, k)
             if k == "no_grenade_push_delay" then
                 local no_grenade_push_delay = 10 - (managers.skirmish:current_wave_number() - 1) * 0.5
@@ -109,9 +108,6 @@ Hooks:PostHook(SkirmishTweakData, "_init_wave_modifiers", "hits_init_wave_modifi
 		wave_data.damage = 1 + (i - 1) * 0.25
 		wave_data.health = 1 + (i - 1) * 0 --health doesn't scale
 	end
-
-	self.wave_modifiers[1][1].data.excluded_enemies.damage = {} --let Sniper damage scale 
-	self.wave_modifiers[5] = {}
 end)
 
 
@@ -154,4 +150,5 @@ Hooks:PostHook(SkirmishTweakData, "_init_spawn_group_weights", "sh__init_spawn_g
 		self.assault.groups[i] = groups
 	end
 end)
+
 
