@@ -70,7 +70,7 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "hits_update_stats_
 	self._moving_hipfire_spread_mul = (weapon_tweak.spread_multiplier and weapon_tweak.spread_multiplier.moving and weapon_tweak.spread_multiplier.moving.hipfire) or 1
 	self._moving_crouching_spread_mul = (weapon_tweak.spread_multiplier and weapon_tweak.spread_multiplier.moving and weapon_tweak.spread_multiplier.moving.crouching) or 1
 	self._moving_steelsight_spread_mul = (weapon_tweak.spread_multiplier and weapon_tweak.spread_multiplier.moving and weapon_tweak.spread_multiplier.moving.steelsight) or 1
-	
+		
 	self._in_air_spread_mul = weapon_tweak.in_air_spread_multiplier or 1
 		
 	for part_id, stats in pairs(custom_stats) do	
@@ -97,7 +97,7 @@ Hooks:PostHook(NewRaycastWeaponBase, "_update_stats_values", "hits_update_stats_
 		if stats.falloff_range_multiplier then
 			self._falloff_range_multiplier = self._falloff_range_multiplier * stats.falloff_range_multiplier
 		end	
-
+		
 		if stats.headshot_dmg_mul then
 			self._headshot_dmg_mul = self._headshot_dmg_mul * stats.headshot_dmg_mul
 		end		
@@ -499,7 +499,9 @@ function NewRaycastWeaponBase:falloff_range_multiplier()
 	if managers.player:current_state() and managers.player:current_state() == "bipod" then
 		multiplier = multiplier * managers.player:upgrade_value(primary_category, "bipod_range_mul", 1)
 		
-		multiplier = multiplier * (weapon_tweak.bipod_range_multiplier or 1)
+		multiplier = multiplier * (weapon_tweak.stance_range_mul and weapon_tweak.stance_range_mul.bipod or 1)
+	elseif current_state and current_state:in_steelsight() then
+		multiplier = multiplier * (weapon_tweak.stance_range_mul and weapon_tweak.stance_range_mul.steelsight or 1)		
 	end
 	
 	if current_state and current_state:in_steelsight() then
@@ -614,6 +616,11 @@ function NewRaycastWeaponBase:reload_exit_expire_t(is_not_empty)
 end
 --]]
 
+Hooks:PreHook(NewRaycastWeaponBase, "_fire_raycast", "hits_fire_raycast", function (self)
+	self._hit_through_enemy = nil
+end)
+
+
 function NewRaycastWeaponBase:get_damage_falloff(damage, col_ray, user_unit)
 	local damage_mul = 1
 
@@ -624,6 +631,14 @@ function NewRaycastWeaponBase:get_damage_falloff(damage, col_ray, user_unit)
 		damage_mul = damage_mul * (penetration_dmg_mul and penetration_dmg_mul.shield or 1)
 	elseif col_ray and col_ray.unit and col_ray.unit:in_slot(managers.slot:get_mask("world_geometry")) then
 		damage_mul = damage_mul * (penetration_dmg_mul and penetration_dmg_mul.wall or 1)
+	end
+
+	if col_ray and col_ray.unit and col_ray.unit:in_slot(managers.slot:get_mask("enemies")) then
+		if self._hit_through_enemy then
+			damage_mul = damage_mul * (penetration_dmg_mul and penetration_dmg_mul.enemy or 1)
+		end
+		
+		self._hit_through_enemy = true
 	end
 	
 	if self._optimal_distance + self._optimal_range == 0 then

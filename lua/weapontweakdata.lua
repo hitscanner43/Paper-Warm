@@ -251,8 +251,9 @@ function WeaponTweakData:_init_weapons()
 					}
 				}
 					
-				if not weap_data.CAN_TOGGLE_FIREMODE then
-					weap_data.fire_mode_mul = nil		
+				if not weap_data.auto then
+					weap_data.fire_mode_mul = nil	
+					
 					weap_data.damage_falloff = {
 						optimal_distance = 0, 
 						optimal_range = 2000, 
@@ -269,11 +270,11 @@ function WeaponTweakData:_init_weapons()
 						auto = {},
 						burst = {
 							recoil = 0.8,
-							spread = 0.6,
-							falloff_range = 1.25
+							spread = 0.6
 						},
 						volley = {}
-					}					
+					}	
+					
 					weap_data.damage_falloff = {
 						optimal_distance = 0, 
 						optimal_range = 1500, 
@@ -321,7 +322,21 @@ function WeaponTweakData:_init_weapons()
 					}
 				}
 				
-				weap_data.fire_mode_mul = nil
+				if not weap_data.auto then
+					weap_data.fire_mode_mul = nil
+				else
+					weap_data.fire_mode_mul = {
+						single = {
+							fire_rate = math.min(500 / ROF, 1)
+						},
+						auto = {},
+						burst = {
+							recoil = 0.8,
+							spread = 0.6
+						},
+						volley = {}
+					}						
+				end
 				
 				weap_data.damage_falloff = no_falloff
 				
@@ -394,7 +409,6 @@ function WeaponTweakData:_init_weapons()
 				weap_data.bipod_deploy_multiplier = 1
 				weap_data.bipod_camera_spin_limit = 40
 				weap_data.bipod_camera_pitch_limit = 15		
-				weap_data.bipod_range_multiplier = 1.5
 
 				weap_data.steelsight_speed_mul = 0.5
 				weap_data.headshot_dmg_mul = 0.75
@@ -449,9 +463,14 @@ function WeaponTweakData:_init_weapons()
 							steelsight = 1
 						}
 					}
-				end		
-
-				weap_data.fire_mode_mul = nil
+				end	
+				
+				weap_data.stance_range_mul = {
+					steelsight = weap_data.no_steelsight and 1 or 1.5,
+					bipod = 2
+				}
+				
+				weap_data.fire_mode_mul = nil		
 			
 				weap_data.damage_falloff = {
 					optimal_distance = 0, 
@@ -665,7 +684,12 @@ function WeaponTweakData:_init_weapons()
 				end			
 
 				weap_data.fire_mode_mul = nil
-			
+
+				weap_data.stance_range_mul = {
+					steelsight = weap_data.no_steelsight and 1 or 1.5,
+					bipod = 2
+				}
+				
 				weap_data.damage_falloff = {
 					optimal_distance = 0, 
 					optimal_range = 1000, 
