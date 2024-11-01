@@ -279,7 +279,7 @@ Hooks:OverrideFunction(CopDamage, "damage_bullet", function (self, attack_data)
 	
 	if not self._char_tweak.ignore_headshot and not self._damage_reduction_multiplier and head then
 		if self._char_tweak.headshot_dmg_mul then
-			local headshot_multiplier = math.max(0, self._char_tweak.headshot_dmg_mul - 1) * attack_data.weapon_unit:base():headshot_dmg_multiplier()
+			local headshot_multiplier = math.max(0, self._char_tweak.headshot_dmg_mul - 1) * (alive(attack_data.weapon_unit) and attack_data.weapon_unit:base():headshot_dmg_multiplier() or 1)
 			headshot_multiplier = headshot_multiplier + 1
 			
 			damage = damage * headshot_multiplier
