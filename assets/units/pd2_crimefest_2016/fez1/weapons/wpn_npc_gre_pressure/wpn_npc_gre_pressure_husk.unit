@@ -1,5 +1,5 @@
 <unit type="wpn" slot="1">
-	<object file="units/pd2_crimefest_2016/fez1/weapons/wpn_fps_gre_pressure/wpn_fps_gre_pressure_husk" />
+	<object file="units/pd2_crimefest_2016/fez1/weapons/wpn_npc_gre_pressure/wpn_npc_gre_pressure" />
 	<dependencies>
 		<depends_on bnk="soundbanks/concussion_grenade"/>
 	</dependencies>

@@ -1,5 +1,4 @@
 if not PaperWarm then
-
 	PaperWarm = {
 		mod_path = ModPath,
 		save_path = SavePath .. "paper_warm.json",

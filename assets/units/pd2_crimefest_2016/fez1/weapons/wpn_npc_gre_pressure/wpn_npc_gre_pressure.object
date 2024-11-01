@@ -2,11 +2,14 @@
 	<diesel materials="units/pd2_crimefest_2016/fez1/weapons/wpn_fps_gre_pressure/wpn_third_gre_pressure" orientation_object="rp_wpn_third_gre_pressure" />
 	<sequence_manager file="units/payday2/weapons/wpn_frag_grenade/wpn_frag_grenade" />
 	<bodies>
-		<body name="body_static" enabled="true" template="small_prop" friction="0.5" sweep="true" restitution="0.5" ang_damping="0.1" pushed_by_mover="false">
+		<body name="static_body" enabled="true" template="dynamic" collision_class="projectile" friction="0.5" sweep="true" restitution="0.4" ang_damping="0.1" pushed_by_mover="false" collides_with_mover="false" >
 			<object name="rp_wpn_third_gre_pressure" />
-			<object name="c_cylinder" collision_type="box" padding="-2.5" mass="0.5" />
+			<object name="c_box" collision_type="box" padding="-2.5" mass="0.5" />
 		</body>
 	</bodies>
+	<decal_surfaces default_material="metal">
+		<decal_mesh name="g_body" 	enabled="true" 	material="metal" />
+	</decal_surfaces>
 	<graphics>
 		<object name="g_body" enabled="true" />
 	</graphics>

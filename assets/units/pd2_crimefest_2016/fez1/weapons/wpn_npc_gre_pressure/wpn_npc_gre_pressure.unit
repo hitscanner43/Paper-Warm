@@ -1,6 +1,6 @@
 <unit type="item" slot="14">
 	<network sync="spawn"/>
-	<object file="units/pd2_crimefest_2016/fez1/weapons/wpn_fps_gre_pressure/wpn_third_gre_pressure" />
+	<object file="units/pd2_crimefest_2016/fez1/weapons/wpn_npc_gre_pressure/wpn_npc_gre_pressure" />
 	<dependencies>
 		<depends_on unit="units/pd2_crimefest_2016/fez1/weapons/wpn_npc_gre_pressure/wpn_npc_gre_pressure_husk" />
 		<depends_on effect="effects/particles/explosions/explosion_flash_grenade" />

@@ -37,7 +37,6 @@
 				<group :hook_id="menu/">
 					<post :hook_id="blackmarketgui"/>
 					<post :hook_id="playerinventorygui"/>
-					<post :hook_id="skilltreegui"/>
 					<post :hook_id="stageendscreentabcrimespree"/>
 				</group>	
 				<post :hook_id="dynamicresourcemanager"/>		
@@ -259,6 +258,8 @@
 			<file :name="wpn_npc_gre_pressure/wpn_npc_gre_pressure.object"/>
 			<file :name="wpn_npc_gre_pressure/wpn_npc_gre_pressure.unit"/>
 			<file :name="wpn_npc_gre_pressure/wpn_npc_gre_pressure_husk.unit" />
+			<file :name="wpn_npc_gre_pressure/wpn_npc_gre_pressure.model"/>
+			<file :name="wpn_npc_gre_pressure/wpn_npc_gre_pressure.cooked_physics" />
 		</group>
 		
 		<group name="units/payday2/equipment/">	
