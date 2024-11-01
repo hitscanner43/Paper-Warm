@@ -1873,7 +1873,8 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 
 	self.parts.wpn_fps_upg_a_slug.stats = { damage = -60, spread = 4, total_ammo_mod = -25 }
 	self.parts.wpn_fps_upg_a_slug.custom_stats = { 
-		headshot_multiplier = 1.25, 
+		muzzleflash = "effects/payday2/particles/weapons/shotgun/big_762_auto_fps",
+		headshot_dmg_mul = 2, 
 		falloff_range_multiplier = 1.5, 
 		ammo_pickup_max_mul = 1, 
 		ammo_pickup_min_mul = 1, 
@@ -1924,11 +1925,11 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 
 		self[weap_id].override.wpn_fps_upg_a_piercing.damage = -45
 
-		self[weap_id].override.wpn_fps_upg_a_slug.damage = -60
+		self[weap_id].override.wpn_fps_upg_a_slug.damage = -90
 		
 		self[weap_id].override.wpn_fps_upg_a_dragons_breath.damage = -45
 		
-		self[weap_id].override.wpn_fps_upg_a_rip.damage = -60
+		self[weap_id].override.wpn_fps_upg_a_rip.damage = -90
 	end
 
 	for i, weap_id in pairs(pump_shotgun) do
@@ -1956,7 +1957,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 		
 		self[weap_id].override.wpn_fps_upg_a_rip.damage = -150
 	end
-]]
+]]--
 	self.parts.wpn_fps_fla_mk2_a_rare = {
 		type = "ammo",
 		a_obj = "a_body",

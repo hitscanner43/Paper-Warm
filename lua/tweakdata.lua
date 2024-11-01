@@ -34,13 +34,37 @@ tweak_data.player.stances.contender.steelsight.shakers.breathing.amplitude = 0
 
 local base_curve_pow = 2
 
+local npc_grenade_warning_data = {
+	play_after_impact = true,
+	beep_speeds = {
+		0.1,
+		0.025
+	},
+	sound_data = {
+		event_name = "grenade_sticky_beep",
+		event_stop_name = "grenade_sticky_beep_stop"
+	},
+	light_data = {
+		type_str = "omni|specular",
+		range = 500,
+		beep_mul = 0.3,
+		falloff_exp = 0.5,
+		beep_fade_speed = 4,
+		specular_mul = 0.5,
+		link_to_unit = true,
+		color = Vector3(255, 0, 0),
+	}
+} 
+
 tweak_data.projectiles.frag.damage = 36
 tweak_data.projectiles.frag.curve_pow = base_curve_pow
 tweak_data.projectiles.frag.range = 400
 tweak_data.projectiles.frag.launch_speed = 350
 
 tweak_data.projectiles.frag_npc = clone(tweak_data.projectiles.frag)
-tweak_data.projectiles.frag_npc.timer = 3
+tweak_data.projectiles.frag_npc.init_timer = 3
+tweak_data.projectiles.frag_npc.sweep_radius = 25
+tweak_data.projectiles.frag_npc.warning_data = npc_grenade_warning_data
 
 tweak_data.projectiles.frag_com.damage = 36
 tweak_data.projectiles.frag_com.curve_pow = base_curve_pow
@@ -65,16 +89,9 @@ tweak_data.projectiles.concussion.range = 600
 tweak_data.projectiles.concussion.duration = { additional = 10, min = 5 }
 
 tweak_data.projectiles.concussion_npc = clone(tweak_data.projectiles.concussion)
-tweak_data.projectiles.concussion_npc.timer = 3
-
---[[
-tweak_data.projectiles.concussion_npc.light_range = tweak_data.group_ai.flash_grenade.light_range
-tweak_data.projectiles.concussion_npc.light_color = tweak_data.group_ai.flash_grenade.light_color
-tweak_data.projectiles.concussion_npc.light_specular = tweak_data.group_ai.flash_grenade.light_specular
-tweak_data.projectiles.concussion_npc.beep_multi = tweak_data.group_ai.flash_grenade.beep_multi
-tweak_data.projectiles.concussion_npc.beep_fade_speed = tweak_data.group_ai.flash_grenade.beep_fade_speed
-tweak_data.projectiles.concussion_npc.beep_speed = tweak_data.group_ai.flash_grenade.beep_speed
-]]
+tweak_data.projectiles.concussion_npc.init_timer = 3
+tweak_data.projectiles.concussion_npc.sweep_radius = 25
+tweak_data.projectiles.concussion_npc.warning_data = npc_grenade_warning_data
 
 tweak_data.projectiles.molotov.damage = 4
 tweak_data.projectiles.molotov.curve_pow = base_curve_pow
