@@ -253,7 +253,7 @@ function PlayerDamage:damage_killzone(attack_data, ...)
 	
 	--on DW tear gas prevents running and drains stamina
 	if deathwish then
-		local stamina_subtract = math.lerp(0, 4, self._teargas_damage_ramp)
+		local stamina_subtract = math.lerp(0, 2, self._teargas_damage_ramp)
 	
 		local cs_slowdown = {
 			id = "teargas",
