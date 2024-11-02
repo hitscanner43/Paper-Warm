@@ -106,13 +106,13 @@ function WeaponTweakData:_init_weapons()
 				spread = 0.4,
 				falloff_range = 1.5,
 				fire_rate = math.min(500 / ROF, 1),
-				headshot_dmg_mul = 1.25
+				headshot_dmg_mul = 1.5
 			},
 			burst = {
 				recoil = 0.8,
 				spread = 0.6,
 				falloff_range = 1,
-				headshot_dmg_mul = 1.25
+				headshot_dmg_mul = 1.5
 			},
 			volley = {}
 		}
@@ -961,16 +961,21 @@ function WeaponTweakData:_init_weapons()
 				weap_data.damage_melee = 1
 				weap_data.damage_melee_effect_mul = 1
 			end
-	
+		
 			if weap_data.kick then
+				weap_data.kick.single = {}
+				
 				if cat_map.assault_rifle then
-					weap_data.kick.standing = { 0.6, 0.8, -0.5, 0.5 }	
+					weap_data.kick.standing = { 0.6, 0.8, -0.5, 0.5 }
+					weap_data.kick.single.standing = { 0.8, 1.2, -0.2, 0.1 }		
 					
 				elseif cat_map.smg then
 					weap_data.kick.standing = { 0.4, 0.5, -0.6, 0.6 }	
+					weap_data.kick.single.standing = { 0.6, 0.9, -0.2, 0.1 }	
 				
 				elseif cat_map.lmg then
 					weap_data.kick.standing = { 0.2, 0.3, -0.8, 0.8 }	
+					weap_data.kick.single.standing = { 0.4, 0.6, -0.2, 0.1 }	
 					
 				elseif cat_map.minigun then
 					weap_data.kick.standing = { 0.1, 0.15, -0.4, 0.4 }	
@@ -984,12 +989,17 @@ function WeaponTweakData:_init_weapons()
 				elseif cat_map.shotgun or cat_map.grenade_launcher or cat_map.snp then
 					weap_data.kick.standing = { 2, 3, -0.8, 0.6 }	
 					
-				else
-					weap_data.kick.standing = { 0, 0, 0, 0 }		
+				else	
+					weap_data.kick.standing = { 0, 0, 0, 0 }	
 				end					
 
 				weap_data.kick.crouching = weap_data.kick.standing
 				weap_data.kick.steelsight = weap_data.kick.standing
+				
+				if weap_data.kick.single.standing then
+					weap_data.kick.single.crouching = weap_data.kick.single.standing
+					weap_data.kick.single.steelsight = weap_data.kick.single.standing
+				end
 			end
 
 			local default_burst_cooldown = 0.2
