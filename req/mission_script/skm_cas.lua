@@ -49,7 +49,7 @@ return {
 		values = {
 			interval = 30
 		},
-		groups = tweak_data.group_ai:allowed_groups("no_cops_shields")
+		groups = tweak_data.skirmish:allowed_groups("no_cops_shields")
 	},
 	[100196] = {
 		values = {

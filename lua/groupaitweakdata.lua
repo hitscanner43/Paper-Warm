@@ -373,9 +373,9 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 	self.spawn_kill_cooldown = 10
 	self.min_grenade_timeout = 20
 	self.no_grenade_push_delay = {
-		math.lerp(16, 12, f), 
 		math.lerp(14, 10, f), 
-		math.lerp(12, 8, f) 
+		math.lerp(12, 8, f), 
+		math.lerp(10, 6, f) 
 	}
 
 	local timeout_mult = math.lerp(1, 0.6, f)
@@ -2554,33 +2554,18 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 					rank = 3,
 					unit = "CS_shield",
 					random_tactics = shield_random_tactics
-				}
-			}
-		}
-	elseif difficulty_index <= 4 then
-		self.enemy_spawn_groups.shield = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					freq_by_diff = { 1, 1, 0.5 },
-					rank = 2,
-					unit = "FBI_Light",
-					tactics = self._tactics.shield_support
 				},
 				{
-					freq_by_diff = { 0, 0, 1 },
-					rank = 2,
-					unit = "FBI_Heavy",
-					tactics = self._tactics.shield_support
-				},
-				{
-					amount_min = 1,
-					freq = 1,
 					amount_max = 1,
-					rank = 3,
-					unit = "FBI_Shield",
-					random_tactics = shield_random_tactics
-				}			
+					freq_by_diff = { 
+						difficulty_index / 36, 
+						difficulty_index / 27,  
+						difficulty_index / 18
+					},
+					rank = 1,
+					unit = "Medic",
+					tactics = self._tactics.medic
+				}				
 			}
 		}
 	elseif difficulty_index <= 5 then
@@ -2601,12 +2586,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				},
 				{
 					amount_min = 1,
-					freq_by_diff= { 
-						difficulty_index / 25, 
-						difficulty_index / 20, 
-						difficulty_index / 15, 
-					},
-					amount_max = 2,
+					freq = 1,
+					amount_max = 1,
 					rank = 3,
 					unit = "FBI_Shield",
 					random_tactics = shield_random_tactics
@@ -2614,9 +2595,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				{
 					amount_max = 1,
 					freq_by_diff = { 
-						0, 
 						difficulty_index / 36, 
-						difficulty_index / 18, 
+						difficulty_index / 27,  
+						difficulty_index / 18
 					},
 					rank = 1,
 					unit = "Medic",
@@ -2648,12 +2629,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				},
 				{
 					amount_min = 1,
-					freq_by_diff= { 
-						difficulty_index / 25, 
-						difficulty_index / 20, 
-						difficulty_index / 15, 
-					},
-					amount_max = 2,
+					freq = 1,
+					amount_max = 1,
 					rank = 3,
 					unit = "FBI_Shield",
 					random_tactics = shield_random_tactics
@@ -2661,9 +2638,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				{
 					amount_max = 1,
 					freq_by_diff = { 
-						0, 
 						difficulty_index / 36, 
-						difficulty_index / 18, 
+						difficulty_index / 27,  
+						difficulty_index / 18
 					},
 					rank = 1,
 					unit = "Medic",
@@ -2692,27 +2669,18 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 					rank = 2,
 					unit = "Taser",
 					random_tactics = taser_random_tactics
-				}
-			}
-		}
-	elseif difficulty_index <= 4 then
-		self.enemy_spawn_groups.taser = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "FBI_Light",
-					random_tactics = taser_random_tactics
 				},
 				{
-					amount_min = 1,
-					freq = 1,
 					amount_max = 1,
-					rank = 2,
-					unit = "Taser",
-					random_tactics = taser_random_tactics
-				}
+					freq_by_diff = { 
+						difficulty_index / 48, 
+						difficulty_index / 36,  
+						difficulty_index / 24
+					},
+					rank = 1,
+					unit = "Medic",
+					tactics = self._tactics.medic
+				}		
 			}
 		}
 	elseif difficulty_index <= 5 then
@@ -2736,9 +2704,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				{
 					amount_max = 1,
 					freq_by_diff = { 
-						0, 
 						difficulty_index / 48, 
-						difficulty_index / 24, 
+						difficulty_index / 36,  
+						difficulty_index / 24
 					},
 					rank = 1,
 					unit = "Medic",
@@ -2773,9 +2741,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				{
 					amount_max = 1,
 					freq_by_diff = { 
-						0, 
 						difficulty_index / 48, 
-						difficulty_index / 24, 
+						difficulty_index / 36,  
+						difficulty_index / 24
 					},
 					rank = 1,
 					unit = "Medic",
@@ -2802,53 +2770,13 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 					rank = 2,
 					unit = "Bulldozer",
 					tactics = self._tactics.bulldozer
-				}
-			}
-		}
-	elseif difficulty_index <= 4 then
-		self.enemy_spawn_groups.bulldozer = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "FBI_Heavy",
-					tactics = self._tactics.bulldozer_support
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 2,
-					unit = "Bulldozer",
-					tactics = self._tactics.bulldozer
-				}
-			}
-		}
-	elseif difficulty_index <= 5 then
-		self.enemy_spawn_groups.bulldozer = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 2,
-					unit = "FBI_Heavy",
-					tactics = self._tactics.bulldozer_support
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "Bulldozer",
-					tactics = self._tactics.bulldozer
 				},
 				{
 					amount_max = 1,
 					freq_by_diff = { 
-						0, 
 						difficulty_index / 60, 
-						difficulty_index / 30, 
+						difficulty_index / 45,  
+						difficulty_index / 30
 					},
 					rank = 1,
 					unit = "Medic",
@@ -2868,12 +2796,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				},
 				{
 					amount_min = 1,
-					freq_by_diff = { 
-						0, 
-						difficulty_index / 24, 
-						difficulty_index / 12, 
-					},
-					amount_max = 2,
+					freq = 1,
+					amount_max = 1,
 					rank = 3,
 					unit = "Bulldozer",
 					tactics = self._tactics.bulldozer
@@ -2881,9 +2805,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				{
 					amount_max = 1,
 					freq_by_diff = { 
-						0, 
 						difficulty_index / 60, 
-						difficulty_index / 30, 
+						difficulty_index / 45,  
+						difficulty_index / 30
 					},
 					rank = 1,
 					unit = "Medic",
@@ -2912,27 +2836,18 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 					rank = 2,
 					unit = "Grenadier",
 					random_tactics = grenadier_random_tactics
-				}
-			}
-		}
-	elseif difficulty_index <= 4 then
-		self.enemy_spawn_groups.grenadier = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "FBI_Light",
-					random_tactics = grenadier_random_tactics
 				},
 				{
-					amount_min = 1,
-					freq = 1,
 					amount_max = 1,
-					rank = 2,
-					unit = "Grenadier",
-					random_tactics = grenadier_random_tactics
-				}
+					freq_by_diff = { 
+						difficulty_index / 48, 
+						difficulty_index / 36,  
+						difficulty_index / 24
+					},
+					rank = 1,
+					unit = "Medic",
+					tactics = self._tactics.medic
+				}		
 			}
 		}
 	elseif difficulty_index <= 5 then
@@ -2956,9 +2871,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				{
 					amount_max = 1,
 					freq_by_diff = { 
-						0, 
 						difficulty_index / 48, 
-						difficulty_index / 24, 
+						difficulty_index / 36,  
+						difficulty_index / 24
 					},
 					rank = 1,
 					unit = "Medic",
@@ -2993,9 +2908,9 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				{
 					amount_max = 1,
 					freq_by_diff = { 
-						0, 
 						difficulty_index / 48, 
-						difficulty_index / 24, 
+						difficulty_index / 36,  
+						difficulty_index / 24
 					},
 					rank = 1,
 					unit = "Medic",

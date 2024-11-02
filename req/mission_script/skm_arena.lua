@@ -12,31 +12,31 @@ local flank_spawn01 = {
 	values = {
 		interval = 15
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops_shields")
+	groups = tweak_data.skirmish:allowed_groups("no_cops_shields")
 }
 local flank_spawn02 = {
 	values = {
 		interval = 20
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops")
+	groups = tweak_data.skirmish:allowed_groups("no_cops")
 }
 local flank_spawn03 = {
 	values = {
 		interval = 15
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops")
+	groups = tweak_data.skirmish:allowed_groups("no_cops")
 }
 local top_spawn = {
 	values = {
 		interval = 25
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops_shields_tanks")
+	groups = tweak_data.skirmish:allowed_groups("no_cops_shields_tanks")
 }
 local skylight_spawn = {
 	values = {
 		interval = 45
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops_shields_tanks")
+	groups = tweak_data.skirmish:allowed_groups("no_cops_shields_tanks")
 }
 return {
 	[100033] = standard_spawn,

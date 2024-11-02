@@ -8,7 +8,7 @@ local van_spawn = {
 	values = {
 		interval = 15
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops")
+	groups = tweak_data.skirmish:allowed_groups("no_cops")
 }
 	
 return {
@@ -23,37 +23,37 @@ return {
 		values = {
 			interval = 30
 		},
-		groups = tweak_data.group_ai:allowed_groups("no_cops")
+		groups = tweak_data.skirmish:allowed_groups("no_cops")
 	},
 	[100065] = {
 		values = {
 			interval = 30
 		},
-		groups = tweak_data.group_ai:allowed_groups("no_cops")
+		groups = tweak_data.skirmish:allowed_groups("no_cops")
 	},
 	[100047] = {
 		values = {
 			interval = 30
 		},
-		groups = tweak_data.group_ai:allowed_groups("no_cops")
+		groups = tweak_data.skirmish:allowed_groups("no_cops")
 	},
 	[103333] = {
 		values = {
 			interval = 30
 		},
-		groups = tweak_data.group_ai:allowed_groups("no_cops_shields")
+		groups = tweak_data.skirmish:allowed_groups("no_cops_shields")
 	},
 	[100441] = {
 		values = {
 			interval = 30
 		},
-		groups = tweak_data.group_ai:allowed_groups("no_cops")
+		groups = tweak_data.skirmish:allowed_groups("no_cops")
 	},
 	[102354] = {
 		values = {
 			interval = 30
 		},
-		groups = tweak_data.group_ai:allowed_groups("no_cops")
+		groups = tweak_data.skirmish:allowed_groups("no_cops")
 	},
 	--garage door spawns
 	[100964] = {

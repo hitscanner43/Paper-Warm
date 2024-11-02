@@ -2,31 +2,31 @@ local van_spawn = {
 	values = {
 		interval = 10
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops")
+	groups = tweak_data.skirmish:allowed_groups("no_cops")
 }
 local water_spawn = {
 	values = {
 		interval = 20
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops_shields")
+	groups = tweak_data.skirmish:allowed_groups("no_cops_shields")
 }
 local ship_spawn = {
 	values = {
 		interval = 25
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops")
+	groups = tweak_data.skirmish:allowed_groups("no_cops")
 }
 local container_spawn = {
 	values = {
 		interval = 45
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops")
+	groups = tweak_data.skirmish:allowed_groups("no_cops")
 }
 local roof_spawn = {
 	values = {
 		interval = 60
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops_shields_tanks")
+	groups = tweak_data.skirmish:allowed_groups("no_cops_shields_tanks")
 }
 return {
 	--spawngroup intervals 

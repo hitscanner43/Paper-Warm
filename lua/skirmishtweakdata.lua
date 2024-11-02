@@ -1,4 +1,8 @@
---[[ Scale assault duration based on wave number and shorten time in between assaults
+SkirmishTweakData.allowed_groups_table = GroupAITweakData.allowed_groups_table
+SkirmishTweakData.allowed_groups = GroupAITweakData.allowed_groups
+
+--[[
+-- Scale assault duration based on wave number and shorten time in between assaults
 Hooks:PostHook(SkirmishTweakData, "init", "hits_init", function (self, tweak_data)
 	local skirmish_data = tweak_data.group_ai.skirmish
 	skirmish_data.assault.build_duration = 10
@@ -19,7 +23,6 @@ Hooks:PostHook(SkirmishTweakData, "init", "hits_init", function (self, tweak_dat
 		end
 	end
 end)
-
 
 -- Set custom scaling special limits
 Hooks:PostHook(SkirmishTweakData, "_init_special_unit_spawn_limits", "sh__init_special_unit_spawn_limits", function (self)
@@ -43,7 +46,6 @@ Hooks:PostHook(SkirmishTweakData, "_init_group_ai_data", "hits_init_group_ai_dat
 	local skirmish_data = tweak_data.group_ai.skirmish
 
 	local lvl_tweak_data = Global.level_data and Global.level_data.level_id and tweak_data.levels[Global.level_data.level_id]
-	
 	local force_mult = lvl_tweak_data and lvl_tweak_data.force_mult or 1
 	
     skirmish_data.assault.force = nil	
@@ -78,8 +80,8 @@ Hooks:PostHook(SkirmishTweakData, "_init_group_ai_data", "hits_init_group_ai_dat
 	
 	skirmish_data.recon.force = { 0, 0, 0 }
 	
-    tweak_data.group_ai.spawn_rate = nil
-    setmetatable(tweak_data.group_ai, {
+    self.spawn_rate = nil
+    setmetatable(self, {
         __index = function (t, k)
             if k == "spawn_rate" then
                 local spawn_rate = 2.5 - (managers.skirmish:current_wave_number() - 1) * 0.1875
@@ -89,8 +91,8 @@ Hooks:PostHook(SkirmishTweakData, "_init_group_ai_data", "hits_init_group_ai_dat
         end
     })
 	
-    tweak_data.group_ai.no_grenade_push_delay = nil
-    setmetatable(tweak_data.group_ai, {
+    self.no_grenade_push_delay = nil
+    setmetatable(self, {
         __index = function (t, k)
             if k == "no_grenade_push_delay" then
                 local no_grenade_push_delay = 10 - (managers.skirmish:current_wave_number() - 1) * 0.5
@@ -114,14 +116,14 @@ end)
 -- Create custom wave group weights
 Hooks:PostHook(SkirmishTweakData, "_init_spawn_group_weights", "sh__init_spawn_group_weights", function (self, tweak_data)
 	local base_groups = {
-		SKM_assault = { 25, 25, 25 },
+		SKM_assault = { 30, 30, 30 },
 			
-		SKM_shield = { 0, 4, 8 },
-		SKM_taser = { 0, 3, 6 },
-		SKM_cloaker = { 0, 3, 6 },
-		SKM_grenadier = { 0, 3, 6 },
-		SKM_marksman = { 0, 3, 6 },
-		SKM_bulldozer = { 0, 0, 4 },
+		SKM_shield = { 0, 5, 10 },
+		SKM_taser = { 0, 4, 8 },
+		SKM_cloaker = { 0, 4, 8 },
+		SKM_grenadier = { 0, 4, 8 },
+		SKM_marksman = { 0, 4, 8 },
+		SKM_bulldozer = { 0, 3, 6 },
 		
 		single_spooc = { 0, 0, 0 },
 		custom_assault = { 0, 0, 0 }

@@ -7,13 +7,13 @@ local window_spawn = {
 	values = {
 		interval = 30
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops_shields_tanks")
+	groups = tweak_data.skirmish:allowed_groups("no_cops_shields_tanks")
 }
 local skylight_spawn = {
 	values = {
 		interval = 60
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops_shields_tanks")
+	groups = tweak_data.skirmish:allowed_groups("no_cops_shields_tanks")
 }
 return {
 	[100068] = standard_spawn,

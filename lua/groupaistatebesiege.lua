@@ -485,11 +485,13 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_set_assault_objective_to_group", f
 					detonate_pos = mvec_cpy(assault_area.criminal.units[c_key].m_pos)
 				end
 
+				local is_skirmish = managers.skirmish:is_skirmish()
+				
 				-- Check which grenade to use to push, grenade use is required for the push to be initiated
 				-- If grenade isn't available, push regardless anyway after a short delay
 				if not self:_chk_group_use_grenade(assault_area, group, detonate_pos) then
 					if not group.ignore_grenade_check_t then
-						local no_grenade_push_delay = self:_get_difficulty_dependent_value(tweak_data.group_ai.no_grenade_push_delay)
+						local no_grenade_push_delay = self:_get_difficulty_dependent_value(is_skirmish and tweak_data.skirmish.no_grenade_push_delay or tweak_data.group_ai.no_grenade_push_delay)
 						local hostage_mul = 1 + math.min(self._hostage_headcount * 0.15, 0.6)
 						local delay = no_grenade_push_delay * (tactics_map.charge and 0.4 or 1) * (assault_area.hostages and hostage_mul or 1) 
 						group.ignore_grenade_check_t = self._t + math.map_range_clamped(table.size(assault_area.criminal.units), 1, 4, delay, delay * 0.5)
@@ -1048,8 +1050,10 @@ function GroupAIStateBesiege:_perform_group_spawning(spawn_task, force)
 		self._groups[spawn_task.group.id] = nil
 	end
 
+	local is_skirmish = managers.skirmish:is_skirmish()
+	
 	-- Set a cooldown before new units can be spawned via regular spawn tasks
-	local spawn_rate = self:_get_difficulty_dependent_value(tweak_data.group_ai.spawn_rate)
+	local spawn_rate = self:_get_difficulty_dependent_value(is_skirmish and tweak_data.skirmish.spawn_rate or tweak_data.group_ai.spawn_rate)
 	self:_set_spawn_task_type_cooldown(spawn_task, math.sqrt(spawn_task.group.size) * spawn_rate)
 end
 
@@ -1107,7 +1111,7 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 
 	table.insert(self._spawning_groups, spawn_task)
 
-	local is_skirmish = managers.skirmish:is_skirmish()
+	local is_skirmish = managers.skirmish:is_skirmish()	
 	local current_wave = managers.skirmish:current_wave_number()
 
 	local function _add_unit_type_to_spawn_task(i, spawn_entry)

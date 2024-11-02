@@ -155,7 +155,7 @@ return {
 	--sneaky house enemies
 	[101660] = chopper_enemy,
 	[101661] = chopper_enemy,
-	--chopper nemies
+	--chopper enemies
 	[101571] = chopper_enemy,
 	[101572] = chopper_enemy
 }
