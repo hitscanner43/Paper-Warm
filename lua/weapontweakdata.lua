@@ -21,7 +21,7 @@ Hooks:PostHook(WeaponTweakData, "_init_stats", "hits_init_stats", function(self)
 
 	self.stats.spread_moving = {}
 	for i = 0, 25, 1 do
-		table.insert(self.stats.spread_moving, (math.lerp(1, 0.1, i / 25)))
+		table.insert(self.stats.spread_moving, (math.lerp(1, 0.05, i / 25)))
 	end 
 
 	self.stats.suppression = {}
@@ -800,7 +800,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.hit_alert_size_increase = -7
 				weap_data.saw_ammo_usage = 5
 				weap_data.steelsight_speed_mul = 1
-				weap_data.enemy_damage_mul = 2
+				weap_data.enemy_damage_mul = 1.6
 
 				weap_data.spread_multiplier = no_stance_mults
 				weap_data.recoil_multiplier = no_stance_mults
@@ -940,7 +940,13 @@ function WeaponTweakData:_init_weapons()
 					
 				end
 			end
-		
+	
+			--round weapon damage to be divisible by 5	
+			local damage_modifier = weap_data.stats_modifiers and weap_data.stats_modifiers.damage or 1
+			local damage_rounded = (math.ceil((weap_data.stats.damage * damage_modifier) / 5) * 5) 
+			damage_rounded = math.floor(damage_rounded / damage_modifier)
+			
+			weap_data.stats.damage = damage_rounded
 			weap_data.stats.alert_size = math.clamp(weap_data.stats.alert_size, 1, #self.stats.alert_size)
 			weap_data.stats.zoom = 1
 			weap_data.stats.total_ammo_mod = 100
@@ -951,10 +957,6 @@ function WeaponTweakData:_init_weapons()
 			
 			if weap_data.stats and weap_data.stats.reload == 11 then
 				weap_data.stats.reload = 100
-			end
-					
-			if not (cat_map.grenade_launcher or cat_map.rocket_launcher) then
-				weap_data.stats_modifiers = nil
 			end
 			
 			if weap_data.damage_melee and weap_data.damage_melee_effect_mul then
@@ -1046,7 +1048,7 @@ function WeaponTweakData:_init_weapons()
 			end
 			
 			--set total damage
-			weap_data.total_damage = 360
+			weap_data.total_damage = 720
 
 			--modify total damage based weapon category
 			if cat_map.minigun then
@@ -1071,7 +1073,7 @@ function WeaponTweakData:_init_weapons()
 			end
 			
 			--set pickup damage	
-			weap_data.pickup_damage = 12
+			weap_data.pickup_damage = 24
 			
 			--modify total damage based on weapon slot 
 			if weap_data.use_data and weap_data.use_data.selection_index == 2 then --primaries
@@ -1109,9 +1111,12 @@ function WeaponTweakData:_init_weapons()
 		
 			elseif cat_map.smg or cat_map.snp then
 				weap_data.pickup_damage = weap_data.pickup_damage * 1.5
-		
-			elseif cat_map.grenade_launcher or cat_map.flamethrower or cat_map.rocket_launcher then
-				weap_data.pickup_damage = weap_data.pickup_damage / 5
+
+			elseif cat_map.flamethrower then
+				weap_data.pickup_damage = weap_data.pickup_damage * 0.5
+				
+			elseif cat_map.grenade_launcher then
+				weap_data.pickup_damage = weap_data.pickup_damage * 0.2
 				
 			elseif cat_map.bow or cat_map.crossbow or cat_map.saw then
 				weap_data.pickup_damage = 0 
@@ -1130,7 +1135,7 @@ function WeaponTweakData:_init_weapons()
 				local total_damage_mul = 1 + (burst_count - 1) * 0.25
 				weap_data.pickup_damage = weap_data.pickup_damage * total_damage_mul
 			end
-
+	
 			local weap_dmg = self.stats.damage[math.min(weap_data.stats.damage, #self.stats.damage)] * (weap_data.stats_modifiers and weap_data.stats_modifiers.damage or 1)		
 			local clip_dmg = weap_data.CLIP_AMMO_MAX * weap_dmg
 		
@@ -1158,13 +1163,13 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.trip_mines = {
 		delay = 0.25,
-		damage = 600,
+		damage = 800,
 		player_damage = self.trip_mines.player_damage / 6,
 		damage_size = 300,
 		alert_radius = 5000
 	}
 
-	self.sentry_gun.DAMAGE = 2
+	self.sentry_gun.DAMAGE = 4
 	self.sentry_gun.auto.fire_rate = 0.1
 	self.sentry_gun.BAG_DMG_MUL = 1
 	self.sentry_gun.FIRE_RANGE = 2000
@@ -1182,14 +1187,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	--ASSAULT RIFLES
 	self.amcar.CLIP_AMMO_MAX = 30
-	self.amcar.stats.damage = 20
+	self.amcar.stats.damage = 40
 	self.amcar.stats.spread = 14
 	self.amcar.stats.recoil = 16
 	self.amcar.stats.concealment = 22
 	self.amcar.fire_mode_data.fire_rate = 60 / 800
 
 	self.g36.CLIP_AMMO_MAX = 30
-	self.g36.stats.damage = 20
+	self.g36.stats.damage = 40
 	self.g36.stats.spread = 14
 	self.g36.stats.recoil = 17
 	self.g36.stats.concealment = 22
@@ -1200,7 +1205,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.g36.BURST_COUNT = 3
 	
 	self.s552.CLIP_AMMO_MAX = 30
-	self.s552.stats.damage = 20
+	self.s552.stats.damage = 40
 	self.s552.stats.spread = 16
 	self.s552.stats.recoil = 15
 	self.s552.stats.concealment = 22
@@ -1210,7 +1215,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.s552.BURST_COUNT = 3
 	
 	self.corgi.CLIP_AMMO_MAX = 30
-	self.corgi.stats.damage = 20
+	self.corgi.stats.damage = 40
 	self.corgi.stats.spread = 13
 	self.corgi.stats.recoil = 17
 	self.corgi.stats.concealment = 22
@@ -1218,14 +1223,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.komodo.use_data.selection_index = 1
 	self.komodo.CLIP_AMMO_MAX = 30
-	self.komodo.stats.damage = 20
+	self.komodo.stats.damage = 40
 	self.komodo.stats.spread = 11
 	self.komodo.stats.recoil = 16
 	self.komodo.stats.concealment = 24
 	self.komodo.fire_mode_data.fire_rate = 60 / 800
 	
 	self.new_m4.CLIP_AMMO_MAX = 30
-	self.new_m4.stats.damage = 25
+	self.new_m4.stats.damage = 50
 	self.new_m4.stats.spread = 14
 	self.new_m4.stats.recoil = 15
 	self.new_m4.stats.concealment = 20
@@ -1233,14 +1238,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.olympic.categories = { "assault_rifle" }
 	self.olympic.CLIP_AMMO_MAX = 30
-	self.olympic.stats.damage = 25
+	self.olympic.stats.damage = 50
 	self.olympic.stats.spread = 12
 	self.olympic.stats.recoil = 14
 	self.olympic.stats.concealment = 24
 	self.olympic.fire_mode_data.fire_rate = 60 / 850
 	
 	self.ak74.CLIP_AMMO_MAX = 30
-	self.ak74.stats.damage = 25
+	self.ak74.stats.damage = 50
 	self.ak74.stats.spread = 14
 	self.ak74.stats.recoil = 15
 	self.ak74.stats.concealment = 20
@@ -1248,14 +1253,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.ak74.fire_mode_data.fire_rate = 60 / 650
 	
 	self.ak5.CLIP_AMMO_MAX = 30
-	self.ak5.stats.damage = 25
+	self.ak5.stats.damage = 50
 	self.ak5.stats.spread = 16
 	self.ak5.stats.recoil = 15
 	self.ak5.stats.concealment = 20
 	self.ak5.fire_mode_data.fire_rate = 60 / 700
 
 	self.famas.CLIP_AMMO_MAX = 25
-	self.famas.stats.damage = 25
+	self.famas.stats.damage = 50
 	self.famas.stats.spread = 14
 	self.famas.stats.recoil = 17
 	self.famas.stats.concealment = 22
@@ -1265,7 +1270,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.famas.BURST_COUNT = 3
 	
 	self.vhs.CLIP_AMMO_MAX = 30
-	self.vhs.stats.damage = 25
+	self.vhs.stats.damage = 50
 	self.vhs.stats.spread = 14
 	self.vhs.stats.recoil = 16
 	self.vhs.stats.concealment = 22
@@ -1275,14 +1280,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.hajk.use_data.selection_index = 2
 	self.hajk.categories = { "assault_rifle" }
 	self.hajk.CLIP_AMMO_MAX = 30
-	self.hajk.stats.damage = 25
+	self.hajk.stats.damage = 50
 	self.hajk.stats.spread = 15
 	self.hajk.stats.recoil = 17
 	self.hajk.stats.concealment = 20
 	self.hajk.fire_mode_data.fire_rate = 60 / 750
 
 	self.m16.CLIP_AMMO_MAX = 30
-	self.m16.stats.damage = 30
+	self.m16.stats.damage = 60
 	self.m16.stats.spread = 16
 	self.m16.stats.recoil = 13
 	self.m16.stats.concealment = 18
@@ -1293,14 +1298,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.m16.muzzleflash = "effects/payday2/particles/weapons/556_auto_fps"
 	
 	self.aug.CLIP_AMMO_MAX = 30
-	self.aug.stats.damage = 30
+	self.aug.stats.damage = 60
 	self.aug.stats.spread = 16
 	self.aug.stats.recoil = 11
 	self.aug.stats.concealment = 22
 	self.aug.fire_mode_data.fire_rate = 60 / 750
 	
 	self.l85a2.CLIP_AMMO_MAX = 30
-	self.l85a2.stats.damage = 30
+	self.l85a2.stats.damage = 60
 	self.l85a2.stats.spread = 15
 	self.l85a2.stats.recoil = 14
 	self.l85a2.stats.concealment = 20
@@ -1309,7 +1314,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.l85a2.timers.reload_empty = 4	
 	
 	self.tkb.CLIP_AMMO_MAX = 60
-	self.tkb.stats.damage = 30
+	self.tkb.stats.damage = 60
 	self.tkb.stats.spread = 11
 	self.tkb.stats.recoil = 13
 	self.tkb.stats.concealment = 18
@@ -1324,7 +1329,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.tkb.fire_mode_data.volley.rays = 3
 	
 	self.akm.CLIP_AMMO_MAX = 30
-	self.akm.stats.damage = 40
+	self.akm.stats.damage = 80
 	self.akm.stats.spread = 17
 	self.akm.stats.recoil = 11
 	self.akm.stats.concealment = 20
@@ -1333,7 +1338,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.akm.timers.reload_not_empty = 2.2
 
 	self.akm_gold.CLIP_AMMO_MAX = 30
-	self.akm_gold.stats.damage = 40
+	self.akm_gold.stats.damage = 80
 	self.akm_gold.stats.spread = 17
 	self.akm_gold.stats.recoil = 11
 	self.akm_gold.stats.concealment = 20
@@ -1343,7 +1348,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.akmsu.categories = { "assault_rifle" }
 	self.akmsu.CLIP_AMMO_MAX = 30
-	self.akmsu.stats.damage = 40
+	self.akmsu.stats.damage = 80
 	self.akmsu.stats.spread = 14
 	self.akmsu.stats.recoil = 10
 	self.akmsu.stats.concealment = 24
@@ -1351,7 +1356,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.x_akmsu.categories = { "akimbo", "assault_rifle" }
 	self.x_akmsu.CLIP_AMMO_MAX = 60
-	self.x_akmsu.stats.damage = 40
+	self.x_akmsu.stats.damage = 80
 	self.x_akmsu.stats.spread = 14
 	self.x_akmsu.stats.recoil = 10
 	self.x_akmsu.stats.concealment = 24
@@ -1360,7 +1365,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.x_akmsu.timers.reload_empty = 3.4	
 	
 	self.flint.CLIP_AMMO_MAX = 30
-	self.flint.stats.damage = 40
+	self.flint.stats.damage = 80
 	self.flint.stats.spread = 15
 	self.flint.stats.recoil = 13
 	self.flint.stats.concealment = 20
@@ -1370,7 +1375,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.flint.BURST_COUNT = 3
 	
 	self.groza.CLIP_AMMO_MAX = 30
-	self.groza.stats.damage = 40
+	self.groza.stats.damage = 80
 	self.groza.stats.spread = 14
 	self.groza.stats.recoil = 13
 	self.groza.stats.concealment = 20
@@ -1379,7 +1384,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	--SMGs
 	self.mp9.CLIP_AMMO_MAX = 20
-	self.mp9.stats.damage = 15
+	self.mp9.stats.damage = 30
 	self.mp9.stats.spread = 9
 	self.mp9.stats.recoil = 21
 	self.mp9.stats.concealment = 26
@@ -1387,7 +1392,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.p90.use_data.selection_index = 2
 	self.p90.CLIP_AMMO_MAX = 50
-	self.p90.stats.damage = 15
+	self.p90.stats.damage = 30
 	self.p90.stats.spread = 11
 	self.p90.stats.recoil = 17
 	self.p90.stats.concealment = 26
@@ -1396,7 +1401,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.p90.armor_piercing_chance = 1
 
 	self.mp7.CLIP_AMMO_MAX = 20
-	self.mp7.stats.damage = 15
+	self.mp7.stats.damage = 30
 	self.mp7.stats.spread = 13
 	self.mp7.stats.recoil = 17
 	self.mp7.stats.concealment = 26
@@ -1405,7 +1410,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.mp7.armor_piercing_chance = 1
 
 	self.tec9.CLIP_AMMO_MAX = 32
-	self.tec9.stats.damage = 15
+	self.tec9.stats.damage = 30
 	self.tec9.stats.spread = 7
 	self.tec9.stats.recoil = 21
 	self.tec9.stats.concealment = 28
@@ -1413,21 +1418,21 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.tec9.fire_mode_data.fire_rate = 60 / 1000
 
 	self.baka.CLIP_AMMO_MAX = 32
-	self.baka.stats.damage = 15
+	self.baka.stats.damage = 30
 	self.baka.stats.spread = 7
 	self.baka.stats.recoil = 20
 	self.baka.stats.concealment = 28
 	self.baka.fire_mode_data.fire_rate = 60 / 1200
 
 	self.pm9.CLIP_AMMO_MAX = 25
-	self.pm9.stats.damage = 15
+	self.pm9.stats.damage = 30
 	self.pm9.stats.spread = 9
 	self.pm9.stats.recoil = 19
 	self.pm9.stats.concealment = 26
 	self.pm9.fire_mode_data.fire_rate = 60 / 1100
 	
 	self.new_mp5.CLIP_AMMO_MAX = 30
-	self.new_mp5.stats.damage = 20
+	self.new_mp5.stats.damage = 40
 	self.new_mp5.stats.spread = 13
 	self.new_mp5.stats.recoil = 19
 	self.new_mp5.stats.concealment = 24
@@ -1437,7 +1442,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.new_mp5.BURST_COUNT = 3
 
 	self.x_mp5.CLIP_AMMO_MAX = 60
-	self.x_mp5.stats.damage = 20
+	self.x_mp5.stats.damage = 40
 	self.x_mp5.stats.spread = 13
 	self.x_mp5.stats.recoil = 19
 	self.x_mp5.stats.concealment = 24
@@ -1446,7 +1451,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.x_mp5.timers.reload_empty = 2.6	
 
 	self.scorpion.CLIP_AMMO_MAX = 20
-	self.scorpion.stats.damage = 20
+	self.scorpion.stats.damage = 40
 	self.scorpion.stats.spread = 10
 	self.scorpion.stats.recoil = 19
 	self.scorpion.stats.concealment = 28
@@ -1454,7 +1459,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.cobray.use_data.selection_index = 2
 	self.cobray.CLIP_AMMO_MAX = 40
-	self.cobray.stats.damage = 20
+	self.cobray.stats.damage = 40
 	self.cobray.stats.spread = 11
 	self.cobray.stats.recoil = 21
 	self.cobray.stats.concealment = 26
@@ -1463,7 +1468,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.cobray.timers.reload_empty = 4.35
 						
 	self.sr2.CLIP_AMMO_MAX = 30
-	self.sr2.stats.damage = 20
+	self.sr2.stats.damage = 40
 	self.sr2.stats.spread = 9
 	self.sr2.stats.recoil = 19
 	self.sr2.stats.concealment = 26
@@ -1472,7 +1477,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.sr2.armor_piercing_chance = 1
 	
 	self.x_sr2.CLIP_AMMO_MAX = 60
-	self.x_sr2.stats.damage = 20
+	self.x_sr2.stats.damage = 40
 	self.x_sr2.stats.spread = 8
 	self.x_sr2.stats.recoil = 19
 	self.x_sr2.stats.concealment = 26
@@ -1482,7 +1487,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 		
 	self.coal.use_data.selection_index = 2
 	self.coal.CLIP_AMMO_MAX = 64
-	self.coal.stats.damage = 20
+	self.coal.stats.damage = 40
 	self.coal.stats.spread = 9
 	self.coal.stats.recoil = 19
 	self.coal.stats.concealment = 24
@@ -1491,7 +1496,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.shepheard.use_data.selection_index = 2
 	self.shepheard.CLIP_AMMO_MAX = 30
-	self.shepheard.stats.damage = 20
+	self.shepheard.stats.damage = 40
 	self.shepheard.stats.spread = 12
 	self.shepheard.stats.recoil = 19
 	self.shepheard.stats.concealment = 24
@@ -1499,21 +1504,21 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.fmg9.use_data.selection_index = 2
 	self.fmg9.CLIP_AMMO_MAX = 33
-	self.fmg9.stats.damage = 20
+	self.fmg9.stats.damage = 40
 	self.fmg9.stats.spread = 11
 	self.fmg9.stats.recoil = 16
 	self.fmg9.stats.concealment = 28
 	self.fmg9.fire_mode_data.fire_rate = 60 / 900
 	
 	self.mac10.CLIP_AMMO_MAX = 20
-	self.mac10.stats.damage = 25
+	self.mac10.stats.damage = 50
 	self.mac10.stats.spread = 7
 	self.mac10.stats.recoil = 16
 	self.mac10.stats.concealment = 26
 	self.mac10.fire_mode_data.fire_rate = 60 / 1000
 
 	self.x_mac10.CLIP_AMMO_MAX = 40
-	self.x_mac10.stats.damage = 25
+	self.x_mac10.stats.damage = 50
 	self.x_mac10.stats.spread = 7
 	self.x_mac10.stats.recoil = 16
 	self.x_mac10.stats.concealment = 26
@@ -1530,7 +1535,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.m1928.use_data.selection_index = 2
 	self.m1928.CLIP_AMMO_MAX = 50
-	self.m1928.stats.damage = 25
+	self.m1928.stats.damage = 50
 	self.m1928.stats.spread = 12
 	self.m1928.stats.recoil = 16
 	self.m1928.stats.concealment = 22
@@ -1541,7 +1546,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.polymer.use_data.selection_index = 2
 	self.polymer.CLIP_AMMO_MAX = 25
-	self.polymer.stats.damage = 25
+	self.polymer.stats.damage = 50
 	self.polymer.stats.spread = 9
 	self.polymer.stats.recoil = 21
 	self.polymer.stats.concealment = 24
@@ -1551,14 +1556,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.vityaz.use_data.selection_index = 2
 	self.vityaz.CLIP_AMMO_MAX = 30
-	self.vityaz.stats.damage = 25
+	self.vityaz.stats.damage = 50
 	self.vityaz.stats.spread = 14
 	self.vityaz.stats.recoil = 17
 	self.vityaz.stats.concealment = 24
 	self.vityaz.fire_mode_data.fire_rate = 60 / 800
 	
 	self.m45.CLIP_AMMO_MAX = 36
-	self.m45.stats.damage = 40
+	self.m45.stats.damage = 80
 	self.m45.stats.spread = 16
 	self.m45.stats.recoil = 13
 	self.m45.stats.concealment = 24
@@ -1566,7 +1571,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.sterling.use_data.selection_index = 2
 	self.sterling.CLIP_AMMO_MAX = 20
-	self.sterling.stats.damage = 40
+	self.sterling.stats.damage = 80
 	self.sterling.stats.spread = 15
 	self.sterling.stats.recoil = 15
 	self.sterling.stats.concealment = 24
@@ -1574,14 +1579,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.erma.use_data.selection_index = 2
 	self.erma.CLIP_AMMO_MAX = 32
-	self.erma.stats.damage = 40
+	self.erma.stats.damage = 80
 	self.erma.stats.spread = 17
 	self.erma.stats.recoil = 14
 	self.erma.stats.concealment = 22
 	self.erma.fire_mode_data.fire_rate = 60 / 550
 	
 	self.uzi.CLIP_AMMO_MAX = 20
-	self.uzi.stats.damage = 40
+	self.uzi.stats.damage = 80
 	self.uzi.stats.spread = 13
 	self.uzi.stats.recoil = 15
 	self.uzi.stats.concealment = 26
@@ -1590,7 +1595,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.schakal.use_data.selection_index = 2
 	self.schakal.CLIP_AMMO_MAX = 25
-	self.schakal.stats.damage = 40
+	self.schakal.stats.damage = 80
 	self.schakal.stats.spread = 17
 	self.schakal.stats.recoil = 13
 	self.schakal.stats.concealment = 24
@@ -1601,21 +1606,21 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	--Pistols
 	self.glock_18c.CLIP_AMMO_MAX = 17
-	self.glock_18c.stats.damage = 20
+	self.glock_18c.stats.damage = 40
 	self.glock_18c.stats.spread = 11
 	self.glock_18c.stats.recoil = 19
 	self.glock_18c.stats.concealment = 29
 	self.glock_18c.fire_mode_data.fire_rate = 60 / 1000
 
 	self.czech.CLIP_AMMO_MAX = 18
-	self.czech.stats.damage = 20
+	self.czech.stats.damage = 40
 	self.czech.stats.spread = 15
 	self.czech.stats.recoil = 17
 	self.czech.stats.concealment = 28
 	self.czech.fire_mode_data.fire_rate = 60 / 1000
 
 	self.lemming.CLIP_AMMO_MAX = 20
-	self.lemming.stats.damage = 20
+	self.lemming.stats.damage = 40
 	self.lemming.stats.spread = 13
 	self.lemming.stats.recoil = 19
 	self.lemming.stats.concealment = 29
@@ -1627,42 +1632,42 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.lemming.has_description = nil
 	
 	self.glock_17.CLIP_AMMO_MAX = 17
-	self.glock_17.stats.damage = 25
+	self.glock_17.stats.damage = 50
 	self.glock_17.stats.spread = 14
 	self.glock_17.stats.recoil = 19
 	self.glock_17.stats.concealment = 29
 	self.glock_17.fire_mode_data.fire_rate = 60 / 500
 
 	self.x_g17.CLIP_AMMO_MAX = 34
-	self.x_g17.stats.damage = 25
+	self.x_g17.stats.damage = 50
 	self.x_g17.stats.spread = 14
 	self.x_g17.stats.recoil = 19
 	self.x_g17.stats.concealment = 29
 	self.x_g17.fire_mode_data.fire_rate = 60 / 500
 	
 	self.b92fs.CLIP_AMMO_MAX = 15
-	self.b92fs.stats.damage = 25
+	self.b92fs.stats.damage = 50
 	self.b92fs.stats.spread = 15
 	self.b92fs.stats.recoil = 18
 	self.b92fs.stats.concealment = 29
 	self.b92fs.fire_mode_data.fire_rate = 60 / 500
 	
 	self.x_b92fs.CLIP_AMMO_MAX = 30
-	self.x_b92fs.stats.damage = 25
+	self.x_b92fs.stats.damage = 50
 	self.x_b92fs.stats.spread = 15
 	self.x_b92fs.stats.recoil = 18
 	self.x_b92fs.stats.concealment = 29
 	self.x_b92fs.fire_mode_data.fire_rate = 60 / 500
 
 	self.ppk.CLIP_AMMO_MAX = 14
-	self.ppk.stats.damage = 25
+	self.ppk.stats.damage = 50
 	self.ppk.stats.spread = 16
 	self.ppk.stats.recoil = 17
 	self.ppk.stats.concealment = 30
 	self.ppk.fire_mode_data.fire_rate = 60 / 500
 	
 	self.g26.CLIP_AMMO_MAX = 12
-	self.g26.stats.damage = 25
+	self.g26.stats.damage = 50
 	self.g26.stats.spread = 13
 	self.g26.stats.recoil = 19
 	self.g26.stats.concealment = 30
@@ -1670,35 +1675,35 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.g26.fire_mode_data.fire_rate = 60 / 500
 
 	self.jowi.CLIP_AMMO_MAX = 24
-	self.jowi.stats.damage = 25
+	self.jowi.stats.damage = 50
 	self.jowi.stats.spread = 12
 	self.jowi.stats.recoil = 21
 	self.jowi.stats.concealment = 30
 	self.jowi.fire_mode_data.fire_rate = 60 / 500
 
 	self.pl14.CLIP_AMMO_MAX = 16
-	self.pl14.stats.damage = 25
+	self.pl14.stats.damage = 50
 	self.pl14.stats.spread = 15
 	self.pl14.stats.recoil = 19
 	self.pl14.stats.concealment = 29
 	self.pl14.fire_mode_data.fire_rate = 60 / 500
 	
 	self.packrat.CLIP_AMMO_MAX = 15
-	self.packrat.stats.damage = 25
+	self.packrat.stats.damage = 50
 	self.packrat.stats.spread = 16
 	self.packrat.stats.recoil = 17
 	self.packrat.stats.concealment = 29
 	self.packrat.fire_mode_data.fire_rate = 60 / 500
 
 	self.legacy.CLIP_AMMO_MAX = 13
-	self.legacy.stats.damage = 25
+	self.legacy.stats.damage = 50
 	self.legacy.stats.spread = 14
 	self.legacy.stats.recoil = 18
 	self.legacy.stats.concealment = 30
 	self.legacy.fire_mode_data.fire_rate = 60 / 500
 
 	self.beer.CLIP_AMMO_MAX = 15
-	self.beer.stats.damage = 25
+	self.beer.stats.damage = 50
 	self.beer.stats.spread = 13
 	self.beer.stats.recoil = 19
 	self.beer.stats.concealment = 28
@@ -1708,7 +1713,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.beer.BURST_COUNT = 3
 	
 	self.stech.CLIP_AMMO_MAX = 20
-	self.stech.stats.damage = 25
+	self.stech.stats.damage = 50
 	self.stech.stats.spread = 13
 	self.stech.stats.recoil = 16
 	self.stech.stats.concealment = 27
@@ -1716,35 +1721,35 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.stech.timers.reload_not_empty = 1.89
 
 	self.maxim9.CLIP_AMMO_MAX = 17
-	self.maxim9.stats.damage = 25
+	self.maxim9.stats.damage = 50
 	self.maxim9.stats.spread = 17
 	self.maxim9.stats.recoil = 17
 	self.maxim9.stats.concealment = 27
 	self.maxim9.fire_mode_data.fire_rate = 60 / 500
 	
 	self.p226.CLIP_AMMO_MAX = 12
-	self.p226.stats.damage = 40
+	self.p226.stats.damage = 80
 	self.p226.stats.spread = 15
 	self.p226.stats.recoil = 13
 	self.p226.stats.concealment = 29
 	self.p226.fire_mode_data.fire_rate = 60 / 500
 
 	self.g22c.CLIP_AMMO_MAX = 15
-	self.g22c.stats.damage = 40
+	self.g22c.stats.damage = 80
 	self.g22c.stats.spread = 13
 	self.g22c.stats.recoil = 14
 	self.g22c.stats.concealment = 29
 	self.g22c.fire_mode_data.fire_rate = 60 / 500
 
 	self.x_g22c.CLIP_AMMO_MAX = 30
-	self.x_g22c.stats.damage = 40
+	self.x_g22c.stats.damage = 80
 	self.x_g22c.stats.spread = 13
 	self.x_g22c.stats.recoil = 14
 	self.x_g22c.stats.concealment = 29
 	self.x_g22c.fire_mode_data.fire_rate = 60 / 500
 	
 	self.c96.CLIP_AMMO_MAX = 10
-	self.c96.stats.damage = 40
+	self.c96.stats.damage = 80
 	self.c96.stats.spread = 14
 	self.c96.stats.recoil = 12
 	self.c96.stats.concealment = 28
@@ -1757,56 +1762,56 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.c96.sounds.stop_fire = "g18c_stop"
 	
 	self.hs2000.CLIP_AMMO_MAX = 16
-	self.hs2000.stats.damage = 40
+	self.hs2000.stats.damage = 80
 	self.hs2000.stats.spread = 14
 	self.hs2000.stats.recoil = 13
 	self.hs2000.stats.concealment = 30
 	self.hs2000.fire_mode_data.fire_rate = 60 / 500
 
 	self.sparrow.CLIP_AMMO_MAX = 12
-	self.sparrow.stats.damage = 40
+	self.sparrow.stats.damage = 80
 	self.sparrow.stats.spread = 17
 	self.sparrow.stats.recoil = 12
 	self.sparrow.stats.concealment = 29
 	self.sparrow.fire_mode_data.fire_rate = 60 / 500
 	
 	self.colt_1911.CLIP_AMMO_MAX = 10
-	self.colt_1911.stats.damage = 60
+	self.colt_1911.stats.damage = 120
 	self.colt_1911.stats.spread = 16
 	self.colt_1911.stats.recoil = 9
 	self.colt_1911.stats.concealment = 29
 	self.colt_1911.fire_mode_data.fire_rate = 60 / 500
 
 	self.x_1911.CLIP_AMMO_MAX = 20
-	self.x_1911.stats.damage = 60
+	self.x_1911.stats.damage = 120
 	self.x_1911.stats.spread = 16
 	self.x_1911.stats.recoil = 9
 	self.x_1911.stats.concealment = 29
 	self.x_1911.fire_mode_data.fire_rate = 60 / 500
 	
 	self.usp.CLIP_AMMO_MAX = 12
-	self.usp.stats.damage = 60
+	self.usp.stats.damage = 120
 	self.usp.stats.spread = 14
 	self.usp.stats.recoil = 10
 	self.usp.stats.concealment = 29
 	self.usp.fire_mode_data.fire_rate = 60 / 500
 
 	self.x_usp.CLIP_AMMO_MAX = 24
-	self.x_usp.stats.damage = 60
+	self.x_usp.stats.damage = 120
 	self.x_usp.stats.spread = 14
 	self.x_usp.stats.recoil = 10
 	self.x_usp.stats.concealment = 29
 	self.x_usp.fire_mode_data.fire_rate = 60 / 500
 
 	self.breech.CLIP_AMMO_MAX = 8
-	self.breech.stats.damage = 60
+	self.breech.stats.damage = 120
 	self.breech.stats.spread = 13
 	self.breech.stats.recoil = 11
 	self.breech.stats.concealment = 30
 	self.breech.fire_mode_data.fire_rate = 60 / 500
 	
 	self.shrew.CLIP_AMMO_MAX = 8
-	self.shrew.stats.damage = 60
+	self.shrew.stats.damage = 120
 	self.shrew.stats.spread = 14
 	self.shrew.stats.recoil = 9
 	self.shrew.stats.concealment = 30
@@ -1814,14 +1819,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.shrew.fire_mode_data.fire_rate = 60 / 500
 	
 	self.m1911.CLIP_AMMO_MAX = 8
-	self.m1911.stats.damage = 60
+	self.m1911.stats.damage = 120
 	self.m1911.stats.spread = 17
 	self.m1911.stats.recoil = 9
 	self.m1911.stats.concealment = 29
 	self.m1911.fire_mode_data.fire_rate = 60 / 500
 
 	self.type54.CLIP_AMMO_MAX = 10
-	self.type54.stats.damage = 60
+	self.type54.stats.damage = 120
 	self.type54.stats.spread = 15
 	self.type54.stats.recoil = 10
 	self.type54.stats.concealment = 29
@@ -1830,7 +1835,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	--Revolvers
 	self.mateba.categories = { "revolver" }
 	self.mateba.CLIP_AMMO_MAX = 6
-	self.mateba.stats.damage = 80
+	self.mateba.stats.damage = 160
 	self.mateba.stats.spread = 20
 	self.mateba.stats.recoil = 4
 	self.mateba.stats.concealment = 27
@@ -1839,7 +1844,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.korth.categories = { "revolver" }
 	self.korth.CLIP_AMMO_MAX = 8
-	self.korth.stats.damage = 80
+	self.korth.stats.damage = 160
 	self.korth.stats.spread = 19
 	self.korth.stats.recoil = 4
 	self.korth.stats.concealment = 27
@@ -1847,7 +1852,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.new_raging_bull.categories = { "revolver" }
 	self.new_raging_bull.CLIP_AMMO_MAX = 6
-	self.new_raging_bull.stats.damage = 100
+	self.new_raging_bull.stats.damage = 200
 	self.new_raging_bull.stats.spread = 20
 	self.new_raging_bull.stats.recoil = 4
 	self.new_raging_bull.stats.concealment = 27
@@ -1855,7 +1860,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.chinchilla.categories = { "revolver" }
 	self.chinchilla.CLIP_AMMO_MAX = 6
-	self.chinchilla.stats.damage = 100
+	self.chinchilla.stats.damage = 200
 	self.chinchilla.stats.spread = 21
 	self.chinchilla.stats.recoil = 4
 	self.chinchilla.stats.concealment = 28
@@ -1864,7 +1869,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.x_chinchilla.categories = { "akimbo", "revolver" }
 	self.x_chinchilla.CLIP_AMMO_MAX = 12
-	self.x_chinchilla.stats.damage = 100
+	self.x_chinchilla.stats.damage = 200
 	self.x_chinchilla.stats.spread = 21
 	self.x_chinchilla.stats.recoil = 4
 	self.x_chinchilla.stats.concealment = 28
@@ -1872,7 +1877,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.model3.categories = { "revolver" }
 	self.model3.CLIP_AMMO_MAX = 6
-	self.model3.stats.damage = 100
+	self.model3.stats.damage = 200
 	self.model3.stats.spread = 19
 	self.model3.stats.recoil = 6
 	self.model3.stats.concealment = 27
@@ -1881,7 +1886,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.deagle.categories = { "handcannon", "pistol" }
 	self.deagle.CLIP_AMMO_MAX = 7
-	self.deagle.stats.damage = 100
+	self.deagle.stats.damage = 200
 	self.deagle.stats.spread = 17
 	self.deagle.stats.recoil = 3
 	self.deagle.stats.concealment = 26
@@ -1889,7 +1894,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.x_deagle.categories = { "akimbo", "handcannon", "pistol" }
 	self.x_deagle.CLIP_AMMO_MAX = 14
-	self.x_deagle.stats.damage = 100
+	self.x_deagle.stats.damage = 200
 	self.x_deagle.stats.spread = 17
 	self.x_deagle.stats.recoil = 3
 	self.x_deagle.stats.concealment = 26
@@ -1897,7 +1902,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.peacemaker.categories = { "revolver" }
 	self.peacemaker.CLIP_AMMO_MAX = 6
-	self.peacemaker.stats.damage = 120
+	self.peacemaker.stats.damage = 240
 	self.peacemaker.stats.spread = 20
 	self.peacemaker.stats.recoil = 4
 	self.peacemaker.stats.concealment = 26
@@ -1907,7 +1912,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.rsh12.categories = { "revolver" }
 	self.rsh12.CLIP_AMMO_MAX = 5
-	self.rsh12.stats.damage = 120
+	self.rsh12.stats.damage = 240
 	self.rsh12.stats.spread = 21
 	self.rsh12.stats.recoil = 3
 	self.rsh12.stats.concealment = 26
@@ -1921,7 +1926,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	--DMRs	
 	self.sub2000.categories = { "dmr", "keltec" }
 	self.sub2000.CLIP_AMMO_MAX = 33
-	self.sub2000.stats.damage = 30
+	self.sub2000.stats.damage = 50
 	self.sub2000.stats.spread = 19
 	self.sub2000.stats.recoil = 16
 	self.sub2000.stats.concealment = 26
@@ -1929,7 +1934,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.scar.categories = { "dmr" }
 	self.scar.CLIP_AMMO_MAX = 20
-	self.scar.stats.damage = 60
+	self.scar.stats.damage = 120
 	self.scar.stats.spread = 20
 	self.scar.stats.recoil = 6
 	self.scar.stats.concealment = 20
@@ -1937,7 +1942,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.fal.categories = { "dmr" }
 	self.fal.CLIP_AMMO_MAX = 20
-	self.fal.stats.damage = 60
+	self.fal.stats.damage = 120
 	self.fal.stats.spread = 19
 	self.fal.stats.recoil = 6
 	self.fal.stats.concealment = 20
@@ -1945,7 +1950,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.galil.categories = { "dmr" }
 	self.galil.CLIP_AMMO_MAX = 25
-	self.galil.stats.damage = 60
+	self.galil.stats.damage = 120
 	self.galil.stats.spread = 21
 	self.galil.stats.recoil = 4
 	self.galil.stats.concealment = 20
@@ -1954,7 +1959,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.asval.categories = { "dmr" }
 	self.asval.CLIP_AMMO_MAX = 20
-	self.asval.stats.damage = 60
+	self.asval.stats.damage = 120
 	self.asval.stats.spread = 17
 	self.asval.stats.recoil = 6
 	self.asval.stats.concealment = 24
@@ -1962,7 +1967,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.contraband.categories = { "dmr" }
 	self.contraband.CLIP_AMMO_MAX = 20
-	self.contraband.stats.damage = 60
+	self.contraband.stats.damage = 120
 	self.contraband.stats.spread = 21
 	self.contraband.stats.recoil = 4
 	self.contraband.stats.concealment = 16
@@ -1971,7 +1976,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.new_m14.categories = { "dmr" }
 	self.new_m14.CLIP_AMMO_MAX = 20
-	self.new_m14.stats.damage = 80
+	self.new_m14.stats.damage = 160
 	self.new_m14.stats.spread = 21
 	self.new_m14.stats.recoil = 4
 	self.new_m14.stats.concealment = 18
@@ -1979,7 +1984,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.g3.categories = { "dmr" }
 	self.g3.CLIP_AMMO_MAX = 20
-	self.g3.stats.damage = 80
+	self.g3.stats.damage = 160
 	self.g3.stats.spread = 23
 	self.g3.stats.recoil = 3
 	self.g3.stats.concealment = 18
@@ -1987,7 +1992,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.shak12.categories = { "dmr" }
 	self.shak12.CLIP_AMMO_MAX = 20
-	self.shak12.stats.damage = 80
+	self.shak12.stats.damage = 160
 	self.shak12.stats.spread = 19
 	self.shak12.stats.recoil = 6
 	self.shak12.stats.concealment = 22
@@ -1996,7 +2001,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.ching.categories = { "dmr" }
 	self.ching.CLIP_AMMO_MAX = 8
-	self.ching.stats.damage = 100
+	self.ching.stats.damage = 200
 	self.ching.stats.spread = 23
 	self.ching.stats.recoil = 3
 	self.ching.stats.concealment = 18
@@ -2005,7 +2010,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	--Shotguns
 	self.saiga.CLIP_AMMO_MAX = 8
-	self.saiga.stats.damage = 120
+	self.saiga.stats.damage = 240
 	self.saiga.stats.spread = 11
 	self.saiga.stats.recoil = 14
 	self.saiga.stats.concealment = 18
@@ -2013,21 +2018,21 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.saiga.fire_mode_data.fire_rate = 60 / 400
 
 	self.aa12.CLIP_AMMO_MAX = 10
-	self.aa12.stats.damage = 120
+	self.aa12.stats.damage = 240
 	self.aa12.stats.spread = 11
 	self.aa12.stats.recoil = 14
 	self.aa12.stats.concealment = 16
 	self.aa12.fire_mode_data.fire_rate = 60 / 300
 
 	self.basset.CLIP_AMMO_MAX = 8
-	self.basset.stats.damage = 120
+	self.basset.stats.damage = 240
 	self.basset.stats.spread = 9
 	self.basset.stats.recoil = 13
 	self.basset.stats.concealment = 24
 	self.basset.fire_mode_data.fire_rate = 60 / 350
 
 	self.striker.CLIP_AMMO_MAX = 12
-	self.striker.stats.damage = 150
+	self.striker.stats.damage = 300
 	self.striker.stats.spread = 11
 	self.striker.stats.recoil = 9
 	self.striker.stats.concealment = 24
@@ -2035,7 +2040,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.striker.fire_mode_data.fire_rate = 60 / 300
 	
 	self.sko12.CLIP_AMMO_MAX = 25
-	self.sko12.stats.damage = 150
+	self.sko12.stats.damage = 300
 	self.sko12.stats.spread = 13
 	self.sko12.stats.recoil = 11
 	self.sko12.stats.concealment = 14
@@ -2045,21 +2050,21 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.sko12.CAN_TOGGLE_FIREMODE = false
 	
 	self.benelli.CLIP_AMMO_MAX = 6
-	self.benelli.stats.damage = 180
+	self.benelli.stats.damage = 360
 	self.benelli.stats.spread = 14
 	self.benelli.stats.recoil = 9
 	self.benelli.stats.concealment = 18
 	self.benelli.fire_mode_data.fire_rate = 60 / 300
 	
 	self.spas12.CLIP_AMMO_MAX = 8
-	self.spas12.stats.damage = 180
+	self.spas12.stats.damage = 360
 	self.spas12.stats.spread = 13
 	self.spas12.stats.recoil = 9
 	self.spas12.stats.concealment = 18
 	self.spas12.fire_mode_data.fire_rate = 60 / 300
 	
 	self.rota.CLIP_AMMO_MAX = 6
-	self.rota.stats.damage = 180
+	self.rota.stats.damage = 360
 	self.rota.stats.spread = 12
 	self.rota.stats.recoil = 11
 	self.rota.stats.concealment = 24
@@ -2067,7 +2072,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.ultima.use_data.selection_index = 2
 	self.ultima.CLIP_AMMO_MAX = 7
-	self.ultima.stats.damage = 180
+	self.ultima.stats.damage = 360
 	self.ultima.stats.spread = 14
 	self.ultima.stats.recoil = 11
 	self.ultima.stats.concealment = 20
@@ -2075,14 +2080,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.ultima.fire_mode_data.fire_rate = 60 / 300
 	
 	self.r870.CLIP_AMMO_MAX = 8
-	self.r870.stats.damage = 240
+	self.r870.stats.damage = 480
 	self.r870.stats.spread = 15
 	self.r870.stats.recoil = 6
 	self.r870.stats.concealment = 18
 	self.r870.fire_mode_data.fire_rate = 60 / 120
 
 	self.serbu.CLIP_AMMO_MAX = 4
-	self.serbu.stats.damage = 240
+	self.serbu.stats.damage = 480
 	self.serbu.stats.spread = 11
 	self.serbu.stats.recoil = 4
 	self.serbu.stats.concealment = 24
@@ -2090,14 +2095,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.serbu.fire_mode_data.fire_rate = 60 / 120
 
 	self.judge.CLIP_AMMO_MAX = 5
-	self.judge.stats.damage = 240
+	self.judge.stats.damage = 480
 	self.judge.stats.spread = 11
 	self.judge.stats.recoil = 3
 	self.judge.stats.concealment = 28
 	self.judge.fire_mode_data.fire_rate = 60 / 300
 
 	self.x_judge.CLIP_AMMO_MAX = 10
-	self.x_judge.stats.damage = 240
+	self.x_judge.stats.damage = 480
 	self.x_judge.stats.spread = 12
 	self.x_judge.stats.recoil = 3
 	self.x_judge.stats.concealment = 28
@@ -2114,14 +2119,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	}
 	
 	self.ksg.CLIP_AMMO_MAX = 14
-	self.ksg.stats.damage = 240
+	self.ksg.stats.damage = 480
 	self.ksg.stats.spread = 13
 	self.ksg.stats.recoil = 6
 	self.ksg.stats.concealment = 22
 	self.ksg.fire_mode_data.fire_rate = 60 / 105
 
 	self.m37.CLIP_AMMO_MAX = 6
-	self.m37.stats.damage = 240
+	self.m37.stats.damage = 480
 	self.m37.stats.spread = 14
 	self.m37.stats.recoil = 6
 	self.m37.stats.concealment = 18
@@ -2129,7 +2134,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	--self.m37.alt_fire_data = cowboy_shotgun
 	
 	self.m1897.CLIP_AMMO_MAX = 6
-	self.m1897.stats.damage = 240
+	self.m1897.stats.damage = 480
 	self.m1897.stats.spread = 14
 	self.m1897.stats.recoil = 6
 	self.m1897.stats.concealment = 18
@@ -2137,7 +2142,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 --	self.m1897.alt_fire_data = cowboy_shotgun
 	
 	self.m590.CLIP_AMMO_MAX = 7
-	self.m590.stats.damage = 240
+	self.m590.stats.damage = 480
 	self.m590.stats.spread = 14
 	self.m590.stats.recoil = 7
 	self.m590.stats.concealment = 18
@@ -2145,7 +2150,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.m590.fire_mode_data.fire_rate = 60 / 120
 	
 	self.huntsman.CLIP_AMMO_MAX = 2
-	self.huntsman.stats.damage = 300
+	self.huntsman.stats.damage = 600
 	self.huntsman.stats.spread = 17
 	self.huntsman.stats.recoil = 4
 	self.huntsman.stats.concealment = 16
@@ -2153,7 +2158,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.huntsman.fire_mode_data.fire_rate = 60 / 400
 
 	self.b682.CLIP_AMMO_MAX = 2
-	self.b682.stats.damage = 300
+	self.b682.stats.damage = 600
 	self.b682.stats.spread = 16
 	self.b682.stats.recoil = 6
 	self.b682.stats.concealment = 16
@@ -2161,14 +2166,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.b682.fire_mode_data.fire_rate = 60 / 400
 
 	self.boot.CLIP_AMMO_MAX = 5
-	self.boot.stats.damage = 300
+	self.boot.stats.damage = 600
 	self.boot.stats.spread = 13
 	self.boot.stats.recoil = 4
 	self.boot.stats.concealment = 24
 	self.boot.fire_mode_data.fire_rate = 60 / 60
 	
 	self.coach.CLIP_AMMO_MAX = 2
-	self.coach.stats.damage = 300
+	self.coach.stats.damage = 600
 	self.coach.stats.spread = 16
 	self.coach.stats.recoil = 4
 	self.coach.stats.concealment = 18
@@ -2179,7 +2184,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	if self.bs23 then
 		self.bs23.categories = { "shotgun" }
 		self.bs23.CLIP_AMMO_MAX = 3
-		self.bs23.stats.damage = 360
+		self.bs23.stats.damage = 720
 		self.bs23.stats.spread = 17
 		self.bs23.stats.recoil = 3
 		self.bs23.stats.concealment = 18
@@ -2189,114 +2194,126 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	--Sniper Rifles
 	self.victor.categories = { "snp", "intermediate" }
 	self.victor.CLIP_AMMO_MAX = 20
-	self.victor.stats.damage = 60
+	self.victor.stats.damage = 120
 	self.victor.stats.spread = 19
 	self.victor.stats.recoil = 11
 	self.victor.stats.concealment = 20
 	self.victor.fire_mode_data.fire_rate = 60 / 300
+	self.victor.stats_modifiers = nil
 
 	self.qbu88.categories = { "snp", "intermediate" }
 	self.qbu88.CLIP_AMMO_MAX = 10
-	self.qbu88.stats.damage = 60
+	self.qbu88.stats.damage = 120
 	self.qbu88.stats.spread = 21
 	self.qbu88.stats.recoil = 9
 	self.qbu88.stats.concealment = 20
 	self.qbu88.fire_rate_multiplier = 2
 	self.qbu88.fire_mode_data.fire_rate = 60 / 150
+	self.qbu88.stats_modifiers = nil
 	
 	self.siltstone.CLIP_AMMO_MAX = 10
-	self.siltstone.stats.damage = 80
+	self.siltstone.stats.damage = 160
 	self.siltstone.stats.spread = 21
 	self.siltstone.stats.recoil = 6
 	self.siltstone.stats.concealment = 18
 	self.siltstone.fire_mode_data.fire_rate = 60 / 200
+	self.siltstone.stats_modifiers = nil
 
 	self.wa2000.CLIP_AMMO_MAX = 6
-	self.wa2000.stats.damage = 80
+	self.wa2000.stats.damage = 160
 	self.wa2000.stats.spread = 21
 	self.wa2000.stats.recoil = 6
 	self.wa2000.stats.concealment = 22
 	self.wa2000.stats.reload = 150
 	self.wa2000.fire_mode_data.fire_rate = 60 / 200
+	self.wa2000.stats_modifiers = nil
 
 	self.tti.CLIP_AMMO_MAX = 20
-	self.tti.stats.damage = 80
+	self.tti.stats.damage = 160
 	self.tti.stats.spread = 19
 	self.tti.stats.recoil = 6
 	self.tti.stats.concealment = 18
 	self.tti.stats.reload = 75
 	self.tti.fire_mode_data.fire_rate = 60 / 200
+	self.tti.stats_modifiers = nil
 	
 	self.msr.CLIP_AMMO_MAX = 10
-	self.msr.stats.damage = 120
+	self.msr.stats.damage = 240
 	self.msr.stats.spread = 23
 	self.msr.stats.recoil = 4
 	self.msr.stats.concealment = 16
 	self.msr.fire_mode_data.fire_rate = 60 / 50
+	self.msr.stats_modifiers = nil
 
 	self.winchester1874.CLIP_AMMO_MAX = 10
-	self.winchester1874.stats.damage = 120
+	self.winchester1874.stats.damage = 240
 	self.winchester1874.stats.spread = 23
 	self.winchester1874.stats.recoil = 4
 	self.winchester1874.stats.concealment = 16
 	self.winchester1874.fire_mode_data.fire_rate = 60 / 70
---	self.winchester1874.alt_fire_data = cowboy_snp
+	self.winchester1874.stats_modifiers = nil
 	
 	self.desertfox.CLIP_AMMO_MAX = 5
-	self.desertfox.stats.damage = 120
+	self.desertfox.stats.damage = 240
 	self.desertfox.stats.spread = 18
 	self.desertfox.stats.recoil = 4
 	self.desertfox.stats.concealment = 22
 	self.desertfox.fire_mode_data.fire_rate = 60 / 40
-	
+	self.desertfox.stats_modifiers = nil
+		
 	self.r700.CLIP_AMMO_MAX = 5
-	self.r700.stats.damage = 120
+	self.r700.stats.damage = 240
 	self.r700.stats.spread = 24
 	self.r700.stats.recoil = 4
 	self.r700.stats.concealment = 18
 	self.r700.stats.reload = 135
 	self.r700.fire_mode_data.fire_rate = 60 / 60
-
+	self.r700.stats_modifiers = nil
+	
 	self.scout.CLIP_AMMO_MAX = 5
-	self.scout.stats.damage = 120
+	self.scout.stats.damage = 240
 	self.scout.stats.spread = 22
 	self.scout.stats.recoil = 5
 	self.scout.stats.concealment = 18
 	self.scout.fire_mode_data.fire_rate = 60 / 55
+	self.scout.stats_modifiers = nil
 	
 	self.r93.CLIP_AMMO_MAX = 5
-	self.r93.stats.damage = 180
+	self.r93.stats.damage = 360
 	self.r93.stats.spread = 24
 	self.r93.stats.recoil = 4
 	self.r93.stats.concealment = 16
 	self.r93.fire_mode_data.fire_rate = 60 / 50
+	self.r93.stats_modifiers = nil
 
 	self.mosin.CLIP_AMMO_MAX = 5
-	self.mosin.stats.damage = 180
+	self.mosin.stats.damage = 360
 	self.mosin.stats.spread = 24
 	self.mosin.stats.recoil = 4
 	self.mosin.stats.concealment = 16
 	self.mosin.reload_speed_multiplier = 1.35
 	self.mosin.fire_mode_data.fire_rate = 60 / 50
+	self.mosin.stats_modifiers = nil
 
 	self.model70.CLIP_AMMO_MAX = 5
-	self.model70.stats.damage = 180
+	self.model70.stats.damage = 360
 	self.model70.stats.spread = 24
 	self.model70.stats.recoil = 4
 	self.model70.stats.concealment = 16
 	self.model70.stats.reload = 125
 	self.model70.fire_mode_data.fire_rate = 60 / 60
+	self.model70.stats_modifiers = nil
 
 	self.sbl.CLIP_AMMO_MAX = 6
-	self.sbl.stats.damage = 180
+	self.sbl.stats.damage = 360
 	self.sbl.stats.spread = 22
 	self.sbl.stats.recoil = 6
 	self.sbl.stats.concealment = 20
 	self.sbl.fire_mode_data.fire_rate = 60 / 70
---	self.sbl.alt_fire_data = cowboy_snp
+	self.sbl.stats_modifiers = nil
 	
 	self.contender.CLIP_AMMO_MAX = 1
-	self.contender.stats.damage = 180
+	self.contender.stats.damage = 360
 	self.contender.stats.spread = 19
 	self.contender.stats.recoil = 4
 	self.contender.stats.concealment = 26
@@ -2305,27 +2322,30 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.contender.timers.reload_not_empty = self.contender.timers.reload_empty
 	self.contender.timers.reload_steelsight = self.contender.timers.reload_empty
 	self.contender.timers.reload_steelsight_not_empty = self.contender.timers.reload_empty
+	self.contender.stats_modifiers = nil
 	self.contender.ignore_damage_upgrades = nil	
 	self.contender.rays = nil --??
 	
 	self.awp.CLIP_AMMO_MAX = 10
-	self.awp.stats.damage = 180
+	self.awp.stats.damage = 360
 	self.awp.stats.spread = 24
 	self.awp.stats.recoil = 4
 	self.awp.stats.concealment = 14
 	self.awp.fire_mode_data.fire_rate = 60 / 40
+	self.awp.stats_modifiers = nil
 	
 	self.m95.categories = { "snp", "fifty" }	
 	self.m95.CLIP_AMMO_MAX = 5
-	self.m95.stats.damage = 240
+	self.m95.stats.damage = 480
 	self.m95.stats.spread = 25
 	self.m95.stats.recoil = 3
 	self.m95.stats.concealment = 12
 	self.m95.fire_mode_data.fire_rate = 60 / 50
+	self.m95.stats_modifiers = nil
 
 	--LMGs
 	self.m249.CLIP_AMMO_MAX = 200
-	self.m249.stats.damage = 20
+	self.m249.stats.damage = 40
 	self.m249.stats.spread = 14
 	self.m249.stats.recoil = 13
 	self.m249.stats.concealment = 18
@@ -2334,7 +2354,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.tecci.categories = { "lmg" }
 	self.tecci.CLIP_AMMO_MAX = 100
-	self.tecci.stats.damage = 20
+	self.tecci.stats.damage = 40
 	self.tecci.stats.spread = 13
 	self.tecci.stats.recoil = 16
 	self.tecci.stats.concealment = 22
@@ -2342,7 +2362,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.tecci.fire_mode_data.fire_rate = 60 / 750
 	
 	self.kacchainsaw.CLIP_AMMO_MAX = 200
-	self.kacchainsaw.stats.damage = 20
+	self.kacchainsaw.stats.damage = 40
 	self.kacchainsaw.stats.spread = 13
 	self.kacchainsaw.stats.recoil = 16
 	self.kacchainsaw.stats.concealment = 16
@@ -2350,14 +2370,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.kacchainsaw.no_steelsight = true
 		
 	self.rpk.CLIP_AMMO_MAX = 75
-	self.rpk.stats.damage = 30
+	self.rpk.stats.damage = 60
 	self.rpk.stats.spread = 16
 	self.rpk.stats.recoil = 9
 	self.rpk.stats.concealment = 16
 	self.rpk.fire_mode_data.fire_rate = 60 / 650
 
 	self.hk51b.CLIP_AMMO_MAX = 50
-	self.hk51b.stats.damage = 30
+	self.hk51b.stats.damage = 60
 	self.hk51b.stats.spread = 11
 	self.hk51b.stats.recoil = 4
 	self.hk51b.stats.concealment = 22
@@ -2366,7 +2386,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.hk51b.CAN_TOGGLE_FIREMODE = true
 	
 	self.hk21.CLIP_AMMO_MAX = 100
-	self.hk21.stats.damage = 40
+	self.hk21.stats.damage = 80
 	self.hk21.stats.spread = 14
 	self.hk21.stats.recoil = 7
 	self.hk21.stats.concealment = 14
@@ -2374,7 +2394,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.hk21.CAN_TOGGLE_FIREMODE = true
 	
 	self.mg42.CLIP_AMMO_MAX = 50
-	self.mg42.stats.damage = 40
+	self.mg42.stats.damage = 80
 	self.mg42.stats.spread = 15
 	self.mg42.stats.recoil = 7
 	self.mg42.stats.concealment = 14
@@ -2382,21 +2402,21 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.mg42.fire_mode_data.fire_rate = 60 / 1200
 
 	self.par.CLIP_AMMO_MAX = 100
-	self.par.stats.damage = 40
+	self.par.stats.damage = 80
 	self.par.stats.spread = 16
 	self.par.stats.recoil = 6
 	self.par.stats.concealment = 14
 	self.par.fire_mode_data.fire_rate = 60 / 750
 		
 	self.m60.CLIP_AMMO_MAX = 75
-	self.m60.stats.damage = 50
+	self.m60.stats.damage = 100
 	self.m60.stats.spread = 17
 	self.m60.stats.recoil = 4
 	self.m60.stats.concealment = 14
 	self.m60.fire_mode_data.fire_rate = 60 / 550
 
 	self.hcar.CLIP_AMMO_MAX = 20
-	self.hcar.stats.damage = 50
+	self.hcar.stats.damage = 100
 	self.hcar.stats.spread = 19
 	self.hcar.stats.recoil = 3
 	self.hcar.stats.concealment = 16
@@ -2404,7 +2424,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	--MG Turret
 	self.ranc_heavy_machine_gun.CLIP_AMMO_MAX = 200
-	self.ranc_heavy_machine_gun.stats.damage = 120
+	self.ranc_heavy_machine_gun.stats.damage = 240
 	self.ranc_heavy_machine_gun.stats.spread = 21
 	self.ranc_heavy_machine_gun.stats.recoil = 21
 	self.ranc_heavy_machine_gun.stats.concealment = 20
@@ -2417,7 +2437,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	--miniguns
 	self.m134.CLIP_AMMO_MAX = 750
-	self.m134.stats.damage = 15
+	self.m134.stats.damage = 30
 	self.m134.stats.spread = 11
 	self.m134.stats.recoil = 10
 	self.m134.stats.concealment = 10
@@ -2426,7 +2446,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.m134.no_steelsight = true
 
 	self.shuno.CLIP_AMMO_MAX = 750
-	self.shuno.stats.damage = 15
+	self.shuno.stats.damage = 30
 	self.shuno.stats.spread = 9
 	self.shuno.stats.recoil = 12
 	self.shuno.stats.concealment = 10
@@ -2434,7 +2454,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.shuno.no_steelsight = true
 
 	self.hailstorm.CLIP_AMMO_MAX = 120
-	self.hailstorm.stats.damage = 20
+	self.hailstorm.stats.damage = 40
 	self.hailstorm.stats.spread = 13
 	self.hailstorm.stats.recoil = 7
 	self.hailstorm.stats.concealment = 20
@@ -2448,17 +2468,17 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.hailstorm.fire_mode_data.volley.rays = 15
 	
 	self.m32.CLIP_AMMO_MAX = 6
-	self.m32.stats.damage = 18
+	self.m32.stats.damage = 48
 	self.m32.stats.spread = 21
 	self.m32.stats.recoil = 25
 	self.m32.stats.concealment = 22
 	self.m32.stats.reload = 200
-	self.m32.fire_mode_data.fire_rate = 60 / 150
+	self.m32.fire_mode_data.fire_rate = 60 / 100
 	self.m32.stats_modifiers = { damage = 10 }
 	
 	self.arbiter.use_data.selection_index = 2
 	self.arbiter.CLIP_AMMO_MAX = 5
-	self.arbiter.stats.damage = 18
+	self.arbiter.stats.damage = 48
 	self.arbiter.stats.spread = 25
 	self.arbiter.stats.recoil = 25
 	self.arbiter.stats.concealment = 22
@@ -2466,11 +2486,11 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.arbiter.stats_modifiers = { damage = 10 }
 
 	self.ms3gl.CLIP_AMMO_MAX = 3
-	self.ms3gl.stats.damage = 18
-	self.ms3gl.stats.spread = 21
+	self.ms3gl.stats.damage = 48
+	self.ms3gl.stats.spread = 19
 	self.ms3gl.stats.recoil = 25
 	self.ms3gl.stats.concealment = 26
-	self.ms3gl.fire_mode_data.fire_rate = 60 / 90
+	self.ms3gl.fire_mode_data.fire_rate = 60 / 150
 	self.ms3gl.stats_modifiers = { damage = 10 }
 	self.ms3gl.timers.equip = 0.75
 	self.ms3gl.FIRE_MODE = "single"
@@ -2478,7 +2498,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.gre_m79.use_data.selection_index = 1
 	self.gre_m79.CLIP_AMMO_MAX = 1
-	self.gre_m79.stats.damage = 36
+	self.gre_m79.stats.damage = 96
 	self.gre_m79.stats.spread = 25
 	self.gre_m79.stats.recoil = 25
 	self.gre_m79.stats.concealment = 24
@@ -2487,7 +2507,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.china.use_data.selection_index = 2
 	self.china.CLIP_AMMO_MAX = 3
-	self.china.stats.damage = 36
+	self.china.stats.damage = 96
 	self.china.stats.spread = 23
 	self.china.stats.recoil = 25
 	self.china.stats.concealment = 20
@@ -2495,7 +2515,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.china.stats_modifiers = { damage = 10 }
 
 	self.contraband_m203.CLIP_AMMO_MAX = 1
-	self.contraband_m203.stats.damage = 36
+	self.contraband_m203.stats.damage = 96
 	self.contraband_m203.stats.spread = 25
 	self.contraband_m203.stats.recoil = 25
 	self.contraband_m203.stats.concealment = 1
@@ -2503,7 +2523,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.contraband_m203.stats_modifiers = { damage = 10 }
 
 	self.groza_underbarrel.CLIP_AMMO_MAX = 1
-	self.groza_underbarrel.stats.damage = 36
+	self.groza_underbarrel.stats.damage = 96
 	self.groza_underbarrel.stats.spread = 25
 	self.groza_underbarrel.stats.recoil = 25
 	self.groza_underbarrel.stats.concealment = 1
@@ -2512,7 +2532,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.groza_underbarrel.stats_modifiers = { damage = 10 }
 	
 	self.slap.CLIP_AMMO_MAX = 1
-	self.slap.stats.damage = 36
+	self.slap.stats.damage = 96
 	self.slap.stats.spread = 23
 	self.slap.stats.recoil = 25
 	self.slap.stats.concealment = 26
@@ -2525,7 +2545,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.rpg7.use_data.selection_index = 2
 	self.rpg7.categories = { "rocket_launcher" }
 	self.rpg7.CLIP_AMMO_MAX = 1
-	self.rpg7.stats.damage = 48
+	self.rpg7.stats.damage = 80
 	self.rpg7.stats.spread = 25
 	self.rpg7.stats.recoil = 25
 	self.rpg7.stats.concealment = 16
@@ -2536,7 +2556,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.ray.use_data.selection_index = 2
 	self.ray.categories = { "rocket_launcher" }
 	self.ray.CLIP_AMMO_MAX = 4
-	self.ray.stats.damage = 12
+	self.ray.stats.damage = 20
 	self.ray.stats.spread = 25
 	self.ray.stats.recoil = 25
 	self.ray.stats.concealment = 16
@@ -2545,7 +2565,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.ray.has_description = nil
 
 	self.flamethrower_mk2.CLIP_AMMO_MAX = 600
-	self.flamethrower_mk2.stats.damage = 10
+	self.flamethrower_mk2.stats.damage = 20
 	self.flamethrower_mk2.stats.spread = 0
 	self.flamethrower_mk2.stats.recoil = 0
 	self.flamethrower_mk2.stats.concealment = 20
@@ -2554,7 +2574,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.flamethrower_mk2.dot_data_name = "weapon_flamethrower_mk2"
 
 	self.system.CLIP_AMMO_MAX = 300
-	self.system.stats.damage = 10
+	self.system.stats.damage = 20
 	self.system.stats.spread = 0
 	self.system.stats.recoil = 0
 	self.system.stats.concealment = 24
@@ -2563,7 +2583,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.system.dot_data_name = "weapon_system"
 
 	self.kacchainsaw_flamethrower.CLIP_AMMO_MAX = 100
-	self.kacchainsaw_flamethrower.stats.damage = 10
+	self.kacchainsaw_flamethrower.stats.damage = 20
 	self.kacchainsaw_flamethrower.stats.spread = 0
 	self.kacchainsaw_flamethrower.stats.recoil = 0
 	self.kacchainsaw_flamethrower.stats.concealment = 1
@@ -2573,7 +2593,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.money.use_data.selection_index = 2
 	self.money.CLIP_AMMO_MAX = 200
-	self.money.stats.damage = 15
+	self.money.stats.damage = 30
 	self.money.stats.spread = 0
 	self.money.stats.recoil = 0
 	self.money.stats.concealment = 22
@@ -2582,57 +2602,64 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.money.dot_data_name = "weapon_money"
 	
 	self.hunter.CLIP_AMMO_MAX = 1
-	self.hunter.stats.damage = 60
+	self.hunter.stats.damage = 24
 	self.hunter.stats.spread = 25
 	self.hunter.stats.recoil = 25
 	self.hunter.stats.concealment = 28
 	self.hunter.fire_mode_data.fire_rate = 60 / 240
+	self.hunter.stats_modifiers = { damage = 5 }
 	
 	self.plainsrider.CLIP_AMMO_MAX = 1
-	self.plainsrider.stats.damage = 120
+	self.plainsrider.stats.damage = 48
 	self.plainsrider.stats.spread = 25
 	self.plainsrider.stats.recoil = 25
 	self.plainsrider.stats.concealment = 28
 	self.plainsrider.fire_mode_data.fire_rate = 60 / 120
-
+	self.plainsrider.stats_modifiers = { damage = 5 }
+	
 	self.long.CLIP_AMMO_MAX = 1
-	self.long.stats.damage = 180
+	self.long.stats.damage = 48
 	self.long.stats.spread = 25
 	self.long.stats.recoil = 25
 	self.long.stats.concealment = 27
 	self.long.fire_mode_data.fire_rate = 60 / 60
+	self.long.stats_modifiers = { damage = 5 }
 
 	self.elastic.CLIP_AMMO_MAX = 1
-	self.elastic.stats.damage = 180
+	self.elastic.stats.damage = 72
 	self.elastic.stats.spread = 25
 	self.elastic.stats.recoil = 25
 	self.elastic.stats.concealment = 27
 	self.elastic.fire_mode_data.fire_rate = 60 / 60
+	self.elastic.stats_modifiers = { damage = 5 }
 	
 	self.frankish.CLIP_AMMO_MAX = 1
-	self.frankish.stats.damage = 180
+	self.frankish.stats.damage = 72
 	self.frankish.stats.spread = 25
 	self.frankish.stats.recoil = 25
 	self.frankish.stats.concealment = 26
 	self.frankish.fire_mode_data.fire_rate = 60 / 120
+	self.frankish.stats_modifiers = { damage = 5 }
 
 	self.arblast.CLIP_AMMO_MAX = 1
-	self.arblast.stats.damage = 180
+	self.arblast.stats.damage = 72
 	self.arblast.stats.spread = 25
 	self.arblast.stats.recoil = 25
 	self.arblast.stats.concealment = 24
 	self.arblast.fire_mode_data.fire_rate = 60 / 60
+	self.arblast.stats_modifiers = { damage = 5 }
 
 	self.ecp.CLIP_AMMO_MAX = 6
-	self.ecp.stats.damage = 60
+	self.ecp.stats.damage = 24
 	self.ecp.stats.spread = 17
 	self.ecp.stats.recoil = 25
 	self.ecp.stats.concealment = 23
 	self.ecp.fire_mode_data.fire_rate = 60 / 120
+	self.ecp.stats_modifiers = { damage = 5 }
 
 	self.saw.use_data.selection_index = 1
 	self.saw.CLIP_AMMO_MAX = 100
-	self.saw.stats.damage = 25
+	self.saw.stats.damage = 50
 	self.saw.stats.spread = 0
 	self.saw.stats.recoil = 0
 	self.saw.stats.concealment = 23

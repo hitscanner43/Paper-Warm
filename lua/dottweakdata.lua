@@ -1,7 +1,7 @@
 Hooks:PostHook(DOTTweakData, "init", "hits_init", function (self)
 
 	for _, poison_type in pairs(self.dot_entries.poison) do
-		poison_type.dot_damage = 2
+		poison_type.dot_damage = 4
 		poison_type.dot_length = 6
 		poison_type.dot_tick_period = 0.5
 	end
@@ -12,7 +12,7 @@ Hooks:PostHook(DOTTweakData, "init", "hits_init", function (self)
 	self.dot_entries.poison.ammo_rip_weak.hurt_animation_chance = 0.05
 
 	self.dot_entries.poison.ammo_rip_strong = clone(self.dot_entries.poison.ammo_rip)
-	self.dot_entries.poison.ammo_rip_strong.hurt_animation_chance = 0.1
+	self.dot_entries.poison.ammo_rip_strong.hurt_animation_chance = 0.075
 	
 	self.dot_entries.poison.ammo_proj_bow.hurt_animation_chance = 0.5
 	

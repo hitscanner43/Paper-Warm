@@ -5,7 +5,7 @@ function EnvEffectTweakData:molotov_fire()
 		sound_event = "molotov_impact",
 		range = 120,
 		curve_pow = 3,
-		damage = 2,
+		damage = 3,
 		fire_alert_radius = 1500,
 		sound_event_burning_stop = "burn_loop_gen_stop_fade",
 		alert_radius = 1500,
@@ -14,7 +14,7 @@ function EnvEffectTweakData:molotov_fire()
 		player_damage = 1,
 		sound_event_impact_duration = 0,
 		burn_tick_period = 0.25,
-		burn_duration = 12,
+		burn_duration = 10,
 		dot_data_name = "proj_molotov",
 		effect_name = "effects/payday2/particles/explosions/molotov_grenade"
 	}
@@ -27,7 +27,7 @@ function EnvEffectTweakData:incendiary_burst_fire()
 		sound_event = "no_sound",
 		range = 120,
 		curve_pow = 3,
-		damage = 2,
+		damage = 3,
 		fire_alert_radius = 1500,
 		sound_event_burning_stop = "burn_loop_gen_stop_fade",
 		alert_radius = 1500,
@@ -36,7 +36,7 @@ function EnvEffectTweakData:incendiary_burst_fire()
 		player_damage = 1,
 		sound_event_impact_duration = 0,
 		burn_tick_period = 0.25,
-		burn_duration = 12,
+		burn_duration = 10,
 		dot_data_name = "proj_molotov",
 		effect_name = "effects/payday2/particles/explosions/molotov_grenade"
 	}
@@ -49,7 +49,7 @@ function EnvEffectTweakData:trip_mine_fire()
 		sound_event = "no_sound",
 		range = 80,
 		curve_pow = 3,
-		damage = 2,
+		damage = 3,
 		fire_alert_radius = 1500,
 		sound_event_burning_stop = "burn_loop_gen_stop_fade",
 		alert_radius = 1500,
@@ -57,7 +57,7 @@ function EnvEffectTweakData:trip_mine_fire()
 		player_damage = 1,
 		sound_event_impact_duration = 0,
 		burn_tick_period = 0.25,
-		burn_duration = 10,
+		burn_duration = 8,
 		dot_data_name = "equipment_tripmine",
 		effect_name = "effects/payday2/particles/explosions/molotov_grenade"
 	}
@@ -70,7 +70,7 @@ function EnvEffectTweakData:incendiary_fire()
 		sound_event = "no_sound",
 		range = 90,
 		curve_pow = 3,
-		damage = 2,
+		damage = 3,
 		fire_alert_radius = 1500,
 		sound_event_burning_stop = "burn_loop_gen_stop_fade",
 		alert_radius = 1500,
@@ -91,7 +91,7 @@ function EnvEffectTweakData:incendiary_fire_arbiter()
 		sound_event = "no_sound",
 		range = 60,
 		curve_pow = 3,
-		damage = 2,
+		damage = 3,
 		fire_alert_radius = 1500,
 		sound_event_burning_stop = "burn_loop_gen_stop_fade",
 		alert_radius = 1500,

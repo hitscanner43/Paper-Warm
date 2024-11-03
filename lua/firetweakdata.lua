@@ -3,7 +3,7 @@ Hooks:PostHook(FireTweakData, "init", "hits_init", function (self)
 	for _, fire_type in pairs(self.dot_entries.fire) do
 		fire_type.dot_damage = 3
 		fire_type.dot_length = 4
-		fire_type.dot_tick_period = 0.5
+		fire_type.dot_tick_period = 0.25
 	end
 
 	local trigger_chance_flamethrower = 0.15
@@ -14,12 +14,12 @@ Hooks:PostHook(FireTweakData, "init", "hits_init", function (self)
 	self.dot_entries.fire.weapon_flamethrower_mk2.dot_trigger_chance = trigger_chance_flamethrower
 
 	self.dot_entries.fire.ammo_flamethrower_mk2_rare = clone(self.dot_entries.fire.weapon_flamethrower_mk2)
-	self.dot_entries.fire.ammo_flamethrower_mk2_rare.dot_damage = 4
+	self.dot_entries.fire.ammo_flamethrower_mk2_rare.dot_damage = 2
 
 	self.dot_entries.fire.ammo_flamethrower_mk2_welldone = clone(self.dot_entries.fire.weapon_flamethrower_mk2)
-	self.dot_entries.fire.ammo_flamethrower_mk2_welldone.dot_damage = 2
+	self.dot_entries.fire.ammo_flamethrower_mk2_welldone.dot_damage = 4
  
-	self.dot_entries.fire.ammo_dragons_breath.dot_trigger_chance = 0.15
+	self.dot_entries.fire.ammo_dragons_breath.dot_trigger_chance = 0.2
 	self.dot_entries.fire.ammo_dragons_breath.dot_trigger_max_distance = 1200
 
 	self.dot_entries.fire.ammo_dragons_breath_weak = clone(self.dot_entries.fire.ammo_dragons_breath)
@@ -30,11 +30,11 @@ Hooks:PostHook(FireTweakData, "init", "hits_init", function (self)
 	
 	self.dot_entries.fire.weapon_system.dot_trigger_chance = trigger_chance_flamethrower
 
-	self.dot_entries.fire.ammo_system_low = clone(self.dot_entries.fire.weapon_system)
-	self.dot_entries.fire.ammo_system_low.dot_damage = 4
-
 	self.dot_entries.fire.ammo_system_high = clone(self.dot_entries.fire.weapon_system)
 	self.dot_entries.fire.ammo_system_high.dot_damage = 2
+	
+	self.dot_entries.fire.ammo_system_low = clone(self.dot_entries.fire.weapon_system)
+	self.dot_entries.fire.ammo_system_low.dot_damage = 4
 	
 	self.dot_entries.fire.weapon_kacchainsaw_flamethrower.dot_trigger_chance = trigger_chance_flamethrower
 	
