@@ -766,7 +766,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	}
 	
 	presets.base.surrender_break_time = { 10, 15 }
-	presets.base.limb_dmg_mul = 1
+	presets.base.limb_dmg_mul = 0.8
 
 	return presets
 end
@@ -781,7 +781,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.security.HEALTH_INIT = 12
 	self.security.headshot_dmg_mul = 3.75
-	self.security.limb_dmg_mul = 0.7
+	self.security.limb_dmg_mul = 0.8
 	self.security.melee_weapon = "weapon"
 	self.security.surrender_break_time = { 15, 20 }
 	self.security.weapon = self.presets.weapon.security
@@ -832,7 +832,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.cop.HEALTH_INIT = 15
 	self.cop.headshot_dmg_mul = 3.75
-	self.cop.limb_dmg_mul = 0.7
+	self.cop.limb_dmg_mul = 0.8
 	self.cop.melee_weapon = "baton"
 	self.cop.access = { "cop", "fbi" }
 	self.cop.surrender_break_time = { 10, 15 }
@@ -875,7 +875,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.gangster.HEALTH_INIT = 18
 	self.gangster.headshot_dmg_mul = 3.75
-	self.gangster.limb_dmg_mul = 0.7
+	self.gangster.limb_dmg_mul = 0.8
 	self.gangster.melee_weapon = "fists"
 	self.gangster.speech_prefix_p1 = "lt"
 	self.gangster.speech_prefix_p2 = nil
@@ -962,7 +962,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.soldier = deep_clone(self.fbi_swat)	
 	self.soldier.HEALTH_INIT = 36
 	self.soldier.headshot_dmg_mul = 3
-	self.soldier.limb_dmg_mul = 0.7
+	self.soldier.limb_dmg_mul = 0.8
 	self.soldier.melee_weapon = "knife_1"
 	self.soldier.surrender = self.presets.surrender.hard
 	self.soldier.no_arrest = true
@@ -982,7 +982,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.heavy_swat = deep_clone(self.swat)
 	self.heavy_swat.HEALTH_INIT = 36
 	self.heavy_swat.headshot_dmg_mul = 2.5
-	self.heavy_swat.limb_dmg_mul = 0.5
+	self.heavy_swat.limb_dmg_mul = 0.4
 	self.heavy_swat.move_speed = self.presets.move_speed.fast
 	self.heavy_swat.dodge = self.presets.dodge.heavy
 	self.heavy_swat.surrender = self.presets.surrender.hard
@@ -992,9 +992,9 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.heavy_swat.ecm_hurts = ecm_hurts_short
 
 	self.fbi_heavy_swat = deep_clone(self.heavy_swat)	
-	self.fbi_heavy_swat.HEALTH_INIT = 48
+	self.fbi_heavy_swat.HEALTH_INIT = 45
 	self.fbi_heavy_swat.headshot_dmg_mul = 2.5
-	self.fbi_heavy_swat.limb_dmg_mul = 0.5
+	self.fbi_heavy_swat.limb_dmg_mul = 0.4
 	self.fbi_heavy_swat.weapon = self.presets.weapon.fbi_swat
 	self.fbi_heavy_swat.hurt_severity = self.presets.hurt_severities.tough
 
@@ -1009,6 +1009,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.sniper.HEALTH_INIT = 8
 	self.sniper.headshot_dmg_mul = 2.5
+	self.sniper.limb_dmg_mul = 0.8
 	self.sniper.speech_prefix_p1 = self._unit_prefixes.cop
 	self.sniper.weapon = self.presets.weapon.sniper
 	self.sniper.move_speed = self.presets.move_speed.normal
@@ -1019,6 +1020,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.shield.HEALTH_INIT = 36
 	self.shield.headshot_dmg_mul = 3
+	self.shield.limb_dmg_mul = 0.6
 	self.shield.speech_prefix_p1 = self._unit_prefixes.swat
 	self.shield.can_be_tased = false
 	self.shield.damage.explosion_damage_mul = 1
@@ -1031,7 +1033,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.medic.HEALTH_INIT = 60
 	self.medic.headshot_dmg_mul = 3
-	self.medic.limb_dmg_mul = 0.7
+	self.medic.limb_dmg_mul = 0.6
 	self.medic.weapon = self.presets.weapon.medic
 	self.medic.move_speed = self.presets.move_speed.fast
 	self.medic.dodge = self.presets.dodge.poor
@@ -1044,7 +1046,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.taser.HEALTH_INIT = 72
 	self.taser.headshot_dmg_mul = 2.5
-	self.taser.limb_dmg_mul = 0.7
+	self.taser.limb_dmg_mul = 0.6
 	self.taser.melee_weapon = "taser"
 	self.taser.weapon = self.presets.weapon.taser
 	self.taser.move_speed = self.presets.move_speed.fast
@@ -1074,7 +1076,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.spooc.HEALTH_INIT = 48
 	self.spooc.headshot_dmg_mul = 3.75
-	self.spooc.limb_dmg_mul = 0.7
+	self.spooc.limb_dmg_mul = 0.8
 	self.spooc.melee_weapon = "baton"
 	self.spooc.weapon = self.presets.weapon.spooc
 	self.spooc.move_speed = self.presets.move_speed.lightning
@@ -1103,6 +1105,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.commander.tags = { "law", "commander", "special" }
 	self.commander.HEALTH_INIT = 96
 	self.commander.headshot_dmg_mul = 4
+	self.commander.limb_dmg_mul = 1
 	self.commander.melee_weapon = "weapon"
 	self.commander.weapon = self.presets.weapon.commander
 	self.commander.move_speed = self.presets.move_speed.fast
@@ -1223,7 +1226,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.drug_lord_boss_stealth.HEALTH_INIT = 18
 	self.drug_lord_boss_stealth.headshot_dmg_mul = 3.75
-	self.drug_lord_boss_stealth.limb_dmg_mul = 0.7
+	self.drug_lord_boss_stealth.limb_dmg_mul = 0.8
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_BULLET = nil
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_EXPLOSION = nil
 	self.drug_lord_boss_stealth.immune_to_knock_down = nil
@@ -1255,7 +1258,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.hector_boss_no_armor.HEALTH_INIT = 18
 	self.hector_boss_no_armor.headshot_dmg_mul = 3.75
-	self.hector_boss_no_armor.limb_dmg_mul = 0.7
+	self.hector_boss_no_armor.limb_dmg_mul = 0.8
 	
 	self.hector_boss.HEALTH_INIT = 800
 	self.hector_boss.player_health_scaling_mul = 1.25
@@ -1297,7 +1300,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.triad_boss_no_armor.HEALTH_INIT = 18
 	self.triad_boss_no_armor.headshot_dmg_mul = 3.75
-	self.triad_boss_no_armor.limb_dmg_mul = 0.7
+	self.triad_boss_no_armor.limb_dmg_mul = 0.8
 	self.triad_boss_no_armor.DAMAGE_CLAMP_BULLET = nil
 	self.triad_boss_no_armor.DAMAGE_CLAMP_EXPLOSION = nil
 	self.triad_boss_no_armor.immune_to_knock_down = nil
