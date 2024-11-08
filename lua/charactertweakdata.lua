@@ -1188,7 +1188,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.marshal_shield_break = deep_clone(self.fbi_heavy_swat)
 			
-	self.biker_boss.HEALTH_INIT = 800
+	self.biker_boss.HEALTH_INIT = 300
 	self.biker_boss.player_health_scaling_mul = 1.25
 	self.biker_boss.weapon = self.presets.weapon.boss
 	self.biker_boss.headshot_dmg_mul = 2
@@ -1197,7 +1197,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.biker_boss.no_headshot_add_mul = true
 	self.biker_boss.DAMAGE_CLAMP_BULLET = nil
 	self.biker_boss.DAMAGE_CLAMP_EXPLOSION = nil
-	self.biker_boss.damage.explosion_damage_mul = 0.5
+	self.biker_boss.damage.explosion_damage_mul = 1
 	self.biker_boss.damage.hurt_severity = self.presets.hurt_severities.only_light_hurt 
 	self.biker_boss.move_speed = self.presets.move_speed.slow
 	self.biker_boss.allowed_stances = { cbt = true }
@@ -1207,7 +1207,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.biker_boss.throwable_cooldown = 20
 	self.biker_boss.can_be_healed = false
 	
-	self.chavez_boss.HEALTH_INIT = 600
+	self.chavez_boss.HEALTH_INIT = 200
 	self.chavez_boss.player_health_scaling_mul = 1.25
 	self.chavez_boss.weapon = self.presets.weapon.boss
 	self.chavez_boss.headshot_dmg_mul = 2.5
@@ -1216,7 +1216,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.chavez_boss.no_headshot_add_mul = true
 	self.chavez_boss.DAMAGE_CLAMP_BULLET = nil
 	self.chavez_boss.DAMAGE_CLAMP_EXPLOSION = nil
-	self.chavez_boss.damage.explosion_damage_mul = 0.5
+	self.chavez_boss.damage.explosion_damage_mul = 1
 	self.chavez_boss.damage.hurt_severity = self.presets.hurt_severities.only_light_hurt 
 	self.chavez_boss.move_speed = self.presets.move_speed.fast
 	self.chavez_boss.allowed_stances = { cbt = true }
@@ -1235,7 +1235,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.drug_lord_boss_stealth.move_speed = self.presets.move_speed.fast
 	self.drug_lord_boss_stealth.melee_weapon_dmg_multiplier = 1
 	
-	self.drug_lord_boss.HEALTH_INIT = 800
+	self.drug_lord_boss.HEALTH_INIT = 300
 	self.drug_lord_boss.player_health_scaling_mul = 1.25
 	self.drug_lord_boss.weapon = self.presets.weapon.boss
 	self.drug_lord_boss.headshot_dmg_mul = 2.5
@@ -1244,7 +1244,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.drug_lord_boss.no_headshot_add_mul = true
 	self.drug_lord_boss.DAMAGE_CLAMP_BULLET = nil
 	self.drug_lord_boss.DAMAGE_CLAMP_EXPLOSION = nil
-	self.drug_lord_boss.damage.explosion_damage_mul = 0.5
+	self.drug_lord_boss.damage.explosion_damage_mul = 1
 	self.drug_lord_boss.damage.hurt_severity = self.presets.hurt_severities.only_light_hurt
 	self.drug_lord_boss.move_speed = self.presets.move_speed.normal
 	self.drug_lord_boss.no_run_start = true
@@ -1259,8 +1259,9 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.hector_boss_no_armor.HEALTH_INIT = 18
 	self.hector_boss_no_armor.headshot_dmg_mul = 3.75
 	self.hector_boss_no_armor.limb_dmg_mul = 0.8
+	self.hector_boss_no_armor.damage.hurt_severity = self.presets.hurt_severities.base
 	
-	self.hector_boss.HEALTH_INIT = 800
+	self.hector_boss.HEALTH_INIT = 300
 	self.hector_boss.player_health_scaling_mul = 1.25
 	self.hector_boss.weapon = self.presets.weapon.boss
 	self.hector_boss.headshot_dmg_mul = 2
@@ -1269,7 +1270,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.hector_boss.no_headshot_add_mul = true
 	self.hector_boss.DAMAGE_CLAMP_BULLET = nil
 	self.hector_boss.DAMAGE_CLAMP_EXPLOSION = nil
-	self.hector_boss.damage.explosion_damage_mul = 0.5
+	self.hector_boss.damage.explosion_damage_mul = 1
 	self.hector_boss.damage.hurt_severity = self.presets.hurt_severities.only_light_hurt 
 	self.hector_boss.move_speed = self.presets.move_speed.slow
 	self.hector_boss.no_run_start = true
@@ -1279,7 +1280,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.hector_boss.immune_to_concussion = true
 	self.hector_boss.can_be_healed = false
 
-	self.mobster_boss.HEALTH_INIT = 600
+	self.mobster_boss.HEALTH_INIT = 200
 	self.mobster_boss.player_health_scaling_mul = 1.25
 	self.mobster_boss.weapon = self.presets.weapon.boss
 	self.mobster_boss.headshot_dmg_mul = 2.5
@@ -1288,7 +1289,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.mobster_boss.no_headshot_add_mul = true
 	self.mobster_boss.DAMAGE_CLAMP_BULLET = nil
 	self.mobster_boss.DAMAGE_CLAMP_EXPLOSION = nil
-	self.mobster_boss.damage.explosion_damage_mul = 0.5
+	self.mobster_boss.damage.explosion_damage_mul = 1
 	self.mobster_boss.damage.hurt_severity = self.presets.hurt_severities.only_light_hurt 
 	self.mobster_boss.move_speed = self.presets.move_speed.fast
 	self.mobster_boss.no_run_start = true
@@ -1305,11 +1306,16 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.triad_boss_no_armor.DAMAGE_CLAMP_EXPLOSION = nil
 	self.triad_boss_no_armor.immune_to_knock_down = nil
 	self.triad_boss_no_armor.immune_to_concussion = nil
-	self.triad_boss_no_armor.weapon = self.presets.weapon.boss
+	self.triad_boss_no_armor.can_be_tased = true
+	self.triad_boss_no_armor.use_animation_on_fire_damage = true
+	self.triad_boss_no_armor.ecm_vulnerability = 1
+	self.triad_boss_no_armor.ecm_hurts = ecm_hurts_long
+	self.triad_boss_no_armor.suppression = self.presets.suppression.easy
+	self.triad_boss_no_armor.weapon = self.presets.weapon.gangster
 	self.triad_boss_no_armor.move_speed = self.presets.move_speed.fast
-	self.triad_boss_no_armor.melee_weapon_dmg_multiplier = 1
+	self.triad_boss_no_armor.damage.hurt_severity = self.presets.hurt_severities.base
 	
-	self.triad_boss.HEALTH_INIT = 800
+	self.triad_boss.HEALTH_INIT = 300
 	self.triad_boss.player_health_scaling_mul = 1.25
 	self.triad_boss.weapon = self.presets.weapon.boss
 	self.triad_boss.headshot_dmg_mul = 2
@@ -1318,7 +1324,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.triad_boss.no_headshot_add_mul = true
 	self.triad_boss.DAMAGE_CLAMP_BULLET = nil
 	self.triad_boss.DAMAGE_CLAMP_EXPLOSION = nil
-	self.triad_boss.damage.explosion_damage_mul = 0.5
+	self.triad_boss.damage.explosion_damage_mul = 1
 	self.triad_boss.damage.hurt_severity = self.presets.hurt_severities.only_light_hurt
 	self.triad_boss.move_speed = self.presets.move_speed.normal
 	self.triad_boss.allowed_stances = { cbt = true }
@@ -1329,7 +1335,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.triad_boss.can_be_healed = false
 	self.triad_boss.collateral_damage = true
 
-	self.deep_boss.HEALTH_INIT = 1200
+	self.deep_boss.HEALTH_INIT = 400
 	self.deep_boss.player_health_scaling_mul = 1.25
 	self.deep_boss.weapon = self.presets.weapon.boss
 	self.deep_boss.headshot_dmg_mul = 2
@@ -1338,7 +1344,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.deep_boss.no_headshot_add_mul = true
 	self.deep_boss.DAMAGE_CLAMP_BULLET = nil
 	self.deep_boss.DAMAGE_CLAMP_EXPLOSION = nil
-	self.deep_boss.damage.explosion_damage_mul = 0.5
 	self.deep_boss.damage.hurt_severity = self.presets.hurt_severities.only_light_hurt 
 	self.deep_boss.move_speed = self.presets.move_speed.slow
 	self.deep_boss.allowed_stances = { cbt = true }
@@ -1346,6 +1351,38 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.deep_boss.no_run_stop = true
 	self.deep_boss.can_be_healed = false
 
+	self.snowman_boss.HEALTH_INIT = 600
+	self.snowman_boss.player_health_scaling_mul = 1.25
+	self.snowman_boss.weapon = self.presets.weapon.boss
+	self.snowman_boss.headshot_dmg_mul = 3
+	self.snowman_boss.limb_dmg_mul = 1
+	self.snowman_boss.ecm_vulnerability = 0
+	self.snowman_boss.no_headshot_add_mul = true
+	self.snowman_boss.damage.explosion_damage_mul = 1
+	self.snowman_boss.no_run_start = true
+	self.snowman_boss.no_run_stop = true
+	self.snowman_boss.allowed_stances = { cbt = true }
+	self.snowman_boss.immune_to_knock_down = true
+	self.snowman_boss.immune_to_concussion = true
+	self.snowman_boss.can_be_healed = false
+	self.snowman_boss.melee_weapon_dmg_multiplier = 1
+	
+	self.piggydozer.HEALTH_INIT = 600
+	self.piggydozer.player_health_scaling_mul = 1.25
+	self.piggydozer.weapon = self.presets.weapon.boss
+	self.piggydozer.headshot_dmg_mul = 3
+	self.piggydozer.limb_dmg_mul = 1
+	self.piggydozer.ecm_vulnerability = 0
+	self.piggydozer.no_headshot_add_mul = true
+	self.piggydozer.damage.explosion_damage_mul = 1
+	self.piggydozer.no_run_start = true
+	self.piggydozer.no_run_stop = true
+	self.piggydozer.allowed_stances = { cbt = true }
+	self.piggydozer.immune_to_knock_down = true
+	self.piggydozer.immune_to_concussion = true
+	self.piggydozer.can_be_healed = false
+	self.piggydozer.melee_weapon_dmg_multiplier = 1
+	
 	self.old_hoxton_mission.immune_to_knock_down = true
 	self.old_hoxton_mission.immune_to_concussion = true
 	self.old_hoxton_mission.can_be_tased = false
@@ -1367,17 +1404,13 @@ function CharacterTweakData:_set_presets()
 	local health_mul_tbl = { 1, 1, 1.5, 2, 2.5, 3, 3, 3 }
 	local health_mul = health_mul_tbl[difficulty_index]
 	
-	local boss_low = 100
-	local boss_medium = 200
-	local boss_high = 300
-
-	self.chavez_boss.HEALTH_INIT = boss_low * health_mul
-	self.mobster_boss.HEALTH_INIT = boss_low * health_mul	
-	self.biker_boss.HEALTH_INIT = boss_medium * health_mul
-	self.drug_lord_boss.HEALTH_INIT = boss_medium * health_mul
-	self.hector_boss.HEALTH_INIT = boss_medium * health_mul
-	self.triad_boss.HEALTH_INIT = boss_medium * health_mul
-	self.deep_boss.HEALTH_INIT = boss_high * health_mul
+	self.chavez_boss.HEALTH_INIT = self.chavez_boss.HEALTH_INIT * health_mul
+	self.mobster_boss.HEALTH_INIT = self.mobster_boss.HEALTH_INIT * health_mul	
+	self.biker_boss.HEALTH_INIT = self.biker_boss.HEALTH_INIT * health_mul
+	self.drug_lord_boss.HEALTH_INIT = self.drug_lord_boss.HEALTH_INIT * health_mul
+	self.hector_boss.HEALTH_INIT = self.hector_boss.HEALTH_INIT * health_mul
+	self.triad_boss.HEALTH_INIT = self.triad_boss.HEALTH_INIT * health_mul
+	self.deep_boss.HEALTH_INIT = self.deep_boss.HEALTH_INIT * health_mul
 		
 	self.flashbang_multiplier = math.lerp(1, 1.5, f)
 	
@@ -1396,9 +1429,9 @@ function CharacterTweakData:_set_presets()
 
 	self.tank_hw.armor_damage_mul = self.tank.armor_damage_mul
 
-	self.tank_medic.armor_damage_mul = self.tank.armor_damage_mul / 0.75
+	self.tank_medic.armor_damage_mul = math.min(self.tank.armor_damage_mul / 0.67, 1)
 
-	self.tank_mini.armor_damage_mul = self.tank.armor_damage_mul / 1.5
+	self.tank_mini.armor_damage_mul = math.min(self.tank.armor_damage_mul * 0.67, 1)
 	
 	self.tank_armor_balance_mul = { 0.7, 0.8, 0.9, 1 }
 end

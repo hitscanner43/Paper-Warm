@@ -459,7 +459,9 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 			16 * special_weight_mult 
 		},
 		single_spooc = { 0, 0, 0 },
-		custom_assault = { 0, 0, 0 }
+		custom_assault = { 0, 0, 0 },
+		snowman_boss = { 0, 0, 0 },
+		piggydozer = { 0, 0, 0 }
 	}
 	self.besiege.reenforce.groups = {
 		reinforce_a = { 1, 0, 0 },
@@ -471,7 +473,9 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 		recon_b = { 0, 0, 1 },
 		
 		single_spooc = { 0, 0, 0 },
-		custom_recon = { 0, 0, 0 }
+		custom_recon = { 0, 0, 0 },
+		snowman_boss = { 0, 0, 0 },
+		piggydozer = { 0, 0, 0 }
 	}
 
 	if difficulty_index < 6 then
