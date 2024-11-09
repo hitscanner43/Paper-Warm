@@ -479,9 +479,9 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 	}
 
 	if difficulty_index < 6 then
-		self.besiege.assault.groups.assault_a = { 90, 30, 0 }
-		self.besiege.assault.groups.assault_b = { 0, 90, 30 }
-		self.besiege.assault.groups.assault_c = { 0, 0, 90 }
+		self.besiege.assault.groups.assault_a = { 90, 45, 0 }
+		self.besiege.assault.groups.assault_b = { 0, 45, 45 }
+		self.besiege.assault.groups.assault_c = { 0, 0, 45 }
 		self.besiege.assault.groups.assault_d = { 0, 0, 0 }
 	else
 		self.besiege.assault.groups.assault_a = { 90, 0, 0 }
@@ -2556,7 +2556,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 					freq = 1,
 					amount_max = 1,
 					rank = 3,
-					unit = "CS_shield",
+					unit = "CS_Shield",
 					random_tactics = shield_random_tactics
 				},
 				{
