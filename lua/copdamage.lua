@@ -242,6 +242,8 @@ Hooks:OverrideFunction(CopDamage, "damage_bullet", function (self, attack_data)
 		if alive(attack_data.weapon_unit) and attack_data.weapon_unit:base() and attack_data.weapon_unit:base().is_weak_hit then
 			damage_scale = attack_data.weapon_unit:base():is_weak_hit(attack_data.col_ray and attack_data.col_ray.distance, attack_data.attacker_unit) or 1
 		end
+		
+		headshot_multiplier = alive(attack_data.weapon_unit) and attack_data.weapon_unit:base():headshot_dmg_multiplier() 
 			
 		local critical_hit, crit_damage = self:roll_critical_hit(attack_data, damage)
 
@@ -279,7 +281,7 @@ Hooks:OverrideFunction(CopDamage, "damage_bullet", function (self, attack_data)
 	
 	if not self._char_tweak.ignore_headshot and not self._damage_reduction_multiplier and head then
 		if self._char_tweak.headshot_dmg_mul then
-			local headshot_multiplier = math.max(0, self._char_tweak.headshot_dmg_mul - 1) * (alive(attack_data.weapon_unit) and attack_data.weapon_unit:base():headshot_dmg_multiplier() or 1)
+			headshot_multiplier = headshot_multiplier * math.max(0, self._char_tweak.headshot_dmg_mul - 1)
 			headshot_multiplier = headshot_multiplier + 1
 			
 			damage = damage * headshot_multiplier
