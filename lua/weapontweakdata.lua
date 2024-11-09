@@ -250,40 +250,30 @@ function WeaponTweakData:_init_weapons()
 						steelsight = 1
 					}
 				}
-					
-				if not weap_data.auto then
-					weap_data.fire_mode_mul = nil	
-					
-					weap_data.damage_falloff = {
-						optimal_distance = 0, 
-						optimal_range = 2000, 
-						near_falloff = 0, 
-						far_falloff = 1000, 
-						near_multiplier = 1, 
-						far_multiplier = 0.7
-					}		
-				else	
-					weap_data.fire_mode_mul = {
-						single = {
-							fire_rate = math.min(500 / ROF, 1)
-						},
-						auto = {},
-						burst = {
-							recoil = 0.8,
-							spread = 0.6
-						},
-						volley = {}
-					}	
-					
-					weap_data.damage_falloff = {
-						optimal_distance = 0, 
-						optimal_range = 1500, 
-						near_falloff = 0, 
-						far_falloff = 1000, 
-						near_multiplier = 1, 
-						far_multiplier = 0.6
-					}	
-				end	
+						
+				weap_data.fire_mode_mul = {
+					single = {},
+					auto = {
+						spread = 1.5,
+						falloff_range = 0.75,	
+						headshot_dmg_mul = 0.75
+					},
+					burst = {
+						recoil = 0.8,
+						spread = 1,
+						falloff_range = 1
+					},
+					volley = {}
+				}	
+				
+				weap_data.damage_falloff = {
+					optimal_distance = 0, 
+					optimal_range = 2000, 
+					near_falloff = 0, 
+					far_falloff = 1000, 
+					near_multiplier = 1, 
+					far_multiplier = 0.7
+				}	
 				
 			elseif cat_map.shotgun then
 				weap_data.stats.suppression = 1
@@ -383,8 +373,9 @@ function WeaponTweakData:_init_weapons()
 
 				weap_data.fire_mode_mul = {
 					auto = {
-						recoil = 1,
-						spread = 2
+						spread = 2,
+						falloff_range = 1,	
+						headshot_dmg_mul = 0.75
 					},
 					single = {
 						fire_rate = math.min(400 / ROF, 1)
@@ -964,32 +955,42 @@ function WeaponTweakData:_init_weapons()
 				weap_data.damage_melee_effect_mul = 1
 			end
 		
-			if weap_data.kick then
-				weap_data.kick.single = {}
-				
+			if weap_data.kick then				
 				if cat_map.assault_rifle then
 					weap_data.kick.standing = { 0.6, 0.8, -0.5, 0.5 }
+					weap_data.kick.single = {}
 					weap_data.kick.single.standing = { 0.8, 1.2, -0.2, 0.1 }		
 					
 				elseif cat_map.smg then
 					weap_data.kick.standing = { 0.4, 0.5, -0.6, 0.6 }	
-					weap_data.kick.single.standing = { 0.6, 0.9, -0.2, 0.1 }	
+					weap_data.kick.single = {}
+					weap_data.kick.single.standing = { 0.5, 0.8, -0.2, 0.1 }	
 				
 				elseif cat_map.lmg then
 					weap_data.kick.standing = { 0.2, 0.3, -0.8, 0.8 }	
-					weap_data.kick.single.standing = { 0.4, 0.6, -0.2, 0.1 }	
+					weap_data.kick.single = {}
+					weap_data.kick.single.standing = { 0.3, 0.5, -0.2, 0.1 }	
 					
 				elseif cat_map.minigun then
 					weap_data.kick.standing = { 0.1, 0.15, -0.4, 0.4 }	
 					
-				elseif cat_map.pistol or cat_map.dmr then
-					weap_data.kick.standing = { 1, 1.5, -0.4, 0.2 }	
+				elseif cat_map.dmr then
+					weap_data.kick.standing =  { 1, 1.5, -0.4, 0.2 }
+					weap_data.kick.auto = {}
+					weap_data.kick.auto.standing = { 0.8, 1, -0.4, 0.4 }		
+					
+				elseif cat_map.pistol  then
+					weap_data.kick.standing =  { 1, 1.5, -0.4, 0.2 }
+					weap_data.kick.auto = {}
+					weap_data.kick.auto.standing = { 0.4, 0.6, -0.6, 0.6 }		
 											
 				elseif cat_map.revolver or cat_map.handcannon then
 					weap_data.kick.standing = { 1.5, 2, -0.6, 0.4 }		
 					
 				elseif cat_map.shotgun or cat_map.grenade_launcher or cat_map.snp then
-					weap_data.kick.standing = { 2, 3, -0.8, 0.6 }	
+					weap_data.kick.standing = { 2, 3, -0.8, 0.6 }				
+					weap_data.kick.auto = {}
+					weap_data.kick.auto.standing = { 1.5, 2, -0.5, 0.5 }	
 					
 				else	
 					weap_data.kick.standing = { 0, 0, 0, 0 }	
@@ -998,16 +999,21 @@ function WeaponTweakData:_init_weapons()
 				weap_data.kick.crouching = weap_data.kick.standing
 				weap_data.kick.steelsight = weap_data.kick.standing
 				
-				if weap_data.kick.single.standing then
+				if weap_data.kick.single and weap_data.kick.single.standing then
 					weap_data.kick.single.crouching = weap_data.kick.single.standing
 					weap_data.kick.single.steelsight = weap_data.kick.single.standing
+				end
+
+				if weap_data.kick.auto and weap_data.kick.auto.standing then
+					weap_data.kick.auto.crouching = weap_data.kick.auto.standing
+					weap_data.kick.auto.steelsight = weap_data.kick.auto.standing
 				end
 			end
 
 			local default_burst_cooldown = 0.2
 			
 			if weap_data.fire_mode_data then
-				if weap_data.fire_mode_data.fire_rate and weap_data.auto then
+				if weap_data.auto and  weap_data.fire_mode_data.fire_rate then
 					weap_data.auto = { fire_rate = weap_data.fire_mode_data.fire_rate }
 				end
 				
@@ -1150,15 +1156,11 @@ function WeaponTweakData:_init_weapons()
 
 				weap_data.AMMO_PICKUP = { pickup_dmg_min / weap_dmg, pickup_dmg_max / weap_dmg }
 			end
-
 		end
-	
 	end
-
 end
 
 Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
-
 	self.tweak_data = tweak_data
 	
 	self.trip_mines = {
@@ -2714,7 +2716,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.x_sko12.use_data.selection_index = 4
 
 	self:_init_weapons()
-
 end)
 
 Hooks:PostHook(WeaponTweakData, "_init_data_npc_melee", "hits-init-npc-melee", function(self)
@@ -2743,8 +2744,7 @@ local function based_on(weap, crew_weap)
 	return w
 end
 
-Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, tweak_data)
-	
+Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, tweak_data)	
 	self.tweak_data = tweak_data
 
 	self.mac11_npc.CLIP_AMMO_MAX = 20
@@ -2850,7 +2850,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	self.sterling_crew.looped_reload_single = true
 	self.sterling_crew.reload = "looped"
 	self.tkb_crew.reload = "bullpup"
-	
 end)
 
 
