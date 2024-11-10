@@ -168,6 +168,24 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 end)
 
 
+Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
+	if self._head then
+		self._head_unit = safe_spawn_unit(self._head, Vector3(), Rotation())
+		
+		if self._head_sequence then
+			self._head_unit:damage():run_sequence_simple(self._head_sequence)
+		end
+	end
+
+	if self._head_unit then
+		local align_obj_name = Idstring("Head")
+		local align_obj = self._unit:get_object(align_obj_name)
+
+		self._unit:link(align_obj_name, self._head_unit, self._head_unit:orientation_object():name())
+	end
+end)
+
+
 function CopBase:melee_weapon()
 	if not self._melee_weapon then
 		self._melee_weapon = self._char_tweak.melee_weapon or "weapon"

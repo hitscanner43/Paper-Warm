@@ -1,0 +1,51 @@
+<dynamic_object>
+    <diesel orientation_object="rp_ene_acc_swat_head" materials="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
+	<sequence_manager file="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head"/>
+
+	<decal_surfaces default_material="flesh"/>
+
+    <graphics>
+		<graphic_group name="character" enabled="true" culling_object="co_culling">
+			<lod_object name="lod_head_a">
+				<object name="g_head_a" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_a_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_b">
+				<object name="g_head_b" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_b_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_c">
+				<object name="g_head_c" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_c_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_d">
+				<object name="g_head_d" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_d_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_e">
+				<object name="g_head_e" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_e_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_f">
+				<object name="g_head_f" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_f_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_g">
+				<object name="g_head_g" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_g_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_h">
+				<object name="g_head_h" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_h_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+		</graphic_group>
+    </graphics>
+	
+</dynamic_object>

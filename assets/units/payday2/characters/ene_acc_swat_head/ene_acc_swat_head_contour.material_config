@@ -1,0 +1,14 @@
+<materials version="3" group="ene_acc_swat_head">
+	<material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP" unique="true" version="2" name="mtr_head">
+		<bump_normal_texture 	file="units/payday2/characters/shared_textures/heads_atlas_nm"/>
+		<diffuse_texture 		file="units/payday2/characters/shared_textures/heads_atlas_df"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+	<material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP" unique="true" version="2" name="mtr_head_lod_1">
+		<bump_normal_texture 	file="units/payday2/characters/shared_textures/heads_atlas_nm" mips="3"/>
+		<diffuse_texture 		file="units/payday2/characters/shared_textures/heads_atlas_df" mips="3"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>
+</materials>

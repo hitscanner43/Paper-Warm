@@ -211,36 +211,6 @@
 				<object name="g_body_sniper" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_body_sniper_lod1" 	enabled="false"  lod="1" />
 			</lod_object>
-	<!--FACES-->
-			<lod_object name="lod_face_a">
-				<object name="g_face_a" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_face_a_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_face_b">
-				<object name="g_face_b" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_face_b_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_face_c">
-				<object name="g_face_c" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_face_c_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_face_d">
-				<object name="g_face_d" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_face_d_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_face_e">
-				<object name="g_face_e" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_face_e_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_face_f">
-				<object name="g_face_f" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_face_f_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
 	<!--GEAR-->	
 			<lod_object name="lod_gear_rifle">
 				<object name="g_gear_rifle" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
@@ -265,36 +235,6 @@
 			<lod_object name="lod_goggles">
 				<object name="g_goggles" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_goggles_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-	<!--HEADS-->			
-			<lod_object name="lod_head_a">
-				<object name="g_head_a" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_head_a_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_head_b">
-				<object name="g_head_b" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_head_b_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_head_c">
-				<object name="g_head_c" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_head_c_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_head_d">
-				<object name="g_head_d" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_head_d_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_head_e">
-				<object name="g_head_e" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_head_e_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_head_f">
-				<object name="g_head_f" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_head_f_lod1" 		enabled="false"  lod="1" />
 			</lod_object>
 	<!--HATS-->						
 			<lod_object name="lod_hat">
