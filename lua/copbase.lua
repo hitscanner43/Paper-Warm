@@ -22,10 +22,17 @@ Hooks:PostHook(CopBase, "init", "sh_init", function (self)
 end)
 
 
-if Network:is_client() then
-	return
-end
+local sequence_mapping = {
+	[("units/payday2/characters/ene_swat_1/ene_swat_1"):key()] = "cs_light_rifle",		
+	[("units/payday2/characters/ene_swat_2/ene_swat_2"):key()] = "cs_light_shotgun",	
+	[("units/payday2/characters/ene_swat_3/ene_swat_3"):key()] = "cs_light_smg",	
+	
+	[("units/payday2/characters/ene_swat_heavy_1/ene_swat_heavy_1"):key()] = "cs_heavy_rifle",	
+	[("units/payday2/characters/ene_swat_heavy_r870/ene_swat_heavy_r870"):key()] = "cs_heavy_shotgun",	
 
+	[("units/payday2/characters/ene_sniper_1/ene_sniper_1"):key()] = "cs_sniper",	
+	[("units/payday2/characters/ene_shield_2/ene_shield_2"):key()] = "cs_shield",	
+}
 
 local hoxout_fbi_male = { "m4", "mp5", "r870" } 
 local hoxout_fbi_female = { "c45", "raging_bull" } 
@@ -146,12 +153,19 @@ local weapon_mapping = {
 
 Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	local name = self._unit:name():key()
+	
+	local sequence = sequence_mapping[name]
+
+	if self._unit:damage() and self._unit:damage():has_sequence(sequence) then
+		self._unit:damage():run_sequence_simple(sequence)
+	end
+	
 	local weapon_swap = weapon_mapping[name]
 
 	if weapon_swap then
 		self._default_weapon_id = type(weapon_swap) == "table" and table.random(weapon_swap) or weapon_swap
 	end
-end )
+end)
 
 
 function CopBase:melee_weapon()

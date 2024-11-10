@@ -25,7 +25,7 @@
 		<bump_normal_texture 	file="units/payday2/characters/shared_textures/swat_body_nm" mips="3"/>
 		<diffuse_texture 		file="units/payday2/characters/shared_textures/swat_body_df" mips="3"/>
 	</material>
-
+	
     <material name="mtr_glass" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE:SKINNED_3WEIGHTS" version="2">
         <opacity_texture 	 	file="units/glass/vehicle_glass_dark2_op"/>
         <diffuse_texture 	   	file="units/payday2/characters/shared_textures/swat_body_df"/>

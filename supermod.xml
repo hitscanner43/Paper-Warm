@@ -342,22 +342,21 @@
 
 			<file :name="ene_acc_city_swat_helmet/ene_acc_city_swat_helmet.model" />
 			<file :name="ene_acc_city_swat_helmet/ene_acc_city_swat_helmet.object" />
-		
+
+			<file :name="ene_swat_1/ene_swat_1.sequence_manager" />	
 			<file :name="ene_swat_1/ene_swat_1.material_config" />	
 			<file :name="ene_swat_1/ene_swat_1_contour.material_config" />
 			<file :name="ene_swat_1/ene_swat_1.model" />
 			<file :name="ene_swat_1/ene_swat_1.object" />	
+			<file :name="ene_swat_1/ene_swat_1.unit" />
+			<file :name="ene_swat_1/ene_swat_1_husk.unit" />
+			
+			<file :name="ene_swat_2/ene_swat_2.unit" />
+			<file :name="ene_swat_2/ene_swat_2_husk.unit" />
 
-			<file :name="ene_swat_2/ene_swat_2.model" />
-			<file :name="ene_swat_2/ene_swat_2.object" />
-
-			<file :name="ene_swat_3/ene_swat_3.model" />
-			<file :name="ene_swat_3/ene_swat_3.object" />
 			<file :name="ene_swat_3/ene_swat_3.unit" />
 			<file :name="ene_swat_3/ene_swat_3_husk.unit" />
 
-			<file :name="ene_sniper_1/ene_sniper_1.model" />
-			<file :name="ene_sniper_1/ene_sniper_1.object" />
 			<file :name="ene_sniper_1/ene_sniper_1.unit" />
 			<file :name="ene_sniper_1/ene_sniper_1_husk.unit" />
 
@@ -373,9 +372,6 @@
 			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.unit" />
 			<file :name="ene_swat_heavy_1/ene_swat_heavy_1_husk.unit" />
 
-			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.cooked_physics" />
-			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.model" />
-			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.object" />
 			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.unit" />
 			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870_husk.unit" />
 
@@ -384,8 +380,6 @@
 			<file :name="ene_shield_1/ene_shield_1.unit" />
 			<file :name="ene_shield_1/ene_shield_1_husk.unit" />
 			
-			<file :name="ene_shield_2/ene_shield_2.model" />
-			<file :name="ene_shield_2/ene_shield_2.object" />
 			<file :name="ene_shield_2/ene_shield_2.unit" />
 			<file :name="ene_shield_2/ene_shield_2_husk.unit" />
 
