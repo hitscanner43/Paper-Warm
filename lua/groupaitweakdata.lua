@@ -2080,10 +2080,21 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 			amount = { 3, 3 },
 			spawn = {
 				{
-					freq_by_diff = { 0, 0.5, 1 },
-					rank = 2,
+					freq_by_diff = { 0, 1, 2 },
+					rank = 3,
 					unit = "CS_Light",
 					tactics = self._tactics.swat_def
+				},
+				{
+					amount_max = 2,
+					freq_by_diff = { 
+						6 / (difficulty_index ^ 2), 
+						3 / (difficulty_index ^ 2), 
+						0 
+					},
+					rank = 2,
+					unit = "CS_Cop_3_4",
+					random_tactics = cop_random_tactics
 				},
 				{
 					amount_max = 2,
@@ -2093,7 +2104,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 						0 
 					},
 					rank = 1,
-					unit = "CS_Cop_3_4",
+					unit = "CS_Cop_1_2",
 					random_tactics = cop_random_tactics
 				}
 			}	
@@ -2114,7 +2125,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				},
 				{
 					freq_by_diff = { 0, 0.5, 1 },
-					rank = 2,
+					rank = 3,
 					unit = "FBI_Light",
 					tactics = self._tactics.swat_def
 				},
