@@ -227,6 +227,18 @@ end
 
 
 Hooks:PostHook(CopBase, "pre_destroy", "melee_unload", function (self)
+	if alive(self._head_unit) then
+		self._head_unit:set_slot(0)
+
+		self._head_unit = nil
+	end
+
+	if alive(self._helmet_unit) then
+		self._helmet_unit:set_slot(0)
+
+		self._helmet_unit = nil
+	end
+	
 	if self._melee_weapon_data then
 		managers.dyn_resource:unload(Idstring("unit"), self._melee_weapon_data.unit_name, managers.dyn_resource.DYN_RESOURCES_PACKAGE)
 	end
