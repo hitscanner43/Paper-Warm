@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <dynamic_object>
 	<diesel materials="units/payday2/characters/ene_swat_1/ene_swat_1" orientation_object="root_point" />
-	<sequence_manager file="units/payday2/characters/ragdoll" /> <animation_def name="anims/units/enemies/cop/cop_def" />
+	<sequence_manager file="units/payday2/characters/ene_swat_1/ene_swat_1" /> <animation_def name="anims/units/enemies/cop/cop_def" />
 
 	<bodies>
 		<body name="body" enabled="true" template="character" friction="0.6" collision_class="ragdoll">
@@ -192,27 +192,110 @@
 
 	<decal_surfaces default_material="flesh" >
 		<decal_mesh name="dm_helmet" enabled="true" material="steel_no_decal" />
+		<decal_mesh name="dm_mask" enabled="true" material="steel_no_decal" />
 	</decal_surfaces>
 
 	<graphics>
-		<graphic_group name="character" enabled="true" culling_object="g_body">
+		<graphic_group name="character" enabled="true" culling_object="co_culling">
+	<!--BALACLAVA-->		
+			<lod_object name="lod_balaclava">
+				<object name="g_balaclava" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_balaclava_lod1" 	enabled="true"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_balaclava_alt">
+				<object name="g_balaclava_alt" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_balaclava_alt_lod1" enabled="false"  lod="1" />
+			</lod_object>
+	<!--BODIES-->		
 			<lod_object name="lod_body">
-				<object name="g_body" 		enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_body_lod1" 	enabled="true"  lod="1" />
+				<object name="g_body" 				enabled="true"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_body_lod1" 			enabled="true"  lod="1" />
 			</lod_object>
 
-			<lod_object name="lod_head">
-				<object name="g_head" 		enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_head_lod1" 	enabled="true"  lod="1" />
+			<lod_object name="lod_body_alt">
+				<object name="g_body_alt" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_body_alt_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+			
+			<lod_object name="lod_body_sniper">
+				<object name="g_body_sniper" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_body_sniper_lod1" 	enabled="false"  lod="1" />
+			</lod_object>
+	<!--GEAR-->	
+			<lod_object name="lod_gear_rifle">
+				<object name="g_gear_rifle" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_gear_rifle_lod1" 	enabled="false"  lod="1" />
 			</lod_object>
 
+			<lod_object name="lod_gear_shotgun">
+				<object name="g_gear_shotgun" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_gear_shotgun_lod1" 	enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_gear_smg">
+				<object name="g_gear_smg" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_gear_smg_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_gear_sniper">
+				<object name="g_gear_sniper" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_gear_sniper_lod1" 	enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_gear_shield">
+				<object name="g_gear_shield" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_gear_shield_lod1" 	enabled="false"  lod="1" />
+			</lod_object>
+	<!--GOGGLES-->	
+			<lod_object name="lod_glasses">
+				<object name="g_glasses" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_glasses_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+	<!--SHOULDER PADS-->	
+			<lod_object name="lod_shoulderpads">
+				<object name="g_shoulderpads" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_shoulderpads_lod1" 	enabled="false"  lod="1" />
+			</lod_object>
+	<!--HATS-->						
+			<lod_object name="lod_hat">
+				<object name="g_hat_lod1" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_hat_lod2" 			enabled="false"  lod="1" />
+			</lod_object>	
+
+			<lod_object name="lod_hat_sniper">
+				<object name="g_hat_lod3" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_hat_lod4" 			enabled="false"  lod="1" />
+			</lod_object>	
+	<!--MASK-->	
+			<lod_object name="lod_mask">
+				<object name="g_mask_lod1" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_mask_lod2" 			enabled="false"  lod="1" />
+			</lod_object>	
+	<!--HELMETS-->				
 			<lod_object name="lod_helmet">
-				<object name="g_helmet_lod1" 		enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_helmet_lod2" 		enabled="true"  lod="1" />
+				<object name="g_hemet_lod1" 		enabled="true"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_hemet_lod2" 		enabled="true"  lod="1" />
+			</lod_object>	
+
+			<lod_object name="lod_helmet_goggles">
+				<object name="g_hemet_lod3" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_hemet_lod4" 		enabled="false"  lod="1" />
+			</lod_object>	
+
+			<lod_object name="lod_nvg">
+				<object name="g_hemet_lod6" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_hemet_lod7" 		enabled="false"  lod="1" />
+			</lod_object>	
+	<!--GOGGLES-->
+			<lod_object name="lod_helmet_goggles">
+				<object name="g_hemet_lod3" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_hemet_lod4" 		enabled="false"  lod="1" />
 			</lod_object>
-			<object name="g_helmet_lod3" enabled="true"/>		
+
+			<object name="g_hemet_lod5" 			enabled="false"/>	
+			
 			<object name="s_body" enabled="true" shadow_caster="true"/>		
 		</graphic_group>
 	</graphics>
-
 </dynamic_object>

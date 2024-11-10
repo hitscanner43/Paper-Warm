@@ -32,6 +32,13 @@ local sequence_mapping = {
 
 	[("units/payday2/characters/ene_sniper_1/ene_sniper_1"):key()] = "cs_sniper",	
 	[("units/payday2/characters/ene_shield_2/ene_shield_2"):key()] = "cs_shield",	
+
+	[("units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"):key()] = "fbi_light_rifle",		
+	[("units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"):key()] = "fbi_light_shotgun",	
+	[("units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3"):key()] = "fbi_light_smg",	
+
+	[("units/payday2/characters/ene_sniper_2/ene_sniper_2"):key()] = "fbi_sniper",	
+	[("units/payday2/characters/ene_shield_1/ene_shield_1"):key()] = "fbi_shield",	
 }
 
 local hoxout_fbi_male = { "m4", "mp5", "r870" } 
@@ -169,10 +176,12 @@ end)
 
 
 Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
+	local name = self._unit:name():key()
+	
 	if self._head then
 		self._head_unit = safe_spawn_unit(self._head, Vector3(), Rotation())
 		
-		if self._head_sequence then
+		if self._head_sequence and self._head_unit:damage() and self._head_unit:damage():has_sequence(self._head_sequence) then
 			self._head_unit:damage():run_sequence_simple(self._head_sequence)
 		end
 	end
@@ -183,6 +192,23 @@ Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
 
 		self._unit:link(align_obj_name, self._head_unit, self._head_unit:orientation_object():name())
 	end
+
+	local sequence = sequence_mapping[name]
+
+	if self._helmet then
+		self._helmet_unit = safe_spawn_unit(self._helmet, Vector3(), Rotation())
+		
+		if self._helmet_unit:damage() and self._helmet_unit:damage():has_sequence(sequence) then
+			self._helmet_unit:damage():run_sequence_simple(sequence)
+		end
+	end
+
+	if self._helmet_unit then
+		local align_obj_name = Idstring("Head")
+		local align_obj = self._unit:get_object(align_obj_name)
+
+		self._unit:link(align_obj_name, self._helmet_unit, self._helmet_unit:orientation_object():name())
+	end	
 end)
 
 
