@@ -7,6 +7,7 @@
 		
 		<depends_on bnk="soundbanks/regular_vox" />
 		<depends_on unit="units/payday2/characters/ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet" />
+		<depends_on unit="units/payday2/characters/ene_acc_swat_face/ene_acc_swat_face" />
 	</dependencies>
 
 	<extensions>
@@ -14,13 +15,15 @@
 		<extension name="base" class="CopBase" >
 			<var name="_tweak_table" value="fbi_heavy_swat" />
 			<var name="_default_weapon_id" value="m4" />
+			<var name="_head" value="units/payday2/characters/ene_acc_swat_face/ene_acc_swat_face" />
+			<var name="_head_sequence" value="swat_heads_b" />
 		</extension>
 		<extension name="inventory" class="CopInventory" />
 		<extension name="brain" class="CopBrain" />
 		<extension name="anim_data" class="PlayerAnimationData" />
 		<extension name="character_damage" class="CopDamage">
 			<var name="_head_body_name" value="head" />
-			<var name="_head_gear_object" value="g_helmet_lod" />
+			<var name="_head_gear_object" value="g_hemet_lod" />
 			<var name="_nr_head_gear_objects" value="3" />
 			<var name="_head_gear" value="units/payday2/characters/ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet" />
 			<var name="_head_gear_decal_mesh" value="dm_helmet" />

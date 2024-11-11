@@ -45,6 +45,46 @@
 				<object name="g_head_h" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_head_h_lod1" 		enabled="false"  lod="1" />
 			</lod_object>
+
+			<lod_object name="lod_head_i">
+				<object name="g_head_i" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_i_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_j">
+				<object name="g_head_j" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_j_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_k">
+				<object name="g_head_k" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_k_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_l">
+				<object name="g_head_l" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_l_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_m">
+				<object name="g_head_m" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_m_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_n">
+				<object name="g_head_n" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_n_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_o">
+				<object name="g_head_o" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_o_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_head_p">
+				<object name="g_head_p" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_head_p_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
 		</graphic_group>
     </graphics>
 	

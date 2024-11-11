@@ -376,8 +376,6 @@
 			<file :name="ene_sniper_2/ene_sniper_2.unit" />
 			<file :name="ene_sniper_2/ene_sniper_2_husk.unit" />
 			
-			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.material_config" />	
-			<file :name="ene_swat_heavy_1/ene_swat_heavy_1_contour.material_config" />
 			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.model" />
 			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.object" />
 			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.unit" />
@@ -409,17 +407,10 @@
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.object" />
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.unit" />
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1_husk.unit" />
-
-			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.material_config" />	
-			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870_contour.material_config" />
-			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.cooked_physics" />
-			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.model" />
-			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.object" />		
+		
 			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.unit" />		
 			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk.unit" />	
-
-			<file :name="ene_tazer_1/ene_tazer_1.material_config" />	
-			<file :name="ene_tazer_1/ene_tazer_1_contour.material_config" />			
+			
 			<file :name="ene_tazer_1/ene_tazer_1.model" />
 			<file :name="ene_tazer_1/ene_tazer_1.object" />
 			<file :name="ene_tazer_1/ene_tazer_1.unit" />
@@ -438,7 +429,9 @@
 			<file :name="ene_medic_m4/ene_medic_m4_contour.material_config" />
 			<file :name="ene_medic_m4/ene_medic_m4.model" />
 			<file :name="ene_medic_m4/ene_medic_m4.object" />	
-
+			<file :name="ene_medic_m4/ene_medic_m4.unit" />
+			<file :name="ene_medic_m4/ene_medic_m4_husk.unit" />
+			
 			<file :name="ene_commander/ene_commander.unit" />		
 			<file :name="ene_commander/ene_commander_husk.unit" />
 			

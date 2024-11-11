@@ -4,11 +4,11 @@
 	<object file="units/payday2/characters/ene_tazer_1/ene_tazer_1" />
 
 	<dependencies>
-		<depends_on effect="effects/payday2/particles/impacts/blood/blood_impact_katana" />
 		<depends_on effect="effects/payday2/particles/character/taser_thread" />
 		<depends_on bnk="soundbanks/regular_vox" />
 		<depends_on bnk="soundbanks/regular_sfx" />
 		<depends_on unit="units/payday2/characters/ene_acc_tazer_helmet/ene_acc_tazer_helmet" />
+		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 	</dependencies>
 
 	<extensions>
@@ -17,6 +17,8 @@
 			<var name="can_be_marked" value="true" />
 			<var name="_tweak_table" value="taser" />
 			<var name="_default_weapon_id" value="m4_yellow" />
+			<var name="_head" value="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
+			<var name="_head_sequence" value="swat_heads_taser" />
 		</extension>
 		<extension name="inventory" class="CopInventory" />
 		<extension name="brain" class="CopBrain" />

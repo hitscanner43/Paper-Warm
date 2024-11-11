@@ -195,7 +195,7 @@
 	</decal_surfaces>
 
 	<graphics>
-		<graphic_group name="character" enabled="true" culling_object="g_body">
+		<graphic_group name="character" enabled="true" culling_object="co_culling">
 			<lod_object name="lod_body_a">
 				<object name="g_body" 		enabled="true"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_body_lod1" 	enabled="true" lod="1" />
@@ -207,11 +207,16 @@
 			</lod_object>
 
 			<lod_object name="lod_helmet">
-				<object name="g_helmet_lod1" 		enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_helmet_lod2" 		enabled="true" lod="1" />
+				<object name="g_helmet_lod1" 	enabled="true"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_helmet_lod2" 	enabled="true" lod="1" />
 			</lod_object>
-			<object name="g_glass" enabled="true"/>		
-			<object name="g_bag" enabled="true"/>					
+
+			<lod_object name="lod_bag">
+				<object name="g_bag" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_bag_lod1" 		enabled="true" lod="1" />
+			</lod_object>
+			
+			<object name="g_glass" enabled="true"/>						
 			<object name="s_body" enabled="true" shadow_caster="true"/>		
 		</graphic_group>
 	</graphics>

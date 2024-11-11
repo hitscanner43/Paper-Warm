@@ -39,6 +39,9 @@ local sequence_mapping = {
 
 	[("units/payday2/characters/ene_sniper_2/ene_sniper_2"):key()] = "fbi_sniper",	
 	[("units/payday2/characters/ene_shield_1/ene_shield_1"):key()] = "fbi_shield",	
+
+	[("units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key()] = "fbi_heavy_rifle",	
+	[("units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"):key()] = "fbi_heavy_shotgun",	
 }
 
 local hoxout_fbi_male = { "m4", "mp5", "r870" } 

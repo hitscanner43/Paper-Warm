@@ -6,6 +6,7 @@
 	<dependencies>
 		
 		<depends_on bnk="soundbanks/regular_vox" />
+		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 	</dependencies>
 
 	<extensions>
@@ -14,6 +15,8 @@
 			<var name="can_be_marked" value="true" />
 			<var name="_tweak_table" value="grenadier" />
 			<var name="_default_weapon_id" value="m4" />
+			<var name="_head" value="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
+			<var name="_head_sequence" value="swat_heads_taser" />
 		</extension>
 		<extension name="inventory" class="CopInventory" />
 		<extension name="brain" class="CopBrain" />
