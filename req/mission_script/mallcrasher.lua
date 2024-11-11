@@ -1,12 +1,11 @@
-local SO_func_01 = function (self)
-	if not self._values.SO_access_original then
-		self._values.SO_access_original = self._values.SO_access
-		self._values.SO_access = managers.navigation:convert_access_filter_to_number({ "swat", "taser", "spooc" })
-	end
-end
 local jump_SO = {
-	pre_func = SO_func_01
-}
+	pre_func = function (self)
+		if not self._values.SO_access_original then
+			self._values.SO_access_original = self._values.SO_access
+			self._values.SO_access = managers.navigation:convert_access_filter_to_number({ "swat", "taser", "spooc" })
+		end
+	end
+}	
 local stairs_spawn = {
 	values = {
 		interval = 10
