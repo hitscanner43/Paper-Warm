@@ -779,8 +779,8 @@ local ecm_hurts_none = { ears = 0 }
 
 Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
-	self.security.HEALTH_INIT = 12
-	self.security.headshot_dmg_mul = 3.75
+	self.security.HEALTH_INIT = 8
+	self.security.headshot_dmg_mul = 4
 	self.security.limb_dmg_mul = 0.8
 	self.security.melee_weapon = "weapon"
 	self.security.surrender_break_time = { 15, 20 }
@@ -799,8 +799,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security.rescue_hostages = false
 	
 	self.security_heavy = deep_clone(self.security)	
-	self.security_heavy.HEALTH_INIT = 18
-	self.security_heavy.headshot_dmg_mul = 3.75
+	self.security_heavy.HEALTH_INIT = 12
+	self.security_heavy.headshot_dmg_mul = 4
 	self.security_heavy.limb_dmg_mul = 0.8
 	table.insert(self._enemy_list, "security_heavy")
 
@@ -830,8 +830,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security_army.no_arrest = true
 	table.insert(self._enemy_list, "security_army")
 
-	self.cop.HEALTH_INIT = 15
-	self.cop.headshot_dmg_mul = 3.75
+	self.cop.HEALTH_INIT = 10
+	self.cop.headshot_dmg_mul = 4
 	self.cop.limb_dmg_mul = 0.8
 	self.cop.melee_weapon = "baton"
 	self.cop.access = { "cop", "fbi" }
@@ -860,8 +860,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.cop_female.speech_prefix_count = 1
 
 	self.fbi = deep_clone(self.cop)
-	self.fbi.HEALTH_INIT = 18
-	self.fbi.headshot_dmg_mul = 3.75
+	self.fbi.HEALTH_INIT = 12
+	self.fbi.headshot_dmg_mul = 4
 	self.fbi.weapon = self.presets.weapon.fbi
 	self.fbi.melee_weapon = "weapon"	
 
@@ -873,8 +873,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.hrt = deep_clone(self.fbi)
 	table.insert(self._enemy_list, "hrt")
 	
-	self.gangster.HEALTH_INIT = 18
-	self.gangster.headshot_dmg_mul = 3.75
+	self.gangster.HEALTH_INIT = 12
+	self.gangster.headshot_dmg_mul = 4
 	self.gangster.limb_dmg_mul = 0.8
 	self.gangster.melee_weapon = "fists"
 	self.gangster.speech_prefix_p1 = "lt"
@@ -929,8 +929,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.bolivian_indoors_mex = deep_clone(self.bolivian_indoors)
 
-	self.swat.HEALTH_INIT = 24
-	self.swat.headshot_dmg_mul = 3
+	self.swat.HEALTH_INIT = 16
+	self.swat.headshot_dmg_mul = 2.5
 	self.swat.limb_dmg_mul = 0.6
 	self.swat.melee_weapon = "weapon"
 	self.swat.speech_prefix_p2 = "n" 
@@ -947,21 +947,21 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.swat.no_arrest = nil
 
 	self.fbi_swat = deep_clone(self.swat)	
-	self.fbi_swat.HEALTH_INIT = 30
-	self.fbi_swat.headshot_dmg_mul = 3
+	self.fbi_swat.HEALTH_INIT = 20
+	self.fbi_swat.headshot_dmg_mul = 2.5
 	self.fbi_swat.weapon = self.presets.weapon.fbi_swat
 	
 	self.city_swat = deep_clone(self.fbi_swat)
-	self.city_swat.HEALTH_INIT = 36
-	self.city_swat.headshot_dmg_mul = 3
+	self.city_swat.HEALTH_INIT = 24
+	self.city_swat.headshot_dmg_mul = 2.5
 	self.city_swat.weapon = self.presets.weapon.city_swat 
 
 	self.zeal_swat = deep_clone(self.city_swat)
 	self.zeal_swat.speech_prefix_p2 = "n" 
 	
 	self.soldier = deep_clone(self.fbi_swat)	
-	self.soldier.HEALTH_INIT = 36
-	self.soldier.headshot_dmg_mul = 3
+	self.soldier.HEALTH_INIT = 32
+	self.soldier.headshot_dmg_mul = 2.5
 	self.soldier.limb_dmg_mul = 0.8
 	self.soldier.melee_weapon = "knife_1"
 	self.soldier.surrender = self.presets.surrender.hard
@@ -974,26 +974,26 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	table.insert(self._enemy_list, "murkywater")
 	
 	self.security_mcmansion = deep_clone(self.fbi_swat)	
-	self.security_mcmansion.HEALTH_INIT = 24
-	self.security_mcmansion.headshot_dmg_mul = 2
+	self.security_mcmansion.HEALTH_INIT = 32
+	self.security_mcmansion.headshot_dmg_mul = 2.5
 	self.security_mcmansion.has_alarm_pager = true
 	table.insert(self._enemy_list, "security_mcmansion")
 
 	self.heavy_swat = deep_clone(self.swat)
-	self.heavy_swat.HEALTH_INIT = 36
-	self.heavy_swat.headshot_dmg_mul = 2.5
+	self.heavy_swat.HEALTH_INIT = 24
+	self.heavy_swat.headshot_dmg_mul = 2
 	self.heavy_swat.limb_dmg_mul = 0.4
 	self.heavy_swat.move_speed = self.presets.move_speed.fast
 	self.heavy_swat.dodge = self.presets.dodge.heavy
 	self.heavy_swat.surrender = self.presets.surrender.hard
 	self.heavy_swat.suppression = self.presets.suppression.hard_agg
-	self.heavy_swat.hurt_severity = self.presets.hurt_severities.base
+	self.heavy_swat.hurt_severity = self.presets.hurt_severities.tough
 	self.heavy_swat.ecm_vulnerability = 0.8
 	self.heavy_swat.ecm_hurts = ecm_hurts_short
 
 	self.fbi_heavy_swat = deep_clone(self.heavy_swat)	
-	self.fbi_heavy_swat.HEALTH_INIT = 45
-	self.fbi_heavy_swat.headshot_dmg_mul = 2.5
+	self.fbi_heavy_swat.HEALTH_INIT = 30
+	self.fbi_heavy_swat.headshot_dmg_mul = 2
 	self.fbi_heavy_swat.limb_dmg_mul = 0.4
 	self.fbi_heavy_swat.weapon = self.presets.weapon.fbi_swat
 	self.fbi_heavy_swat.hurt_severity = self.presets.hurt_severities.tough
@@ -1008,7 +1008,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	end
 	
 	self.sniper.HEALTH_INIT = 8
-	self.sniper.headshot_dmg_mul = 2.5
+	self.sniper.headshot_dmg_mul = 4
 	self.sniper.limb_dmg_mul = 0.8
 	self.sniper.speech_prefix_p1 = self._unit_prefixes.cop
 	self.sniper.weapon = self.presets.weapon.sniper
@@ -1018,8 +1018,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.sniper.can_be_healed = false
 	self.sniper.do_not_drop_ammo = true
 	
-	self.shield.HEALTH_INIT = 36
-	self.shield.headshot_dmg_mul = 3
+	self.shield.HEALTH_INIT = 24
+	self.shield.headshot_dmg_mul = 2.5
 	self.shield.limb_dmg_mul = 0.6
 	self.shield.speech_prefix_p1 = self._unit_prefixes.swat
 	self.shield.can_be_tased = false
@@ -1031,8 +1031,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.shield.spawn_sound_event = "shield_identification" 
 	self.shield.die_sound_event = nil
 	
-	self.medic.HEALTH_INIT = 60
-	self.medic.headshot_dmg_mul = 3
+	self.medic.HEALTH_INIT = 48
+	self.medic.headshot_dmg_mul = 2.5
 	self.medic.limb_dmg_mul = 0.6
 	self.medic.weapon = self.presets.weapon.medic
 	self.medic.move_speed = self.presets.move_speed.fast
@@ -1044,8 +1044,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.medic.ecm_vulnerability = 0.6
 	self.medic.ecm_hurts = ecm_hurts_short
 
-	self.taser.HEALTH_INIT = 72
-	self.taser.headshot_dmg_mul = 2.5
+	self.taser.HEALTH_INIT = 64
+	self.taser.headshot_dmg_mul = 2
 	self.taser.limb_dmg_mul = 0.6
 	self.taser.melee_weapon = "taser"
 	self.taser.weapon = self.presets.weapon.taser
@@ -1074,8 +1074,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	--self.grenadier.throwable_target_verified = true
 	table.insert(self._enemy_list, "grenadier")
 	
-	self.spooc.HEALTH_INIT = 48
-	self.spooc.headshot_dmg_mul = 3.75
+	self.spooc.HEALTH_INIT = 32
+	self.spooc.headshot_dmg_mul = 2.5
 	self.spooc.limb_dmg_mul = 0.8
 	self.spooc.melee_weapon = "baton"
 	self.spooc.weapon = self.presets.weapon.spooc
@@ -1224,8 +1224,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.chavez_boss.no_run_stop = true
 	self.chavez_boss.can_be_healed = false
 
-	self.drug_lord_boss_stealth.HEALTH_INIT = 18
-	self.drug_lord_boss_stealth.headshot_dmg_mul = 3.75
+	self.drug_lord_boss_stealth.HEALTH_INIT = 12
+	self.drug_lord_boss_stealth.headshot_dmg_mul = 4
 	self.drug_lord_boss_stealth.limb_dmg_mul = 0.8
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_BULLET = nil
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_EXPLOSION = nil
@@ -1256,8 +1256,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.drug_lord_boss.can_be_healed = false
 	self.drug_lord_boss.collateral_damage = true
 
-	self.hector_boss_no_armor.HEALTH_INIT = 18
-	self.hector_boss_no_armor.headshot_dmg_mul = 3.75
+	self.hector_boss_no_armor.HEALTH_INIT = 12
+	self.hector_boss_no_armor.headshot_dmg_mul = 4
 	self.hector_boss_no_armor.limb_dmg_mul = 0.8
 	self.hector_boss_no_armor.damage.hurt_severity = self.presets.hurt_severities.base
 	
