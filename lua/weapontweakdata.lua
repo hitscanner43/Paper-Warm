@@ -327,8 +327,15 @@ function WeaponTweakData:_init_weapons()
 						volley = {}
 					}						
 				end
-				
-				weap_data.damage_falloff = no_falloff
+
+				weap_data.damage_falloff = {
+					optimal_distance = 0, 
+					optimal_range = 2500, 
+					near_falloff = 0, 
+					far_falloff = 500, 
+					near_multiplier = 1, 
+					far_multiplier = 0.5
+				}	
 				
 			elseif cat_map.dmr then
 				weap_data.stats.suppression = cat_map.keltec and 16 or 1
