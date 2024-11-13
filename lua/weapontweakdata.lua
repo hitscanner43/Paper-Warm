@@ -11,7 +11,7 @@ Hooks:PostHook(WeaponTweakData, "_init_stats", "hits_init_stats", function(self)
 
 	self.stats.recoil = {}
 	for i = 0, 25, 1 do
-		table.insert(self.stats.recoil, (math.lerp(2, 0.5, i / 25)))
+		table.insert(self.stats.recoil, (math.lerp(2.5, 0.5, i / 25)))
 	end 
 
 	self.stats.spread = {}
@@ -966,36 +966,36 @@ function WeaponTweakData:_init_weapons()
 				if cat_map.assault_rifle then
 					weap_data.kick.standing = { 0.6, 0.8, -0.5, 0.5 }
 					weap_data.kick.single = {}
-					weap_data.kick.single.standing = { 0.8, 1.2, -0.2, 0.1 }		
+					weap_data.kick.single.standing = { 0.8, 1, -0.2, 0.1 }		
 					
 				elseif cat_map.smg then
-					weap_data.kick.standing = { 0.4, 0.5, -0.6, 0.6 }	
+					weap_data.kick.standing = { 0.4, 0.6, -0.6, 0.6 }	
 					weap_data.kick.single = {}
-					weap_data.kick.single.standing = { 0.5, 0.8, -0.2, 0.1 }	
+					weap_data.kick.single.standing = { 0.6, 0.8, -0.2, 0.1 }	
 				
 				elseif cat_map.lmg then
-					weap_data.kick.standing = { 0.2, 0.3, -0.8, 0.8 }	
+					weap_data.kick.standing = { 0.2, 0.4, -0.8, 0.8 }	
 					weap_data.kick.single = {}
-					weap_data.kick.single.standing = { 0.3, 0.5, -0.2, 0.1 }	
+					weap_data.kick.single.standing = { 0.4, 0.6, -0.2, 0.1 }	
 					
 				elseif cat_map.minigun then
-					weap_data.kick.standing = { 0.1, 0.15, -0.4, 0.4 }	
-					
-				elseif cat_map.dmr then
-					weap_data.kick.standing =  { 1, 1.5, -0.4, 0.2 }
-					weap_data.kick.auto = {}
-					weap_data.kick.auto.standing = { 0.8, 1, -0.4, 0.4 }		
+					weap_data.kick.standing = { 0.1, 0.2, -0.4, 0.4 }	
 					
 				elseif cat_map.pistol  then
-					weap_data.kick.standing =  { 1, 1.5, -0.4, 0.2 }
+					weap_data.kick.standing =  { 0.8, 1, -0.2, 0.1 }
 					weap_data.kick.auto = {}
 					weap_data.kick.auto.standing = { 0.4, 0.6, -0.6, 0.6 }		
-											
+
+				elseif cat_map.dmr then
+					weap_data.kick.standing =  { 1, 1.5, -0.3, 0.2 }
+					weap_data.kick.auto = {}
+					weap_data.kick.auto.standing = { 0.8, 1, -0.4, 0.4 }		
+																
 				elseif cat_map.revolver or cat_map.handcannon then
-					weap_data.kick.standing = { 1.5, 2, -0.6, 0.4 }		
+					weap_data.kick.standing = { 1.5, 2, -0.4, 0.3 }		
 					
 				elseif cat_map.shotgun or cat_map.grenade_launcher or cat_map.snp then
-					weap_data.kick.standing = { 2, 3, -0.8, 0.6 }				
+					weap_data.kick.standing = { 2, 3, -0.5, 0.4 }				
 					weap_data.kick.auto = {}
 					weap_data.kick.auto.standing = { 1.5, 2, -0.5, 0.5 }	
 					

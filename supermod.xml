@@ -432,9 +432,6 @@
 			<file :name="ene_medic_m4/ene_medic_m4.unit" />
 			<file :name="ene_medic_m4/ene_medic_m4_husk.unit" />
 			
-			<file :name="ene_commander/ene_commander.unit" />		
-			<file :name="ene_commander/ene_commander_husk.unit" />
-			
 			<file :name="ene_city_swat_1/ene_city_swat_1.model" />
 			<file :name="ene_city_swat_1/ene_city_swat_1.object" />	
 

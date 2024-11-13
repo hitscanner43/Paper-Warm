@@ -195,23 +195,6 @@ Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
 
 		self._unit:link(align_obj_name, self._head_unit, self._head_unit:orientation_object():name())
 	end
-
-	local sequence = sequence_mapping[name]
-
-	if self._helmet then
-		self._helmet_unit = safe_spawn_unit(self._helmet, Vector3(), Rotation())
-		
-		if self._helmet_unit:damage() and self._helmet_unit:damage():has_sequence(sequence) then
-			self._helmet_unit:damage():run_sequence_simple(sequence)
-		end
-	end
-
-	if self._helmet_unit then
-		local align_obj_name = Idstring("Head")
-		local align_obj = self._unit:get_object(align_obj_name)
-
-		self._unit:link(align_obj_name, self._helmet_unit, self._helmet_unit:orientation_object():name())
-	end	
 end)
 
 
@@ -236,12 +219,6 @@ Hooks:PostHook(CopBase, "pre_destroy", "melee_unload", function (self)
 		self._head_unit = nil
 	end
 
-	if alive(self._helmet_unit) then
-		self._helmet_unit:set_slot(0)
-
-		self._helmet_unit = nil
-	end
-	
 	if self._melee_weapon_data then
 		managers.dyn_resource:unload(Idstring("unit"), self._melee_weapon_data.unit_name, managers.dyn_resource.DYN_RESOURCES_PACKAGE)
 	end

@@ -1772,28 +1772,6 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "hits_init_unit_catego
 		access = access_type_all
 	}
 
-
-	self.unit_categories.Commander = {
-		special_type = "commander",
-		unit_types = {
-			america = {
-				Idstring("units/payday2/characters/ene_commander/ene_commander")
-			},
-			russia = {
-				Idstring("units/payday2/characters/ene_commander/ene_commander")
-			},
-			zombie = {
-				Idstring("units/payday2/characters/ene_commander/ene_commander")
-			},
-			murkywater = {
-				Idstring("units/payday2/characters/ene_commander/ene_commander")
-			},
-			federales = {
-				Idstring("units/payday2/characters/ene_commander/ene_commander")
-			}
-		},
-		access = access_type_walk_only
-	}
 	
 	if difficulty_index <= 3 then
 		self.unit_categories.Bulldozer = {

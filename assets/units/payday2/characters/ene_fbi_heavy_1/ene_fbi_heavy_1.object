@@ -197,8 +197,8 @@
 
 	<decal_surfaces default_material="flesh" >
 		<decal_mesh name="dm_helmet" 	enabled="true" material="steel_no_decal" />
-		<decal_mesh name="dm_altyn" 	enabled="true" material="glass_no_decal" />
-		<decal_mesh name="dm_visor" 	enabled="true" material="glass_no_decal" />
+		<decal_mesh name="dm_altyn" 	enabled="false" material="glass_no_decal" />
+		<decal_mesh name="dm_visor" 	enabled="false" material="glass_no_decal" />
 	</decal_surfaces>
 
 	<graphics>
