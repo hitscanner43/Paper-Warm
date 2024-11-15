@@ -23,26 +23,45 @@ end)
 
 
 local sequence_mapping = {
-	[("units/payday2/characters/ene_swat_1/ene_swat_1"):key()] = "cs_light_rifle",		
-	[("units/payday2/characters/ene_swat_2/ene_swat_2"):key()] = "cs_light_shotgun",	
-	[("units/payday2/characters/ene_swat_3/ene_swat_3"):key()] = "cs_light_smg",	
+	[("units/payday2/characters/ene_security_1/ene_security_1"):key()] = "security_1",	
+	[("units/payday2/characters/ene_security_2/ene_security_2"):key()] = "security_2",	
+	[("units/payday2/characters/ene_security_3/ene_security_3"):key()] = "security_3",	
 	
-	[("units/payday2/characters/ene_swat_heavy_1/ene_swat_heavy_1"):key()] = "cs_heavy_rifle",	
-	[("units/payday2/characters/ene_swat_heavy_r870/ene_swat_heavy_r870"):key()] = "cs_heavy_shotgun",	
+	[("units/payday2/characters/ene_cop_1/ene_cop_1"):key()] = "cop_1",	
+	[("units/payday2/characters/ene_cop_2/ene_cop_2"):key()] = "cop_2",	
+	[("units/payday2/characters/ene_cop_3/ene_cop_3"):key()] = "cop_3",	
+	[("units/payday2/characters/ene_cop_3/ene_cop_4"):key()] = "cop_4",	
 
-	[("units/payday2/characters/ene_sniper_1/ene_sniper_1"):key()] = "cs_sniper",	
-	[("units/payday2/characters/ene_shield_2/ene_shield_2"):key()] = "cs_shield",	
+	[("units/payday2/characters/ene_fbi_1/ene_fbi_1"):key()] = "fbi_1",	
+	[("units/payday2/characters/ene_fbi_2/ene_fbi_2"):key()] = "fbi_2",	
+	[("units/payday2/characters/ene_fbi_3/ene_fbi_3"):key()] = "fbi_3",	
+	
+	[("units/payday2/characters/ene_security_4/ene_security_4"):key()] = "security_4",	
+	[("units/payday2/characters/ene_security_5/ene_security_5"):key()] = "security_5",	
+	[("units/payday2/characters/ene_security_6/ene_security_6"):key()] = "security_6",	
+	[("units/payday2/characters/ene_security_7/ene_security_7"):key()] = "security_7",	
+		
+	[("units/payday2/characters/ene_swat_1/ene_swat_1"):key()] = "swat_1",		
+	[("units/payday2/characters/ene_swat_2/ene_swat_2"):key()] = "swat_2",	
+	[("units/payday2/characters/ene_swat_3/ene_swat_3"):key()] = "swat_3",	
+	
+	[("units/payday2/characters/ene_swat_heavy_1/ene_swat_heavy_1"):key()] = "swat_heavy_1",	
+	[("units/payday2/characters/ene_swat_heavy_r870/ene_swat_heavy_r870"):key()] = "swat_heavy_2",	
 
-	[("units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"):key()] = "fbi_light_rifle",		
-	[("units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"):key()] = "fbi_light_shotgun",	
-	[("units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3"):key()] = "fbi_light_smg",	
+	[("units/payday2/characters/ene_sniper_1/ene_sniper_1"):key()] = "sniper_1",	
+	[("units/payday2/characters/ene_shield_2/ene_shield_2"):key()] = "shield_2",	
 
-	[("units/payday2/characters/ene_sniper_2/ene_sniper_2"):key()] = "fbi_sniper",	
-	[("units/payday2/characters/ene_shield_1/ene_shield_1"):key()] = "fbi_shield",	
+	[("units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"):key()] = "fbi_swat_1",		
+	[("units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"):key()] = "fbi_swat_2",	
+	[("units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3"):key()] = "fbi_swat_3",	
 
-	[("units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key()] = "fbi_heavy_rifle",	
-	[("units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"):key()] = "fbi_heavy_shotgun",	
+	[("units/payday2/characters/ene_sniper_2/ene_sniper_2"):key()] = "sniper_2",	
+	[("units/payday2/characters/ene_shield_1/ene_shield_1"):key()] = "shield_1",	
+
+	[("units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key()] = "fbi_heavy_1",	
+	[("units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"):key()] = "fbi_heavy_2",	
 }
+
 
 local hoxout_fbi_male = { "m4", "mp5", "r870" } 
 local hoxout_fbi_female = { "c45", "raging_bull" } 
@@ -161,6 +180,28 @@ local weapon_mapping = {
 }
 
 
+local security_no_arms = {
+	[Idstring("units/payday2/weapons/ene_security_2/ene_security_2"):key()] = true,
+	[Idstring("units/payday2/weapons/ene_cop_2/ene_cop_2"):key()] = true,
+	[Idstring("units/payday2/weapons/ene_fbi_1/ene_fbi_1"):key()] = true,
+	[Idstring("units/payday2/weapons/ene_fbi_2/ene_fbi_2"):key()] = true,
+}
+
+local security_no_hands = {
+	[Idstring("units/payday2/weapons/ene_security_3/ene_security_3"):key()] = true,
+	[Idstring("units/payday2/weapons/ene_cop_3/ene_cop_3"):key()] = true,
+	[Idstring("units/payday2/weapons/ene_fbi_3/ene_fbi_3"):key()] = true,
+}
+
+local security_no_arms_hands = {
+	[Idstring("units/payday2/weapons/ene_cop_4/ene_cop_4"):key()] = true,
+}
+
+local security_no_head = {
+	[Idstring("units/payday2/weapons/ene_fbi_3/ene_fbi_3"):key()] = true,
+}
+
+
 Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	local name = self._unit:name():key()
 	
@@ -178,22 +219,37 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 end)
 
 
-Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
-	local name = self._unit:name():key()
+
+Hooks:PreHook(CopBase, "_update_visibility_state", "hits_update_visibility_state", function(self)
+	local spawn_manager_ext = self._unit:spawn_manager()
 	
 	if self._head then
-		self._head_unit = safe_spawn_unit(self._head, Vector3(), Rotation())
-		
-		if self._head_sequence and self._head_unit:damage() and self._head_unit:damage():has_sequence(self._head_sequence) then
-			self._head_unit:damage():run_sequence_simple(self._head_sequence)
+		if spawn_manager_ext then
+			spawn_manager_ext:spawn_and_link_unit("_char_joint_names", "char_head", self._head)
+
+			self._head_unit = spawn_manager_ext:get_unit("char_head")
 		end
 	end
-
-	if self._head_unit then
-		local align_obj_name = Idstring("Head")
-		local align_obj = self._unit:get_object(align_obj_name)
-
-		self._unit:link(align_obj_name, self._head_unit, self._head_unit:orientation_object():name())
+	
+	if alive(self._head_unit) then
+		if self._head_unit:damage() and self._head_unit:damage():has_sequence(self._head_sequence) then	
+			self._head_unit:damage():run_sequence_simple(self._head_sequence)
+			self._head_unit:set_enabled(self._unit:enabled())
+		end
+		
+		if security_no_arms[name] or security_no_arms_hands[name] then
+			if self._head_unit:damage() and self._head_unit:damage():has_sequence("disable_arms") then
+				self._head_unit:damage():run_sequence_simple("disable_arms")
+			end
+		elseif security_no_hands[name] or security_no_arms_hands[name] then
+			if self._head_unit:damage() and self._head_unit:damage():has_sequence("disable_hands") then
+				self._head_unit:damage():run_sequence_simple("disable_hands")
+			end
+		elseif security_no_head[name] then
+			if self._head_unit:damage() and self._head_unit:damage():has_sequence("disable_head") then
+				self._head_unit:damage():run_sequence_simple("disable_head")
+			end
+		end
 	end
 end)
 

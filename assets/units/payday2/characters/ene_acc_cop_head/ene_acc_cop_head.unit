@@ -1,0 +1,8 @@
+<unit type="gen" slot="30" >
+    <object file="units/payday2/characters/ene_acc_cop_head/ene_acc_cop_head" />
+    <extensions>
+        <extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage"/>
+		<extension name="contour" class="ContourExt" />
+    </extensions>
+</unit>
