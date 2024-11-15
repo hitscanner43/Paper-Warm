@@ -210,21 +210,11 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	if self._unit:damage() and self._unit:damage():has_sequence(sequence) then
 		self._unit:damage():run_sequence_simple(sequence)
 	end
-	
-	local weapon_swap = weapon_mapping[name]
 
-	if weapon_swap then
-		self._default_weapon_id = type(weapon_swap) == "table" and table.random(weapon_swap) or weapon_swap
-	end
-end)
+	local spawn_manager_ext = alive(self._unit) and self._unit:spawn_manager()
 
-
-
-Hooks:PreHook(CopBase, "_update_visibility_state", "hits_update_visibility_state", function(self)
-	local spawn_manager_ext = self._unit:spawn_manager()
-	
-	if self._head then
-		if spawn_manager_ext then
+	if spawn_manager_ext then		
+		if self._head then
 			spawn_manager_ext:spawn_and_link_unit("_char_joint_names", "char_head", self._head)
 
 			self._head_unit = spawn_manager_ext:get_unit("char_head")
@@ -250,6 +240,12 @@ Hooks:PreHook(CopBase, "_update_visibility_state", "hits_update_visibility_state
 				self._head_unit:damage():run_sequence_simple("disable_head")
 			end
 		end
+	end
+	
+	local weapon_swap = weapon_mapping[name]
+
+	if weapon_swap then
+		self._default_weapon_id = type(weapon_swap) == "table" and table.random(weapon_swap) or weapon_swap
 	end
 end)
 
