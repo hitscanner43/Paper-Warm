@@ -1891,7 +1891,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.model3.stats.recoil = 6
 	self.model3.stats.concealment = 27
 	self.model3.fire_mode_data.fire_rate = 60 / 300
-	--self.model3.alt_fire_data = cowboy_revolver
 	
 	self.deagle.categories = { "handcannon", "pistol" }
 	self.deagle.CLIP_AMMO_MAX = 7
@@ -1917,8 +1916,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.peacemaker.stats.concealment = 26
 	self.peacemaker.stats.reload = 200
 	self.peacemaker.fire_mode_data.fire_rate = 60 / 300
-	--self.peacemaker.alt_fire_data = cowboy_revolver
-	
+
 	self.rsh12.categories = { "revolver" }
 	self.rsh12.CLIP_AMMO_MAX = 5
 	self.rsh12.stats.damage = 240
@@ -2140,15 +2138,13 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.m37.stats.recoil = 6
 	self.m37.stats.concealment = 18
 	self.m37.fire_mode_data.fire_rate = 60 / 105
-	--self.m37.alt_fire_data = cowboy_shotgun
-	
+
 	self.m1897.CLIP_AMMO_MAX = 6
 	self.m1897.stats.damage = 480
 	self.m1897.stats.spread = 14
 	self.m1897.stats.recoil = 6
 	self.m1897.stats.concealment = 18
 	self.m1897.fire_mode_data.fire_rate = 60 / 105
---	self.m1897.alt_fire_data = cowboy_shotgun
 	
 	self.m590.CLIP_AMMO_MAX = 7
 	self.m590.stats.damage = 480
