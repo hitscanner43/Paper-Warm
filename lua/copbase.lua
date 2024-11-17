@@ -30,7 +30,7 @@ local sequence_mapping = {
 	[("units/payday2/characters/ene_cop_1/ene_cop_1"):key()] = "cop_1",	
 	[("units/payday2/characters/ene_cop_2/ene_cop_2"):key()] = "cop_2",	
 	[("units/payday2/characters/ene_cop_3/ene_cop_3"):key()] = "cop_3",	
-	[("units/payday2/characters/ene_cop_3/ene_cop_4"):key()] = "cop_4",	
+	[("units/payday2/characters/ene_cop_4/ene_cop_4"):key()] = "cop_4",	
 
 	[("units/payday2/characters/ene_fbi_1/ene_fbi_1"):key()] = "fbi_1",	
 	[("units/payday2/characters/ene_fbi_2/ene_fbi_2"):key()] = "fbi_2",	
@@ -210,10 +210,10 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	if self._unit:damage() and self._unit:damage():has_sequence(sequence) then
 		self._unit:damage():run_sequence_simple(sequence)
 	end
-
-	local spawn_manager_ext = alive(self._unit) and self._unit:spawn_manager()
-
-	if spawn_manager_ext then		
+	
+	local spawn_manager_ext = self._unit:spawn_manager()
+	
+	if spawn_manager_ext then	
 		if self._head then
 			spawn_manager_ext:spawn_and_link_unit("_char_joint_names", "char_head", self._head)
 
@@ -224,8 +224,9 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	if alive(self._head_unit) then
 		if self._head_unit:damage() and self._head_unit:damage():has_sequence(self._head_sequence) then	
 			self._head_unit:damage():run_sequence_simple(self._head_sequence)
-			self._head_unit:set_enabled(self._unit:enabled())
 		end
+		
+		self._head_unit:set_enabled(self._unit:enabled())
 		
 		if security_no_arms[name] or security_no_arms_hands[name] then
 			if self._head_unit:damage() and self._head_unit:damage():has_sequence("disable_arms") then
@@ -250,6 +251,32 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 end)
 
 
+Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
+	local name = self._unit:name():key()
+
+	local sequence = sequence_mapping[name]
+	
+	local damage_ext = self._unit:character_damage()
+	local head_gear = damage_ext._head_gear
+	
+	if not damage_ext._nr_head_gear_object then
+		if head_gear then	
+			self._head_gear_unit = safe_spawn_unit(head_gear, Vector3(), Rotation())
+
+			if self._head_gear_unit:damage() and self._head_gear_unit:damage():has_sequence(sequence) then
+				self._head_gear_unit:damage():run_sequence_simple(sequence)
+			end
+		end
+		
+		if self._head_gear_unit then
+			local align_obj_name = Idstring("Head")
+			local align_obj = self._unit:get_object(align_obj_name)
+
+			self._unit:link(align_obj_name, self._head_gear_unit, self._head_gear_unit:orientation_object():name())
+		end	
+	end
+end)
+
 function CopBase:melee_weapon()
 	if not self._melee_weapon then
 		self._melee_weapon = self._char_tweak.melee_weapon or "weapon"
@@ -264,13 +291,13 @@ function CopBase:melee_weapon()
 end
 
 
-Hooks:PostHook(CopBase, "pre_destroy", "melee_unload", function (self)
-	if alive(self._head_unit) then
-		self._head_unit:set_slot(0)
+Hooks:PostHook(CopBase, "pre_destroy", "hits_pre_destroy", function (self)	
+	if alive(self._head_gear_unit) then
+		self._head_gear_unit:set_slot(0)
 
-		self._head_unit = nil
+		self._head_gear_unit = nil
 	end
-
+	
 	if self._melee_weapon_data then
 		managers.dyn_resource:unload(Idstring("unit"), self._melee_weapon_data.unit_name, managers.dyn_resource.DYN_RESOURCES_PACKAGE)
 	end

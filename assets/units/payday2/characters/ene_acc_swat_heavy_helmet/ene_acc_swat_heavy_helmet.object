@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/payday2/characters/ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet" orientation_object="rp_ene_acc_swat_heavy_helmet" />
+	<sequence_manager file="units/payday2/characters/ene_acc_swat_helmet/ene_acc_swat_helmet" /> 
+	
+	<bodies>
+		<body name="collision_helmet" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
+			<object name="rp_ene_acc_swat_heavy_helmet"/>
+			<object name="c_convex_1" collision_type="convex" mass="1.5" />
+			<object name="c_convex_2" collision_type="convex" mass="1.5" />
+			<object name="c_convex_3" collision_type="convex" mass="1.5" />
+			<object name="c_convex_4" collision_type="convex" mass="1.5" />
+		</body>
+
+		<body name="collision_visor" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
+			<object name="rp_ene_acc_swat_heavy_helmet"/>
+			<object name="c_convex_5" collision_type="convex" mass="1.5" />
+			<object name="c_convex_6" collision_type="convex" mass="1.5" />
+		</body>
+
+		<body name="collision_mask" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
+			<object name="rp_ene_acc_swat_heavy_helmet"/>
+			<object name="c_convex_7" collision_type="convex" mass="1.5" />
+			<object name="c_convex_8" collision_type="convex" mass="1.5" />
+		</body>
+
+		<body name="collision_torch" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
+			<object name="rp_ene_acc_swat_heavy_helmet"/>
+			<object name="c_convex_9" collision_type="convex" mass="1.5" />
+		</body>
+	</bodies>
+
+	<decal_surfaces default_material="steel_no_decal">	
+		<decal_mesh name="dm_visor" enabled="false" material="glass_no_decal" />
+		<decal_mesh name="dm_mask" enabled="false" material="steel_no_decal" />
+	</decal_surfaces>
+
+	<graphics>
+		<graphic_group name="character" enabled="true" culling_object="co_culling">	
+			<lod_object name="lod_chinstrap">
+				<object name="g_chinstrap" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_chinstrap_lod1" 	enabled="true"  lod="1" />
+			</lod_object>
+			
+			<lod_object name="lod_helmet">
+				<object name="g_helmet" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_helmet_lod1" 		enabled="true"  lod="1" />
+			</lod_object>
+			
+			<lod_object name="lod_mask">
+				<object name="g_mask" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_mask_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+			
+			<lod_object name="lod_visor">
+				<object name="g_visor" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_visor_lod1" 	enabled="false"  lod="1" />
+			</lod_object>
+
+			<lod_object name="lod_visor_broken">
+				<object name="g_visor_broken" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_visor_broken_lod1" 		enabled="false"  lod="1" />
+			</lod_object>
+			
+			<lod_object name="lod_torch">
+				<object name="g_torch" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_torch_lod1" 	enabled="false"  lod="1" />
+			</lod_object>
+			<object name="g_glass"				 enabled="false"/>	
+		</graphic_group>
+	</graphics>
+</dynamic_object>

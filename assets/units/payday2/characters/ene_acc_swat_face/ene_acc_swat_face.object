@@ -1,5 +1,5 @@
 <dynamic_object>
-    <diesel orientation_object="rp_ene_acc_swat_face" materials="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
+    <diesel orientation_object="rp_ene_acc_swat_face" materials="units/payday2/characters/ene_swat_1/ene_swat_1" />
 	<sequence_manager file="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head"/>
 
 	<decal_surfaces default_material="flesh"/>

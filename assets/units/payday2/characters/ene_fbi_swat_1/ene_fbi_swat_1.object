@@ -191,8 +191,6 @@
 	</constraints>
 
 	<decal_surfaces default_material="flesh" >
-		<decal_mesh name="dm_helmet" enabled="true" material="steel_no_decal" />
-		<decal_mesh name="dm_mask" enabled="true" material="steel_no_decal" />
 	</decal_surfaces>
 
 	<graphics>
@@ -247,7 +245,7 @@
 				<object name="g_gear_shield" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_gear_shield_lod1" 	enabled="false"  lod="1" />
 			</lod_object>
-	<!--GOGGLES-->	
+	<!--GLASSES-->	
 			<lod_object name="lod_glasses">
 				<object name="g_glasses" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_glasses_lod1" 		enabled="false"  lod="1" />
@@ -257,43 +255,6 @@
 				<object name="g_shoulderpads" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_shoulderpads_lod1" 	enabled="false"  lod="1" />
 			</lod_object>
-	<!--HATS-->						
-			<lod_object name="lod_hat">
-				<object name="g_hat_lod1" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_hat_lod2" 			enabled="false"  lod="1" />
-			</lod_object>	
-
-			<lod_object name="lod_hat_sniper">
-				<object name="g_hat_lod3" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_hat_lod4" 			enabled="false"  lod="1" />
-			</lod_object>	
-	<!--MASK-->	
-			<lod_object name="lod_mask">
-				<object name="g_mask_lod1" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_mask_lod2" 			enabled="false"  lod="1" />
-			</lod_object>	
-	<!--HELMETS-->				
-			<lod_object name="lod_helmet">
-				<object name="g_hemet_lod1" 		enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_hemet_lod2" 		enabled="true"  lod="1" />
-			</lod_object>	
-
-			<lod_object name="lod_helmet_goggles">
-				<object name="g_hemet_lod3" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_hemet_lod4" 		enabled="false"  lod="1" />
-			</lod_object>	
-
-			<lod_object name="lod_nvg">
-				<object name="g_hemet_lod6" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_hemet_lod7" 		enabled="false"  lod="1" />
-			</lod_object>	
-	<!--GOGGLES-->
-			<lod_object name="lod_helmet_goggles">
-				<object name="g_hemet_lod3" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_hemet_lod4" 		enabled="false"  lod="1" />
-			</lod_object>
-
-			<object name="g_hemet_lod5" 			enabled="false"/>	
 			
 			<object name="s_body" enabled="true" shadow_caster="true"/>		
 		</graphic_group>

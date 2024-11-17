@@ -191,8 +191,6 @@
 	</constraints>
 
 	<decal_surfaces default_material="flesh" >
-		<decal_mesh name="dm_helmet" enabled="true" material="steel_no_decal" />
-		<decal_mesh name="dm_visor" enabled="false" material="glass_no_decal" />
 	</decal_surfaces>
 
 	<graphics>
@@ -222,18 +220,6 @@
 				<object name="g_gear_shield" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_gear_shield_lod1" 	enabled="false"  lod="1" />
 			</lod_object>
-	<!--HELMETS-->			
-			<lod_object name="lod_helmet">
-				<object name="g_hemet_lod1" 		enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_hemet_lod2" 		enabled="true"  lod="1" />
-			</lod_objecttrue
-	<!--FLASHLIGHT-->
-			<lod_object name="lod_helmet_goggles">
-				<object name="g_hemet_lod4" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_hemet_lod5" 		enabled="false"  lod="1" />
-			</lod_object>
-	
-			<object name="g_hemet_lod3" 				enabled="false"/>	
 			
 			<object name="s_body" enabled="true" shadow_caster="true"/>		
 		</graphic_group>

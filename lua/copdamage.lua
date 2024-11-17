@@ -96,6 +96,7 @@ function CopDamage:damage_explosion(attack_data, ...)
 	return result
 end
 
+
 -- Add a fire damage multiplier
 local damage_fire = CopDamage.damage_fire
 function CopDamage:damage_fire(attack_data, ...)
@@ -105,6 +106,7 @@ function CopDamage:damage_fire(attack_data, ...)
 
 	return damage_fire(self, attack_data, ...)
 end
+
 
 local sync_damage_explosion = CopDamage.sync_damage_explosion
 function CopDamage:sync_damage_explosion(attacker_unit, damage_percent, i_attack_variant, ...)
@@ -116,6 +118,44 @@ function CopDamage:sync_damage_explosion(attacker_unit, damage_percent, i_attack
 	self._no_blood = no_blood
 
 	return result
+end
+
+
+--Overhauled headgear system for popped helmets
+function CopDamage:_spawn_head_gadget(params)
+	if not self._head_gear or self._head_gear_spawned then
+		return
+	end
+	
+	if self._nr_head_gear_object then
+		return
+	end
+	
+	local head_gear_unit = self._unit:base()._head_gear_unit
+	
+	if not head_gear_unit then
+		return
+	end
+
+	if head_gear_unit:damage() and head_gear_unit:damage():has_sequence("detach") then
+		head_gear_unit:damage():run_sequence_simple("detach")
+	end
+	
+	head_gear_unit:unlink()
+	
+	if head_gear_unit:slot() ~= 18 then
+		head_gear_unit:set_slot(18)
+	end
+
+	if not params.skip_push then
+		local dir = math.UP - params.dir / 2
+		dir = dir:spread(25)
+		local body = head_gear_unit:body(0)
+
+		body:push_at(body:mass(), dir * math.lerp(300, 650, math.random()), head_gear_unit:position() + Vector3(math.rand(1), math.rand(1), math.rand(1)))
+	end
+
+	self._head_gear_spawned = true
 end
 
 
