@@ -7,32 +7,6 @@
 	</dependencies>
 
 	<extensions>
-		<extension name="unit_data" class="ScriptUnitData" />
-		<extension name="base" class="HuskCopBase" >
-			<var name="_tweak_table" value="cop" />
-			<var name="_default_weapon_id" value="c45" />
-			<var name="_head" value="units/payday2/characters/ene_acc_cop_head/ene_acc_cop_head" />
-			<var name="_head_sequence" value="security_a" />
-		</extension>
-		<extension name="inventory" class="HuskCopInventory" />
-		<extension name="brain" class="HuskCopBrain" />
-		<extension name="anim_data" class="PlayerAnimationData" />
-		<extension name="character_damage" class="HuskCopDamage" >
-			<var name="_head_body_name" value="head" />
-		</extension>
-		<extension name="movement" class="HuskCopMovement" >
-			<var name="_footwear" value="hardsole" />
-			<var name="_anim_global" value="cop" />
-		</extension>
-		<extension name="interaction" class="IntimitateInteractionExt" >
-			<var name="tweak_data" value="intimidate" />
-		</extension>
-		<extension name="network" class="NetworkBaseExtension" />
-		<extension name="damage" class="UnitDamage" >
-			<var name="_skip_save_anim_state_machine" value="true" />
-		</extension>
-		<extension name="contour" class="ContourExt" />
-		<extension name="sound" class="CopSound" />
 		<extension name="spawn_manager" class="ManageSpawnedUnits" >
 			<var name="_char_joint_names" type="table" >
 				<var value="root_point" />
@@ -108,6 +82,32 @@
 			<var name="allow_client_spawn" value="true"/>
 			<var name="local_only" value="true"/>
 		</extension>
+		<extension name="unit_data" class="ScriptUnitData" />
+		<extension name="base" class="HuskCopBase" >
+			<var name="_tweak_table" value="cop" />
+			<var name="_default_weapon_id" value="c45" />
+			<var name="_head" value="units/payday2/characters/ene_acc_cop_head/ene_acc_cop_head" />
+			<var name="_head_sequence" value="security_a" />
+		</extension>
+		<extension name="inventory" class="HuskCopInventory" />
+		<extension name="brain" class="HuskCopBrain" />
+		<extension name="anim_data" class="PlayerAnimationData" />
+		<extension name="character_damage" class="HuskCopDamage" >
+			<var name="_head_body_name" value="head" />
+		</extension>
+		<extension name="movement" class="HuskCopMovement" >
+			<var name="_footwear" value="hardsole" />
+			<var name="_anim_global" value="cop" />
+		</extension>
+		<extension name="interaction" class="IntimitateInteractionExt" >
+			<var name="tweak_data" value="intimidate" />
+		</extension>
+		<extension name="network" class="NetworkBaseExtension" />
+		<extension name="damage" class="UnitDamage" >
+			<var name="_skip_save_anim_state_machine" value="true" />
+		</extension>
+		<extension name="contour" class="ContourExt" />
+		<extension name="sound" class="CopSound" />
 	</extensions>
 
   <network sync="husk" remote_unit=""/>
