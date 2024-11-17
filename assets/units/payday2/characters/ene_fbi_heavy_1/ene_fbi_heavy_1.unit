@@ -7,7 +7,7 @@
 		
 		<depends_on bnk="soundbanks/regular_vox" />
 		<depends_on unit="units/payday2/characters/ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet" />
-		<depends_on unit="units/payday2/characters/ene_acc_swat_face/ene_acc_swat_face" />
+		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 	</dependencies>
 
 	<extensions>
@@ -15,7 +15,7 @@
 		<extension name="base" class="CopBase" >
 			<var name="_tweak_table" value="fbi_heavy_swat" />
 			<var name="_default_weapon_id" value="m4" />
-			<var name="_head" value="units/payday2/characters/ene_acc_swat_face/ene_acc_swat_face" />
+			<var name="_head" value="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 			<var name="_head_sequence" value="swat_heads_b" />
 		</extension>
 		<extension name="inventory" class="CopInventory" />

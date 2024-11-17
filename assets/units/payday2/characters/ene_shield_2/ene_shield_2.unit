@@ -9,7 +9,7 @@
 		<depends_on unit="units/payday2/characters/ene_acc_shield_helmet/ene_acc_shield_helmet" />
 		<depends_on unit="units/payday2/characters/ene_acc_shield_small/shield_small" />
 		<depends_on unit="units/payday2/weapons/wpn_npc_c45/wpn_npc_c45" />
-		<depends_on unit="units/payday2/characters/ene_acc_swat_face/ene_acc_swat_face" />
+		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 	</dependencies>
 
 	<extensions>
@@ -18,7 +18,7 @@
 			<var name="can_be_marked" value="true" />
 			<var name="_tweak_table" value="shield" />
 			<var name="_default_weapon_id" value="c45" />
-			<var name="_head" value="units/payday2/characters/ene_acc_swat_face/ene_acc_swat_face" />
+			<var name="_head" value="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 			<var name="_head_sequence" value="swat_heads_a" />
 		</extension>
 		<extension name="inventory" class="CopInventory" >
