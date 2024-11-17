@@ -159,6 +159,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		melee_speed = 1,
 		melee_dmg = 6 * dmg_mul_lin,
 		melee_retry_delay = { 1, 2 },
+		melee_range = 125,
 		range = { close = 750, optimal = 1500, far = 3000 }
 	})
 	
@@ -327,13 +328,12 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	presets.weapon.soldier = based_on(presets.weapon.fbi_swat)
 	
 	presets.weapon.shield = based_on(presets.weapon.swat, {
-		melee_speed = nil_value,
-		melee_dmg = nil_value,
-		melee_retry_delay = nil_value,
+		melee_dmg = 6 * special_dmg_mul,
 		RELOAD_SPEED = 0.8,
 		range = { close = 500, optimal = 1000, far = 2000 },
 	})
 
+	accuracy_multiplier(presets.weapon.shield, 0.9)
 	damage_multiplier(presets.weapon.shield, 0.75)
 	
 	presets.weapon.medic = based_on(presets.weapon.swat, {
@@ -377,7 +377,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		aim_delay_tase = { 0, 1 * aim_delay_mul },
 		tase_sphere_cast_radius = 15,
 		tase_distance = 1500,
-		melee_dmg = 0
+		melee_dmg = 0,
+		melee_range = 200
 	})
 
 	presets.weapon.grenadier = based_on(presets.weapon.swat, {
@@ -392,7 +393,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.tank = based_on(presets.weapon.swat, {
 		aim_delay = { 0, 2 },
-		melee_speed = 0.65,
+		melee_speed = 0.75,
 		melee_dmg = 24 * special_dmg_mul,
 		melee_retry_delay = { 2, 3 }
 	})
@@ -405,22 +406,24 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.tank.is_shotgun_mag.RELOAD_SPEED = 0.9
 	presets.weapon.tank.is_shotgun_mag.FALLOFF = {
-		{ dmg_mul = 8 * special_dmg_mul, r = 0, acc = { 0.7, 0.9 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 5, 6 } },
-		{ dmg_mul = 4 * special_dmg_mul, r = 1000, acc = { 0.5, 0.7 }, recoil = { 0.75, 1.5 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 3, 4 } },
-		{ dmg_mul = 2 * special_dmg_mul, r = 2000, acc = { 0.3, 0.5 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 1, 2 } }
+		{ dmg_mul = 8 * special_dmg_mul, r = 0, acc = { 0.7, 0.9 }, recoil = { 0.5, 0.75 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 5, 6 } },
+		{ dmg_mul = 4 * special_dmg_mul, r = 1000, acc = { 0.5, 0.7 }, recoil = { 0.75, 1 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 3, 4 } },
+		{ dmg_mul = 2 * special_dmg_mul, r = 2000, acc = { 0.3, 0.5 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 1, 2 } }
 	}
 
+	presets.weapon.tank.is_lmg.RELOAD_SPEED = 0.5
 	presets.weapon.tank.is_lmg.autofire_rounds = { 20, 40 }	
 	presets.weapon.tank.is_lmg.FALLOFF = {
-		{ dmg_mul = 4 * special_dmg_mul, r = 0, acc = { 0.3, 0.6 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 2 * special_dmg_mul, r = 3000, acc = { 0.2, 0.4 }, recoil = { 2, 3 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 3 * special_dmg_mul, r = 0, acc = { 0.4, 0.8 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 1.5 * special_dmg_mul, r = 3000, acc = { 0.2, 0.4 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 
 	presets.weapon.tank.mini.no_autofire_stop = true
+	presets.weapon.tank.mini.RELOAD_SPEED = 0.4
 	presets.weapon.tank.mini.autofire_rounds = { 100, 400 }
 	presets.weapon.tank.mini.FALLOFF = {
-		{ dmg_mul = 2 * special_dmg_mul, r = 0, acc = { 0.2, 0.4 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 1 * special_dmg_mul, r = 3000, acc = { 0.1, 0.2 }, recoil = { 2, 3 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 2 * special_dmg_mul, r = 0, acc = { 0.2, 0.4 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 1 * special_dmg_mul, r = 3000, acc = { 0.1, 0.2 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 	
 	presets.weapon.boss = based_on(presets.weapon.default, {

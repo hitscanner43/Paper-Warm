@@ -335,11 +335,6 @@
 			<file :name="ene_acc_swat_head/ene_acc_swat_head.model" />
 			<file :name="ene_acc_swat_head/ene_acc_swat_head.object" />
 			<file :name="ene_acc_swat_head/ene_acc_swat_head.unit" />
-
-			<file :name="ene_acc_swat_face/ene_acc_swat_face.cooked_physics" />
-			<file :name="ene_acc_swat_face/ene_acc_swat_face.model" />
-			<file :name="ene_acc_swat_face/ene_acc_swat_face.object" />
-			<file :name="ene_acc_swat_face/ene_acc_swat_face.unit" />
 						
 			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.material_config" />
 			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.model" />
