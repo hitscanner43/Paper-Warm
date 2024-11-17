@@ -152,5 +152,5 @@ Hooks:PostHook(SkirmishTweakData, "_init_spawn_group_weights", "sh__init_spawn_g
 		self.assault.groups[i] = groups
 	end
 end)
-
+]]
 
