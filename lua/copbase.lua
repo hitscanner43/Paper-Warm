@@ -180,28 +180,6 @@ local weapon_mapping = {
 }
 
 
-local security_no_arms = {
-	[Idstring("units/payday2/weapons/ene_security_2/ene_security_2"):key()] = true,
-	[Idstring("units/payday2/weapons/ene_cop_2/ene_cop_2"):key()] = true,
-	[Idstring("units/payday2/weapons/ene_fbi_1/ene_fbi_1"):key()] = true,
-	[Idstring("units/payday2/weapons/ene_fbi_2/ene_fbi_2"):key()] = true,
-}
-
-local security_no_hands = {
-	[Idstring("units/payday2/weapons/ene_security_3/ene_security_3"):key()] = true,
-	[Idstring("units/payday2/weapons/ene_cop_3/ene_cop_3"):key()] = true,
-	[Idstring("units/payday2/weapons/ene_fbi_3/ene_fbi_3"):key()] = true,
-}
-
-local security_no_arms_hands = {
-	[Idstring("units/payday2/weapons/ene_cop_4/ene_cop_4"):key()] = true,
-}
-
-local security_no_head = {
-	[Idstring("units/payday2/weapons/ene_fbi_3/ene_fbi_3"):key()] = true,
-}
-
-
 Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	local name = self._unit:name():key()
 	
@@ -212,34 +190,31 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	end
 	
 	local spawn_manager_ext = self._unit:spawn_manager()
+
+	local damage_ext = self._unit:character_damage()
+	local head = damage_ext._head
 	
 	if spawn_manager_ext then	
-		if self._head then
-			spawn_manager_ext:spawn_and_link_unit("_char_joint_names", "char_head", self._head)
+		if head then
+			if not managers.dyn_resource:has_resource(Idstring("unit"), Idstring(head), managers.dyn_resource.DYN_RESOURCES_PACKAGE) then
+				managers.dyn_resource:load(Idstring("unit"), Idstring(head), managers.dyn_resource.DYN_RESOURCES_PACKAGE)
+			end
+			
+			spawn_manager_ext:spawn_and_link_unit("_char_joint_names", "char_head", head)
 
 			self._head_unit = spawn_manager_ext:get_unit("char_head")
 		end
 	end
 	
 	if alive(self._head_unit) then
-		if self._head_unit:damage() and self._head_unit:damage():has_sequence(self._head_sequence) then	
-			self._head_unit:damage():run_sequence_simple(self._head_sequence)
+		if self._head_unit:damage() and self._head_unit:damage():has_sequence(damage_ext._head_sequence) then	
+			self._head_unit:damage():run_sequence_simple(damage_ext._head_sequence)
 		end
 		
 		self._head_unit:set_enabled(self._unit:enabled())
 		
-		if security_no_arms[name] or security_no_arms_hands[name] then
-			if self._head_unit:damage() and self._head_unit:damage():has_sequence("disable_arms") then
-				self._head_unit:damage():run_sequence_simple("disable_arms")
-			end
-		elseif security_no_hands[name] or security_no_arms_hands[name] then
-			if self._head_unit:damage() and self._head_unit:damage():has_sequence("disable_hands") then
-				self._head_unit:damage():run_sequence_simple("disable_hands")
-			end
-		elseif security_no_head[name] then
-			if self._head_unit:damage() and self._head_unit:damage():has_sequence("disable_head") then
-				self._head_unit:damage():run_sequence_simple("disable_head")
-			end
+		if self._head_unit:damage() and self._head_unit:damage():has_sequence(sequence) then
+			self._head_unit:damage():run_sequence_simple(sequence)
 		end
 	end
 	

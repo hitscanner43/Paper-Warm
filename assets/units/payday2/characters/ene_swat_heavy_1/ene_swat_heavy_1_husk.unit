@@ -3,10 +3,8 @@
 	<anim_state_machine name="anims/units/enemies/cop/cop_machine" />
 	<object file="units/payday2/characters/ene_swat_heavy_1/ene_swat_heavy_1" />
 
-	<dependencies>
-		
+	<dependencies>	
 		<depends_on unit="units/payday2/characters/ene_acc_shield_helmet/ene_acc_shield_helmet" />
-		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 	</dependencies>
 
 	<extensions>

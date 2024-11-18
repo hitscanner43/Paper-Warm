@@ -1,8 +1,8 @@
-<unit type="gen" slot="30" >
-    <object file="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
+<unit type="gen" slot="1" >
+    <object file="units/payday2/characters/ene_acc_taser_head/ene_acc_taser_head" />
     <extensions>
         <extension name="unit_data" class="ScriptUnitData" />
-		<extension name="damage" class="UnitDamage"/>
+		<extension name="damage" class="UnitDamage" />
 		<extension name="contour" class="ContourExt" />
     </extensions>
 </unit>

@@ -89,8 +89,8 @@
 			</lod_object>
 <!--FACES-->			
 			<lod_object name="lod_face_a">
-				<object name="g_face_a" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_face_a_lod1" 		enabled="true"  lod="1" />
+				<object name="g_face_a" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_face_a_lod1" 		enabled="false"  lod="1" />
 			</lod_object>
 
 			<lod_object name="lod_face_b">

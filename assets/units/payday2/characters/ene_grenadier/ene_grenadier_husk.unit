@@ -4,7 +4,6 @@
 	<object file="units/payday2/characters/ene_grenadier/ene_grenadier" />
 
 	<dependencies>
-		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 	</dependencies>
 
 	<extensions>
@@ -14,7 +13,7 @@
 			<var name="_tweak_table" value="grenadier" />
 			<var name="_default_weapon_id" value="m4"/>
 			<var name="_head" value="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
-			<var name="_head_sequence" value="swat_heads_taser" />
+			<var name="_head_sequence" value="swat_heads_a" />
 		</extension>
 		<extension name="inventory" class="HuskCopInventory" />
 		<extension name="brain" class="HuskCopBrain" />

@@ -15,7 +15,6 @@ Hooks:PostHook(DynamicResourceManager, "preload_units", "sh_preload_units", func
 	load_unload_unit("units/payday2/characters/ene_swat_3/ene_swat_3", base_needed)
 	load_unload_unit("units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3", base_needed)
 	load_unload_unit("units/payday2/characters/ene_grenadier/ene_grenadier", base_needed)
-	--load_unload_unit("units/payday2/characters/ene_acc_cop_head/ene_acc_cop_head", base_needed)
 
 	local bex_needed = PackageManager:has(ids_unit, Idstring("units/pd2_dlc_bex/characters/ene_swat_policia_federale/ene_swat_policia_federale"))		
 	load_unload_unit("units/pd2_dlc_bex/characters/ene_policia_cop_1/ene_policia_cop_1", bex_needed)

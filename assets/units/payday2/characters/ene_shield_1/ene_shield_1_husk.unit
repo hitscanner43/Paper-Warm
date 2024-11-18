@@ -3,13 +3,11 @@
 	<anim_state_machine name="anims/units/enemies/cop/cop_machine" />
 	<object file="units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1" />
 
-	<dependencies>
-		
+	<dependencies>	
 		<depends_on bnk="soundbanks/regular_vox" />
 		<depends_on unit="units/payday2/characters/ene_acc_shield_mask/ene_acc_shield_mask" />
 		<depends_on unit="units/payday2/characters/ene_acc_shield_lights/ene_acc_shield_lights" />
 		<depends_on unit="units/payday2/weapons/wpn_npc_smg_mp9/wpn_npc_smg_mp9" />
-		<depends_on unit="units/payday2/characters/ene_acc_swat_face/ene_acc_swat_face" />
 	</dependencies>
 
 	<extensions>
@@ -18,8 +16,8 @@
 			<var name="can_be_marked" value="true" />
 			<var name="_tweak_table" value="shield" />
 			<var name="_default_weapon_id" value="mp9" />
-			<var name="_head" value="units/payday2/characters/ene_acc_swat_face/ene_acc_swat_face" />
-			<var name="_head_sequence" value="swat_heads_b" />
+			<var name="_head" value="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
+			<var name="_head_sequence" value="swat_heads_a" />
 		</extension>
 		<extension name="inventory" class="HuskCopInventory" >
 			<var name="_shield_unit_name" value="units/payday2/characters/ene_acc_shield_lights/ene_acc_shield_lights" />

@@ -486,6 +486,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
 
 				weap_data.steelsight_speed_mul = 0.6
+				weap_data.headshot_dmg_mul = 1.5
 
 				weap_data.trail_effect = "effects/payday2/particles/weapons/hailstorm_streak"
 				weap_data.muzzleflash = cat_map.intermediate and "effects/payday2/particles/weapons/556_auto_fps" or cat_map.fifty and "effects/payday2/particles/weapons/50cal_auto_fps" or "effects/payday2/particles/weapons/big_762_auto_fps"
@@ -2217,7 +2218,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.qbu88.stats_modifiers = nil
 	
 	self.siltstone.CLIP_AMMO_MAX = 10
-	self.siltstone.stats.damage = 160
+	self.siltstone.stats.damage = 180
 	self.siltstone.stats.spread = 21
 	self.siltstone.stats.recoil = 6
 	self.siltstone.stats.concealment = 18
@@ -2225,7 +2226,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.siltstone.stats_modifiers = nil
 
 	self.wa2000.CLIP_AMMO_MAX = 6
-	self.wa2000.stats.damage = 160
+	self.wa2000.stats.damage = 180
 	self.wa2000.stats.spread = 21
 	self.wa2000.stats.recoil = 6
 	self.wa2000.stats.concealment = 22
@@ -2234,7 +2235,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.wa2000.stats_modifiers = nil
 
 	self.tti.CLIP_AMMO_MAX = 20
-	self.tti.stats.damage = 160
+	self.tti.stats.damage = 180
 	self.tti.stats.spread = 19
 	self.tti.stats.recoil = 6
 	self.tti.stats.concealment = 18
