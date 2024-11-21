@@ -163,14 +163,14 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		range = { close = 750, optimal = 1500, far = 3000 }
 	})
 	
-	presets.weapon.default.is_rifle.autofire_rounds = { 1, 4 }
+	presets.weapon.default.is_rifle.autofire_rounds = { 1, 6 }
 	presets.weapon.default.is_rifle.range = { close = 1000, optimal = 2000, far = 4000 }
 	presets.weapon.default.is_rifle.FALLOFF = {
 		{ dmg_mul = 2 * dmg_mul, r = 0, acc = { 0.6, 0.8 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 } },
 		{ dmg_mul = 1 * dmg_mul, r = 3000, acc = { 0.4, 0.6 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 
-	presets.weapon.default.is_smg.autofire_rounds = { 2, 6 }
+	presets.weapon.default.is_smg.autofire_rounds = { 3, 8 }
 	presets.weapon.default.is_smg.FALLOFF = {
 		{ dmg_mul = 1.5 * dmg_mul, r = 0, acc = { 0.5, 0.7 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 5, 6 } },
 		{ dmg_mul = 0.5 * dmg_mul, r = 3000, acc = { 0.3, 0.5 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 2, 3 } }
@@ -196,7 +196,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 0.5 * dmg_mul_lin, r = 2000, acc = { 0.4, 0.6 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 
-	presets.weapon.default.is_shotgun_mag.autofire_rounds = { 1, 3 }
+	presets.weapon.default.is_shotgun_mag.autofire_rounds = { 1, 4 }
 	presets.weapon.default.is_shotgun_mag.range = { close = 500, optimal = 1000, far = 2000 }
 	presets.weapon.default.is_shotgun_mag.FALLOFF = {
 		{ dmg_mul = 4 * dmg_mul_lin, r = 0, acc = { 0.7, 0.9 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 } },
@@ -294,9 +294,9 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		RELOAD_SPEED = 0.9,
 	})
 
-	accuracy_multiplier(presets.weapon.gangster, 0.7)
-	recoil_multiplier(presets.weapon.gangster, 0.7)
-	burst_multiplier(presets.weapon.gangster, 1.3)
+	accuracy_multiplier(presets.weapon.gangster, 0.6)
+	recoil_multiplier(presets.weapon.gangster, 0.8)
+	burst_multiplier(presets.weapon.gangster, 1.4)
 	
 	presets.weapon.swat = based_on(presets.weapon.default, {
 		aim_delay = { 0, 1 },
@@ -329,7 +329,6 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.shield = based_on(presets.weapon.swat, {
 		melee_dmg = 6 * special_dmg_mul,
-		RELOAD_SPEED = 0.8,
 		range = { close = 500, optimal = 1000, far = 2000 },
 	})
 
@@ -377,7 +376,6 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		aim_delay_tase = { 0, 1 * aim_delay_mul },
 		tase_sphere_cast_radius = 15,
 		tase_distance = 1500,
-		melee_dmg = 0,
 		melee_range = 200
 	})
 
@@ -786,7 +784,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.security.HEALTH_INIT = 6
 	self.security.headshot_dmg_mul = 2.5
-	self.security.limb_dmg_mul = 0.8
 	self.security.melee_weapon = "weapon"
 	self.security.surrender_break_time = { 15, 20 }
 	self.security.weapon = self.presets.weapon.security
@@ -806,7 +803,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security_heavy = deep_clone(self.security)	
 	self.security_heavy.HEALTH_INIT = 12
 	self.security_heavy.headshot_dmg_mul = 2.5
-	self.security_heavy.limb_dmg_mul = 0.8
 	table.insert(self._enemy_list, "security_heavy")
 
 	self.security_undominatable = deep_clone(self.security)		
@@ -837,7 +833,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.cop.HEALTH_INIT = 8
 	self.cop.headshot_dmg_mul = 2.5
-	self.cop.limb_dmg_mul = 0.8
 	self.cop.melee_weapon = "baton"
 	self.cop.access = { "cop", "fbi" }
 	self.cop.surrender_break_time = { 10, 15 }
@@ -880,7 +875,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.gangster.HEALTH_INIT = 10
 	self.gangster.headshot_dmg_mul = 2.5
-	self.gangster.limb_dmg_mul = 0.8
 	self.gangster.melee_weapon = "fists"
 	self.gangster.speech_prefix_p1 = "lt"
 	self.gangster.speech_prefix_p2 = nil
@@ -936,7 +930,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.swat.HEALTH_INIT = 16
 	self.swat.headshot_dmg_mul = 2
-	self.swat.limb_dmg_mul = 0.6
 	self.swat.melee_weapon = "weapon"
 	self.swat.speech_prefix_p2 = "n" 
 	self.swat.surrender_break_time = { 5, 10 }
@@ -967,7 +960,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.soldier = deep_clone(self.fbi_swat)	
 	self.soldier.HEALTH_INIT = 30
 	self.soldier.headshot_dmg_mul = 2
-	self.soldier.limb_dmg_mul = 0.8
 	self.soldier.melee_weapon = "knife_1"
 	self.soldier.surrender = self.presets.surrender.hard
 	self.soldier.no_arrest = true
@@ -986,8 +978,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.heavy_swat = deep_clone(self.swat)
 	self.heavy_swat.HEALTH_INIT = 24
-	self.heavy_swat.headshot_dmg_mul = 1.5
-	self.heavy_swat.limb_dmg_mul = 0.4
+	self.heavy_swat.headshot_dmg_mul = 2
+	self.heavy_swat.limb_dmg_mul = 0.6
 	self.heavy_swat.move_speed = self.presets.move_speed.fast
 	self.heavy_swat.dodge = self.presets.dodge.heavy
 	self.heavy_swat.surrender = self.presets.surrender.hard
@@ -998,8 +990,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.fbi_heavy_swat = deep_clone(self.heavy_swat)	
 	self.fbi_heavy_swat.HEALTH_INIT = 30
-	self.fbi_heavy_swat.headshot_dmg_mul = 1.5
-	self.fbi_heavy_swat.limb_dmg_mul = 0.4
+	self.fbi_heavy_swat.headshot_dmg_mul = 2
+	self.fbi_heavy_swat.limb_dmg_mul = 0.6
 	self.fbi_heavy_swat.weapon = self.presets.weapon.fbi_swat
 	self.fbi_heavy_swat.hurt_severity = self.presets.hurt_severities.tough
 
@@ -1014,7 +1006,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.sniper.HEALTH_INIT = 8
 	self.sniper.headshot_dmg_mul = 2.5
-	self.sniper.limb_dmg_mul = 0.8
 	self.sniper.speech_prefix_p1 = self._unit_prefixes.cop
 	self.sniper.weapon = self.presets.weapon.sniper
 	self.sniper.move_speed = self.presets.move_speed.normal
@@ -1025,7 +1016,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.shield.HEALTH_INIT = 24
 	self.shield.headshot_dmg_mul = 2
-	self.shield.limb_dmg_mul = 0.6
 	self.shield.speech_prefix_p1 = self._unit_prefixes.swat
 	self.shield.can_be_tased = false
 	self.shield.damage.explosion_damage_mul = 1
@@ -1038,7 +1028,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.medic.HEALTH_INIT = 48
 	self.medic.headshot_dmg_mul = 2
-	self.medic.limb_dmg_mul = 0.6
 	self.medic.weapon = self.presets.weapon.medic
 	self.medic.move_speed = self.presets.move_speed.fast
 	self.medic.dodge = self.presets.dodge.poor
@@ -1051,7 +1040,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.taser.HEALTH_INIT = 64
 	self.taser.headshot_dmg_mul = 2
-	self.taser.limb_dmg_mul = 0.6
 	self.taser.melee_weapon = "taser"
 	self.taser.weapon = self.presets.weapon.taser
 	self.taser.move_speed = self.presets.move_speed.fast
@@ -1081,7 +1069,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.spooc.HEALTH_INIT = 32
 	self.spooc.headshot_dmg_mul = 2.5
-	self.spooc.limb_dmg_mul = 0.8
 	self.spooc.melee_weapon = "baton"
 	self.spooc.weapon = self.presets.weapon.spooc
 	self.spooc.move_speed = self.presets.move_speed.lightning
