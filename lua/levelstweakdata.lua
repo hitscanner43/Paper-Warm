@@ -13,31 +13,30 @@ function LevelsTweakData:random_units_table()
 				Idstring("units/payday2/characters/ene_security_1/ene_security_1"),
 				Idstring("units/payday2/characters/ene_security_2/ene_security_2"), 
 				Idstring("units/payday2/characters/ene_security_3/ene_security_3")
-			},
-			
+			},		
 			cop_any = {
 				Idstring("units/payday2/characters/ene_cop_1/ene_cop_1"),
 				Idstring("units/payday2/characters/ene_cop_2/ene_cop_2"), 
 				Idstring("units/payday2/characters/ene_cop_3/ene_cop_3"), 
 				Idstring("units/payday2/characters/ene_cop_4/ene_cop_4")
 			},
-
 			cop_light = {
 				Idstring("units/payday2/characters/ene_cop_1/ene_cop_1"),
 				Idstring("units/payday2/characters/ene_cop_2/ene_cop_2"), 
 			},
-
 			cop_heavy = {
 				Idstring("units/payday2/characters/ene_cop_3/ene_cop_3"),
 				Idstring("units/payday2/characters/ene_cop_4/ene_cop_4"), 
 			},
-
 			fbi_any = {
 				Idstring("units/payday2/characters/ene_fbi_1/ene_fbi_1"),
 				Idstring("units/payday2/characters/ene_fbi_2/ene_fbi_2"), 
 				Idstring("units/payday2/characters/ene_fbi_3/ene_fbi_3")
 			},
-			
+			fbi_heavy = {
+				Idstring("units/payday2/characters/ene_fbi_2/ene_fbi_2"),
+				Idstring("units/payday2/characters/ene_fbi_3/ene_fbi_3"), 
+			},			
 			light_any = {
 				Idstring("units/payday2/characters/ene_swat_1/ene_swat_1"),
 				Idstring("units/payday2/characters/ene_swat_2/ene_swat_2")
@@ -48,7 +47,6 @@ function LevelsTweakData:random_units_table()
 			light_far = {
 				Idstring("units/payday2/characters/ene_swat_1/ene_swat_1")
 			},
-
 			heavy_any = {
 				Idstring("units/payday2/characters/ene_swat_heavy_1/ene_swat_heavy_1"),
 				Idstring("units/payday2/characters/ene_swat_heavy_r870/ene_swat_heavy_r870")
@@ -59,34 +57,32 @@ function LevelsTweakData:random_units_table()
 			heavy_far = {
 				Idstring("units/payday2/characters/ene_swat_heavy_1/ene_swat_heavy_1")
 			},
-
 			sniper = {
-				Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1"),
+				Idstring("units/payday2/characters/ene_sniper_1/ene_sniper_1")
 			},
 			shield = {
-				Idstring("units/payday2/characters/ene_shield_2/ene_shield_2"),
+				Idstring("units/payday2/characters/ene_shield_2/ene_shield_2")
 			},
 			medic = {
-				Idstring("units/payday2/characters/ene_medic_m4/ene_medic_m4"),
+				Idstring("units/payday2/characters/ene_medic_m4/ene_medic_m4")
 			},
 			taser = {
-				Idstring("units/payday2/characters/ene_tazer_1/ene_tazer_1"),
+				Idstring("units/payday2/characters/ene_tazer_1/ene_tazer_1")
 			},
 			spooc = {
-				Idstring("units/payday2/characters/ene_spook_1/ene_spook_1"),
-			},
-			
+				Idstring("units/payday2/characters/ene_spook_1/ene_spook_1")
+			},			
 			bulldozer_1 = {
-				Idstring("units/payday2/characters/ene_bulldozer_1/ene_bulldozer_1"),
+				Idstring("units/payday2/characters/ene_bulldozer_1/ene_bulldozer_1")
 			},
 			bulldozer_2 = {
-				Idstring("units/payday2/characters/ene_bulldozer_2/ene_bulldozer_2"),
+				Idstring("units/payday2/characters/ene_bulldozer_2/ene_bulldozer_2")
 			},
 			bulldozer_3 = {
-				Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3"),
+				Idstring("units/payday2/characters/ene_bulldozer_3/ene_bulldozer_3")
 			},
 			headless = {
-				Idstring("units/payday2/characters/ene_bulldozer_4/ene_bulldozer_4"),
+				Idstring("units/payday2/characters/ene_bulldozer_4/ene_bulldozer_4")
 			}
 		}
 	end
@@ -114,7 +110,6 @@ Hooks:PostHook(LevelsTweakData, "init", "hits_init_levels", function(self)
 	
 	for _, level in pairs(self) do
 		level.player_style = nil
-		level.has_cops = nil
 	end
 	
 	--Bain heists
@@ -122,7 +117,6 @@ Hooks:PostHook(LevelsTweakData, "init", "hits_init_levels", function(self)
 	
 	self.arm_fac.flashlights_on = true
 
-	self.arm_und.has_cops = true
 	self.arm_und.flashlights_on = true
 
 	self.gallery.flashlights_on = true

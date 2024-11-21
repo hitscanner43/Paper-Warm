@@ -20,12 +20,12 @@ local patches = {
 	}),
 }
 
-local dozer_chance = diff_i / 20
+local dozer_chance = (diff_i - 2) / 20
 
 local function scripted_heli_specials()
 	local rand = math.random()
 
-	return tweak_data.levels:random_unit(rand < dozer_chance and "bulldozer" or "taser_spooc")
+	return tweak_data.levels:random_unit(rand < dozer_chance and "bulldozer" or "taser")
 end
 
 return {

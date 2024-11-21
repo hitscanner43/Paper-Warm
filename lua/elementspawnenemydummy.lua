@@ -142,6 +142,7 @@ if tweak_data.levels[level_id] and tweak_data.levels[level_id].group_ai_state ==
 else
 	difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
 end
+
 Hooks:PostHook(ElementSpawnEnemyDummy, "init", "sh_init", function (self)
 	local mapped_name = self.enemy_mapping[self._enemy_name:key()]
 	local mapped_unit = self.faction_mapping[difficulty] and self.faction_mapping[difficulty][mapped_name]
