@@ -1,7 +1,7 @@
 Hooks:PostHook(BlackMarketTweakData, "_init_melee_weapons", "hits_init_melee_weapons", function (self)
 
 	self.melee_weapons.iceaxe.stats.min_damage = 6
-	self.melee_weapons.iceaxe.stats.max_damage = 18
+	self.melee_weapons.iceaxe.stats.max_damage = 15
 
 	local min_conceal, max_conceal = 30, 0
 	local min_range, max_range = 300, 0
