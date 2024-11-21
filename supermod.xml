@@ -328,7 +328,7 @@
 			<file :name="ene_acc_cop_head/ene_acc_cop_head.cooked_physics" />
 			<file :name="ene_acc_cop_head/ene_acc_cop_head.model" />
 			<file :name="ene_acc_cop_head/ene_acc_cop_head.object" />
-			<file :name="ene_acc_cop_head/ene_acc_cop_head.unit"/>
+			<file :name="ene_acc_cop_head/ene_acc_cop_head.unit" />
 			
 			<xml  :name="ene_acc_swat_head/ene_acc_swat_head.sequence_manager" />
 			<file :name="ene_acc_swat_head/ene_acc_swat_head.cooked_physics" />
@@ -339,6 +339,12 @@
 			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.material_config" />
 			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.model" />
 
+			<xml  :name="ene_acc_cop_hat/ene_acc_cop_hat.sequence_manager" />
+			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.material_config" />
+			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.model" />
+			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.object" />
+			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.unit" />
+			
 			<xml  :name="ene_acc_swat_helmet/ene_acc_swat_helmet.sequence_manager" />
 			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.material_config" />
 			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.model" />
@@ -385,7 +391,7 @@
 			<file :name="ene_cop_4/ene_cop_4.unit" />
 			<file :name="ene_cop_4/ene_cop_4_husk.unit" />
 	
-			<xml :name="ene_swat_1/ene_swat_1.sequence_manager" />	
+			<xml  :name="ene_swat_1/ene_swat_1.sequence_manager" />	
 			<file :name="ene_swat_1/ene_swat_1.material_config" />	
 			<file :name="ene_swat_1/ene_swat_1_contour.material_config" />
 			<file :name="ene_swat_1/ene_swat_1.model" />

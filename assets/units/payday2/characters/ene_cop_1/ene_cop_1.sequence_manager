@@ -12,9 +12,6 @@
 		<sequence editable_state="true" name="'security_2'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_2'"/>
 			<object 			enabled="true" name="'g_gear_2_lod1'"/>
-
-			<object 			enabled="true" name="'g_hat_lod1'"/>
-			<object 			enabled="true" name="'g_hat_lod2'"/>
 			
 			<object 			enabled="true" name="'g_sleeves_long'"/>
 			<object 			enabled="true" name="'g_sleeves_long_lod1'"/>
@@ -52,9 +49,6 @@
 		<sequence editable_state="true" name="'security_7'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_4'"/>
 			<object 			enabled="true" name="'g_gear_4_lod1'"/>
-
-			<object 			enabled="true" name="'g_hat_lod1'"/>
-			<object 			enabled="true" name="'g_hat_lod2'"/>
 			
 			<object 			enabled="true" name="'g_sleeves_short'"/>
 			<object 			enabled="true" name="'g_sleeves_short_lod1'"/>
@@ -71,9 +65,6 @@
 		<sequence editable_state="true" name="'cop_2'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_2'"/>
 			<object 			enabled="true" name="'g_gear_2_lod1'"/>
-
-			<object 			enabled="true" name="'g_hat_lod1'"/>
-			<object 			enabled="true" name="'g_hat_lod2'"/>
 			
 			<object 			enabled="true" name="'g_sleeves_long'"/>
 			<object 			enabled="true" name="'g_sleeves_long_lod1'"/>
@@ -82,9 +73,6 @@
 		<sequence editable_state="true" name="'cop_3'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_3'"/>
 			<object 			enabled="true" name="'g_gear_3_lod1'"/>
-
-			<object 			enabled="true" name="'g_hat_lod1'"/>
-			<object 			enabled="true" name="'g_hat_lod2'"/>
 			
 			<object 			enabled="true" name="'g_sleeves_short'"/>
 			<object 			enabled="true" name="'g_sleeves_short_lod1'"/>
@@ -93,17 +81,11 @@
 		<sequence editable_state="true" name="'cop_4'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_4'"/>
 			<object 			enabled="true" name="'g_gear_4_lod1'"/>
-
-			<object 			enabled="true" name="'g_hat_lod1'"/>
-			<object 			enabled="true" name="'g_hat_lod2'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'fbi_1'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_1'"/>
 			<object 			enabled="true" name="'g_gear_1_lod1'"/>
-
-			<object 			enabled="true" name="'g_hat_lod1'"/>
-			<object 			enabled="true" name="'g_hat_lod2'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'fbi_2'" once="true" triggable="true">

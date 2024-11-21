@@ -8,24 +8,31 @@
 			<has_visor value="0"/>
 			<has_mask value="0"/>
 		</variables>
+		
 		<filter name="'check_goggles'">
 			<check value="vars.has_goggles == 1"/>
 		</filter>
+		
 		<filter name="'check_nvg'">
 			<check value="vars.has_nvg == 1"/>
 		</filter>
+		
 		<filter name="'check_torch'">
 			<check value="vars.has_torch == 1"/>
 		</filter>
+		
 		<filter name="'check_chops'">
 			<check value="vars.has_chops == 1"/>
 		</filter>
+		
 		<filter name="'check_visor'">
 			<check value="vars.has_visor == 1"/>
 		</filter>
+		
 		<filter name="'check_mask'">
 			<check value="vars.has_mask == 1"/>
 		</filter>
+		
 		<sequence editable_state="true" name="'detach'" once="true" triggable="true">
 			<body 				enabled="true" name="'collision_helmet'"/>
 
@@ -47,9 +54,10 @@
 			<object 			filter="'check_visor'" enabled="true" name="'g_visor_broken'"/>
 			<object 			filter="'check_visor'" enabled="true" name="'g_visor_broken_lod1'"/>
 						
-			<effect 			filter="'check_visor'" damp_time="5" name="'effects/particles/bullet_hit/glass_breakable/bullet_hit_glass_breakable'" parent="object( 'g_helmet' )" position="v()"/>
-			<sound 				filter="'check_visor'" action="'play'" event="'visor_shatter'" object="'g_helmet'"/>
+			<effect				filter="'check_visor'" name="'effects/particles/bullet_hit/glass_breakable/bullet_hit_glass_breakable'" parent="object( 'g_helmet' )" position="v()"/>
+			<sound				filter="'check_visor'" action="'play'" event="'visor_shatter'" object="'g_helmet'"/>
 		</sequence>
+		
 		<sequence editable_state="true" name="'swat_1'" once="true" triggable="true"/>
 
 		<sequence editable_state="true" name="'swat_2'" once="true" triggable="true">

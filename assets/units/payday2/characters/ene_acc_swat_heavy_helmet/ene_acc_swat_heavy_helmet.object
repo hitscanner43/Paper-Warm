@@ -30,6 +30,15 @@
 		</body>
 	</bodies>
 
+	<body name="collision_helmet" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
+		<object name="rp_ene_acc_swat_helmet"/>
+		<object name="c_convex_1" collision_type="convex" mass="1.5" />
+		<object name="c_convex_2" collision_type="convex" mass="1.5" />
+		<object name="c_convex_3" collision_type="convex" mass="1.5" />
+		<object name="c_convex_4" collision_type="convex" mass="1.5" />
+	</body>
+
+
 	<decal_surfaces default_material="steel_no_decal">	
 		<decal_mesh name="dm_visor" enabled="false" material="glass_no_decal" />
 		<decal_mesh name="dm_mask" enabled="false" material="steel_no_decal" />

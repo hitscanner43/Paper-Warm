@@ -1,0 +1,10 @@
+<materials version="3" group="ene_fbi_swat_1">
+	<material name="mtr_police_body" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<bump_normal_texture 	file="units/payday2/characters/shared_textures/police_nm"/>
+		<diffuse_texture 		file="units/payday2/characters/shared_textures/police_df"/>
+	</material>
+	<material name="mtr_police_body_lod_1" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP" version="2">
+		<bump_normal_texture 	file="units/payday2/characters/shared_textures/police_nm" mip="3"/>
+		<diffuse_texture 		file="units/payday2/characters/shared_textures/police_df" mip="3"/>
+	</material>
+</materials>

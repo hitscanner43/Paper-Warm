@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <dynamic_object>
 	<diesel materials="units/payday2/characters/ene_cop_1/ene_cop_1" orientation_object="root_point" />
-	<sequence_manager file="units/payday2/characters/ene_acc_cop_head/ene_acc_cop_head" />
+	<sequence_manager file="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 
 	<decal_surfaces default_material="flesh"/>
 

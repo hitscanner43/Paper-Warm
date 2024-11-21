@@ -121,13 +121,12 @@ function CopDamage:sync_damage_explosion(attacker_unit, damage_percent, i_attack
 end
 
 
+function CopDamage:hide_head_gear() end
+
+
 --Overhauled headgear system for popped helmets
 function CopDamage:_spawn_head_gadget(params)
 	if not self._head_gear or self._head_gear_spawned then
-		return
-	end
-	
-	if self._nr_head_gear_object then
 		return
 	end
 	
@@ -136,7 +135,7 @@ function CopDamage:_spawn_head_gadget(params)
 	if not head_gear_unit then
 		return
 	end
-
+	
 	if head_gear_unit:damage() and head_gear_unit:damage():has_sequence("detach") then
 		head_gear_unit:damage():run_sequence_simple("detach")
 	end
