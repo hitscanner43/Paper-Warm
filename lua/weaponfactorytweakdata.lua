@@ -2381,7 +2381,7 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.total_ammo_mod = 100
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.extra_ammo = 5
-		self.parts.wpn_fps_ass_g3_body_hk33.stats.damage = -50
+		self.parts.wpn_fps_ass_g3_body_hk33.stats.damage = -100
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.spread = -4
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.recoil = 4
 		self.parts.wpn_fps_ass_g3_body_hk33.stats.reload = 0
@@ -2409,12 +2409,12 @@ Hooks:PostHook(WeaponFactoryTweakData, "init", "hits_init", function(self)
 		if self.parts.wpn_fps_ass_m14_body_ac556 then
 			self.parts.wpn_fps_ass_m14_body_ac556.stats.total_ammo_mod = 100
 			self.parts.wpn_fps_ass_m14_body_ac556.stats.extra_ammo = 5
-			self.parts.wpn_fps_ass_m14_body_ac556.stats.damage = -50
+			self.parts.wpn_fps_ass_m14_body_ac556.stats.damage = -100
 			self.parts.wpn_fps_ass_m14_body_ac556.stats.spread = -3
 			self.parts.wpn_fps_ass_m14_body_ac556.stats.recoil = 5
 			self.parts.wpn_fps_ass_m14_body_ac556.stats.reload = 0
 			self.parts.wpn_fps_ass_m14_body_ac556.stats.concealment = 5
-			self.parts.wpn_fps_ass_m14_body_ac556.custom_stats = { headshot_dmg_mul = 1.25, ammo_pickup_min_mul = 2.66666666667, ammo_pickup_max_mul = 2.66666666667 }		
+			self.parts.wpn_fps_ass_m14_body_ac556.custom_stats = { headshot_dmg_mul = 1.5, ammo_pickup_min_mul = 2.66666666667, ammo_pickup_max_mul = 2.66666666667 }		
 		end
 	end
 	
