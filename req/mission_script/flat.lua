@@ -21,7 +21,7 @@ local alley_spawn = {
 }
 local roof_spawn = {
 	values = {
-		interval = 40
+		interval = 30
 	},
 	groups = tweak_data.group_ai:allowed_groups("no_cops")
 }
