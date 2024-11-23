@@ -53,9 +53,6 @@
 			
 			<object 			filter="'check_visor'" enabled="true" name="'g_visor_broken'"/>
 			<object 			filter="'check_visor'" enabled="true" name="'g_visor_broken_lod1'"/>
-						
-			<effect				filter="'check_visor'" name="'effects/particles/bullet_hit/glass_breakable/bullet_hit_glass_breakable'" parent="object( 'g_helmet' )" position="v()"/>
-			<sound				filter="'check_visor'" action="'play'" event="'visor_shatter'" object="'g_helmet'"/>
 		</sequence>
 		
 		<sequence editable_state="true" name="'swat_1'" once="true" triggable="true"/>

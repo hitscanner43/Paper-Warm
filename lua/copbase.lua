@@ -188,18 +188,14 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	if self._unit:damage() and self._unit:damage():has_sequence(sequence) then
 		self._unit:damage():run_sequence_simple(sequence)
 	end
---[[
+
 	local spawn_manager_ext = self._unit:spawn_manager()
 
 	local damage_ext = self._unit:character_damage()
 	local head = damage_ext._head
 	
 	if spawn_manager_ext then	
-		if head then
-			if DB:has(Idstring("unit"), Idstring(head))  then
-				managers.dyn_resource:load(Idstring("unit"), Idstring(head), managers.dyn_resource.DYN_RESOURCES_PACKAGE)
-			end
-			
+		if head then	
 			spawn_manager_ext:spawn_and_link_unit("_char_joint_names", "char_head", head)
 
 			self._head_unit = spawn_manager_ext:get_unit("char_head")
@@ -217,7 +213,7 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 			self._head_unit:damage():run_sequence_simple(sequence)
 		end
 	end
-]]	
+
 	local weapon_swap = weapon_mapping[name]
 
 	if weapon_swap then

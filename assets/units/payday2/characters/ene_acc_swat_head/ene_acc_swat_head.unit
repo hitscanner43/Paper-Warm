@@ -1,10 +1,6 @@
 <?xml version="1.0"?>
 <unit type="being" slot="12">
 	<object file="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
-	
-	<dependencies>
-		<depends_on bnk="soundbanks/regular_vox" />
-	</dependencies>
 
     <extensions>
         <extension name="unit_data" class="ScriptUnitData" />
