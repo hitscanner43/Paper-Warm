@@ -77,7 +77,7 @@ function CharacterTweakData:character_map(...)
 	--Add new/missing units to iron out faction parity issues
 	safe_add(char_map.basic, "ene_swat_3")
 	safe_add(char_map.basic, "ene_fbi_swat_3")
-	safe_add(char_map.basic, "ene_grenadier")
+	safe_add(char_map.basic, "ene_grenadier_1")
 	safe_add(char_map.basic, "ene_commander")
 	safe_add(char_map.basic, "ene_city_swat_r870")
 	safe_add(char_map.basic, "ene_city_shield")

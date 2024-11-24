@@ -465,11 +465,11 @@
 			<file :name="ene_tazer_1/ene_tazer_1.unit" />
 			<file :name="ene_tazer_1/ene_tazer_1_husk.unit" />
 	
-			<file :name="ene_grenadier/ene_grenadier.cooked_physics" />
-			<file :name="ene_grenadier/ene_grenadier.model" />
-			<file :name="ene_grenadier/ene_grenadier.object" />
-			<file :name="ene_grenadier/ene_grenadier.unit" />
-			<file :name="ene_grenadier/ene_grenadier_husk.unit" />
+			<file :name="ene_grenadier_1/ene_grenadier_1.cooked_physics" />
+			<file :name="ene_grenadier_1/ene_grenadier_1.model" />
+			<file :name="ene_grenadier_1/ene_grenadier_1.object" />
+			<file :name="ene_grenadier_1/ene_grenadier_1.unit" />
+			<file :name="ene_grenadier_1/ene_grenadier_1_husk.unit" />
 
 			<file :name="ene_spook_1/ene_spook_1.model" />
 			<file :name="ene_spook_1/ene_spook_1.object" />

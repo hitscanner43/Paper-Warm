@@ -1,5 +1,5 @@
 local easy, normal, hard = PaperWarm:difficulty_groups()
-local Roof_access_block = {
+local roof_access_block = {
 	enabled = hard and true or false,
 	trigger_times = 1,
 	on_executed = { 

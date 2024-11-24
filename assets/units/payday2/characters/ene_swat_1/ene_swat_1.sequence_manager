@@ -135,6 +135,8 @@
 		
 		<sequence editable_state="true" name="'taser'" once="true" triggable="true"/>
 		
+		<sequence editable_state="true" name="'grenadier'" once="true" triggable="true"/>
+		
 		<sequence editable_state="true" name="'medic'" once="true" triggable="true"/>
 	<!--THE END-->
 		

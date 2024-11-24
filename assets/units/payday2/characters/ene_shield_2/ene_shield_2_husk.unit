@@ -101,7 +101,6 @@
 		<extension name="character_damage" class="HuskCopDamage" >
 			<var name="_head_body_name" value="head" />
 			<var name="_head" value="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
-			<var name="_head_sequence" value="swat_head_a" />
 			<var name="_head_gear" value="units/payday2/characters/ene_acc_shield_helmet/ene_acc_shield_helmet" />
 		</extension>
 		<extension name="movement" class="HuskCopMovement" >

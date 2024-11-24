@@ -1,6 +1,6 @@
 <table>
 	<unit>
-		<sequence editable_state="true" name="'security_a'" once="true" triggable="true"> 
+		<sequence editable_state="true" name="'cop_head'" once="true" triggable="true"> 
 			<run_sequence	name="'body_'..pick('a','b','c','d','e','f','g','h')"/>
 		</sequence>
 
@@ -194,49 +194,72 @@
 			<object 		enabled="true" name="'g_head_h_lod1'"/>
 		</sequence>
 
+		<sequence editable_state="true" name="'security_1'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
+		</sequence>
+		
 		<sequence editable_state="true" name="'security_2'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_arms'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'security_3'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_hands'"/>
 		</sequence>
 
+		<sequence editable_state="true" name="'security_4'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
+		</sequence>
+		
 		<sequence editable_state="true" name="'security_5'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_arms'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'security_6'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_arms'"/>
 			<run_sequence	name="'disable_hands'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'security_7'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_arms'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'cop_1'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 		</sequence>
 		
 		<sequence editable_state="true" name="'cop_2'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_arms'"/>
 		</sequence>
 		
 		<sequence editable_state="true" name="'cop_3'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_hands'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'cop_4'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_hands'"/>
 		</sequence>
 		
 		<sequence editable_state="true" name="'fbi_1'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_arms'"/>
 			<run_sequence	name="'disable_hands'"/>
 		</sequence>
 		
 		<sequence editable_state="true" name="'fbi_2'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_arms'"/>
 		</sequence>
 		
 		<sequence editable_state="true" name="'fbi_3'" once="true" triggable="true">
+			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_hands'"/>
 			<run_sequence	name="'disable_head'"/>
 		</sequence>

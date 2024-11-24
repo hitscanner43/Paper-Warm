@@ -62,6 +62,8 @@ local sequence_mapping = {
 	[("units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"):key()] = "fbi_heavy_2",	
 	
 	[("units/payday2/characters/ene_tazer_1/ene_tazer_1"):key()] = "taser",	
+	[("units/payday2/characters/ene_grenadier_1/ene_grenadier_1"):key()] = "grenadier",		
+	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = "medic",		
 }
 
 
@@ -206,11 +208,7 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 		end
 	end
 	
-	if alive(self._head_unit) then
-		if self._head_unit:damage() and self._head_unit:damage():has_sequence(damage_ext._head_sequence) then	
-			self._head_unit:damage():run_sequence_simple(damage_ext._head_sequence)
-		end
-		
+	if alive(self._head_unit) then		
 		self._head_unit:set_enabled(self._unit:enabled())
 		
 		if self._head_unit:damage() and self._head_unit:damage():has_sequence(sequence) then
@@ -267,6 +265,12 @@ end
 
 
 Hooks:PostHook(CopBase, "pre_destroy", "hits_pre_destroy", function (self)	
+	if alive(self._head_unit) then
+		self._head_unit:set_slot(0)
+
+		self._head_unit = nil
+	end
+	
 	if alive(self._head_gear_unit) then
 		self._head_gear_unit:set_slot(0)
 

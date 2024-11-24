@@ -1688,16 +1688,16 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "hits_init_unit_catego
 		special_type = "grenadier",
 		unit_types = {
 			america = { 
-				Idstring("units/payday2/characters/ene_grenadier/ene_grenadier") 
+				Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1") 
 			},
 			russia = {
-				Idstring("units/payday2/characters/ene_grenadier/ene_grenadier") 
+				Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1") 
 			},
 			zombie = { 
-				Idstring("units/payday2/characters/ene_grenadier/ene_grenadier") 
+				Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1") 
 			},
 			murkywater = { 
-				Idstring("units/payday2/characters/ene_grenadier/ene_grenadier") 
+				Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1") 
 			},
 			federales = { 
 				Idstring("units/pd2_dlc_bex/characters/ene_swat_grenadier_policia_federale/ene_swat_grenadier_policia_federale") 
