@@ -158,7 +158,7 @@
 			<run_sequence	name="'disable_head'"/>
 		</sequence>
 
-		<sequence editable_state="true" name="'fbi_heavy_1'" once="true" triggable="true">
+		<sequence editable_state="true" name="'fbi_heavy_2'" once="true" triggable="true">
 			<run_sequence	name="'swat_head_b'"/>
 			<run_sequence	name="'disable_head'"/>
 		</sequence>

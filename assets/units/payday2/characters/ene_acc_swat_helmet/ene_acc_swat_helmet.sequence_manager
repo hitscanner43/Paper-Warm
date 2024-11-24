@@ -165,6 +165,8 @@
 			
 			<decal_mesh 		enabled="true" name="'dm_mask'"/>
 			
+			<decal_mesh 		enabled="true" name="'g_glass'"/>
+			
 			<object 			enabled="true" name="'g_mask'"/> 
 			<object 			enabled="true" name="'g_mask_lod1'"/>
 
