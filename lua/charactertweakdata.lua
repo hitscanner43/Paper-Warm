@@ -464,8 +464,10 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	presets.weapon.gang_member.is_lmg.no_autofire_stop = true
 	presets.weapon.gang_member.mini.no_autofire_stop = true
 
-	presets.gang_member_damage.HEALTH_INIT = 40 + ((diff_i - 2) * 20)
-	presets.gang_member_damage.FRIENDLY_FIRE_DAMAGE_MUL = presets.gang_member_damage.HEALTH_INIT / 30
+	local team_ai_base_hp = 60
+	
+	presets.gang_member_damage.HEALTH_INIT = team_ai_base_hp + ((diff_i - 2) * 30)
+	presets.gang_member_damage.FRIENDLY_FIRE_DAMAGE_MUL = presets.gang_member_damage.HEALTH_INIT / team_ai_base_hp
 	presets.gang_member_damage.MIN_DAMAGE_INTERVAL = 0.05
 	presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = presets.gang_member_damage.HEALTH_INIT / 10
 	presets.gang_member_damage.REGENERATE_TIME = 5
