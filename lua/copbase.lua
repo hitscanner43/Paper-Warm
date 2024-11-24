@@ -60,6 +60,8 @@ local sequence_mapping = {
 
 	[("units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key()] = "fbi_heavy_1",	
 	[("units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"):key()] = "fbi_heavy_2",	
+	
+	[("units/payday2/characters/ene_tazer_1/ene_tazer_1"):key()] = "taser",	
 }
 
 
@@ -196,9 +198,11 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	
 	if spawn_manager_ext then	
 		if head then	
-			spawn_manager_ext:spawn_and_link_unit("_char_joint_names", "char_head", head)
+			managers.dyn_resource:load(Idstring("unit"), Idstring(head), managers.dyn_resource.DYN_RESOURCES_PACKAGE, nil)
+			
+			spawn_manager_ext:spawn_and_link_unit("_char_joint_names", "cop_head", head)
 
-			self._head_unit = spawn_manager_ext:get_unit("char_head")
+			self._head_unit = spawn_manager_ext:get_unit("cop_head")
 		end
 	end
 	
@@ -213,7 +217,7 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 			self._head_unit:damage():run_sequence_simple(sequence)
 		end
 	end
-
+		
 	local weapon_swap = weapon_mapping[name]
 
 	if weapon_swap then

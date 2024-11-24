@@ -1,7 +1,19 @@
 <table>
 	<unit>
-		<sequence editable_state="true" name="'swat_heads_a'" once="true" triggable="true"> 
-			<run_sequence	name="'body_'..pick('a','b','c','d')"/>
+		<sequence editable_state="true" name="'swat_head_a'" once="true" triggable="true"> 
+			<run_sequence 	name="'body_'..pick('a','b','c','d','f')"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'swat_head_b'" once="true" triggable="true"> 
+			<run_sequence 	name="'body_'..pick('a','b','c','g','e')"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'sniper_head'" once="true" triggable="true"> 
+			<run_sequence 	name="'body_'..pick('a','b','g','h')"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'taser_head'" once="true" triggable="true"> 
+			<run_sequence 	name="'body_'..pick('a','b','c','d','e','f','g','h')"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'disable_head'" once="true" triggable="true">	

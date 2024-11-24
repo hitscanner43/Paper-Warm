@@ -1,7 +1,7 @@
 <table>
 	<unit>
-		<sequence editable_state="true" name="'swat_heads_a'" once="true" triggable="true"> 
-			<run_sequence	name="'body_'..pick('a','b','c','d')"/>
+		<sequence editable_state="true" name="'security_a'" once="true" triggable="true"> 
+			<run_sequence	name="'body_'..pick('a','b','c','d','e','f','g','h')"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'disable_arms'" once="true" triggable="true">	
@@ -220,7 +220,6 @@
 		</sequence>
 		
 		<sequence editable_state="true" name="'cop_3'" once="true" triggable="true">
-			<run_sequence	name="'disable_arms'"/>
 			<run_sequence	name="'disable_hands'"/>
 		</sequence>
 

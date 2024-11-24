@@ -5,6 +5,6 @@
     <extensions>
         <extension name="unit_data" class="ScriptUnitData" />
 		<extension name="damage" class="UnitDamage" />
+		<extension name="contour" class="ContourExt"/>
     </extensions>
 </unit>
-

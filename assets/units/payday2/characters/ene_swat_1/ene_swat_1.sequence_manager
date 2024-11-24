@@ -132,6 +132,10 @@
 			<object 			enabled="true" name="'g_gear_shotgun'"/>
 			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
 		</sequence>
+		
+		<sequence editable_state="true" name="'taser'" once="true" triggable="true"/>
+		
+		<sequence editable_state="true" name="'medic'" once="true" triggable="true"/>
 	<!--THE END-->
 		
 		<sequence editable_state="true" name="'kill_tazer_headshot'" triggable="true">

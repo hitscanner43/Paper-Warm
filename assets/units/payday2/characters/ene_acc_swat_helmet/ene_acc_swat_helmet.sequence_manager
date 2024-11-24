@@ -171,5 +171,18 @@
 			<object 			enabled="true" name="'g_torch'"/> 
 			<object 			enabled="true" name="'g_torch_lod1'"/>
 		</sequence>
+
+		<sequence editable_state="true" name="'taser'" once="true" triggable="true">	
+			<set_variables 		has_visor="1"/>
+			<set_variables 		has_torch="1"/>
+			
+			<decal_mesh 		enabled="true" name="'dm_visor'"/>
+			
+			<object 			enabled="true" name="'g_visor'"/> 
+			<object 			enabled="true" name="'g_visor_lod1'"/>
+
+			<object 			enabled="true" name="'g_torch'"/> 
+			<object 			enabled="true" name="'g_torch_lod1'"/>
+		</sequence>
 	</unit>
 </table>

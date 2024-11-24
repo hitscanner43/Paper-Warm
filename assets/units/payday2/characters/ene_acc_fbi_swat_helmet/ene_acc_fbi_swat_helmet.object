@@ -40,6 +40,11 @@
 				<object name="g_goggles" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_goggles_lod1" 		enabled="false"  lod="1" />
 			</lod_object>
+
+			<lod_object name="lod_chinstrap">
+				<object name="g_chinstrap" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_chinstrap_lod1" 	enabled="true"  lod="1" />
+			</lod_object>
 			
 			<lod_object name="lod_helmet">
 				<object name="g_helmet" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
