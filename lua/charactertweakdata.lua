@@ -160,6 +160,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		melee_dmg = 6 * dmg_mul_lin,
 		melee_retry_delay = { 1, 2 },
 		melee_range = 125,
+		melee_force = 400,
 		range = { close = 750, optimal = 1500, far = 3000 }
 	})
 	
@@ -329,6 +330,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.shield = based_on(presets.weapon.swat, {
 		melee_dmg = 6 * special_dmg_mul,
+		melee_range = 150,
+		melee_force = 500,
 		range = { close = 500, optimal = 1000, far = 2000 },
 	})
 
@@ -376,7 +379,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		aim_delay_tase = { 0, 1 * aim_delay_mul },
 		tase_sphere_cast_radius = 15,
 		tase_distance = 1500,
-		melee_range = 200
+		melee_range = 175,
+		melee_force = 0
 	})
 
 	presets.weapon.grenadier = based_on(presets.weapon.swat, {
@@ -393,6 +397,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		aim_delay = { 0, 2 },
 		melee_speed = 0.75,
 		melee_dmg = 24 * special_dmg_mul,
+		melee_force = 600,
 		melee_retry_delay = { 2, 3 }
 	})
 
