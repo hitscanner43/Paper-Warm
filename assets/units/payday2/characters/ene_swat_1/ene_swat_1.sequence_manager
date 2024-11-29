@@ -4,9 +4,6 @@
 		<sequence editable_state="true" name="'swat_1'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_rifle'"/>
 			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
-
-			<object 			enabled="false" name="'g_balaclava'"/>
-			<object 			enabled="false" name="'g_balaclava_lod1'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'swat_2'" once="true" triggable="true">
@@ -17,10 +14,6 @@
 		<sequence editable_state="true" name="'swat_3'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_smg'"/>
 			<object 			enabled="true" name="'g_gear_smg_lod1'"/>
-
-			<object 			enabled="true" name="'g_goggles'"/>
-			<object 			enabled="true" name="'g_goggles_lod1'"/>
-
 			<object 			enabled="true" name="'g_glass'"/>
 		</sequence>
 
@@ -39,10 +32,7 @@
 			<object 			enabled="false" name="'g_body_lod1'"/>
 			
 			<object 			enabled="true" name="'g_body_sniper'"/>
-			<object 			enabled="true" name="'g_body_sniper_lod1'"/>
-
-			<object 			enabled="false" name="'g_balaclava'"/>
-			<object 			enabled="false" name="'g_balaclava_lod1'"/>			
+			<object 			enabled="true" name="'g_body_sniper_lod1'"/>	
 
 			<object 			enabled="true" name="'g_gear_sniper'"/>
 			<object 			enabled="true" name="'g_gear_sniper_lod1'"/>
@@ -54,42 +44,18 @@
 		</sequence>
 
 		<sequence editable_state="true" name="'fbi_swat_1'" once="true" triggable="true">
-			<object 			enabled="false" name="'g_balaclava'"/>
-			<object 			enabled="false" name="'g_balaclava_lod1'"/>	
-
 			<object 			enabled="true" name="'g_gear_rifle'"/>
 			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'fbi_swat_2'" once="true" triggable="true">
-			<object 			enabled="false" name="'g_body'"/>
-			<object 			enabled="false" name="'g_body_lod1'"/>
-			
-			<object 			enabled="true" name="'g_body_alt'"/>
-			<object 			enabled="true" name="'g_body_alt_lod1'"/>
-
 			<object 			enabled="true" name="'g_gear_shotgun'"/>
 			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'fbi_swat_3'" once="true" triggable="true">
-			<object 			enabled="false" name="'g_body'"/>
-			<object 			enabled="false" name="'g_body_lod1'"/>
-			
-			<object 			enabled="true" name="'g_body_alt'"/>
-			<object 			enabled="true" name="'g_body_alt_lod1'"/>
-
-			<object 			enabled="false" name="'g_balaclava'"/>
-			<object 			enabled="false" name="'g_balaclava_lod1'"/>	
-
-			<object 			enabled="true" name="'g_balaclava_alt'"/>
-			<object 			enabled="true" name="'g_balaclava_alt_lod1'"/>	
-
 			<object 			enabled="true" name="'g_gear_smg'"/>
 			<object 			enabled="true" name="'g_gear_smg_lod1'"/>
-
-			<object 			enabled="true" name="'g_glasses'"/>
-			<object 			enabled="true" name="'g_glasses_lod1'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'sniper_2'" once="true" triggable="true">
@@ -99,26 +65,11 @@
 			<object 			enabled="true" name="'g_body_sniper'"/>
 			<object 			enabled="true" name="'g_body_sniper_lod1'"/>
 
-			<object 			enabled="false" name="'g_balaclava'"/>
-			<object 			enabled="false" name="'g_balaclava_lod1'"/>			
-
 			<object 			enabled="true" name="'g_gear_sniper'"/>
 			<object 			enabled="true" name="'g_gear_sniper_lod1'"/>
-
-			<object 			enabled="true" name="'g_glasses'"/> 
-			<object 			enabled="true" name="'g_glasses_lod1'"/> 
 		</sequence>
 
 		<sequence editable_state="true" name="'shield_1'" once="true" triggable="true">
-			<object 			enabled="true" name="'g_shoulderpads'"/>
-			<object 			enabled="true" name="'g_shoulderpads_lod1'"/>
-
-			<object 			enabled="false" name="'g_balaclava'"/>
-			<object 			enabled="false" name="'g_balaclava_lod1'"/>	
-
-			<object 			enabled="true" name="'g_balaclava_alt'"/>
-			<object 			enabled="true" name="'g_balaclava_alt_lod1'"/>	
-
 			<object 			enabled="true" name="'g_gear_shield'"/>
 			<object 			enabled="true" name="'g_gear_shield_lod1'"/>
 		</sequence>

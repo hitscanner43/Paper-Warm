@@ -309,14 +309,15 @@
 		</group>
 
 		<group name="units/payday2/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
-			<file :name="shared_textures/police_df.texture" />		
-			<file :name="shared_textures/police_nm.texture" />	
-			<file :name="shared_textures/swat_body_df.texture" />		
-			<file :name="shared_textures/swat_body_nm.texture" />	
+			<file :name="shared_textures/swat_equipment_df.texture" />
+			<file :name="shared_textures/swat_equipment_nm.texture" />
+			<file :name="shared_textures/taser_body_df.texture" />
+			<file :name="shared_textures/grenadier_body_df.texture" />
+			<file :name="shared_textures/grenadier_body_nm.texture" />
+			<file :name="shared_textures/grenadier_head_df.texture" />
+			<file :name="shared_textures/grenadier_head_nm.texture" />
 			<file :name="shared_textures/swat_head_df.texture" />		
-			<file :name="shared_textures/swat_head_nm.texture" />	
-			<file :name="shared_textures/spook_heavy_df.texture" />		
-			<file :name="shared_textures/spook_heavy_nm.texture" />			
+			<file :name="shared_textures/swat_head_nm.texture" />			
 			<file :name="shared_textures/ene_medic_df.texture" />		
 			<file :name="shared_textures/ene_medic_nm.texture" />	
 			<file :name="shared_textures/bulldozer_df.texture" />		
@@ -418,61 +419,63 @@
 
 			<file :name="ene_swat_3/ene_swat_3.unit" />
 			<file :name="ene_swat_3/ene_swat_3_husk.unit" />
+
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.model" />
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.object" />	
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.unit" />
+			<file :name="ene_swat_heavy_1/ene_swat_heavy_1_husk.unit" />
 	
+			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.unit" />
+			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870_husk.unit" />
+						
 			<file :name="ene_sniper_1/ene_sniper_1.unit" />
 			<file :name="ene_sniper_1/ene_sniper_1_husk.unit" />
 
+			<file :name="ene_shield_2/ene_shield_2.unit" />
+			<file :name="ene_shield_2/ene_shield_2_husk.unit" />
+			
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.material_config" />	
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1_contour.material_config" />
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.model" />
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.object" />	
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.unit" />
+			<file :name="ene_fbi_swat_1/ene_fbi_swat_1_husk.unit" />
+
+			<file :name="ene_fbi_swat_2/ene_fbi_swat_2.unit" />
+			<file :name="ene_fbi_swat_2/ene_fbi_swat_2_husk.unit" />
+
+			<file :name="ene_fbi_swat_3/ene_fbi_swat_3.unit" />
+			<file :name="ene_fbi_swat_3/ene_fbi_swat_3_husk.unit" />
+
 			<file :name="ene_sniper_2/ene_sniper_2.unit" />
 			<file :name="ene_sniper_2/ene_sniper_2_husk.unit" />
-			
-			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.model" />
-			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.object" />
-			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.unit" />
-			<file :name="ene_swat_heavy_1/ene_swat_heavy_1_husk.unit" />
-
-			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870.unit" />
-			<file :name="ene_swat_heavy_r870/ene_swat_heavy_r870_husk.unit" />
 
 			<file :name="ene_shield_1/ene_shield_1.unit" />
 			<file :name="ene_shield_1/ene_shield_1_husk.unit" />
-			
-			<file :name="ene_shield_2/ene_shield_2.unit" />
-			<file :name="ene_shield_2/ene_shield_2_husk.unit" />
-
-			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.model" />
-			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.object" />
-			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.unit" />
-			<file :name="ene_fbi_swat_1/ene_fbi_swat_1_husk.unit" />
-						
-			<file :name="ene_fbi_swat_2/ene_fbi_swat_2.unit" />
-			<file :name="ene_fbi_swat_2/ene_fbi_swat_2_husk.unit" />
-	
-			<file :name="ene_fbi_swat_3/ene_fbi_swat_3.unit" />		
-			<file :name="ene_fbi_swat_3/ene_fbi_swat_3_husk.unit" />	
 
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.material_config" />	
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1_contour.material_config" />
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.model" />
-			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.object" />
+			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.object" />	
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.unit" />
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1_husk.unit" />
-		
-			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.unit" />		
-			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk.unit" />	
-			
+
+			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.unit" />
+			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk.unit" />
+
+			<file :name="ene_tazer_1/ene_tazer_1.material_config" />	
+			<file :name="ene_tazer_1/ene_tazer_1_contour.material_config" />
 			<file :name="ene_tazer_1/ene_tazer_1.model" />
-			<file :name="ene_tazer_1/ene_tazer_1.object" />
+			<file :name="ene_tazer_1/ene_tazer_1.object" />	
 			<file :name="ene_tazer_1/ene_tazer_1.unit" />
 			<file :name="ene_tazer_1/ene_tazer_1_husk.unit" />
-	
-			<file :name="ene_grenadier_1/ene_grenadier_1.cooked_physics" />
+
+			<file :name="ene_grenadier_1/ene_grenadier_1.material_config" />	
+			<file :name="ene_grenadier_1/ene_grenadier_1_contour.material_config" />
 			<file :name="ene_grenadier_1/ene_grenadier_1.model" />
-			<file :name="ene_grenadier_1/ene_grenadier_1.object" />
+			<file :name="ene_grenadier_1/ene_grenadier_1.object" />	
 			<file :name="ene_grenadier_1/ene_grenadier_1.unit" />
 			<file :name="ene_grenadier_1/ene_grenadier_1_husk.unit" />
-
-			<file :name="ene_spook_1/ene_spook_1.model" />
-			<file :name="ene_spook_1/ene_spook_1.object" />
 			
 			<file :name="ene_medic_m4/ene_medic_m4.material_config" />	
 			<file :name="ene_medic_m4/ene_medic_m4_contour.material_config" />

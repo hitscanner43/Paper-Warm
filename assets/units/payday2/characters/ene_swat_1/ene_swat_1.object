@@ -195,11 +195,6 @@
 
 	<graphics>
 		<graphic_group name="character" enabled="true" culling_object="co_culling">
-	<!--BALACLAVA-->		
-			<lod_object name="lod_balaclava">
-				<object name="g_balaclava" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_balaclava_lod1" 	enabled="true"  lod="1" />
-			</lod_object>
 	<!--BODIES-->		
 			<lod_object name="lod_body">
 				<object name="g_body" 				enabled="true"  max_distance="2000"  max_draw_lod="0" />
@@ -229,11 +224,6 @@
 			<lod_object name="lod_gear_sniper">
 				<object name="g_gear_sniper" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_gear_sniper_lod1" 	enabled="false"  lod="1" />
-			</lod_object>
-	<!--GOGGLES-->	
-			<lod_object name="lod_goggles">
-				<object name="g_goggles" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_goggles_lod1" 		enabled="false"  lod="1" />
 			</lod_object>
 
 			<object name="g_glass" 					enabled="false"/>	

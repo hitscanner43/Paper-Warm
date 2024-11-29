@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <dynamic_object>
-	<diesel materials="units/payday2/characters/ene_swat_1/ene_swat_1" orientation_object="root_point" />
+	<diesel materials="units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1" orientation_object="root_point" />
 	<sequence_manager file="units/payday2/characters/ene_swat_1/ene_swat_1" /> <animation_def name="anims/units/enemies/cop/cop_def" />
 
 	<bodies>
@@ -195,25 +195,10 @@
 
 	<graphics>
 		<graphic_group name="character" enabled="true" culling_object="co_culling">
-	<!--BALACLAVA-->		
-			<lod_object name="lod_balaclava">
-				<object name="g_balaclava" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_balaclava_lod1" 	enabled="true"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_balaclava_alt">
-				<object name="g_balaclava_alt" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_balaclava_alt_lod1" enabled="false"  lod="1" />
-			</lod_object>
 	<!--BODIES-->		
 			<lod_object name="lod_body">
 				<object name="g_body" 				enabled="true"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_body_lod1" 			enabled="true"  lod="1" />
-			</lod_object>
-
-			<lod_object name="lod_body_alt">
-				<object name="g_body_alt" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_body_alt_lod1" 		enabled="false"  lod="1" />
 			</lod_object>
 			
 			<lod_object name="lod_body_sniper">
@@ -244,16 +229,6 @@
 			<lod_object name="lod_gear_shield">
 				<object name="g_gear_shield" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
 				<object name="g_gear_shield_lod1" 	enabled="false"  lod="1" />
-			</lod_object>
-	<!--GLASSES-->	
-			<lod_object name="lod_glasses">
-				<object name="g_glasses" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_glasses_lod1" 		enabled="false"  lod="1" />
-			</lod_object>
-	<!--SHOULDER PADS-->	
-			<lod_object name="lod_shoulderpads">
-				<object name="g_shoulderpads" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_shoulderpads_lod1" 	enabled="false"  lod="1" />
 			</lod_object>
 			
 			<object name="s_body" enabled="true" shadow_caster="true"/>		
