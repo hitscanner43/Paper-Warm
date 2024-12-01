@@ -433,7 +433,7 @@
 
 			<file :name="ene_shield_2/ene_shield_2.unit" />
 			<file :name="ene_shield_2/ene_shield_2_husk.unit" />
-			
+
 			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.material_config" />	
 			<file :name="ene_fbi_swat_1/ene_fbi_swat_1_contour.material_config" />
 			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.model" />
@@ -462,28 +462,22 @@
 
 			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.unit" />
 			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk.unit" />
-
+<!--
 			<file :name="ene_tazer_1/ene_tazer_1.material_config" />	
 			<file :name="ene_tazer_1/ene_tazer_1_contour.material_config" />
 			<file :name="ene_tazer_1/ene_tazer_1.model" />
 			<file :name="ene_tazer_1/ene_tazer_1.object" />	
 			<file :name="ene_tazer_1/ene_tazer_1.unit" />
 			<file :name="ene_tazer_1/ene_tazer_1_husk.unit" />
-
+		
+			<file :name="ene_grenadier_1/ene_grenadier_1.cooked_physics" />	
 			<file :name="ene_grenadier_1/ene_grenadier_1.material_config" />	
 			<file :name="ene_grenadier_1/ene_grenadier_1_contour.material_config" />
 			<file :name="ene_grenadier_1/ene_grenadier_1.model" />
 			<file :name="ene_grenadier_1/ene_grenadier_1.object" />	
 			<file :name="ene_grenadier_1/ene_grenadier_1.unit" />
 			<file :name="ene_grenadier_1/ene_grenadier_1_husk.unit" />
-			
-			<file :name="ene_medic_m4/ene_medic_m4.material_config" />	
-			<file :name="ene_medic_m4/ene_medic_m4_contour.material_config" />
-			<file :name="ene_medic_m4/ene_medic_m4.model" />
-			<file :name="ene_medic_m4/ene_medic_m4.object" />	
-			<file :name="ene_medic_m4/ene_medic_m4.unit" />
-			<file :name="ene_medic_m4/ene_medic_m4_husk.unit" />
-
+-->	
 			<file :name="ene_acc_bulldozer_back/ene_acc_bulldozer_back.material_config" />		
 			<file :name="ene_acc_bulldozer_back/ene_acc_bulldozer_back.model" />
 			<file :name="ene_acc_bulldozer_back/ene_acc_bulldozer_back.object" />

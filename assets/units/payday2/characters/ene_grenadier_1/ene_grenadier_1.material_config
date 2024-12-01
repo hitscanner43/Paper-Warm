@@ -15,15 +15,9 @@
         <bump_normal_texture 	file="units/payday2/characters/shared_textures/grenadier_body_nm"/>
         <diffuse_texture 		file="units/payday2/characters/shared_textures/grenadier_body_df"/>
     </material>
-    <material name="mtr_glass" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE:SKINNED_3WEIGHTS" version="2">
-        <opacity_texture 	 	file="units/glass/vehicle_glass_op"/>
-        <diffuse_texture 	   	file="units/payday2/characters/shared_textures/spook_heavy_df"/>
-        <variable type="vector3" name="fresnel_settings" value="0 1 0.66999995708466"/>
-        <reflection_texture type="cube" global_texture="current_global_texture"/>
-    </material>
     <material name="mtr_glass_opaque" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE:SKINNED_3WEIGHTS" version="2">
         <opacity_texture 	 	file="units/glass/vehicle_glass_dark2_op"/>
-        <diffuse_texture 	   	file="units/payday2/characters/shared_textures/spook_heavy_df"/>
+        <diffuse_texture 	   	file="units/payday2/characters/shared_textures/grenadier_head_df"/>
         <variable type="vector3" name="fresnel_settings" value="0 1 0.66999995708466"/>
         <reflection_texture type="cube" global_texture="current_global_texture"/>
     </material>
