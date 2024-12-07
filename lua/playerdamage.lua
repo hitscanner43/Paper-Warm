@@ -331,7 +331,7 @@ function PlayerDamage:damage_fall(data)
 			self:_send_set_revives()
 		end
 	else
-		fall_multiplier = fall_multiplier * math.clamp((data.height - height_limit) / (death_limit - height_limit), 0, 1)
+		fall_multiplier = fall_multiplier * math.clamp((data.height - height_limit) / (death_limit - height_limit), 0.2, 1)
 		
 		local fall_slowdown = {
 			id = player_tweak.damage.fall_slowdown.id or "fall",
