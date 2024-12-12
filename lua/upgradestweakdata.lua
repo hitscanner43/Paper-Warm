@@ -240,22 +240,10 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 
 	--Joker
 	self.values.player.convert_enemies_damage_multiplier = { 1.25, 1.25 }
-	self.values.player.passive_convert_enemies_health_multiplier = { 0.6, 0.4, 0.2 }
+	self.values.player.passive_convert_enemies_health_multiplier = { 0.5, 0.25 }
 
-	self.skill_descs.joker.multibasic = "40%"
+	self.skill_descs.joker.multibasic = "50%"
 	self.skill_descs.joker.multipro = "25%"
-
-	self.definitions.player_passive_convert_enemies_health_multiplier_3 = {
-		incremental = true,
-		name_id = "menu_player_passive_convert_enemies_health_multiplier",
-		category = "feature",
-		upgrade = {
-			value = 3,
-			upgrade = "passive_convert_enemies_health_multiplier",
-			synced = true,
-			category = "player"
-		}
-	}
 
 	--Confident --> Control Freak
 	self.values.player.passive_intimidate_range_mul = { 1.5 }

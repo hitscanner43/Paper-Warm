@@ -536,6 +536,68 @@
 			<file :name="ene_bulldozer_3/ene_bulldozer_3.object" />
 		</group>
 
+		<group name="units/pd2_dlc_usm1/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<xml  :name="ene_acc_marshal_head/ene_acc_marshal_head.sequence_manager" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.material_config" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.cooked_physics" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.model" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.object" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.unit" />
+			
+			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.material_config" />
+			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.model" />
+			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.object" />	
+			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.unit" />
+
+			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.material_config" />
+			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.model" />
+			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.object" />	
+			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.unit" />	
+
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.material_config" />
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1_contour.material_config" />
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.model" />
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.object" />	
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.unit" />	
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1_husk.unit" />	
+
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.material_config" />
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2_contour.material_config" />
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.model" />
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.object" />	
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.unit" />	
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2_husk.unit" />	
+		</group>		
+
+		<group name="units/pd2_dlc_usm2/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.cooked_physics" />
+			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.model" />
+			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.object" />	
+			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.unit" />
+
+			<file :name="ene_acc_shield_helmet_2/ene_acc_shield_helmet_2.cooked_physics" />
+			<file :name="ene_acc_shield_helmet_2/ene_acc_shield_helmet_2.model" />
+			<file :name="ene_acc_shield_helmet_2/ene_acc_shield_helmet_2.object" />	
+			<file :name="ene_acc_shield_helmet_2/ene_acc_shield_helmet_2.unit" />	
+
+			<file :name="ene_male_marshal_shield_1/ene_male_marshal_shield_1.unit" />	
+			<file :name="ene_male_marshal_shield_1/ene_male_marshal_shield_1_husk.unit" />	
+
+			<file :name="ene_male_marshal_shield_2/ene_male_marshal_shield_2.unit" />	
+			<file :name="ene_male_marshal_shield_2/ene_male_marshal_shield_2_husk.unit" />	
+		</group>	
+
+		<group name="units/pd2_dlc_deep/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_deep_security_1/ene_deep_security_1.unit" />	
+			<file :name="ene_deep_security_1/ene_deep_security_1_husk.unit" />	
+			
+			<file :name="ene_deep_security_2/ene_deep_security_2.unit" />	
+			<file :name="ene_deep_security_2/ene_deep_security_2_husk.unit" />	
+
+			<file :name="ene_deep_security_3/ene_deep_security_3.unit" />	
+			<file :name="ene_deep_security_3/ene_deep_security_3_husk.unit" />	
+		</group>	
+		
 		<group name="units/pd2_dlc_bex/weapons/">	
 			<file :name="wpn_npc_hk21/hk21_df.texture" />	
 			<file :name="wpn_npc_hk21/hk21_nm.texture" />	

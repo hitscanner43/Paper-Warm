@@ -64,6 +64,16 @@ local sequence_mapping = {
 	[("units/payday2/characters/ene_tazer_1/ene_tazer_1"):key()] = "taser",	
 	[("units/payday2/characters/ene_grenadier_1/ene_grenadier_1"):key()] = "grenadier",		
 	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = "medic",		
+	
+	[("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"):key()] = "marshal_marksman_1",	
+	[("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"):key()] = "marshal_marksman_2",	
+	
+	[("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"):key()] = "marshal_shield_1",	
+	[("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"):key()] = "marshal_shield_2",	
+	
+	[("units/pd2_dlc_deep/characters/ene_deep_security_1/ene_deep_security_1"):key()] = "marshal_security_1",	
+	[("units/pd2_dlc_deep/characters/ene_deep_security_2/ene_deep_security_2"):key()] = "marshal_security_2",	
+	[("units/pd2_dlc_deep/characters/ene_deep_security_3/ene_deep_security_3"):key()] = "marshal_security_3",	
 }
 
 

@@ -3,9 +3,19 @@
 -- Increasing the health granularity makes damage dealt more accurate to the actual weapon damage stats
 CopDamage._HEALTH_GRANULARITY = 8192
 
+
 local mvec_1 = Vector3()
 local mvec_2 = Vector3()
 local deathwish = PaperWarm:deathwish()
+
+
+function CopDamage:_send_melee_attack_result(attack_data, damage_percent, damage_effect_percent, hit_offset_height, variant, body_index)
+	body_index = math.clamp(body_index, 0, 128)
+	damage_percent = math.clamp(damage_percent, 0, self._HEALTH_GRANULARITY)
+	damage_effect_percent = math.clamp(damage_effect_percent, 0, self._HEALTH_GRANULARITY)
+	self._unit:network():send("damage_melee", attack_data.attacker_unit, damage_percent, damage_effect_percent, body_index, hit_offset_height, variant, self._dead and true or false)
+end
+
 
 -- Make head hitbox size consistent across enemies
 Hooks:PostHook(CopDamage, "init", "sh_init", function (self)
@@ -30,6 +40,12 @@ function CopDamage:_sync_dismember(attacker_unit, ...)
 		return _sync_dismember_original(self, attacker_unit, ...)
 	end
 end
+
+
+--Default joker damage reduction
+Hooks:PostHook(CopDamage, "convert_to_criminal", "hits_convert_to_criminal", function(self)
+	self._damage_reduction_multiplier = self._damage_reduction_multiplier * 0.5
+end)
 
 
 -- Additional suppression on hit

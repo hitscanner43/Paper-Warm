@@ -102,7 +102,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hits_init", function (self)
 	self.skills.triathlete.icon_xy = { 4, 7 }  
 
 	--Joker
-	self.skills.joker[1].upgrades = { "player_convert_enemies", "player_convert_enemies_max_minions_1", "player_passive_convert_enemies_health_multiplier_3" } 
+	self.skills.joker[1].upgrades = { "player_convert_enemies", "player_convert_enemies_max_minions_1" } 
 	self.skills.joker[2].upgrades = { "player_convert_enemies_damage_multiplier_1" } 
 	self.skills.joker.icon_xy = { 6, 8 }  
 
@@ -112,8 +112,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hits_init", function (self)
 	self.skills.cable_guy.icon_xy = { 6, 7 }   
 
 	--Partners In Crime
-	self.skills.control_freak[1].upgrades = { "player_minion_master_speed_multiplier", "player_passive_convert_enemies_health_multiplier_2" } 
-	self.skills.control_freak[2].upgrades = { "player_minion_master_health_multiplier", "player_passive_convert_enemies_health_multiplier_3" } 
+	self.skills.control_freak[1].upgrades = { "player_minion_master_speed_multiplier", "player_passive_convert_enemies_health_multiplier_1" } 
+	self.skills.control_freak[2].upgrades = { "player_minion_master_health_multiplier", "player_passive_convert_enemies_health_multiplier_2" } 
 	self.skills.control_freak.icon_xy = { 1, 10 }  
 
 	--Stockholm Syndrome
@@ -122,7 +122,7 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hits_init", function (self)
 	self.skills.stockholm_syndrome.icon_xy = { 3, 8 }   
 
 	--Hostage Taker
-	self.skills.black_marketeer[1].upgrades = { "player_minion_master_speed_multiplier", "player_passive_convert_enemies_health_multiplier_2" } 
+	self.skills.black_marketeer[1].upgrades = { } 
 	self.skills.black_marketeer[2].upgrades = { "player_hostage_health_regen_addend_1", "player_close_to_hostage_boost" } 
 	self.skills.black_marketeer.icon_xy = { 2, 10 }  
 

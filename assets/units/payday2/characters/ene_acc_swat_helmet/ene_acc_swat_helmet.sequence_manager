@@ -7,6 +7,7 @@
 			<has_chops value="0"/>
 			<has_visor value="0"/>
 			<has_mask value="0"/>
+			<has_mandibles value="0"/>
 		</variables>
 		
 		<filter name="'check_goggles'">
@@ -32,6 +33,10 @@
 		<filter name="'check_mask'">
 			<check value="vars.has_mask == 1"/>
 		</filter>
+
+		<filter name="'check_mandibles'">
+			<check value="vars.has_mandibles == 1"/>
+		</filter>
 		
 		<sequence editable_state="true" name="'detach'" once="true" triggable="true">
 			<body 				enabled="true" name="'collision_helmet'"/>
@@ -42,6 +47,7 @@
 			<body 				filter="'check_chops'" enabled="true" name="'collision_chops'"/>
 			<body 				filter="'check_visor'" enabled="true" name="'collision_visor'"/>
 			<body 				filter="'check_mask'" enabled="true" name="'collision_mask'"/>
+			<body 				filter="'check_mandibles'" enabled="true" name="'collision_mandibles'"/>
 			
 			<object 			enabled="false" name="'g_chinstrap'"/>
 			<object 			enabled="false" name="'g_chinstrap_lod1'"/>
@@ -186,5 +192,35 @@
 			<object 			enabled="true" name="'g_torch'"/> 
 			<object 			enabled="true" name="'g_torch_lod1'"/>
 		</sequence>
+
+		<sequence editable_state="true" name="'marshal_marksman_1'" once="true" triggable="true"/>
+
+		<sequence editable_state="true" name="'marshal_marksman_1'" once="true" triggable="true"/>
+
+		<sequence editable_state="true" name="'marshal_shield_1'" once="true" triggable="true">	
+			<set_variables 		has_goggles="1"/>
+			<set_variables 		has_mandibles="1"/>
+			<set_variables 		has_torch="1"/>
+			
+			<decal_mesh 		enabled="true" name="'dm_mandibles'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/> 			
+			<object 			enabled="true" name="'g_glass'"/> 
+			<object 			enabled="true" name="'g_mandibles'"/>
+			<object 			enabled="true" name="'g_torch'"/>
+		</sequence>		
+
+		<sequence editable_state="true" name="'marshal_shield_2'" once="true" triggable="true">	
+			<set_variables 		has_goggles="1"/>
+			<set_variables 		has_mandibles="1"/>
+			<set_variables 		has_torch="1"/>
+			
+			<decal_mesh 		enabled="true" name="'dm_mandibles'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/> 			
+			<object 			enabled="true" name="'g_glass'"/> 
+			<object 			enabled="true" name="'g_mandibles'"/>
+			<object 			enabled="true" name="'g_torch'"/>
+		</sequence>				
 	</unit>
 </table>
