@@ -393,11 +393,21 @@ if not PaperWarm then
 		BLTMod.SetEnabled(self, enable, ...)
 		QuickMenu:new("Information", "A game restart is required to fully " .. (enable and "enable" or "disable") .. " all parts of Paper Warm!", {}, true)
 	end
+	
+	local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
+	local diff_tbl = {
+		normal = 2,
+		hard = 3,
+		overkill = 4,
+		overkill_145 = 5,
+		easy_wish = 6,
+		overkill_290 = 7,
+		sm_wish = 8
+	}
+	local diff_i = diff_tbl[difficulty] or 2
 
-	function PaperWarm:difficulty_groups()
-		local difficulty = Global.game_settings and Global.game_settings.difficulty or "normal"
-		local diff_i = tweak_data:difficulty_to_index(difficulty)
-		
+
+	function PaperWarm:difficulty_groups()	
 		local easy = diff_i < 4
 		local normal = diff_i < 6
 		local hard = not normal
@@ -405,18 +415,31 @@ if not PaperWarm then
 		return easy, normal, hard
 	end
 	
+	
 	function PaperWarm:pro_job()
 		local pro_job = Global.game_settings and Global.game_settings.one_down
 
 		return pro_job
 	end
 
+
 	function PaperWarm:deathwish()
-		local deathwish = Global.game_settings and Global.game_settings.difficulty == "easy_wish"
+		local deathwish = diff_i > 5
 
 		return deathwish
 	end
-	
+
+
+	function PaperWarm:diff_lerp(value_1, value_2)
+		local f = math.max(0, diff_i - 2) / 6
+		
+		return math.lerp(value_1, value_2, f)
+	end	
+
+
+	function PaperWarm:level_id()		
+		return Global.level_data and Global.level_data.level_id
+	end		
 end
 
 if RequiredScript and not PaperWarm.required[RequiredScript] then

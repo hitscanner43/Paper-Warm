@@ -5,27 +5,21 @@
         <variable value="1 1 1" type="vector3" name="contour_color"/>
         <variable value="0" type="scalar" name="contour_opacity"/>
     </material>
-	<material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_swat">
-		<bump_normal_texture 	file="units/payday2/characters/shared_textures/swat_body_nm"/>
-		<diffuse_texture 		file="units/payday2/characters/shared_textures/swat_body_df"/>
-		<variable value="1 1 1" type="vector3" name="contour_color"/>
-		<variable value="0" type="scalar" name="contour_opacity"/>
-	</material>
-	<material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_equipment">
-		<bump_normal_texture 	file="units/payday2/characters/shared_textures/swat_equipment_nm"/>
-		<diffuse_texture 		file="units/payday2/characters/shared_textures/swat_equipment_df"/>
-		<variable value="1 1 1" type="vector3" name="contour_color"/>
-		<variable value="0" type="scalar" name="contour_opacity"/>
-	</material>	
     <material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_body">
         <bump_normal_texture 	file="units/payday2/characters/shared_textures/grenadier_body_nm"/>
         <diffuse_texture 		file="units/payday2/characters/shared_textures/grenadier_body_df"/>
         <variable value="1 1 1" type="vector3" name="contour_color"/>
         <variable value="0" type="scalar" name="contour_opacity"/>
     </material>	
-    <material name="mtr_glass_opaque" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE:SKINNED_3WEIGHTS" version="2">
+	<material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_equipment">
+		<bump_normal_texture 	file="units/payday2/characters/shared_textures/swat_equipment_nm"/>
+		<diffuse_texture 		file="units/payday2/characters/shared_textures/swat_equipment_df"/>
+		<variable value="1 1 1" type="vector3" name="contour_color"/>
+		<variable value="0" type="scalar" name="contour_opacity"/>
+	</material>	
+    <material name="mtr_glass" render_template="opacity:CUBE_ENVIRONMENT_MAPPING:CUBE_FRESNEL:DIFFUSE_TEXTURE:SKINNED_3WEIGHTS" version="2">
         <opacity_texture 	 	file="units/glass/vehicle_glass_dark2_op"/>
-        <diffuse_texture 	   	file="units/payday2/characters/shared_textures/grenadier_head_df"/>
+        <diffuse_texture 	   	file="units/payday2/characters/shared_textures/visor_glass_df"/>
         <variable type="vector3" name="fresnel_settings" value="0 1 0.66999995708466"/>
         <reflection_texture type="cube" global_texture="current_global_texture"/>
     </material>

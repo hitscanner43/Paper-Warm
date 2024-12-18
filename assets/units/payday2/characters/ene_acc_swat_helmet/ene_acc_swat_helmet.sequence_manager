@@ -195,7 +195,7 @@
 
 		<sequence editable_state="true" name="'marshal_marksman_1'" once="true" triggable="true"/>
 
-		<sequence editable_state="true" name="'marshal_marksman_1'" once="true" triggable="true"/>
+		<sequence editable_state="true" name="'marshal_marksman_2'" once="true" triggable="true"/>
 
 		<sequence editable_state="true" name="'marshal_shield_1'" once="true" triggable="true">	
 			<set_variables 		has_goggles="1"/>
