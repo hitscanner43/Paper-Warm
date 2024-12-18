@@ -309,6 +309,31 @@ function GroupAIStateBesiege:_assign_enemy_groups_to_task(phase, objective_type,
 end
 
 
+function GroupAIStateBesiege:get_all_needed_doors()
+
+	local nav_manager = managers.navigation
+	local all_doors = nav_manager._room_doors
+	local all_nav_segs = nav_manager._nav_segments
+
+	local reinforce_doors = {}
+	for nav_seg_id, nav_seg_data in pairs(all_nav_segs) do
+		if not managers.groupai:state():is_nav_seg_safe(nav_seg_id) then
+			for neighbour_seg_id, door_list in pairs(nav_seg_data.neighbours) do
+				if not all_nav_segs[neighbour_seg_id].disabled then
+					for _, i_door in ipairs(door_list) do
+						if type(i_door) == "number" then
+							reinforce_doors[i_door] = all_doors[i_door]
+						end
+					end
+				end
+			end
+		end
+	end
+
+	return reinforce_doors
+end
+
+
 -- Improve and heavily simplify objective assignment code, fix pull back and open fire objectives
 -- Basically, a lot of this function was needlessly complex and had oversights or incorrect conditions
 Hooks:OverrideFunction(GroupAIStateBesiege, "_set_assault_objective_to_group", function (self, group, phase)
@@ -373,6 +398,40 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_set_assault_objective_to_group", f
 		end
 	end
 
+   if tactics_map.door_ambush then
+        local needed_doors = self:get_all_needed_doors()
+        if needed_doors[current_objective.door_id] then
+            return
+        end
+
+        for door_id, door_data in pairs(needed_doors) do
+            local assigned_group = self._groups[door_data.assigned_group_id]
+            if not assigned_group or not assigned_group.objective or not assigned_group.objective.door_id then
+                local coarse_path = managers.navigation:search_coarse({
+                    id = "GroupAI_deathguard",
+                    from_tracker = group_leader_u_data.tracker,
+                    to_seg = managers.navigation:get_nav_seg_from_pos(door_data.center),
+                    access_pos = self._get_group_acces_mask(group)
+                })
+
+                if coarse_path then
+                    door_data.assigned_group_id = group.id
+                    self:_set_objective_to_enemy_group(group, {
+                        type = "defend_area",
+                        attitude = "engage",
+                        pose = "stand",
+                        door_id = door_id,
+                        pos = door_data.center,
+                        moving_in = true,
+                        area = self:get_area_from_nav_seg_id(coarse_path[#coarse_path][1]),
+                        coarse_path = coarse_path
+                    })
+                    return
+                end
+            end
+        end
+    end
+	
 	if current_objective.open_fire then
 		if not current_objective.moving_out and (tactics_map.charge or not tactics_map.ranged_fire or in_place_duration > 10) then
 			approach = not self:_can_group_see_target(group)
@@ -492,8 +551,7 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_set_assault_objective_to_group", f
 				if not self:_chk_group_use_grenade(assault_area, group, detonate_pos) then
 					if not group.ignore_grenade_check_t then
 						local no_grenade_push_delay = self:_get_difficulty_dependent_value(is_skirmish and tweak_data.skirmish.no_grenade_push_delay or tweak_data.group_ai.no_grenade_push_delay)
-						local hostage_mul = 1 + math.min(self._hostage_headcount * 0.15, 0.6)
-						local delay = no_grenade_push_delay * (tactics_map.charge and 0.4 or 1) * (assault_area.hostages and hostage_mul or 1) 
+						local delay = no_grenade_push_delay * (tactics_map.charge and 0.4 or 1) * (assault_area.hostages and 1.5 or 1) 
 						group.ignore_grenade_check_t = self._t + math.map_range_clamped(table.size(assault_area.criminal.units), 1, 4, delay, delay * 0.5)
 						return
 					elseif group.ignore_grenade_check_t > self._t then
@@ -668,8 +726,8 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 	--Lethal grenade types are used if no hostages are in the area and the leader has the appropriate tactic
 	local use_teargas
 	local use_frag
-	local lethal_chance = 1 - math.min(0.2 * self._hostage_headcount, 0.8)
-	if math.random() < (assault_area.hostages and lethal_chance or 1) then
+	local lethal_chance = assault_area.hostages and 0.5 or 1
+	if math.random() < lethal_chance then
 		if tactics_map.cs_grenade then
 			local teargas_pos = managers.navigation:find_random_position_in_segment(assault_area.pos_nav_seg)
 			
