@@ -390,21 +390,29 @@ function CopActionShoot:_play_melee_anim(t)
 	return true
 end
 
+
 function CopActionShoot:sync_start_melee()
 	if not self._ext_anim.melee then
 		self:_play_melee_anim(TimerManager:game():time())
 	end
 end
 
+
 function CopActionShoot:anim_clbk_melee_strike()
 	if not alive(self._melee_unit) then
 		return
 	end
 
+	local target_pos = self._melee_unit:movement():m_head_pos()
+	local z_diff = math.abs(target_pos.z - self._shoot_from_pos.z)
+	if z_diff > 200 then
+		return
+	end
+
 	local target_vec = temp_vec1
-	local target_dis = mvec3_dir(target_vec, self._shoot_from_pos, self._melee_unit:movement():m_head_pos())
-	local max_dis = 150
-	if target_dis >= max_dis then
+	local target_dis = mvec3_dir(target_vec, self._shoot_from_pos, target_pos)
+	local max_dis = math.sqrt((self._w_usage_tweak.melee_range or 125) ^ 2 + z_diff ^ 2)
+	if target_dis > max_dis then
 		return
 	end
 
@@ -423,15 +431,12 @@ function CopActionShoot:anim_clbk_melee_strike()
 	local hit_shield = self._unit:raycast("ray", self._shoot_from_pos, target_pos, "slot_mask", managers.slot:get_mask("enemy_shield_check"), "report")
 	local defense_data = self._melee_unit:character_damage():damage_melee({
 		variant = "melee",
-		damage = damage,
-		damage_effect = damage,
 		damage = hit_shield and 0 or (self._w_usage_tweak.melee_dmg or 10) * (1 + self._unit:base():get_total_buff("base_damage")),
 		shield_knock = hit_shield,
 		damage_effect = (self._w_usage_tweak.melee_force or 500) / 10,
 		weapon_unit = self._weapon_unit,
 		attacker_unit = self._common_data.unit,
 		melee_weapon = self._unit:base():melee_weapon(),
-		push_vel = target_vec:with_z(0.1):normalized() * 500,
 		push_vel = tar_vec_flat:with_z(0.1) * (self._w_usage_tweak.melee_force or 500),
 		col_ray = {
 			position = self._shoot_from_pos + fwd * 50,
@@ -481,6 +486,7 @@ function CopActionShoot:anim_clbk_melee_strike()
 
 	self._melee_unit = nil
 end
+
 
 function CopActionShoot:_is_local_player_target_and_verified()
 	if self._attention and self._attention.unit and self._attention.unit == managers.player:local_player() then

@@ -1,5 +1,9 @@
 local deathwish = PaperWarm:deathwish()
 
+local function diff_lerp(value_1, value_2)
+	return PaperWarm:diff_lerp(value_1, value_2)
+end
+
 local nil_value = {}
 local function based_on(preset, values)
 	local p = deep_clone(preset)
@@ -138,9 +142,9 @@ local _presets_original = CharacterTweakData._presets
 function CharacterTweakData:_presets(tweak_data, ...)
 	local presets = _presets_original(self, tweak_data, ...)
 
-	local dmg_mul_tbl = { 0.5, 0.5, 0.75, 1, 1.5, 2, 2, 2 }
-	local dmg_mul_lin_tbl = { 0.5, 0.5, 0.75, 1, 1.25, 1.5, 1.5, 1.5 }
-	local special_dmg_mul_tbl = { 0.4, 0.4, 0.55, 0.7, 0.85, 1, 1, 1 }
+	local dmg_mul_tbl = { 0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3 }
+	local dmg_mul_lin_tbl = { 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 }
+	local special_dmg_mul_tbl = { 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1 }
 	local aim_delay_mul_tbl = { 1.125, 1, 0.875, 0.75, 0.625, 0.5, 0.375, 0.25 }
 
 	local diff_i = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
@@ -151,7 +155,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 			
 	presets.weapon.default = based_on(presets.weapon.expert, {
 		aim_delay = { 0, 1 },
-		focus_delay = 0.7,
+		focus_delay = 0.8,
 		focus_dis = 300,
 		spread = 5,
 		RELOAD_SPEED = 1,
@@ -270,7 +274,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 
 	presets.weapon.security = based_on(presets.weapon.default, {
 		aim_delay = { 0, 1.4 },
-		focus_delay = 0.8,
+		focus_delay = 1,
 		melee_dmg = 4 * dmg_mul_lin,
 		RELOAD_SPEED = 0.9,
 	})
@@ -279,7 +283,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.cop = based_on(presets.weapon.default, {
 		aim_delay = { 0, 1.2 },
-		focus_delay = 0.8,
+		focus_delay = 1,
 		melee_dmg = 4 * dmg_mul_lin,
 		RELOAD_SPEED = 1,
 	})
@@ -290,7 +294,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.gangster = based_on(presets.weapon.default, {
 		aim_delay = { 0, 1 },
-		focus_delay = 0.8,
+		focus_delay = 1,
 		melee_dmg = 6 * dmg_mul_lin,
 		RELOAD_SPEED = 0.9,
 	})
@@ -301,35 +305,39 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.swat = based_on(presets.weapon.default, {
 		aim_delay = { 0, 1 },
-		focus_delay = 0.6,
-		melee_dmg = 6 * dmg_mul_lin,
-		RELOAD_SPEED = 1,
+		focus_delay = 0.8,
+		melee_dmg = 4 * dmg_mul_lin
 	})
 
 	presets.weapon.fbi_swat = based_on(presets.weapon.default, {
-		aim_delay = { 0, 0.75 },
-		focus_delay = 0.4,
-		melee_dmg = 8 * dmg_mul_lin,
-		RELOAD_SPEED = 1.1
+		aim_delay = { 0, 0.8 },
+		focus_delay = 0.6,
+		melee_dmg = 6 * dmg_mul_lin
 	})
 
 	accuracy_multiplier(presets.weapon.fbi_swat, 1.1)
-	damage_multiplier(presets.weapon.fbi_swat, 1.25)
+	--damage_multiplier(presets.weapon.fbi_swat, 1.25)
 	
 	presets.weapon.city_swat = based_on(presets.weapon.default, {
-		aim_delay = { 0, 0.5 },
-		focus_delay = 0.2, 
-		melee_dmg = 10 * dmg_mul_lin,
-		RELOAD_SPEED = 1.2
+		aim_delay = { 0, 0.6 },
+		focus_delay = 0.4, 
+		melee_dmg = 8 * dmg_mul_lin
 	})
 
 	accuracy_multiplier(presets.weapon.city_swat, 1.2)	
-	damage_multiplier(presets.weapon.city_swat, 1.5)
-		
+	--damage_multiplier(presets.weapon.city_swat, 1.5)
+
+	presets.weapon.zeal_swat = based_on(presets.weapon.default, {
+		aim_delay = { 0, 0.4 },
+		focus_delay = 0.2, 
+		melee_dmg = 10 * dmg_mul_lin
+	})
+	accuracy_multiplier(presets.weapon.zeal_swat, 1.3)	
+	
 	presets.weapon.soldier = based_on(presets.weapon.fbi_swat)
 	
 	presets.weapon.shield = based_on(presets.weapon.swat, {
-		melee_dmg = 6 * special_dmg_mul,
+		melee_dmg = 6 * dmg_mul_lin,
 		melee_range = 150,
 		melee_force = 500,
 		range = { close = 500, optimal = 1000, far = 2000 },
@@ -429,9 +437,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 1 * special_dmg_mul, r = 3000, acc = { 0.1, 0.2 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 	
-	presets.weapon.boss = based_on(presets.weapon.default, {
-		melee_dmg = 12 * dmg_mul_lin
-	})
+	presets.weapon.boss = based_on(presets.weapon.default)
 	
 	presets.weapon.friendly_npc = based_on(presets.weapon.default, {
 		aim_delay = { 0, 1 },
@@ -1395,12 +1401,11 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 end) 
 
-
 function CharacterTweakData:_set_presets()
 	local difficulty_index = self.tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
 	local f = math.max(0, difficulty_index - 2) / 4
 
-	local health_mul_tbl = { 1, 1, 1.5, 2, 2.5, 3, 3, 3 }
+	local health_mul_tbl = { 1, 1, 1.5, 2, 2.5, 3, 3.5, 4 }
 	local health_mul = health_mul_tbl[difficulty_index]
 	
 	self.chavez_boss.HEALTH_INIT = self.chavez_boss.HEALTH_INIT * health_mul
@@ -1411,18 +1416,18 @@ function CharacterTweakData:_set_presets()
 	self.triad_boss.HEALTH_INIT = self.triad_boss.HEALTH_INIT * health_mul
 	self.deep_boss.HEALTH_INIT = self.deep_boss.HEALTH_INIT * health_mul
 		
-	self.flashbang_multiplier = math.lerp(1, 1.5, f)
+	self.flashbang_multiplier = diff_lerp(1, 1.5)
 	
-	self.tase_shock_strength = math.lerp(5, 8, f)
+	self.tase_shock_strength = diff_lerp(5, 8)
 
 	self.shield_explosion_damage_mul = 0.5
 	
-	self.grenadier.throwable_cooldown = math.lerp(25, 15, f)
+	self.grenadier.throwable_cooldown = diff_lerp(25, 15)
 
-	self.spooc.spooc_attack_timeout = { math.lerp(6, 2, f), math.lerp(8, 4, f) }
+	self.spooc.spooc_attack_timeout = { diff_lerp(6, 2), diff_lerp(8, 4) }
 	self.shadow_spooc.shadow_spooc_attack_timeout = self.spooc.spooc_attack_timeout
 	
-	local armor_hp_mul = math.lerp(2, 6, f)
+	local armor_hp_mul = diff_lerp(6, 2)
 	
 	self.tank.armor_damage_mul = 1 / armor_hp_mul
 

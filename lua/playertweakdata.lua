@@ -73,68 +73,91 @@ Hooks:PostHook(PlayerTweakData, "init", "hits_init", function (self)
 	
 end)
 
+local REVIVE_HP = PaperWarm:diff_lerp(0.8, 0.2)
+local REVIVE_HP_TBL = { REVIVE_HP, REVIVE_HP * 0.75, REVIVE_HP * 0.5 }
+
 function PlayerTweakData:_set_normal()
 	
-	self.suspicion.max_value = 8
-	self.suspicion.range_mul = 1
-	self.suspicion.buildup_mul = 1
+	self.suspicion.max_value = 6
+	self.suspicion.range_mul = 0.8
+	self.suspicion.buildup_mul = 0.8
 
-	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.35 or 0.4
+	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.3 or 0.35
 
-	self.damage.REVIVE_HEALTH_STEPS = { 0.4, 0.35, 0.3 }
+	self.damage.REVIVE_HEALTH_STEPS = REVIVE_HP_TBL
 		
 end
 
 function PlayerTweakData:_set_hard()
 
-	self.suspicion.max_value = 9
-	self.suspicion.range_mul = 1.1
-	self.suspicion.buildup_mul = 1.1
+	self.suspicion.max_value = 7
+	self.suspicion.range_mul = 0.9
+	self.suspicion.buildup_mul = 0.9
 
-	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.3 or 0.35
+	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.275 or 0.325
 
-	self.damage.REVIVE_HEALTH_STEPS = { 0.35, 0.3, 0.25 }
+	self.damage.REVIVE_HEALTH_STEPS = REVIVE_HP_TBL
 	
 end
 
 function PlayerTweakData:_set_overkill()
 
-	self.suspicion.max_value = 10
-	self.suspicion.range_mul = 1.2
-	self.suspicion.buildup_mul = 1.2
+	self.suspicion.max_value = 8
+	self.suspicion.range_mul = 1
+	self.suspicion.buildup_mul = 1
 	
 	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.25 or 0.3
 
-	self.damage.REVIVE_HEALTH_STEPS = { 0.3, 0.25, 0.2 }
+	self.damage.REVIVE_HEALTH_STEPS = REVIVE_HP_TBL
 	
 end
 
 function PlayerTweakData:_set_overkill_145()
 
-	self.suspicion.max_value = 11
-	self.suspicion.range_mul = 1.3
-	self.suspicion.buildup_mul = 1.3
+	self.suspicion.max_value = 9
+	self.suspicion.range_mul = 1.1
+	self.suspicion.buildup_mul = 1.1
 	
-	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.2 or 0.25
+	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.225 or 0.275
 
-	self.damage.REVIVE_HEALTH_STEPS = { 0.25, 0.2, 0.15 }
+	self.damage.REVIVE_HEALTH_STEPS = REVIVE_HP_TBL
 
 end
 
 function PlayerTweakData:_set_easy_wish()	
 
+	self.suspicion.max_value = 10
+	self.suspicion.range_mul = 1.2
+	self.suspicion.buildup_mul = 1.2
+	
+	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.2 or 0.25
+
+	self.damage.REVIVE_HEALTH_STEPS = REVIVE_HP_TBL
+	
+end
+
+function PlayerTweakData:_set_overkill_290()	
+
+	self.suspicion.max_value = 11
+	self.suspicion.range_mul = 1.3
+	self.suspicion.buildup_mul = 1.3
+	
+	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.175 or 0.225
+
+	self.damage.REVIVE_HEALTH_STEPS = REVIVE_HP_TBL
+	
+end
+
+function PlayerTweakData:_set_sm_wish()	
+
 	self.suspicion.max_value = 12
 	self.suspicion.range_mul = 1.4
 	self.suspicion.buildup_mul = 1.4
 	
-   self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.15 or 0.2
+	self.damage.MIN_DAMAGE_INTERVAL = pro_job and 0.15 or 0.2
 
-	self.damage.REVIVE_HEALTH_STEPS = { 0.2, 0.15, 0.1 }
+	self.damage.REVIVE_HEALTH_STEPS = REVIVE_HP_TBL
 	
 end
-
-PlayerTweakData._set_easy = PlayerTweakData._set_normal
-PlayerTweakData._set_overkill_290 = PlayerTweakData._set_easy_wish
-PlayerTweakData._set_sm_wish = PlayerTweakData._set_easy_wish
 
 function PlayerTweakData:_set_singleplayer() end

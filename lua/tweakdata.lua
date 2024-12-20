@@ -1,8 +1,4 @@
-local difficulty_index = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
-local f = math.max(0, difficulty_index - 2) / 4
-
 local pro_job = PaperWarm:pro_job()
-
 local player_dmg_mult = pro_job and 1 or 1 / 4
 
 tweak_data.projectiles.cs_grenade_quick = {
@@ -13,7 +9,7 @@ tweak_data.projectiles.cs_grenade_quick = {
 }
 
 tweak_data.medic.radius = 600
-tweak_data.medic.cooldown = math.lerp(5, 3, f)
+tweak_data.medic.cooldown = PaperWarm:diff_lerp(5, 3)
 
 tweak_data.tase_data.heavy = { duration = 2 }
 
