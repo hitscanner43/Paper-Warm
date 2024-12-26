@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <table>
 	<unit>	
 		<variables>
@@ -56,11 +57,22 @@
 			
 			<object 			filter="'check_visor'" enabled="false" name="'g_visor'"/>
 			<object 			filter="'check_visor'" enabled="false" name="'g_visor_lod1'"/>
-			
+		<!--		
 			<object 			filter="'check_visor'" enabled="true" name="'g_visor_broken'"/>
 			<object 			filter="'check_visor'" enabled="true" name="'g_visor_broken_lod1'"/>
+		-->
+			<effect 			filter="'check_visor'" name="'effects/particles/bullet_hit/glass_breakable/bullet_hit_glass_breakable'" parent="object( 'e_visor_break' )" position="v()" />
+			<sound 				filter="'check_visor'" action="'play'" event="'swat_heavy_visor_shatter'" object="'e_visor_break'" />
 		</sequence>
-		
+
+		<sequence editable_state="true" name="'murkywater_1'" once="true" triggable="true">
+			<set_variables 		has_mandibles="1"/>
+		</sequence>	
+
+		<sequence editable_state="true" name="'murkywater_2'" once="true" triggable="true">
+			<set_variables 		has_mandibles="1"/>
+		</sequence>	
+	
 		<sequence editable_state="true" name="'swat_1'" once="true" triggable="true"/>
 
 		<sequence editable_state="true" name="'swat_2'" once="true" triggable="true">
@@ -95,7 +107,9 @@
 			<object 			enabled="true" name="'g_nvg_lod1'"/>
 		</sequence>
 
-		<sequence editable_state="true" name="'fbi_swat_3'" once="true" triggable="true"/>
+		<sequence editable_state="true" name="'fbi_swat_3'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_fbi'"/> 
+		</sequence>
 
 		<sequence editable_state="true" name="'sniper_2'" once="true" triggable="true">
 			<object 			enabled="false" name="'g_helmet'"/> 
@@ -103,6 +117,8 @@
 
 			<object 			enabled="true" name="'g_helmet_backwards'"/> 
 			<object 			enabled="true" name="'g_helmet_backwards_lod1'"/>
+
+			<object 			enabled="true" name="'g_fbi_backwards'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'shield_1'" once="true" triggable="true"/>

@@ -1,3 +1,6 @@
+local level_id = PaperWarm:level_id()
+local lvl_tweak_data = tweak_data.levels[level_id]	
+
 -- Dynamically load throwable if we have one
 local unit_ids = Idstring("unit")
 Hooks:PostHook(CopBase, "init", "sh_init", function (self)
@@ -22,59 +25,103 @@ Hooks:PostHook(CopBase, "init", "sh_init", function (self)
 end)
 
 
-local sequence_mapping = {
-	[("units/payday2/characters/ene_security_1/ene_security_1"):key()] = "security_1",	
-	[("units/payday2/characters/ene_security_2/ene_security_2"):key()] = "security_2",	
-	[("units/payday2/characters/ene_security_3/ene_security_3"):key()] = "security_3",	
+local sequence_mapping_clean = {
+	["units/payday2/characters/ene_security_1/ene_security_1"] = "security_1",	
+	["units/payday2/characters/ene_security_2/ene_security_2"] = "security_2",	
+	["units/payday2/characters/ene_security_3/ene_security_3"] = "security_3",	
 	
-	[("units/payday2/characters/ene_cop_1/ene_cop_1"):key()] = "cop_1",	
-	[("units/payday2/characters/ene_cop_2/ene_cop_2"):key()] = "cop_2",	
-	[("units/payday2/characters/ene_cop_3/ene_cop_3"):key()] = "cop_3",	
-	[("units/payday2/characters/ene_cop_4/ene_cop_4"):key()] = "cop_4",	
+	["units/payday2/characters/ene_cop_1/ene_cop_1"] = "cop_1",	
+	["units/payday2/characters/ene_cop_2/ene_cop_2"] = "cop_2",	
+	["units/payday2/characters/ene_cop_3/ene_cop_3"] = "cop_3",	
+	["units/payday2/characters/ene_cop_4/ene_cop_4"] = "cop_4",	
 
-	[("units/payday2/characters/ene_fbi_1/ene_fbi_1"):key()] = "fbi_1",	
-	[("units/payday2/characters/ene_fbi_2/ene_fbi_2"):key()] = "fbi_2",	
-	[("units/payday2/characters/ene_fbi_3/ene_fbi_3"):key()] = "fbi_3",	
+	["units/payday2/characters/ene_fbi_1/ene_fbi_1"] = "fbi_1",	
+	["units/payday2/characters/ene_fbi_2/ene_fbi_2"] = "fbi_2",	
+	["units/payday2/characters/ene_fbi_3/ene_fbi_3"] = "fbi_3",	
 	
-	[("units/payday2/characters/ene_security_4/ene_security_4"):key()] = "security_4",	
-	[("units/payday2/characters/ene_security_5/ene_security_5"):key()] = "security_5",	
-	[("units/payday2/characters/ene_security_6/ene_security_6"):key()] = "security_6",	
-	[("units/payday2/characters/ene_security_7/ene_security_7"):key()] = "security_7",	
-		
-	[("units/payday2/characters/ene_swat_1/ene_swat_1"):key()] = "swat_1",		
-	[("units/payday2/characters/ene_swat_2/ene_swat_2"):key()] = "swat_2",	
-	[("units/payday2/characters/ene_swat_3/ene_swat_3"):key()] = "swat_3",	
-	
-	[("units/payday2/characters/ene_swat_heavy_1/ene_swat_heavy_1"):key()] = "swat_heavy_1",	
-	[("units/payday2/characters/ene_swat_heavy_r870/ene_swat_heavy_r870"):key()] = "swat_heavy_2",	
+	["units/payday2/characters/ene_security_4/ene_security_4"] = "security_4",	
+	["units/payday2/characters/ene_security_5/ene_security_5"] = "security_5",	
+	["units/payday2/characters/ene_security_6/ene_security_6"] = "security_6",	
+	["units/payday2/characters/ene_security_7/ene_security_7"] = "security_7",	
 
-	[("units/payday2/characters/ene_sniper_1/ene_sniper_1"):key()] = "sniper_1",	
-	[("units/payday2/characters/ene_shield_2/ene_shield_2"):key()] = "shield_2",	
+	["units/payday2/characters/ene_secret_service_1/ene_secret_service_1"] = "secret_service_1",	
+	["units/payday2/characters/ene_secret_service_2/ene_secret_service_2"] = "secret_service_2",	
 
-	[("units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"):key()] = "fbi_swat_1",		
-	[("units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"):key()] = "fbi_swat_2",	
-	[("units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3"):key()] = "fbi_swat_3",	
+	["units/payday2/characters/ene_murkywater_1/ene_murkywater_1"] = "murkywater_1",	
+	["units/payday2/characters/ene_murkywater_2/ene_murkywater_2"] = "murkywater_2",	
 
-	[("units/payday2/characters/ene_sniper_2/ene_sniper_2"):key()] = "sniper_2",	
-	[("units/payday2/characters/ene_shield_1/ene_shield_1"):key()] = "shield_1",	
+	["units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_1/ene_hoxton_breakout_guard_1"] = "mcmansion_guard_1",	
+	["units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_2/ene_hoxton_breakout_guard_2"] = "mcmansion_guard_2",	
 
-	[("units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key()] = "fbi_heavy_1",	
-	[("units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"):key()] = "fbi_heavy_2",	
+	["units/pd2_dlc_berry/characters/ene_murkywater_no_light/ene_murkywater_no_light"] = { "murkywater_1", "murkywater_2" },
 	
-	[("units/payday2/characters/ene_tazer_1/ene_tazer_1"):key()] = "taser",	
-	[("units/payday2/characters/ene_grenadier_1/ene_grenadier_1"):key()] = "grenadier",		
-	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = "medic",		
+	["units/pd2_dlc_des/characters/ene_murkywater_not_security_1/ene_murkywater_not_security_1"] = "murkywater_1",	
+	["units/pd2_dlc_des/characters/ene_murkywater_not_security_2/ene_murkywater_not_security_2"] = "murkywater_2",		
+	["units/pd2_dlc_des/characters/ene_murkywater_no_light_not_security/ene_murkywater_no_light_not_security"] = { "murkywater_1", "murkywater_2" },	
 	
-	[("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"):key()] = "marshal_marksman_1",	
-	[("units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"):key()] = "marshal_marksman_2",	
+	["units/payday2/characters/ene_swat_1/ene_swat_1"] = "swat_1",		
+	["units/payday2/characters/ene_swat_2/ene_swat_2"] = "swat_2",	
+	["units/payday2/characters/ene_swat_3/ene_swat_3"] = "swat_3",	
 	
-	[("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"):key()] = "marshal_shield_1",	
-	[("units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"):key()] = "marshal_shield_2",	
+	["units/payday2/characters/ene_swat_heavy_1/ene_swat_heavy_1"] = "swat_heavy_1",	
+	["units/payday2/characters/ene_swat_heavy_r870/ene_swat_heavy_r870"] = "swat_heavy_2",	
+
+	["units/payday2/characters/ene_sniper_1/ene_sniper_1"] = "sniper_1",	
+	["units/payday2/characters/ene_shield_2/ene_shield_2"] = "shield_2",	
+
+	["units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"] = "fbi_swat_1",		
+	["units/payday2/characters/ene_fbi_swat_2/ene_fbi_swat_2"] = "fbi_swat_2",	
+	["units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3"] = "fbi_swat_3",	
+
+	["units/payday2/characters/ene_sniper_2/ene_sniper_2"] = "sniper_2",	
+	["units/payday2/characters/ene_shield_1/ene_shield_1"] = "shield_1",	
+
+	["units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"] = "fbi_heavy_1",	
+	["units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"] = "fbi_heavy_2",	
 	
-	[("units/pd2_dlc_deep/characters/ene_deep_security_1/ene_deep_security_1"):key()] = "marshal_security_1",	
-	[("units/pd2_dlc_deep/characters/ene_deep_security_2/ene_deep_security_2"):key()] = "marshal_security_2",	
-	[("units/pd2_dlc_deep/characters/ene_deep_security_3/ene_deep_security_3"):key()] = "marshal_security_3",	
+	["units/payday2/characters/ene_tazer_1/ene_tazer_1"] = "taser",	
+	["units/payday2/characters/ene_grenadier_1/ene_grenadier_1"] = "grenadier",		
+	["units/payday2/characters/ene_medic_m4/ene_medic_m4"] = "medic",		
+	
+	["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"] = "marshal_marksman_1",	
+	["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"] = "marshal_marksman_2",	
+	
+	["units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"] = "marshal_shield_1",	
+	["units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"] = "marshal_shield_2",	
+	
+	["units/pd2_dlc_deep/characters/ene_deep_security_1/ene_deep_security_1"] = "marshal_security_1",	
+	["units/pd2_dlc_deep/characters/ene_deep_security_2/ene_deep_security_2"] = "marshal_security_2",	
+	["units/pd2_dlc_deep/characters/ene_deep_security_3/ene_deep_security_3"] = "marshal_security_3",	
 }
+
+
+local sequence_mapping = {}
+for name, sequence in pairs(sequence_mapping_clean) do
+	sequence_mapping[Idstring(name):key()] = sequence
+	sequence_mapping[Idstring(name .. "_husk"):key()] = sequence
+end
+
+
+local use_torch_clean = {
+	["units/payday2/characters/ene_secret_service_1/ene_secret_service_1"] = true,
+	["units/payday2/characters/ene_secret_service_2/ene_secret_service_2"] = true,
+	["units/payday2/characters/ene_murkywater_1/ene_murkywater_1"] = true,
+	["units/payday2/characters/ene_murkywater_2/ene_murkywater_2"] = true,
+	["units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_1/ene_hoxton_breakout_guard_1"] = true,
+	["units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_2/ene_hoxton_breakout_guard_2"] = true,
+	["units/pd2_dlc_des/characters/ene_murkywater_not_security_1/ene_murkywater_not_security_1"] = true,
+	["units/pd2_dlc_des/characters/ene_murkywater_not_security_2/ene_murkywater_not_security_2"] = true,
+	["units/pd2_dlc_deep/characters/ene_deep_security_1/ene_deep_security_1"] = true,
+	["units/pd2_dlc_deep/characters/ene_deep_security_2/ene_deep_security_2"] = true,
+	["units/pd2_dlc_deep/characters/ene_deep_security_3/ene_deep_security_3"] = true,
+}
+
+
+local use_torch = {}
+for name, value in pairs(use_torch_clean) do
+	use_torch[Idstring(name):key()] = value
+	use_torch[Idstring(name .. "_husk"):key()] = value
+end
 
 
 local hoxout_fbi_male = { "m4", "mp5", "r870" } 
@@ -197,12 +244,26 @@ local weapon_mapping = {
 Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	local name = self._unit:name():key()
 	
-	local sequence = sequence_mapping[name]
+	local character_sequence = sequence_mapping[name]
+	local torch_sequence = "enable_torch"
 
-	if self._unit:damage() and self._unit:damage():has_sequence(sequence) then
-		self._unit:damage():run_sequence_simple(sequence)
+	local random_character_sequence
+	if type(character_sequence) == "table" then	
+		random_character_sequence = table.random(character_sequence)
 	end
+		
+	if self._unit:damage() then	
+		if self._unit:damage():has_sequence(random_character_sequence or character_sequence) then
+			self._unit:damage():run_sequence_simple(character_sequence)
+		end
 
+		if self._unit:damage():has_sequence(torch_sequence) then
+			if use_torch[name] and lvl_tweak_data and lvl_tweak_data.flashlights_on then
+				self._unit:damage():run_sequence_simple(torch_sequence)
+			end
+		end
+	end
+	
 	local spawn_manager_ext = self._unit:spawn_manager()
 
 	local damage_ext = self._unit:character_damage()
@@ -221,11 +282,11 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 	if alive(self._head_unit) then		
 		self._head_unit:set_enabled(self._unit:enabled())
 		
-		if self._head_unit:damage() and self._head_unit:damage():has_sequence(sequence) then
-			self._head_unit:damage():run_sequence_simple(sequence)
+		if self._head_unit:damage() and self._head_unit:damage():has_sequence(random_character_sequence or character_sequence) then
+			self._head_unit:damage():run_sequence_simple(random_character_sequence or character_sequence)
 		end
 	end
-		
+	
 	local weapon_swap = weapon_mapping[name]
 
 	if weapon_swap then
@@ -237,17 +298,22 @@ end)
 Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
 	local name = self._unit:name():key()
 
-	local sequence = sequence_mapping[name]
+	local character_sequence = sequence_mapping[name]
+
+	local random_character_sequence
+	if type(character_sequence) == "table" then	
+		random_character_sequence = table.random(character_sequence)
+	end
 	
 	local damage_ext = self._unit:character_damage()
 	local head_gear = damage_ext._head_gear
 	
-	if not damage_ext._nr_head_gear_object then
+	if not damage_ext._nr_head_gear_objects then
 		if head_gear then	
 			self._head_gear_unit = safe_spawn_unit(head_gear, Vector3(), Rotation())
 
-			if self._head_gear_unit:damage() and self._head_gear_unit:damage():has_sequence(sequence) then
-				self._head_gear_unit:damage():run_sequence_simple(sequence)
+			if self._head_gear_unit:damage() and self._head_gear_unit:damage():has_sequence(random_character_sequence or character_sequence) then
+				self._head_gear_unit:damage():run_sequence_simple(random_character_sequence or character_sequence)
 			end
 		end
 		

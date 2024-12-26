@@ -81,11 +81,11 @@ function CharacterTweakData:character_map(...)
 	--Add new/missing units to iron out faction parity issues
 	safe_add(char_map.basic, "ene_swat_3")
 	safe_add(char_map.basic, "ene_fbi_swat_3")
-	safe_add(char_map.basic, "ene_grenadier_1")
-	safe_add(char_map.basic, "ene_commander")
 	safe_add(char_map.basic, "ene_city_swat_r870")
 	safe_add(char_map.basic, "ene_city_shield")
 	safe_add(char_map.basic, "ene_swat_heavy_r870")
+
+	safe_add(char_map.drm, "ene_bulldozer_medic_classic")
 
 	safe_add(char_map.bex, "ene_policia_cop_1")
 	safe_add(char_map.bex, "ene_policia_cop_2")
@@ -97,7 +97,6 @@ function CharacterTweakData:character_map(...)
 	safe_add(char_map.bex, "ene_policia_agent_3")	
 	safe_add(char_map.bex, "ene_swat_policia_federale_fbi_mp5")
 	safe_add(char_map.bex, "ene_swat_policia_sniper_fbi")
-	safe_add(char_map.bex, "ene_swat_grenadier_policia_federale")
 	safe_add(char_map.bex, "ene_swat_policia_federale_city_mp5")
 	safe_add(char_map.bex, "ene_swat_policia_marksman")
 
@@ -145,17 +144,19 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	local dmg_mul_tbl = { 0.25, 0.5, 0.75, 1, 1.5, 2, 2.5, 3 }
 	local dmg_mul_lin_tbl = { 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 }
 	local special_dmg_mul_tbl = { 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1 }
-	local aim_delay_mul_tbl = { 1.125, 1, 0.875, 0.75, 0.625, 0.5, 0.375, 0.25 }
+	local aim_delay_mul_tbl = { 1.1, 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4 }
+	local focus_delay_mul_tbl = { 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2 }
 
 	local diff_i = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
 	local dmg_mul = dmg_mul_tbl[diff_i]
 	local dmg_mul_lin = dmg_mul_lin_tbl[diff_i]
 	local special_dmg_mul = special_dmg_mul_tbl[diff_i]
 	local aim_delay_mul = aim_delay_mul_tbl[diff_i]
-			
+	local focus_delay_mul = focus_delay_mul_tbl[diff_i]		
+	
 	presets.weapon.default = based_on(presets.weapon.expert, {
-		aim_delay = { 0, 1 },
-		focus_delay = 0.8,
+		aim_delay = { 0, 1 * aim_delay_mul },
+		focus_delay = 1 * focus_delay_mul,
 		focus_dis = 300,
 		spread = 5,
 		RELOAD_SPEED = 1,
@@ -168,7 +169,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		range = { close = 750, optimal = 1500, far = 3000 }
 	})
 	
-	presets.weapon.default.is_rifle.autofire_rounds = { 1, 6 }
+	presets.weapon.default.is_rifle.autofire_rounds = { 1, 5 }
 	presets.weapon.default.is_rifle.range = { close = 1000, optimal = 2000, far = 4000 }
 	presets.weapon.default.is_rifle.FALLOFF = {
 		{ dmg_mul = 2 * dmg_mul, r = 0, acc = { 0.6, 0.8 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 } },
@@ -177,8 +178,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 
 	presets.weapon.default.is_smg.autofire_rounds = { 3, 8 }
 	presets.weapon.default.is_smg.FALLOFF = {
-		{ dmg_mul = 1.5 * dmg_mul, r = 0, acc = { 0.5, 0.7 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 5, 6 } },
-		{ dmg_mul = 0.5 * dmg_mul, r = 3000, acc = { 0.3, 0.5 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 2, 3 } }
+		{ dmg_mul = 1.5 * dmg_mul, r = 0, acc = { 0.5, 0.7 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 0.5 * dmg_mul, r = 3000, acc = { 0.3, 0.5 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 
 	presets.weapon.default.is_lmg.autofire_rounds = { 10, 40 }
@@ -233,12 +234,6 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 1 * dmg_mul, r = 3000, acc = { 0.3, 0.5 }, recoil = { 0.4, 0.6 }, mode = { 1, 0, 0, 0 } }
 	}
 
-	presets.weapon.default.is_handcannon = deep_clone(presets.weapon.default.is_pistol)
-	presets.weapon.default.is_handcannon.FALLOFF = {
-		{ dmg_mul = 4 * dmg_mul, r = 0, acc = { 0.7, 0.9 }, recoil = { 0.3, 0.4 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 2 * dmg_mul, r = 3000, acc = { 0.3, 0.5 }, recoil = { 0.5, 0.7 }, mode = { 1, 0, 0, 0 } }
-	}
-
 	presets.weapon.default.akimbo_pistol.melee_dmg = nil
 	presets.weapon.default.akimbo_pistol.melee_speed = nil
 	presets.weapon.default.akimbo_pistol.melee_retry_delay = nil
@@ -249,95 +244,40 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.default.is_revolver.range = { close = 1000, optimal = 2000, far = 4000 }
 	presets.weapon.default.is_revolver.FALLOFF = {
-		{ dmg_mul = 6 * dmg_mul, r = 0, acc = { 0.8, 1 }, recoil = { 0.5, 0.75 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 3 * dmg_mul, r = 3000, acc = { 0.4, 0.6 }, recoil = { 0.75, 1 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 6 * dmg_mul_lin, r = 0, acc = { 0.8, 1 }, recoil = { 0.5, 0.8 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 3 * dmg_mul_lin, r = 3000, acc = { 0.4, 0.6 }, recoil = { 0.8, 1 }, mode = { 1, 0, 0, 0 } }
 	}
 
 	presets.weapon.default.is_sniper = deep_clone(presets.weapon.default.is_revolver)
 	presets.weapon.default.is_sniper.range = { close = 2000, optimal = 4000, far = 6000 }
 	presets.weapon.default.is_sniper.FALLOFF = {
-		{ dmg_mul = 10 * dmg_mul_lin, r = 0, acc = { 0, 0.5 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 10 * dmg_mul_lin, r = 1000, acc = { 0.5, 1 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 10 * dmg_mul_lin, r = 3000, acc = { 0.5, 1 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
-	}
-	
-	presets.weapon.default.is_dmr = deep_clone(presets.weapon.default.is_revolver)
-	presets.weapon.default.is_dmr.range = { close = 2000, optimal = 4000, far = 6000 }
-	presets.weapon.default.is_dmr.FALLOFF = {
-		{ dmg_mul = 4 * dmg_mul_lin, r = 0, acc = { 0, 0.5 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 4 * dmg_mul_lin, r = 1000, acc = { 0.5, 1 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 4 * dmg_mul_lin, r = 3000, acc = { 0.5, 1 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 8 * dmg_mul_lin, r = 0, acc = { 0, 0.5 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 8 * dmg_mul_lin, r = 1000, acc = { 0.5, 1 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 8 * dmg_mul_lin, r = 3000, acc = { 0.5, 1 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 
 	presets.weapon.default.is_bullpup = deep_clone(presets.weapon.default.is_rifle)
 	presets.weapon.default.bow = deep_clone(presets.weapon.default.is_sniper)
 
 	presets.weapon.security = based_on(presets.weapon.default, {
-		aim_delay = { 0, 1.4 },
-		focus_delay = 1,
-		melee_dmg = 4 * dmg_mul_lin,
-		RELOAD_SPEED = 0.9,
+		melee_dmg = 4 * dmg_mul_lin
 	})
 
 	accuracy_multiplier(presets.weapon.security, 0.8)
 	
-	presets.weapon.cop = based_on(presets.weapon.default, {
-		aim_delay = { 0, 1.2 },
-		focus_delay = 1,
-		melee_dmg = 4 * dmg_mul_lin,
-		RELOAD_SPEED = 1,
-	})
+	presets.weapon.cop = based_on(presets.weapon.default)
 
-	accuracy_multiplier(presets.weapon.cop, 0.9)
-
-	presets.weapon.fbi = based_on(presets.weapon.cop)
-	
-	presets.weapon.gangster = based_on(presets.weapon.default, {
-		aim_delay = { 0, 1 },
-		focus_delay = 1,
-		melee_dmg = 6 * dmg_mul_lin,
-		RELOAD_SPEED = 0.9,
-	})
+	presets.weapon.gangster = based_on(presets.weapon.default)
 
 	accuracy_multiplier(presets.weapon.gangster, 0.6)
 	recoil_multiplier(presets.weapon.gangster, 0.8)
 	burst_multiplier(presets.weapon.gangster, 1.4)
 	
-	presets.weapon.swat = based_on(presets.weapon.default, {
-		aim_delay = { 0, 1 },
-		focus_delay = 0.8,
-		melee_dmg = 4 * dmg_mul_lin
-	})
-
-	presets.weapon.fbi_swat = based_on(presets.weapon.default, {
-		aim_delay = { 0, 0.8 },
-		focus_delay = 0.6,
-		melee_dmg = 6 * dmg_mul_lin
-	})
-
-	accuracy_multiplier(presets.weapon.fbi_swat, 1.1)
-	--damage_multiplier(presets.weapon.fbi_swat, 1.25)
+	presets.weapon.swat = based_on(presets.weapon.default)
 	
-	presets.weapon.city_swat = based_on(presets.weapon.default, {
-		aim_delay = { 0, 0.6 },
-		focus_delay = 0.4, 
-		melee_dmg = 8 * dmg_mul_lin
-	})
-
-	accuracy_multiplier(presets.weapon.city_swat, 1.2)	
-	--damage_multiplier(presets.weapon.city_swat, 1.5)
-
-	presets.weapon.zeal_swat = based_on(presets.weapon.default, {
-		aim_delay = { 0, 0.4 },
-		focus_delay = 0.2, 
-		melee_dmg = 10 * dmg_mul_lin
-	})
-	accuracy_multiplier(presets.weapon.zeal_swat, 1.3)	
-	
-	presets.weapon.soldier = based_on(presets.weapon.fbi_swat)
+	presets.weapon.soldier = based_on(presets.weapon.swat)
 	
 	presets.weapon.shield = based_on(presets.weapon.swat, {
-		melee_dmg = 6 * dmg_mul_lin,
 		melee_range = 150,
 		melee_force = 500,
 		range = { close = 500, optimal = 1000, far = 2000 },
@@ -352,16 +292,9 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	})
 	
 	damage_multiplier(presets.weapon.medic, 0.75)
-
-	presets.weapon.commander = based_on(presets.weapon.swat, {
-		range = { close = 1500, optimal = 2000, far = 4000 },
-		melee_dmg = 4 * dmg_mul_lin
-	})
-	
-	damage_multiplier(presets.weapon.commander, 0.75)
 	
 	presets.weapon.sniper = based_on(presets.weapon.swat, {
-		aim_delay = { 0, 3 * aim_delay_mul },
+		aim_delay = { 0, 2.5 * aim_delay_mul },
 		range = { close = 5000, optimal = 10000, far = 15000 },
 		use_laser = true
 	})
@@ -369,30 +302,33 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	presets.weapon.sniper.is_sniper.FALLOFF = {
 		{ dmg_mul = 20 * special_dmg_mul, r = 0, acc = { 0, 0.5 }, recoil = { 3, 4 }, mode = { 1, 0, 0, 0 } },
 		{ dmg_mul = 20 * special_dmg_mul, r = 1000, acc = { 0.5, 1 }, recoil = { 3, 4 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 20 * special_dmg_mul, r = 3000, acc = { 0.5, 1 }, recoil = { 3, 4 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 20 * special_dmg_mul, r = 4000, acc = { 0.5, 1 }, recoil = { 3, 4 }, mode = { 1, 0, 0, 0 } }
 	}
 	
-	presets.weapon.marksman = based_on(presets.weapon.swat, {
-		aim_delay = { 0, 3 * aim_delay_mul },
-		range = { close = 2000, optimal = 4000, far = 6000 }
+	presets.weapon.marshal_marksman = based_on(presets.weapon.swat, {
+		aim_delay = { 0, 2.5 * aim_delay_mul }
 	})
 
-	presets.weapon.marksman.is_dmr.FALLOFF = {
+	presets.weapon.marshal_marksman.is_sniper.FALLOFF = {
 		{ dmg_mul = 8 * special_dmg_mul, r = 0, acc = { 0, 0.5 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 8 * special_dmg_mul, r = 1000, acc = { 0.5, 1 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 8 * special_dmg_mul, r = 3000, acc = { 0.5, 1 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 8 * special_dmg_mul, r = 1000, acc = { 0.5, 1 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 8 * special_dmg_mul, r = 4000, acc = { 0.5, 1 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } }
+	}
+
+	presets.weapon.marshal_shield = based_on(presets.weapon.shield)
+
+	presets.weapon.marshal_shield.is_pistol.FALLOFF = {
+		{ dmg_mul = 6 * dmg_mul_lin, r = 0, acc = { 0.7, 0.9 }, recoil = { 0.3, 0.4 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 3 * dmg_mul_lin, r = 3000, acc = { 0.3, 0.5 }, recoil = { 0.6, 0.8 }, mode = { 1, 0, 0, 0 } }
 	}
 	
 	presets.weapon.taser = based_on(presets.weapon.swat, {
 		aim_delay_tase = { 0, 1 * aim_delay_mul },
+		melee_speed = 1.1,
 		tase_sphere_cast_radius = 15,
 		tase_distance = 1500,
 		melee_range = 175,
 		melee_force = 0
-	})
-
-	presets.weapon.grenadier = based_on(presets.weapon.swat, {
-		aim_delay_throw = { 0, 2 * aim_delay_mul }
 	})
 	
 	presets.weapon.spooc = based_on(presets.weapon.swat, {
@@ -402,39 +338,44 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	recoil_multiplier(presets.weapon.spooc, 0.75)
 	
 	presets.weapon.tank = based_on(presets.weapon.swat, {
-		aim_delay = { 0, 2 },
-		melee_speed = 0.75,
-		melee_dmg = 24 * special_dmg_mul,
+		aim_delay = { 0, 2 * aim_delay_mul },
+		melee_speed = 0.8,
+		melee_dmg = 30 * special_dmg_mul,
 		melee_force = 600,
 		melee_retry_delay = { 2, 3 }
 	})
 
 	presets.weapon.tank.is_shotgun_pump.FALLOFF = {
-		{ dmg_mul = 30 * special_dmg_mul, r = 0, acc = { 0.8, 1 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 15 * special_dmg_mul, r = 1000, acc = { 0.6, 0.8 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 5 * special_dmg_mul, r = 2000, acc = { 0.4, 0.6 }, recoil = { 2, 2.5 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 36 * special_dmg_mul, r = 0, acc = { 0.8, 1 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 18 * special_dmg_mul, r = 1000, acc = { 0.6, 0.8 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 6 * special_dmg_mul, r = 2000, acc = { 0.4, 0.6 }, recoil = { 2, 2.5 }, mode = { 1, 0, 0, 0 } }
 	}
 	
 	presets.weapon.tank.is_shotgun_mag.RELOAD_SPEED = 0.9
 	presets.weapon.tank.is_shotgun_mag.FALLOFF = {
-		{ dmg_mul = 8 * special_dmg_mul, r = 0, acc = { 0.7, 0.9 }, recoil = { 0.5, 0.75 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 5, 6 } },
-		{ dmg_mul = 4 * special_dmg_mul, r = 1000, acc = { 0.5, 0.7 }, recoil = { 0.75, 1 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 3, 4 } },
-		{ dmg_mul = 2 * special_dmg_mul, r = 2000, acc = { 0.3, 0.5 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 1, 2 } }
+		{ dmg_mul = 9 * special_dmg_mul, r = 0, acc = { 0.7, 0.9 }, recoil = { 0.5, 0.75 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 5, 6 } },
+		{ dmg_mul = 6 * special_dmg_mul, r = 1000, acc = { 0.5, 0.7 }, recoil = { 0.75, 1 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 3, 4 } },
+		{ dmg_mul = 3 * special_dmg_mul, r = 2000, acc = { 0.3, 0.5 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 1, 2 } }
 	}
 
 	presets.weapon.tank.is_lmg.RELOAD_SPEED = 0.5
-	presets.weapon.tank.is_lmg.autofire_rounds = { 20, 40 }	
+	presets.weapon.tank.is_lmg.autofire_rounds = { 20, 50 }	
 	presets.weapon.tank.is_lmg.FALLOFF = {
-		{ dmg_mul = 3 * special_dmg_mul, r = 0, acc = { 0.4, 0.8 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 1.5 * special_dmg_mul, r = 3000, acc = { 0.2, 0.4 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 4 * special_dmg_mul, r = 0, acc = { 0.4, 0.8 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 2 * special_dmg_mul, r = 3000, acc = { 0.2, 0.4 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 
 	presets.weapon.tank.mini.no_autofire_stop = true
 	presets.weapon.tank.mini.RELOAD_SPEED = 0.4
 	presets.weapon.tank.mini.autofire_rounds = { 100, 400 }
 	presets.weapon.tank.mini.FALLOFF = {
-		{ dmg_mul = 2 * special_dmg_mul, r = 0, acc = { 0.2, 0.4 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 1 * special_dmg_mul, r = 3000, acc = { 0.1, 0.2 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
+		{ dmg_mul = 3 * special_dmg_mul, r = 0, acc = { 0.2, 0.4 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
+		{ dmg_mul = 1.5 * special_dmg_mul, r = 3000, acc = { 0.1, 0.2 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
+	}
+
+	presets.weapon.tank.is_smg.FALLOFF = {
+		{ dmg_mul = 4.5 * special_dmg_mul, r = 0, acc = { 0.5, 0.7 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 8, 10 },
+		{ dmg_mul = 1.5 * special_dmg_mul, r = 3000, acc = { 0.3, 0.5 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 4, 6 }
 	}
 	
 	presets.weapon.boss = based_on(presets.weapon.default)
@@ -789,14 +730,13 @@ end
 
 
 local ecm_hurts_long = { ears = 9 }
-local ecm_hurts_moderate = { ears = 7 }
-local ecm_hurts_short = { ears = 5 }
+local ecm_hurts_short = { ears = 6 }
 local ecm_hurts_none = { ears = 0 }
 
 Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
-	self.security.HEALTH_INIT = 6
-	self.security.headshot_dmg_mul = 2.5
+	self.security.HEALTH_INIT = 12
+	self.security.headshot_dmg_mul = 3
 	self.security.melee_weapon = "weapon"
 	self.security.surrender_break_time = { 15, 20 }
 	self.security.weapon = self.presets.weapon.security
@@ -814,8 +754,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security.rescue_hostages = false
 	
 	self.security_heavy = deep_clone(self.security)	
-	self.security_heavy.HEALTH_INIT = 12
-	self.security_heavy.headshot_dmg_mul = 2.5
+	self.security_heavy.HEALTH_INIT = 24
+	self.security_heavy.headshot_dmg_mul = 3
 	table.insert(self._enemy_list, "security_heavy")
 
 	self.security_undominatable = deep_clone(self.security)		
@@ -844,8 +784,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security_army.no_arrest = true
 	table.insert(self._enemy_list, "security_army")
 
-	self.cop.HEALTH_INIT = 8
-	self.cop.headshot_dmg_mul = 2.5
+	self.cop.HEALTH_INIT = 18
+	self.cop.headshot_dmg_mul = 3
 	self.cop.melee_weapon = "baton"
 	self.cop.access = { "cop", "fbi" }
 	self.cop.surrender_break_time = { 10, 15 }
@@ -873,9 +813,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.cop_female.speech_prefix_count = 1
 
 	self.fbi = deep_clone(self.cop)
-	self.fbi.HEALTH_INIT = 10
-	self.fbi.headshot_dmg_mul = 2.5
-	self.fbi.weapon = self.presets.weapon.fbi
 	self.fbi.melee_weapon = "weapon"	
 
 	self.fbi_female = deep_clone(self.fbi)
@@ -886,8 +823,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.hrt = deep_clone(self.fbi)
 	table.insert(self._enemy_list, "hrt")
 	
-	self.gangster.HEALTH_INIT = 10
-	self.gangster.headshot_dmg_mul = 2.5
+	self.gangster.HEALTH_INIT = 24
+	self.gangster.headshot_dmg_mul = 3
 	self.gangster.melee_weapon = "fists"
 	self.gangster.speech_prefix_p1 = "lt"
 	self.gangster.speech_prefix_p2 = nil
@@ -941,8 +878,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.bolivian_indoors_mex = deep_clone(self.bolivian_indoors)
 
-	self.swat.HEALTH_INIT = 16
-	self.swat.headshot_dmg_mul = 2
+	self.swat.HEALTH_INIT = 24
+	self.swat.headshot_dmg_mul = 2.5
 	self.swat.melee_weapon = "weapon"
 	self.swat.speech_prefix_p2 = "n" 
 	self.swat.surrender_break_time = { 5, 10 }
@@ -953,26 +890,17 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.swat.suppression = self.presets.suppression.hard_def
 	self.swat.hurt_severity = self.presets.hurt_severities.base
 	self.swat.ecm_vulnerability = 1
-	self.swat.ecm_hurts = ecm_hurts_moderate
+	self.swat.ecm_hurts = ecm_hurts_short
 	self.swat.chatter = self.presets.enemy_chatter.swat
 	self.swat.no_arrest = nil
 
 	self.fbi_swat = deep_clone(self.swat)	
-	self.fbi_swat.HEALTH_INIT = 20
-	self.fbi_swat.headshot_dmg_mul = 2
-	self.fbi_swat.weapon = self.presets.weapon.fbi_swat
+	self.city_swat = deep_clone(self.swat)
+	self.zeal_swat = deep_clone(self.swat)
 	
-	self.city_swat = deep_clone(self.fbi_swat)
-	self.city_swat.HEALTH_INIT = 24
-	self.city_swat.headshot_dmg_mul = 2
-	self.city_swat.weapon = self.presets.weapon.city_swat 
-
-	self.zeal_swat = deep_clone(self.city_swat)
-	self.zeal_swat.speech_prefix_p2 = "n" 
-	
-	self.soldier = deep_clone(self.fbi_swat)	
-	self.soldier.HEALTH_INIT = 30
-	self.soldier.headshot_dmg_mul = 2
+	self.soldier = deep_clone(self.swat)	
+	self.soldier.HEALTH_INIT = 36
+	self.soldier.headshot_dmg_mul = 2.5
 	self.soldier.melee_weapon = "knife_1"
 	self.soldier.surrender = self.presets.surrender.hard
 	self.soldier.no_arrest = true
@@ -984,13 +912,13 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	table.insert(self._enemy_list, "murkywater")
 	
 	self.security_mcmansion = deep_clone(self.fbi_swat)	
-	self.security_mcmansion.HEALTH_INIT = 30
-	self.security_mcmansion.headshot_dmg_mul = 2
+	self.security_mcmansion.HEALTH_INIT = 36
+	self.security_mcmansion.headshot_dmg_mul = 2.5
 	self.security_mcmansion.has_alarm_pager = true
 	table.insert(self._enemy_list, "security_mcmansion")
 
 	self.heavy_swat = deep_clone(self.swat)
-	self.heavy_swat.HEALTH_INIT = 24
+	self.heavy_swat.HEALTH_INIT = 36
 	self.heavy_swat.headshot_dmg_mul = 2
 	self.heavy_swat.limb_dmg_mul = 0.6
 	self.heavy_swat.move_speed = self.presets.move_speed.fast
@@ -1002,12 +930,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.heavy_swat.ecm_hurts = ecm_hurts_short
 
 	self.fbi_heavy_swat = deep_clone(self.heavy_swat)	
-	self.fbi_heavy_swat.HEALTH_INIT = 30
-	self.fbi_heavy_swat.headshot_dmg_mul = 2
-	self.fbi_heavy_swat.limb_dmg_mul = 0.6
-	self.fbi_heavy_swat.weapon = self.presets.weapon.fbi_swat
-	self.fbi_heavy_swat.hurt_severity = self.presets.hurt_severities.tough
-
 	self.zeal_heavy_swat = deep_clone(self.fbi_heavy_swat)	
 	
 	if self._unit_prefixes.heavy_swat == "l" then --use the "d" prefix if the voiceover supports it
@@ -1015,20 +937,21 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 		self.fbi_heavy_swat.speech_prefix_p2 = "d"
 		self.zeal_heavy_swat.speech_prefix_p2 = "d"
 		self.shield.speech_prefix_p2 = "d"
+		self.marshal_shield.speech_prefix_p2 = "d"
+		self.marshal_shield_break.speech_prefix_p2 = "d"
 	end
 	
-	self.sniper.HEALTH_INIT = 8
-	self.sniper.headshot_dmg_mul = 2.5
+	self.sniper.HEALTH_INIT = 12
+	self.sniper.headshot_dmg_mul = 3
 	self.sniper.speech_prefix_p1 = self._unit_prefixes.cop
 	self.sniper.weapon = self.presets.weapon.sniper
 	self.sniper.move_speed = self.presets.move_speed.normal
 	self.sniper.suppression = self.presets.suppression.easy
 	self.sniper.ecm_hurts = ecm_hurts_long
-	self.sniper.can_be_healed = false
 	self.sniper.do_not_drop_ammo = true
 	
-	self.shield.HEALTH_INIT = 24
-	self.shield.headshot_dmg_mul = 2
+	self.shield.HEALTH_INIT = 36
+	self.shield.headshot_dmg_mul = 2.5
 	self.shield.speech_prefix_p1 = self._unit_prefixes.swat
 	self.shield.can_be_tased = false
 	self.shield.damage.explosion_damage_mul = 1
@@ -1040,7 +963,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.shield.die_sound_event = nil
 	
 	self.medic.HEALTH_INIT = 48
-	self.medic.headshot_dmg_mul = 2
+	self.medic.headshot_dmg_mul = 2.5
 	self.medic.weapon = self.presets.weapon.medic
 	self.medic.move_speed = self.presets.move_speed.fast
 	self.medic.dodge = self.presets.dodge.poor
@@ -1051,8 +974,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.medic.ecm_vulnerability = 0.6
 	self.medic.ecm_hurts = ecm_hurts_short
 
-	self.taser.HEALTH_INIT = 64
-	self.taser.headshot_dmg_mul = 2
+	self.taser.HEALTH_INIT = 72
+	self.taser.headshot_dmg_mul = 2.5
 	self.taser.melee_weapon = "taser"
 	self.taser.weapon = self.presets.weapon.taser
 	self.taser.move_speed = self.presets.move_speed.fast
@@ -1062,26 +985,9 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.taser.ecm_vulnerability = 0.6
 	self.taser.ecm_hurts = ecm_hurts_short
 	self.taser.spawn_sound_event = deathwish and self.taser.speech_prefix_p1 .. "_entrance_elite" or self.taser.speech_prefix_p1 .. "_entrance"
-
-	self.grenadier = deep_clone(self.taser)	
-	self.grenadier.tags = { "law", "grenadier", "special" }
-	self.grenadier.melee_weapon = "weapon"
-	self.grenadier.weapon = self.presets.weapon.grenadier
-	self.grenadier.access = "swat"
-	self.grenadier.priority_shout = "g29"
-	self.grenadier.speech_prefix_p1 = self._unit_prefixes.swat
-	self.grenadier.speech_prefix_p2 = "n"	
-	self.grenadier.chatter = self.presets.enemy_chatter.no_chatter
-	self.grenadier.special_deaths = nil
-	self.grenadier.spawn_sound_event = nil
-	self.grenadier.recoil_grenade_anim = true --used for groupai grenades
-	self.grenadier.throwable = "concussion_npc"
-	--self.grenadier.throwable_lethal = nil --for now...
-	--self.grenadier.throwable_target_verified = true
-	table.insert(self._enemy_list, "grenadier")
 	
-	self.spooc.HEALTH_INIT = 32
-	self.spooc.headshot_dmg_mul = 2.5
+	self.spooc.HEALTH_INIT = 48
+	self.spooc.headshot_dmg_mul = 3
 	self.spooc.melee_weapon = "baton"
 	self.spooc.weapon = self.presets.weapon.spooc
 	self.spooc.move_speed = self.presets.move_speed.lightning
@@ -1106,27 +1012,63 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 		detect = "uno_cloaker_detect"
 	}
 
+	table.insert(self.marshal_marksman.tags, "marksman")
+	self.marshal_marksman.HEALTH_INIT = 36
+	self.marshal_marksman.headshot_dmg_mul = 2.5
+	self.marshal_marksman.move_and_shoot_cooldown = 1
+	self.marshal_marksman.weapon = self.presets.weapon.marshal_marksman
+	self.marshal_marksman.move_speed = self.presets.move_speed.fast
+	self.marshal_marksman.chatter = self.presets.enemy_chatter.no_chatter
+	self.marshal_marksman.misses_first_player_shot = nil
+	self.marshal_marksman.suppression = nil	
+	self.marshal_marksman.surrender = nil
+	self.marshal_marksman.surrender = nil
+	self.marshal_marksman.ecm_vulnerability = 0.6
+	self.marshal_marksman.ecm_hurts = ecm_hurts_short
+
+	self.heavy_swat_sniper = deep_clone(self.heavy_swat)	
+	self.heavy_swat_sniper.tags = { "law", "marksman", "special" }
+	self.heavy_swat_sniper.move_and_shoot_cooldown = 1
+	self.heavy_swat_sniper.weapon = self.presets.weapon.marshal_marksman
+	self.heavy_swat_sniper.move_speed = self.presets.move_speed.normal
+	self.heavy_swat_sniper.chatter = self.presets.enemy_chatter.no_chatter
+	self.heavy_swat_sniper.suppression = nil	
+	self.heavy_swat_sniper.surrender = nil
+	self.heavy_swat_sniper.surrender = nil
+	self.heavy_swat_sniper.misses_first_player_shot = nil
+	self.heavy_swat_sniper.shooting_death = false
+	self.heavy_swat_sniper.rescue_hostages = false
+	self.heavy_swat_sniper.no_retreat = true
+	self.heavy_swat_sniper.no_arrest = true
+	self.heavy_swat_sniper.steal_loot = nil
+	self.heavy_swat_sniper.ecm_vulnerability = 0.6
+	self.heavy_swat_sniper.ecm_hurts = ecm_hurts_short	
+	
+	self.marshal_shield.HEALTH_INIT = 48
+	self.marshal_shield.headshot_dmg_mul = 2.5
+	self.marshal_shield.speech_prefix_p1 = self._unit_prefixes.swat
+	self.marshal_shield.can_be_tased = false
+	self.marshal_shield.damage.explosion_damage_mul = 1
+	self.marshal_shield.weapon = self.presets.weapon.marshal_shield
+	self.marshal_shield.move_speed = self.presets.move_speed.very_fast
+	self.marshal_shield.min_obj_interrupt_dis = 600
+	self.marshal_shield.ecm_vulnerability = 0
+	self.marshal_shield.spawn_sound_event = "shield_identification" 
+	self.marshal_shield.die_sound_event = nil
+	
+	self.marshal_shield_break = deep_clone(self.fbi_heavy_swat)
+	self.marshal_shield_break.HEALTH_INIT = 72
+	self.marshal_shield_break.headshot_dmg_mul = 2.5
+	self.marshal_shield_break.weapon = self.presets.weapon.marshal_shield
+	self.marshal_shield_break.move_speed = self.presets.move_speed.fast
+	self.marshal_shield_break.damage.hurt_severity = self.presets.hurt_severities.tough
+	self.marshal_shield_break.tmp_invulnerable_on_tweak_change = 1.5
+	
 	self.commander = deep_clone(self.swat)	
-	self.commander.tags = { "law", "commander", "special" }
-	self.commander.HEALTH_INIT = 96
-	self.commander.headshot_dmg_mul = 4
-	self.commander.limb_dmg_mul = 1
-	self.commander.melee_weapon = "weapon"
-	self.commander.weapon = self.presets.weapon.commander
-	self.commander.move_speed = self.presets.move_speed.fast
-	self.commander.dodge = self.presets.dodge.average
-	self.commander.access = "swat"
-	self.commander.priority_shout = "g29"
-	self.commander.speech_prefix_p1 = self._unit_prefixes.swat
-	self.commander.speech_prefix_p2 = "n"	
-	self.commander.chatter = self.presets.enemy_chatter.no_chatter
-	self.commander.ecm_vulnerability = 0.6
-	self.commander.ecm_hurts = ecm_hurts_short
-	self.commander.die_sound_event = "mga_death_scream"
 	table.insert(self._enemy_list, "commander")
 	
-	self.tank.HEALTH_INIT = 600
-	self.tank.headshot_dmg_mul = 15
+	self.tank.HEALTH_INIT = 800
+	self.tank.headshot_dmg_mul = 20
 	self.tank.limb_dmg_mul = 1
 	self.tank.weapon = self.presets.weapon.tank
 	self.tank.move_speed = self.presets.move_speed.slow
@@ -1141,59 +1083,24 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.tank.spawn_sound_event = self.tank.speech_prefix_p1 .. "_entrance"
 	
 	self.tank_mini = deep_clone(self.tank)	
-	self.tank_mini.HEALTH_INIT = self.tank.HEALTH_INIT * 2
+	self.tank_mini.HEALTH_INIT = self.tank.HEALTH_INIT * 1.5
 	self.tank_mini.move_speed = self.presets.move_speed.very_slow
 	self.tank_mini.melee_weapon = "bash"
 
 	self.tank_medic = deep_clone(self.tank)		
-	self.tank_medic.HEALTH_INIT = self.tank.HEALTH_INIT / 2
+	self.tank_medic.HEALTH_INIT = self.tank.HEALTH_INIT * 0.75
 	self.tank_medic.can_be_healed = false
 
 	self.tank_hw = deep_clone(self.tank)	
-	self.tank_hw.HEALTH_INIT = self.tank.HEALTH_INIT / 2
+	self.tank_hw.HEALTH_INIT = self.tank.HEALTH_INIT * 0.5
 	self.tank_hw.headshot_dmg_mul = 1
 	self.tank_hw.ignore_headshot = true
 	self.tank_hw.move_speed = self.presets.move_speed.very_slow
 	self.tank_hw.melee_weapon = "helloween"
 	self.tank_hw.melee_anims = nil
 	self.tank_hw.DAMAGE_CLAMP_BULLET = nil
-
-	self.marksman = deep_clone(self.swat)
-	self.marksman.tags = { "law", "marksman", "special" }
-	self.marksman.priority_shout = "f34"
-	self.marksman.move_and_shoot_cooldown = 1
-	self.marksman.weapon = self.presets.weapon.marksman
-	self.marksman.move_speed = self.presets.move_speed.fast
-	self.marksman.surrender = nil
-	self.marksman.chatter = self.presets.enemy_chatter.no_chatter
-	self.marksman.shooting_death = false
-	self.marksman.rescue_hostages = false
-	self.marksman.no_retreat = true
-	self.marksman.no_arrest = true
-	self.marksman.steal_loot = nil
-	table.insert(self._enemy_list, "marksman")
-
-	self.marshal_marksman = deep_clone(self.marksman)
-	
-	self.heavy_swat_sniper = deep_clone(self.heavy_swat)
-	self.heavy_swat_sniper.tags = { "law", "marksman", "special" }
-	self.heavy_swat_sniper.priority_shout = "f34"
-	self.heavy_swat_sniper.move_and_shoot_cooldown = 1
-	self.heavy_swat_sniper.weapon = self.presets.weapon.marksman
-	self.heavy_swat_sniper.move_speed = self.presets.move_speed.normal
-	self.heavy_swat_sniper.surrender = nil
-	self.heavy_swat_sniper.chatter = self.presets.enemy_chatter.no_chatter
-	self.heavy_swat_sniper.shooting_death = false
-	self.heavy_swat_sniper.rescue_hostages = false
-	self.heavy_swat_sniper.no_retreat = true
-	self.heavy_swat_sniper.no_arrest = true
-	self.heavy_swat_sniper.steal_loot = nil
-
-	self.marshal_shield = deep_clone(self.shield)
-	
-	self.marshal_shield_break = deep_clone(self.fbi_heavy_swat)
 			
-	self.biker_boss.HEALTH_INIT = 300
+	self.biker_boss.HEALTH_INIT = 600
 	self.biker_boss.player_health_scaling_mul = 1.25
 	self.biker_boss.weapon = self.presets.weapon.boss
 	self.biker_boss.headshot_dmg_mul = 2
@@ -1212,7 +1119,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.biker_boss.throwable_cooldown = 20
 	self.biker_boss.can_be_healed = false
 	
-	self.chavez_boss.HEALTH_INIT = 200
+	self.chavez_boss.HEALTH_INIT = 400
 	self.chavez_boss.player_health_scaling_mul = 1.25
 	self.chavez_boss.weapon = self.presets.weapon.boss
 	self.chavez_boss.headshot_dmg_mul = 2.5
@@ -1229,8 +1136,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.chavez_boss.no_run_stop = true
 	self.chavez_boss.can_be_healed = false
 
-	self.drug_lord_boss_stealth.HEALTH_INIT = 12
-	self.drug_lord_boss_stealth.headshot_dmg_mul = 4
+	self.drug_lord_boss_stealth.HEALTH_INIT = 24
+	self.drug_lord_boss_stealth.headshot_dmg_mul = 3
 	self.drug_lord_boss_stealth.limb_dmg_mul = 0.8
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_BULLET = nil
 	self.drug_lord_boss_stealth.DAMAGE_CLAMP_EXPLOSION = nil
@@ -1240,7 +1147,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.drug_lord_boss_stealth.move_speed = self.presets.move_speed.fast
 	self.drug_lord_boss_stealth.melee_weapon_dmg_multiplier = 1
 	
-	self.drug_lord_boss.HEALTH_INIT = 300
+	self.drug_lord_boss.HEALTH_INIT = 600
 	self.drug_lord_boss.player_health_scaling_mul = 1.25
 	self.drug_lord_boss.weapon = self.presets.weapon.boss
 	self.drug_lord_boss.headshot_dmg_mul = 2.5
@@ -1261,12 +1168,12 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.drug_lord_boss.can_be_healed = false
 	self.drug_lord_boss.collateral_damage = true
 
-	self.hector_boss_no_armor.HEALTH_INIT = 12
-	self.hector_boss_no_armor.headshot_dmg_mul = 4
+	self.hector_boss_no_armor.HEALTH_INIT = 24
+	self.hector_boss_no_armor.headshot_dmg_mul = 3
 	self.hector_boss_no_armor.limb_dmg_mul = 0.8
 	self.hector_boss_no_armor.damage.hurt_severity = self.presets.hurt_severities.base
 	
-	self.hector_boss.HEALTH_INIT = 300
+	self.hector_boss.HEALTH_INIT = 600
 	self.hector_boss.player_health_scaling_mul = 1.25
 	self.hector_boss.weapon = self.presets.weapon.boss
 	self.hector_boss.headshot_dmg_mul = 2
@@ -1285,7 +1192,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.hector_boss.immune_to_concussion = true
 	self.hector_boss.can_be_healed = false
 
-	self.mobster_boss.HEALTH_INIT = 200
+	self.mobster_boss.HEALTH_INIT = 400
 	self.mobster_boss.player_health_scaling_mul = 1.25
 	self.mobster_boss.weapon = self.presets.weapon.boss
 	self.mobster_boss.headshot_dmg_mul = 2.5
@@ -1304,8 +1211,8 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.mobster_boss.immune_to_concussion = true
 	self.mobster_boss.can_be_healed = false
 
-	self.triad_boss_no_armor.HEALTH_INIT = 18
-	self.triad_boss_no_armor.headshot_dmg_mul = 3.75
+	self.triad_boss_no_armor.HEALTH_INIT = 24
+	self.triad_boss_no_armor.headshot_dmg_mul = 3
 	self.triad_boss_no_armor.limb_dmg_mul = 0.8
 	self.triad_boss_no_armor.DAMAGE_CLAMP_BULLET = nil
 	self.triad_boss_no_armor.DAMAGE_CLAMP_EXPLOSION = nil
@@ -1320,13 +1227,14 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.triad_boss_no_armor.move_speed = self.presets.move_speed.fast
 	self.triad_boss_no_armor.damage.hurt_severity = self.presets.hurt_severities.base
 	
-	self.triad_boss.HEALTH_INIT = 300
+	self.triad_boss.HEALTH_INIT = 600
 	self.triad_boss.player_health_scaling_mul = 1.25
 	self.triad_boss.weapon = self.presets.weapon.boss
 	self.triad_boss.headshot_dmg_mul = 2
 	self.triad_boss.limb_dmg_mul = 1
 	self.triad_boss.ecm_vulnerability = 0
 	self.triad_boss.no_headshot_add_mul = true
+	self.triad_boss.invulnerable_to_slotmask = nil
 	self.triad_boss.DAMAGE_CLAMP_BULLET = nil
 	self.triad_boss.DAMAGE_CLAMP_EXPLOSION = nil
 	self.triad_boss.damage.explosion_damage_mul = 1
@@ -1340,7 +1248,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.triad_boss.can_be_healed = false
 	self.triad_boss.collateral_damage = true
 
-	self.deep_boss.HEALTH_INIT = 400
+	self.deep_boss.HEALTH_INIT = 800
 	self.deep_boss.player_health_scaling_mul = 1.25
 	self.deep_boss.weapon = self.presets.weapon.boss
 	self.deep_boss.headshot_dmg_mul = 2
@@ -1405,7 +1313,7 @@ function CharacterTweakData:_set_presets()
 	local difficulty_index = self.tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
 	local f = math.max(0, difficulty_index - 2) / 4
 
-	local health_mul_tbl = { 1, 1, 1.5, 2, 2.5, 3, 3.5, 4 }
+	local health_mul_tbl = { 1, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5 }
 	local health_mul = health_mul_tbl[difficulty_index]
 	
 	self.chavez_boss.HEALTH_INIT = self.chavez_boss.HEALTH_INIT * health_mul
@@ -1421,13 +1329,11 @@ function CharacterTweakData:_set_presets()
 	self.tase_shock_strength = diff_lerp(5, 8)
 
 	self.shield_explosion_damage_mul = 0.5
-	
-	self.grenadier.throwable_cooldown = diff_lerp(25, 15)
 
 	self.spooc.spooc_attack_timeout = { diff_lerp(6, 2), diff_lerp(8, 4) }
 	self.shadow_spooc.shadow_spooc_attack_timeout = self.spooc.spooc_attack_timeout
 	
-	local armor_hp_mul = diff_lerp(6, 2)
+	local armor_hp_mul = diff_lerp(1, 6)
 	
 	self.tank.armor_damage_mul = 1 / armor_hp_mul
 
@@ -1437,7 +1343,7 @@ function CharacterTweakData:_set_presets()
 
 	self.tank_mini.armor_damage_mul = math.min(self.tank.armor_damage_mul * 0.67, 1)
 	
-	self.tank_armor_balance_mul = { 0.7, 0.8, 0.9, 1 }
+	self.tank_armor_balance_mul = { 0.4, 0.6, 0.8, 1 }
 end
 
 CharacterTweakData._set_easy = CharacterTweakData._set_presets

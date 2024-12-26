@@ -101,11 +101,11 @@ Hooks:PostHook(LevelsTweakData, "init", "hits_init_levels", function(self)
 	local level_sizes = {
 		nightmare = 0.4,
 
-		very_small = 0.6,
-		small = 0.8,
+		very_small = 0.5,
+		small = 0.75,
 		medium = 1,
-		large = 1.2,
-		very_large = 1.2
+		large = 1.25,
+		very_large = 1.5
 	}		
 	
 	for _, level in pairs(self) do
@@ -122,6 +122,8 @@ Hooks:PostHook(LevelsTweakData, "init", "hits_init_levels", function(self)
 	self.gallery.flashlights_on = true
 	
 	self.rvd2.force_mult = level_sizes.small
+	
+	self.kosugi.flashlights_on = true
 	
 	--Vlad heists
 	self.four_stores.force_mult = level_sizes.small

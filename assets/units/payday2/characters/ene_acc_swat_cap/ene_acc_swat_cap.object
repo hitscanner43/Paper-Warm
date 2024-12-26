@@ -18,22 +18,29 @@
 		</body>
 	</bodies>
 
-	<decal_surfaces default_material="cloth">
-	</decal_surfaces>
+	<decal_surfaces default_material="cloth" />
 	
 	<graphics>
 		<graphic_group name="character" enabled="true" culling_object="co_culling">			
 			<lod_object name="lod_goggles">
-				<object name="g_goggles" 			enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_goggles_lod1" 		enabled="false"  lod="1" />
+				<object name="g_goggles" 				enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_goggles_lod1" 			enabled="false"  lod="1" />
 			</lod_object>
 			
 			<lod_object name="lod_helmet">
-				<object name="g_helmet" 			enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_helmet_lod1" 		enabled="true"  lod="1" />
+				<object name="g_helmet" 				enabled="true"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_helmet_lod1" 			enabled="true"  lod="1" />
 			</lod_object>
+
+			<lod_object name="lod_helmet_backwards">
+				<object name="g_helmet_backwards" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
+				<object name="g_helmet_backwards_lod1" 	enabled="false"  lod="1" />
+			</lod_object>
+
+			<object name="g_fbi" 						enabled="false" />
+			<object name="g_fbi_backwards" 				enabled="false" />	
 			
-			<object name="g_glass" 					enabled="false"/>	
+			<object name="g_glass" 						enabled="false" />	
 		</graphic_group>
 	</graphics>
 </dynamic_object>

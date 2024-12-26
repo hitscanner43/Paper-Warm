@@ -130,13 +130,17 @@ function WeaponTweakData:_init_weapons()
 
 			--catch-all stat setups
 			if cat_map.assault_rifle then
-				weap_data.stats.suppression = 11
-				weap_data.stats.alert_size = 16
+				weap_data.stats.suppression = cat_map.dmr and 1 or 11 
+				weap_data.stats.alert_size = cat_map.dmr and 19 or 16
 				weap_data.steelsight_time = 0.3
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "auto", "single" }
 
 				weap_data.steelsight_move_speed_mul = 0.6
-					
+				
+				if cat_map.dmr then	
+					weap_data.FIRE_MODE = "single"
+				end
+				
 				weap_data.spread_multiplier = {
 					standing = {
 						hipfire = 1,
@@ -336,67 +340,6 @@ function WeaponTweakData:_init_weapons()
 					near_multiplier = 1, 
 					far_multiplier = 0.5
 				}	
-				
-			elseif cat_map.dmr then
-				weap_data.stats.suppression = cat_map.keltec and 16 or 1
-				weap_data.stats.alert_size = cat_map.keltec and 14 or 19
-				weap_data.steelsight_time = cat_map.keltec and 0.25 or 0.35
-				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or weap_data.CAN_TOGGLE_FIREMODE and { "auto", "single" } or { "single" }
-
-				weap_data.can_shoot_through_enemy = true
-				weap_data.armor_piercing_chance = 1
-				weap_data.steelsight_move_speed_mul = cat_map.keltec and 0.7 or 0.5
-				weap_data.headshot_dmg_mul = cat_map.keltec and 1.5 or 1
-			
-				weap_data.FIRE_MODE = "single"
-				
-				weap_data.trail_effect = "effects/payday2/particles/weapons/hailstorm_streak"
-				weap_data.muzzleflash = cat_map.keltec and "effects/payday2/particles/weapons/9mm_auto_fps" or "effects/payday2/particles/weapons/big_762_auto_fps"
-				
-				weap_data.spread_multiplier = {
-					standing = {
-						hipfire = 3,
-						crouching = 0.8,
-						steelsight = 0.4
-					},
-					moving = {
-						hipfire = 6,
-						crouching = 1,
-						steelsight = 3
-					}
-				}
-				weap_data.recoil_multiplier = {
-					standing = {
-						hipfire = 1.4,
-						crouching = 0.8,
-						steelsight = 1
-					},
-					moving = {
-						hipfire = 1.6,
-						crouching = 1,
-						steelsight = 1
-					}
-				}
-
-				weap_data.fire_mode_mul = {
-					auto = {
-						spread = 2,
-						falloff_range = 1,	
-						headshot_dmg_mul = 0.75
-					},
-					single = {
-						fire_rate = math.min(400 / ROF, 1)
-					},
-					burst = {
-						recoil = 0.8,
-						spread = 0.6
-					}
-				}
-
-				weap_data.penetration_damage_mul = base_penetration_damage_mul
-				weap_data.penetration_damage_mul.armor = 0.8
-
-				weap_data.damage_falloff = no_falloff
 				
 			elseif cat_map.lmg then
 				weap_data.stats.suppression = 3
@@ -1847,7 +1790,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	--Revolvers
 	self.mateba.categories = { "revolver" }
 	self.mateba.CLIP_AMMO_MAX = 6
-	self.mateba.stats.damage = 120
+	self.mateba.stats.damage = 150
 	self.mateba.stats.spread = 20
 	self.mateba.stats.recoil = 4
 	self.mateba.stats.concealment = 27
@@ -1856,7 +1799,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.korth.categories = { "revolver" }
 	self.korth.CLIP_AMMO_MAX = 8
-	self.korth.stats.damage = 120
+	self.korth.stats.damage = 150
 	self.korth.stats.spread = 19
 	self.korth.stats.recoil = 4
 	self.korth.stats.concealment = 27
@@ -1864,7 +1807,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.new_raging_bull.categories = { "revolver" }
 	self.new_raging_bull.CLIP_AMMO_MAX = 6
-	self.new_raging_bull.stats.damage = 150
+	self.new_raging_bull.stats.damage = 180
 	self.new_raging_bull.stats.spread = 20
 	self.new_raging_bull.stats.recoil = 4
 	self.new_raging_bull.stats.concealment = 27
@@ -1872,7 +1815,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.chinchilla.categories = { "revolver" }
 	self.chinchilla.CLIP_AMMO_MAX = 6
-	self.chinchilla.stats.damage = 150
+	self.chinchilla.stats.damage = 180
 	self.chinchilla.stats.spread = 21
 	self.chinchilla.stats.recoil = 4
 	self.chinchilla.stats.concealment = 28
@@ -1881,7 +1824,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.x_chinchilla.categories = { "akimbo", "revolver" }
 	self.x_chinchilla.CLIP_AMMO_MAX = 12
-	self.x_chinchilla.stats.damage = 150
+	self.x_chinchilla.stats.damage = 180
 	self.x_chinchilla.stats.spread = 21
 	self.x_chinchilla.stats.recoil = 4
 	self.x_chinchilla.stats.concealment = 28
@@ -1889,7 +1832,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.model3.categories = { "revolver" }
 	self.model3.CLIP_AMMO_MAX = 6
-	self.model3.stats.damage = 150
+	self.model3.stats.damage = 180
 	self.model3.stats.spread = 19
 	self.model3.stats.recoil = 6
 	self.model3.stats.concealment = 27
@@ -1897,7 +1840,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.deagle.categories = { "handcannon", "pistol" }
 	self.deagle.CLIP_AMMO_MAX = 7
-	self.deagle.stats.damage = 150
+	self.deagle.stats.damage = 180
 	self.deagle.stats.spread = 17
 	self.deagle.stats.recoil = 3
 	self.deagle.stats.concealment = 26
@@ -1905,7 +1848,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.x_deagle.categories = { "akimbo", "handcannon", "pistol" }
 	self.x_deagle.CLIP_AMMO_MAX = 14
-	self.x_deagle.stats.damage = 150
+	self.x_deagle.stats.damage = 180
 	self.x_deagle.stats.spread = 17
 	self.x_deagle.stats.recoil = 3
 	self.x_deagle.stats.concealment = 26
@@ -1913,16 +1856,17 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.peacemaker.categories = { "revolver" }
 	self.peacemaker.CLIP_AMMO_MAX = 6
-	self.peacemaker.stats.damage = 180
+	self.peacemaker.stats.damage = 240
 	self.peacemaker.stats.spread = 20
 	self.peacemaker.stats.recoil = 4
 	self.peacemaker.stats.concealment = 26
 	self.peacemaker.stats.reload = 200
 	self.peacemaker.fire_mode_data.fire_rate = 60 / 300
+	self.peacemaker.stats_modifiers = nil
 
 	self.rsh12.categories = { "revolver" }
 	self.rsh12.CLIP_AMMO_MAX = 5
-	self.rsh12.stats.damage = 180
+	self.rsh12.stats.damage = 240
 	self.rsh12.stats.spread = 21
 	self.rsh12.stats.recoil = 3
 	self.rsh12.stats.concealment = 26
@@ -1932,9 +1876,9 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.rsh12.can_shoot_through_shield = false
 	self.rsh12.can_shoot_through_wall = false
 	self.rsh12.has_description = nil
+	self.rsh12.stats_modifiers = nil	
 	
 	--DMRs	
-	self.sub2000.categories = { "dmr", "keltec" }
 	self.sub2000.CLIP_AMMO_MAX = 33
 	self.sub2000.stats.damage = 60
 	self.sub2000.stats.spread = 19
@@ -1942,7 +1886,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.sub2000.stats.concealment = 26
 	self.sub2000.fire_mode_data.fire_rate = 60 / 500
 	
-	self.scar.categories = { "dmr" }
+	table.insert(self.scar.categories, "dmr")
 	self.scar.CLIP_AMMO_MAX = 20
 	self.scar.stats.damage = 120
 	self.scar.stats.spread = 20
@@ -1950,7 +1894,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.scar.stats.concealment = 20
 	self.scar.fire_mode_data.fire_rate = 60 / 600
 	
-	self.fal.categories = { "dmr" }
+	table.insert(self.fal.categories, "dmr")
 	self.fal.CLIP_AMMO_MAX = 20
 	self.fal.stats.damage = 120
 	self.fal.stats.spread = 19
@@ -1958,7 +1902,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.fal.stats.concealment = 20
 	self.fal.fire_mode_data.fire_rate = 60 / 700
 
-	self.galil.categories = { "dmr" }
+	table.insert(self.galil.categories, "dmr")
 	self.galil.CLIP_AMMO_MAX = 25
 	self.galil.stats.damage = 120
 	self.galil.stats.spread = 21
@@ -1967,7 +1911,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.galil.stats.reload = 100
 	self.galil.fire_mode_data.fire_rate = 60 / 650
 
-	self.asval.categories = { "dmr" }
+	table.insert(self.asval.categories, "dmr")
 	self.asval.CLIP_AMMO_MAX = 20
 	self.asval.stats.damage = 120
 	self.asval.stats.spread = 17
@@ -1975,7 +1919,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.asval.stats.concealment = 24
 	self.asval.fire_mode_data.fire_rate = 60 / 900
 	
-	self.contraband.categories = { "dmr" }
+	table.insert(self.contraband.categories, "dmr")
 	self.contraband.CLIP_AMMO_MAX = 20
 	self.contraband.stats.damage = 120
 	self.contraband.stats.spread = 21
@@ -1984,7 +1928,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.contraband.fire_mode_data.fire_rate = 60 / 600
 	self.contraband.has_underbarrel = true
 	
-	self.new_m14.categories = { "dmr" }
+	table.insert(self.new_m14.categories, "dmr")
 	self.new_m14.CLIP_AMMO_MAX = 20
 	self.new_m14.stats.damage = 150
 	self.new_m14.stats.spread = 21
@@ -1992,7 +1936,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.new_m14.stats.concealment = 18
 	self.new_m14.fire_mode_data.fire_rate = 60 / 700
 
-	self.g3.categories = { "dmr" }
+	table.insert(self.g3.categories, "dmr")
 	self.g3.CLIP_AMMO_MAX = 20
 	self.g3.stats.damage = 150
 	self.g3.stats.spread = 23
@@ -2000,7 +1944,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.g3.stats.concealment = 18
 	self.g3.fire_mode_data.fire_rate = 60 / 550
 
-	self.shak12.categories = { "dmr" }
+	table.insert(self.shak12.categories, "dmr")
 	self.shak12.CLIP_AMMO_MAX = 20
 	self.shak12.stats.damage = 150
 	self.shak12.stats.spread = 19
@@ -2009,7 +1953,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.shak12.stats.reload = 75
 	self.shak12.fire_mode_data.fire_rate = 60 / 750
 	
-	self.ching.categories = { "dmr" }
+	table.insert(self.ching.categories, "dmr")
 	self.ching.CLIP_AMMO_MAX = 8
 	self.ching.stats.damage = 180
 	self.ching.stats.spread = 23
@@ -2767,14 +2711,13 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 		"bullpup",
 		"rifle"
 	}
-	
-	self.deagle_npc.usage = "is_handcannon"
+
 	self.deagle_npc.CLIP_AMMO_MAX = 7
 
 	self.m14_npc.trail = "effects/particles/weapons/sniper_trail" --EBR
 	self.m14_npc.CLIP_AMMO_MAX = 10
 	--self.m14_npc.armor_piercing = nil
-	self.m14_npc.usage = "is_dmr"
+	self.m14_npc.usage = "is_sniper"
 
 	self.m14_sniper_npc.trail = "effects/particles/weapons/sniper_trail"
 	self.m14_sniper_npc.muzzleflash = "effects/payday2/particles/weapons/big_762_auto"
@@ -2796,11 +2739,11 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 
 	self.heavy_snp_npc.trail = "effects/particles/weapons/sniper_trail"
 	self.heavy_snp_npc.CLIP_AMMO_MAX = 10
-	self.heavy_snp_npc.usage = "is_dmr"
+	self.heavy_snp_npc.usage = "is_sniper"
 	
 	self.dmr_npc.trail = "effects/particles/weapons/sniper_trail"
 	self.dmr_npc.CLIP_AMMO_MAX = 20
-	self.dmr_npc.usage = "is_dmr"
+	self.dmr_npc.usage = "is_sniper"
 	
 	self.benelli_npc.sounds.prefix = "benelli_m4_npc" 
 	
@@ -2937,8 +2880,6 @@ function WeaponTweakData:_set_presets()
 						v.usage = "is_lmg"
 					elseif cat_map.minigun then
 						v.usage = "mini"
-					elseif cat_map.dmr then
-						v.usage = "is_dmr"
 					else
 						v.usage = "is_rifle"
 					end

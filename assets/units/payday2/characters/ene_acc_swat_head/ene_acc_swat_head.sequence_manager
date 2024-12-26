@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <table>
 	<unit>
 		<sequence editable_state="true" name="'swat_head_a'" once="true" triggable="true"> 
@@ -106,6 +107,14 @@
 			<object 		enabled="true" name="'g_head_h_lod1'"/>
 		</sequence>
 
+		<sequence editable_state="true" name="'murkywater_1'" once="true" triggable="true">
+			<run_sequence	name="'swat_head_b'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'murkywater_2'" once="true" triggable="true">
+			<run_sequence	name="'swat_head_b'"/>
+		</sequence>		
+
 		<sequence editable_state="true" name="'swat_1'" once="true" triggable="true">
 			<run_sequence	name="'swat_head_a'"/>
 		</sequence>
@@ -140,7 +149,8 @@
 		</sequence>
 		
 		<sequence editable_state="true" name="'fbi_swat_1'" once="true" triggable="true">
-			<run_sequence	name="'swat_head_a'"/>
+			<run_sequence	name="'swat_head_b'"/>
+			<run_sequence	name="'disable_head'"/>
 		</sequence>
 		
 		<sequence editable_state="true" name="'fbi_swat_2'" once="true" triggable="true">
@@ -173,6 +183,10 @@
 		</sequence>
 
 		<sequence editable_state="true" name="'taser'" once="true" triggable="true">
+			<run_sequence	name="'taser_head'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'grenadier'" once="true" triggable="true">
 			<run_sequence	name="'taser_head'"/>
 		</sequence>
 		

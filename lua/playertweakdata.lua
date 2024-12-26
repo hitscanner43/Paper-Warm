@@ -3,14 +3,14 @@ local deathwish = PaperWarm:deathwish()
 
 Hooks:PostHook(PlayerTweakData, "init", "hits_init", function (self)
 
-	self.damage.HEALTH_INIT = 25
+	self.damage.HEALTH_INIT = 20
 	self.damage.ARMOR_INIT = 0
-	self.damage.BLEED_OUT_HEALTH_INIT = 10
+	self.damage.BLEED_OUT_HEALTH_INIT = 8
 	self.damage.MIN_DAMAGE_INTERVAL = 0.4
 	self.damage.ARMOR_BREAK_MIN_DAMAGE_INTERVAL = 0.15
 	self.damage.DODGE_MIN_DAMAGE_INTERVAL = 0.15
 	
-	self.fall_health_damage = 15
+	self.fall_health_damage = 12
 
 	self.damage.LIVES_INIT = 4
 	self.damage.DOWNED_TIME_DEC = 0

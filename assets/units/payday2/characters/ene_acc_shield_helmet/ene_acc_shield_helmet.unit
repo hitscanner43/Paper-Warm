@@ -1,9 +1,21 @@
 <?xml version="1.0"?>
-<unit type="gen" slot="12">
+<unit type="gen" slot="18">
 	<object file="units/payday2/characters/ene_acc_shield_helmet/ene_acc_shield_helmet" />
+	
+
+	<dependencies>
+		
+		<depends_on effect="effects/particles/bullet_hit/glass_breakable/bullet_hit_glass_breakable" />
+		
+	</dependencies>
+	
+	
     <extensions>
+	
         <extension name="unit_data" class="ScriptUnitData" />
 		<extension name="damage" class="UnitDamage"/>
 		<extension name="contour" class="ContourExt" />
+		
     </extensions>
+	
 </unit>

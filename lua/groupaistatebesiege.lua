@@ -539,7 +539,7 @@ Hooks:OverrideFunction(GroupAIStateBesiege, "_set_assault_objective_to_group", f
 				end
 
 				local detonate_pos
-				local c_key = tactics_map.grenadier and table.random_key(assault_area.criminal.units)
+				local c_key = tactics_map.charge and table.random_key(assault_area.criminal.units)
 				if c_key then
 					detonate_pos = mvec_cpy(assault_area.criminal.units[c_key].m_pos)
 				end
@@ -720,33 +720,36 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 	mvec_set(detonate_offset_pos, detonate_pos)
 	mvec_add(detonate_offset_pos, detonate_offset)
 
-	local group_leader_u_key, group_leader_u_data = self._determine_group_leader(group.units)
-	local tactics_map = group_leader_u_data and group_leader_u_data.tactics_map or {}
-
-	--Lethal grenade types are used if no hostages are in the area and the leader has the appropriate tactic
+	-- If players camp a specific area for too long, turn a smoke grenade into a teargas grenade instead
 	local use_teargas
-	local use_frag
-	local lethal_chance = assault_area.hostages and 0.5 or 1
-	if math.random() < lethal_chance then
-		if tactics_map.cs_grenade then
+	if grenade_type == "smoke_grenade" and not assault_area.hostages and assault_area.criminal_entered_t and table.size(assault_area.neighbours) <= 2 then
+		local teargas_chance_times = tweak_data.group_ai.cs_grenade_chance_times or { 60, 240 }
+		local teargas_chance = math.map_range(self._t - assault_area.criminal_entered_t, teargas_chance_times[1], teargas_chance_times[2], 0, 1)
+		if math.random() < teargas_chance then
 			local teargas_pos = managers.navigation:find_random_position_in_segment(assault_area.pos_nav_seg)
-			
+			mvec_lerp(detonate_offset_pos, teargas_pos, assault_area.pos, 0.75)
+
 			local c_key = table.random_key(assault_area.criminal.units)
 			if c_key then
-				mvec_lerp(detonate_offset_pos, teargas_pos, assault_area.criminal.units[c_key].m_pos, 0.5)
+				mvec_lerp(detonate_offset_pos, detonate_offset_pos, assault_area.criminal.units[c_key].m_pos, 0.5)
 			end
 
+			assault_area.criminal_entered_t = assault_area.criminal_entered_t - teargas_chance_times[2]
 			use_teargas = true
-		elseif tactics_map.frag_grenade then
-			local frag_pos = managers.navigation:find_random_position_in_segment(assault_area.pos_nav_seg)
-
-			local c_key = table.random_key(assault_area.criminal.units)
-			if c_key then
-				 mvec_lerp(detonate_offset_pos, frag_pos, assault_area.criminal.units[c_key].m_pos, 0.5)
-			end
-
-			use_frag = true
 		end
+	end
+
+	local use_frag
+	if grenade_type == "flash_grenade" and not assault_area.hostages then
+		local frag_pos = managers.navigation:find_random_position_in_segment(assault_area.pos_nav_seg)
+		mvec_lerp(detonate_offset_pos, frag_pos, assault_area.pos, 0.75)
+
+		local c_key = table.random_key(assault_area.criminal.units)
+		if c_key then
+			mvec_lerp(detonate_offset_pos, detonate_offset_pos, assault_area.criminal.units[c_key].m_pos, 0.5)
+		end
+
+		use_teargas = true
 	end
 	
 	-- Make sure the grenade stays inside AI navigation (on the ground)
@@ -754,17 +757,9 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 	detonate_pos = grenade_tracker:field_position()
 	managers.navigation:destroy_nav_tracker(grenade_tracker)
 
-	if not grenade_user.char_tweak.no_grenade_anim then
-		local redirect = grenade_user.char_tweak.recoil_grenade_anim and "recoil_single" or "throw_grenade"
-		
-		if grenade_user.unit:movement():play_redirect(redirect) then
-			managers.network:session():send_to_peers_synched("play_distance_interact_redirect", grenade_user.unit, redirect)
-		end
-	end
-
 	local timeout
 	if use_teargas then
-		self:detonate_cs_grenade(detonate_pos, mvec_cpy(grenade_user.m_pos), tweak_data.group_ai.cs_grenade_lifetime or 20, false)
+		self:detonate_cs_grenade(detonate_pos, mvec_cpy(grenade_user.m_pos), tweak_data.group_ai.cs_grenade_lifetime or 25)
 
 		timeout = tweak_data.group_ai.cs_grenade_timeout or tweak_data.group_ai.smoke_and_flash_grenade_timeout
 	elseif use_frag then
@@ -783,13 +778,11 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 		timeout = tweak_data.group_ai[grenade_type .. "_timeout"] or tweak_data.group_ai.smoke_and_flash_grenade_timeout
 	end
 				
-	local timeout_mul = tactics_map.grenadier and 0.5 or 1
-				
 	task_data.use_smoke = false
 	-- Minimum grenade cooldown
 	task_data.use_smoke_timer = self._t + tweak_data.group_ai.min_grenade_timeout
 	-- Individual grenade cooldowns
-	task_data[grenade_type .. "_next_t"] = self._t + math.lerp(timeout[1] * timeout_mul, timeout[2] * timeout_mul, math.random())
+	task_data[grenade_type .. "_next_t"] = self._t + math.lerp(timeout[1], timeout[2], math.random())
 
 	return true
 end

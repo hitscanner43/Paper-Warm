@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<unit type="gen" slot="12">
+<unit type="gen" slot="18">
 	<object file="units/payday2/characters/ene_acc_swat_helmet/ene_acc_swat_helmet" />
     <extensions>
         <extension name="unit_data" class="ScriptUnitData" />

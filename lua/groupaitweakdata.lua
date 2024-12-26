@@ -16,7 +16,6 @@ function GroupAITweakData:allowed_groups_table()
 
 				reinforce_a = true,
 				reinforce_b = true,
-				reinforce_c = true,
 
 				recon_a = true,
 				recon_b = true,
@@ -25,7 +24,6 @@ function GroupAITweakData:allowed_groups_table()
 				taser = true,
 				bulldozer = true,
 				cloaker = true,
-				grenadier = true,
 				marksman = true,
 				soldiers = true,
 				
@@ -34,7 +32,6 @@ function GroupAITweakData:allowed_groups_table()
 				SKM_taser = true,
 				SKM_bulldozer = true,
 				SKM_cloaker = true,
-				SKM_grenadier = true,
 				SKM_marksman = true,
 				
 				single_spooc = true
@@ -44,18 +41,16 @@ function GroupAITweakData:allowed_groups_table()
 				assault_b = true,
 				assault_c = true,
 
-				reinforce_a = true,
+				reinforce_a = false,
 				reinforce_b = true,
-				reinforce_c = true,
 
-				recon_a = true,
+				recon_a = false,
 				recon_b = true,
 				
 				shield = true,				
 				taser = true,
 				bulldozer = true,
 				cloaker = true,
-				grenadier = true,
 				marksman = true,
 				soldiers = true,
 				
@@ -64,7 +59,6 @@ function GroupAITweakData:allowed_groups_table()
 				SKM_taser = true,
 				SKM_bulldozer = true,
 				SKM_cloaker = true,
-				SKM_grenadier = true,
 				SKM_marksman = true,
 				
 				single_spooc = true
@@ -76,7 +70,6 @@ function GroupAITweakData:allowed_groups_table()
 
 				reinforce_a = true,
 				reinforce_b = true,
-				reinforce_c = true,
 
 				recon_a = true,
 				recon_b = true,
@@ -85,7 +78,6 @@ function GroupAITweakData:allowed_groups_table()
 				taser = true,
 				bulldozer = true,
 				cloaker = true,
-				grenadier = true,
 				marksman = true,
 				soldiers = true,
 				
@@ -94,7 +86,6 @@ function GroupAITweakData:allowed_groups_table()
 				SKM_taser = true,
 				SKM_bulldozer = true,
 				SKM_cloaker = true,
-				SKM_grenadier = true,
 				SKM_marksman = true,
 				
 				single_spooc = true
@@ -104,27 +95,24 @@ function GroupAITweakData:allowed_groups_table()
 				assault_b = true,
 				assault_c = true,
 
-				reinforce_a = true,
+				reinforce_a = false,
 				reinforce_b = true,
-				reinforce_c = true,
 
-				recon_a = true,
+				recon_a = false,
 				recon_b = true,
 				
 				shield = false,				
 				taser = true,
 				bulldozer = true,
 				cloaker = true,
-				grenadier = true,
 				marksman = true,
 				soldiers = true,
 				
 				SKM_assault = true,
-				SKM_shield = true,
+				SKM_shield = false,
 				SKM_taser = true,
 				SKM_bulldozer = true,
 				SKM_cloaker = true,
-				SKM_grenadier = true,
 				SKM_marksman = true,
 				
 				single_spooc = true
@@ -136,7 +124,6 @@ function GroupAITweakData:allowed_groups_table()
 
 				reinforce_a = true,
 				reinforce_b = true,
-				reinforce_c = true,
 
 				recon_a = true,
 				recon_b = true,
@@ -145,16 +132,14 @@ function GroupAITweakData:allowed_groups_table()
 				taser = true,
 				bulldozer = false,
 				cloaker = true,
-				grenadier = true,
 				marksman = true,
 				soldiers = true,
 				
 				SKM_assault = true,
-				SKM_shield = true,
+				SKM_shield = false,
 				SKM_taser = true,
-				SKM_bulldozer = true,
+				SKM_bulldozer = false,
 				SKM_cloaker = true,
-				SKM_grenadier = true,
 				SKM_marksman = true,
 				
 				single_spooc = true
@@ -164,27 +149,24 @@ function GroupAITweakData:allowed_groups_table()
 				assault_b = true,
 				assault_c = true,
 
-				reinforce_a = true,
+				reinforce_a = false,
 				reinforce_b = true,
-				reinforce_c = true,
 
-				recon_a = true,
+				recon_a = false,
 				recon_b = true,
 				
 				shield = false,				
 				taser = true,
 				bulldozer = false,
 				cloaker = true,
-				grenadier = true,
 				marksman = true,
 				soldiers = true,
 				
 				SKM_assault = true,
-				SKM_shield = true,
+				SKM_shield = false,
 				SKM_taser = true,
-				SKM_bulldozer = true,
+				SKM_bulldozer = false,
 				SKM_cloaker = true,
-				SKM_grenadier = true,
 				SKM_marksman = true,
 				
 				single_spooc = true
@@ -196,7 +178,6 @@ function GroupAITweakData:allowed_groups_table()
 
 				reinforce_a = false,
 				reinforce_b = false,
-				reinforce_c = false,
 
 				recon_a = false,
 				recon_b = false,
@@ -204,8 +185,7 @@ function GroupAITweakData:allowed_groups_table()
 				shield = false,				
 				taser = false,
 				bulldozer = false,
-				cloaker = false,
-				grenadier = false,
+				cloaker = true,
 				marksman = false,
 				soldiers = false,
 				
@@ -213,8 +193,7 @@ function GroupAITweakData:allowed_groups_table()
 				SKM_shield = false,
 				SKM_taser = false,
 				SKM_bulldozer = false,
-				SKM_cloaker = false,
-				SKM_grenadier = false,
+				SKM_cloaker = true,
 				SKM_marksman = false,
 				
 				single_spooc = true
@@ -314,8 +293,8 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 		self.besiege.assault.force[2] * 5, 
 		self.besiege.assault.force[3] * 5
 	}
-	self.besiege.assault.force_balance_mul = { 0.55, 0.7, 0.9, 1 }
-	self.besiege.assault.force_pool_balance_mul = { 0.55, 0.7, 0.85, 1 }
+	self.besiege.assault.force_balance_mul = { 0.4, 0.6, 0.8, 1 }
+	self.besiege.assault.force_pool_balance_mul = { 0.4, 0.6, 0.8, 1 }
 	
 	self.besiege.assault.sustain_duration_min = { 
 		diff_lerp(60, 120),
@@ -368,11 +347,11 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 	self.spawn_rate = { 
 		diff_lerp(3, 2.5),
 		diff_lerp(2.5, 2),
-		diff_lerp(2, 1.5)
+		diff_lerp(2, 1)
 	}
 	
 	self.spawn_kill_cooldown = 10
-	self.min_grenade_timeout = 20
+	self.min_grenade_timeout = 15
 	self.no_grenade_push_delay = {		
 		diff_lerp(14, 10),
 		diff_lerp(12, 8),
@@ -395,7 +374,7 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 	}
 
 	self.cs_grenade_lifetime = 25
-	--self.cs_grenade_chance_times = { 60, math.lerp(180, 120, f) }
+	self.cs_grenade_chance_times = { 60, math.lerp(240, 120, f) }
 	self.cs_grenade_timeout =  {
 		60 * timeout_mult, 
 		80 * timeout_mult
@@ -425,39 +404,33 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 	local special_weight_mult = diff_lerp(0.4, 1)
 
 	self.besiege.assault.groups = {
-		assault_a = { 0, 0, 0 },
-		assault_b = { 0, 0, 0 },
-		assault_c = { 0, 0, 0 },
-		assault_d = { 0, 0, 0 },		
+		assault_a = { 2, 1, 0 },
+		assault_b = { 0, 2, 1 },
+		assault_c = { 0, 0, 2 },	
 		shield = { 
 			0, 
-			12 * special_weight_mult, 
-			24 * special_weight_mult
-		},
-		marksman = { 
-			0, 
-			10 * special_weight_mult, 
-			20 * special_weight_mult 
-		},
-		taser = { 
-			0, 
-			10 * special_weight_mult, 
-			20 * special_weight_mult,   
+			0.25 * special_weight_mult, 
+			0.5 * special_weight_mult
 		},
 		cloaker = { 
 			0, 
-			10 * special_weight_mult, 
-			20 * special_weight_mult
+			0.25 * special_weight_mult, 
+			0.5 * special_weight_mult
 		},
-		grenadier = { 
+		marksman = { 
 			0, 
-			10 * special_weight_mult, 
-			20 * special_weight_mult
+			0.2 * special_weight_mult, 
+			0.4 * special_weight_mult
+		},
+		taser = { 
+			0, 
+			0.2 * special_weight_mult, 
+			0.4 * special_weight_mult,   
 		},
 		bulldozer = { 
 			0, 
-			0 * special_weight_mult, 
-			16 * special_weight_mult 
+			0, 
+			0.3 * special_weight_mult 
 		},
 		single_spooc = { 0, 0, 0 },
 		custom_assault = { 0, 0, 0 },
@@ -465,53 +438,25 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 		piggydozer = { 0, 0, 0 }
 	}
 	self.besiege.reenforce.groups = {
-		reinforce_a = { 1, 0, 0 },
-		reinforce_b = { 0, 1, 0 },
-		reinforce_c = { 0, 0, 1 }
+		reinforce_a = { 1, 1, 0 },
+		reinforce_b = { 0, 1, 1 }
 	}
 	self.besiege.recon.groups = {
 		recon_a = { 1, 1, 0 },
-		recon_b = { 0, 0, 1 },
+		recon_b = { 0, 1, 1 },
 		
 		single_spooc = { 0, 0, 0 },
 		custom_recon = { 0, 0, 0 },
 		snowman_boss = { 0, 0, 0 },
 		piggydozer = { 0, 0, 0 }
 	}
-
-	if difficulty_index < 6 then
-		self.besiege.assault.groups.assault_a = { 90, 45, 0 }
-		self.besiege.assault.groups.assault_b = { 0, 45, 45 }
-		self.besiege.assault.groups.assault_c = { 0, 0, 45 }
-		self.besiege.assault.groups.assault_d = { 0, 0, 0 }
-	else
-		self.besiege.assault.groups.assault_a = { 90, 0, 0 }
-		self.besiege.assault.groups.assault_b = { 0, 90, 0 }
-		self.besiege.assault.groups.assault_c = { 0, 0, 45 }
-		self.besiege.assault.groups.assault_d = { 0, 0, 45 }
-	end
-
-	self.besiege.assault.groups.soldiers = has_army and { 0, 0, 40 } or { 0, 0, 0 }
-
+	
 	self.besiege.cloaker.groups.single_spooc = { 1, 1, 1 } 		
 	self.besiege.recurring_group_SO.recurring_cloaker_spawn.interval = { 
-		diff_lerp(60, 15), 
-		diff_lerp(120, 30)
+		diff_lerp(90, 15), 
+		diff_lerp(180, 30)
 	}
 	
-	self.commander = {
-		difficulty = {
-			add = 0.1,
-			interval = { 30, 45 }
-		},
-		buffs = {
-			accuracy = 1.1,
-			damage_reduction = 0.75
-		},
-		push_delay = 0.5
-		
-	}
-
 	self.street = deep_clone(self.besiege)
 	self.safehouse = deep_clone(self.besiege)
 end)
@@ -1370,11 +1315,6 @@ function GroupAITweakData:_init_unit_categories_sm_wish()
 	cloaker.america = {
 		Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_cloaker/ene_zeal_cloaker")
 	}
-
-	local grenadier = self.unit_categories.grenadier.unit_types
-	grenadier.america = {
-		Idstring("units/pd2_dlc_gitgud/characters/ene_zeal_grenadier/ene_zeal_grenadier")
-	}
 	
 	local medic = self.unit_categories.medic.unit_types
 	medic.america = {
@@ -1922,18 +1862,6 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "hits_init_unit_catego
 		access = access_type_all
 	}
 
-	self.unit_categories.grenadier = {
-		special_type = "grenadier",
-		unit_types = {
-			america = { Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1") },
-			russia = { Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1") },
-			zombie = { Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1") },
-			murkywater = { Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1") },
-			federales = { Idstring("units/payday2/characters/ene_grenadier_1/ene_grenadier_1") }
-		},
-		access = access_type_all
-	}
-
 	self.unit_categories.bulldozer = {
 		special_type = "tank",
 		unit_types = {
@@ -1976,19 +1904,17 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "hits_init_unit_catego
 		self[difficulty_func](self)
 	end
 
-	local limits_shield = { 0, 2, 2, 3, 3, 4, 4, 5 }
+	local limits_shield = { 1, 2, 2, 3, 3, 4, 4, 5 }
 	local limits_medic = { 0, 0, 0, 0, 1, 2, 3, 4 }
-	local limits_taser = { 0, 0, 1, 1, 2, 2, 3, 3 }
+	local limits_taser = { 0, 0, 1, 1, 2, 2, 2, 3 }
 	local limits_spooc = { 0, 0, 0, 1, 1, 2, 2, 3 }
-	local limits_grenadier = { 0, 0, 0, 1, 1, 2, 2, 3 }
 	local limits_marksman = { 0, 0, 0, 1, 1, 2, 2, 3 }
-	local limits_tank = { 0, 0, 0, 1, 1, 2, 2, 3 }
+	local limits_tank = { 0, 0, 1, 1, 1, 2, 2, 2 }
 	
 	self.special_unit_spawn_limits.shield = limits_shield[difficulty_index]
 	self.special_unit_spawn_limits.medic = limits_medic[difficulty_index]
 	self.special_unit_spawn_limits.taser = limits_taser[difficulty_index]
 	self.special_unit_spawn_limits.spooc = limits_spooc[difficulty_index]
-	self.special_unit_spawn_limits.grenadier = limits_grenadier[difficulty_index]
 	self.special_unit_spawn_limits.marksman = limits_marksman[difficulty_index]
 	self.special_unit_spawn_limits.tank = limits_tank[difficulty_index]	
 end)
@@ -2003,20 +1929,12 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 	
 	self._tactics = {
 		none = {},
-		cop_def = {
-			"ranged_fire"
-		},	
-		cop_snk = {
-			"ranged_fire",
-			"flank"	
-		},
-		agent_def = { 
-			"ranged_fire",
-			"rescue"	
-		},	
-		agent_snk = { 
+		hrt = { 
 			"flank",
-			"deathguard",
+			"rescue"
+		},
+		swat_init = { 
+			"ranged_fire",
 			"rescue"
 		},			
 		swat_def = {
@@ -2057,6 +1975,23 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 			"murder",
 			"flank"	
 		},
+		taser_support = {
+			"murder",
+			"smoke_grenade",
+			"flash_grenade"				
+		},	
+		medic = {
+			"unit_cover"
+		},			
+		marksman = {
+			"ranged_fire",
+			"no_push"
+		},
+		cloaker = {
+			"charge",
+			"flank",
+			"target_isolated"	
+		},	
 		bulldozer = {
 			"shield",
 			"murder",
@@ -2068,41 +2003,6 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 			"smoke_grenade",
 			"flash_grenade",
 			"target_vulnerable"					
-		},
-		cloaker = {
-			"charge",
-			"flank",
-			"target_isolated"	
-		},
-		grenadier_agg = {
-			"charge",
-			"cs_grenade",
-			"smoke_grenade",
-			"grenadier"
-		},
-		grenadier_snk = {
-			"flank",
-			"cs_grenade",
-			"smoke_grenade",
-			"grenadier"
-		},	
-		medic = {
-			"unit_cover"
-		},	
-		commander = {
-			"shield_cover",
-			"ranged_fire",
-			"no_push",
-			"leader"
-		},	
-		commander_support = {
-			"shield",
-			"ranged_fire",
-			"no_push"
-		},		
-		marksman = {
-			"ranged_fire",
-			"no_push"
 		},	
 		soldier_def = {
 			"murder",
@@ -2120,889 +2020,238 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 	
 	self.enemy_spawn_groups = {}
 
-	local cop_random_tactics = { self._tactics.cop_snk, self._tactics.cop_def }
-	local agent_random_tactics = { self._tactics.agent_snk, self._tactics.agent_def }
+	self.enemy_spawn_groups.assault_a = {
+		amount = { 3, 3 },
+		spawn = {
+			{
+				freq = 1,
+				rank = 3,
+				unit = "weak_swat",
+				tactics = self._tactics.swat_init
+			}
+		}	
+	}
+
+	local swat_random_tactics_1 = { self._tactics.swat_snk, self._tactics.swat_def,  self._tactics.swat_def }
+	local swat_random_tactics_2 = { self._tactics.swat_snk, self._tactics.swat_agg, self._tactics.swat_agg }
 	
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.assault_a = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq_by_diff = { 0, 1, 2 },
-					rank = 3,
-					unit = "CS_Light",
-					tactics = self._tactics.swat_def
-				},
-				{
-					amount_max = 2,
-					freq_by_diff = { 
-						6 / (difficulty_index ^ 2), 
-						3 / (difficulty_index ^ 2), 
-						0 
-					},
-					rank = 2,
-					unit = "CS_Cop_3_4",
-					random_tactics = cop_random_tactics
-				},
-				{
-					amount_max = 2,
-					freq_by_diff = { 
-						4 / (difficulty_index ^ 2), 
-						2 / (difficulty_index ^ 2), 
-						0 
-					},
-					rank = 1,
-					unit = "CS_Cop_1_2",
-					random_tactics = cop_random_tactics
-				}
-			}	
-		}
-	else
-		self.enemy_spawn_groups.assault_a = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq_by_diff = { 
-						6 / (difficulty_index ^ 2), 
-						12 / (difficulty_index ^ 2), 
-						0 
-					},
-					rank = 2,
-					unit = "CS_Light",
-					tactics = self._tactics.swat_def
-				},
-				{
-					freq_by_diff = { 0, 0.5, 1 },
-					rank = 3,
-					unit = "FBI_Light",
-					tactics = self._tactics.swat_def
-				},
-				{
-					amount_max = 2,
-					freq_by_diff = { 
-						12 / (difficulty_index ^ 2), 
-						6 / (difficulty_index ^ 2),  
-						0 
-					},
-					rank = 1,
-					unit = "FBI_Agent_2_3",
-					random_tactics = agent_random_tactics
-				}
-			}	
-		}
-	end
-
-	local swat_shotgun_random_tactics = { self._tactics.swat_snk, self._tactics.swat_agg }
-	local swat_smg_random_tactics = { self._tactics.swat_snk, self._tactics.swat_def }
-	
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.assault_b = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					amount_min = 1,
-					freq = 1,
-					rank = 2,
-					unit = "CS_Light_1",
-					tactics = self._tactics.swat_def
-				},
-				{
-					freq = 0.5,
-					rank = 2,
-					unit = "CS_Light_2",
-					random_tactics = swat_shotgun_random_tactics
-				},
-				{
-					freq = 0.75,
-					rank = 2,
-					unit = "CS_Light_3",
-					random_tactics = swat_smg_random_tactics
-				},
-				{
-					amount_max = 2,
-					freq = 0.25,
-					rank = 3,
-					unit = "CS_Light",
-					tactics = self._tactics.agent_snk
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 24, 
-						difficulty_index / 18,  
-						difficulty_index / 12
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}
-			}
-		}
-	else
-		self.enemy_spawn_groups.assault_b = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					amount_min = 1,
-					freq = 1,
-					rank = 2,
-					unit = "FBI_Light_1",
-					tactics = self._tactics.swat_def
-				},
-				{
-					freq = 0.5,
-					rank = 2,
-					unit = "FBI_Light_2",
-					random_tactics = swat_shotgun_random_tactics
-				},
-				{
-					freq = 0.75,
-					rank = 2,
-					unit = "FBI_Light_3",
-					random_tactics = swat_smg_random_tactics
-				},
-				{
-					amount_max = 2,
-					freq = 0.25,
-					rank = 3,
-					unit = "FBI_Light",
-					tactics = self._tactics.agent_snk
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 24, 
-						difficulty_index / 18,  
-						difficulty_index / 12
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}
-			}
-		}
-	end
-
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.assault_c = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					amount_min = 1,
-					freq = 1,
-					rank = 2,
-					unit = "CS_Heavy_1",
-					random_tactics = swat_smg_random_tactics
-				},
-				{
-					freq = 0.5,
-					rank = 2,
-					unit = "CS_Heavy_2",
-					random_tactics = swat_shotgun_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 24, 
-						difficulty_index / 18,  
-						difficulty_index / 12
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}
-			}
-		}
-	else
-		self.enemy_spawn_groups.assault_c = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					amount_min = 1,
-					freq = 1,
-					rank = 2,
-					unit = "FBI_Heavy_1",
-					random_tactics = swat_smg_random_tactics
-				},
-				{
-					freq = 0.5,
-					rank = 2,
-					unit = "FBI_Heavy_2",
-					random_tactics = swat_shotgun_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 24, 
-						difficulty_index / 18,  
-						difficulty_index / 12
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}
-			}
-		}
-	end
-
-	self.enemy_spawn_groups.assault_d = {
+	self.enemy_spawn_groups.assault_b = {
 		amount = { 3, 4 },
 		spawn = {
 			{
 				amount_min = 1,
 				freq = 1,
+				amount_max = 2,
 				rank = 2,
-				unit = "Elite_Light_1",
-				tactics = self._tactics.swat_def
-			},
-			{
-				freq = 0.5,
-				rank = 2,
-				unit = "Elite_Light_2",
-				random_tactics = swat_shotgun_random_tactics
-			},
-			{
-				freq = 0.75,
-				rank = 2,
-				unit = "Elite_Light_3",
-				random_tactics = swat_smg_random_tactics
+				unit = "swat_1",
+				random_tactics = swat_random_tactics_1
 			},
 			{
 				amount_max = 2,
-				freq = 0.25,
-				rank = 3,
-				unit = "Elite_Light",
-				tactics = self._tactics.agent_snk
+				freq = 0.5,
+				rank = 2,
+				unit = "swat_2_3",
+				random_tactics = swat_random_tactics_2
 			},
 			{
 				amount_max = 1,
 				freq_by_diff = { 
-					difficulty_index / 24, 
-					difficulty_index / 18,  
-					difficulty_index / 12
+					difficulty_index / 48, 
+					difficulty_index / 32,  
+					difficulty_index / 16
 				},
 				rank = 1,
-				unit = "Medic",
+				unit = "medic",
+				tactics = self._tactics.medic
+			}
+		}
+	}
+	
+	self.enemy_spawn_groups.assault_c = {
+		amount = { 3, 4 },
+		spawn = {
+			{
+				amount_min = 1,
+				freq = 1,
+				amount_max = 2,
+				rank = 3,
+				unit = "heavy_swat_1",
+				random_tactics = swat_random_tactics_1
+			},
+			{
+				amount_max = 2,
+				freq = 0.5,
+				rank = 3,
+				unit = "heavy_swat_2",
+				random_tactics = swat_random_tactics_2
+			},
+			{
+				amount_max = 1,
+				freq_by_diff = { 
+					difficulty_index / 48, 
+					difficulty_index / 32,  
+					difficulty_index / 16
+				},
+				rank = 1,
+				unit = "medic",
 				tactics = self._tactics.medic
 			}
 		}
 	}
 		
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.reinforce_a = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "CS_Cop_1",
-					tactics = self._tactics.none
-				},
-				{
-					freq = 0.25,
-					rank = 1,
-					unit = "CS_Cop_2",
-					tactics = self._tactics.none
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 6, 
-						difficulty_index / 4,  
-						difficulty_index / 2
-					},
-					rank = 2,
-					unit = "CS_Cop_3_4",
-					tactics = self._tactics.none
-				}
+	self.enemy_spawn_groups.reinforce_a = {
+		amount = { 2, 3 },
+		spawn = {
+			{
+				amount_max = 2,
+				freq_by_diff = { 1.5, 1, 0.5 },
+				rank = 2,
+				unit = "cop_3_4",
+				tactics = self._tactics.none
+			},
+			{
+				amount_max = 2,
+				freq_by_diff = { 0.5, 1, 1.5 },
+				rank = 1,
+				unit = "cop_1_2",
+				tactics = self._tactics.none
 			}
 		}
-	else
-		self.enemy_spawn_groups.reinforce_a = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 2,
-					unit = "FBI_Agent_1_2",
-					tactics = self._tactics.none
-				},
-				{
-					amount_max = 2,
-					freq_by_diff = { 
-						24 / (difficulty_index ^ 2), 
-						12 / (difficulty_index ^ 2),  
-						0
-					},
-					rank = 1,
-					unit = "CS_Cop_3_4",
-					tactics = self._tactics.none
-				}
-			}
-		}
-	end
+	}
 
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.reinforce_b = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 2,
-					unit = "CS_Light",
-					tactics = self._tactics.none
-				},
-				{
-					amount_max = 2,
-					freq_by_diff = { 
-						6 / (difficulty_index ^ 2), 
-						3 / (difficulty_index ^ 2),  
-						0
-					},
-					rank = 1,
-					unit = "CS_Cop_3_4",
-					tactics = self._tactics.none
-				}
-			}
-		}
-	else
-		self.enemy_spawn_groups.reinforce_b = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq_by_diff = { 
-						2 / difficulty_index, 
-						4 / difficulty_index,  
-						0
-					},
-					rank = 2,
-					unit = "CS_Light",
-					tactics = self._tactics.none
-				},
-				{
-					freq = 1,
-					rank = 3,
-					unit = "FBI_Light",
-					tactics = self._tactics.none
-				},
-				{
-					amount_max = 2,
-					freq_by_diff = { 
-						4 / difficulty_index, 
-						2 / difficulty_index,  
-						0
-					},
-					rank = 1,
-					unit = "FBI_Agent_2_3",
-					tactics = self._tactics.none
-				}
-			}
-		}
-	end
-
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.reinforce_c = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "CS_Light",
-					tactics = self._tactics.none
-				}
-			}
-		}
-	else
-		self.enemy_spawn_groups.reinforce_c = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "FBI_Light",
-					tactics = self._tactics.none
-				}
-			}
-		}
-	end
-
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.recon_a = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq_by_diff = { 1, 0.5, 0 },
-					rank = 1,
-					unit = "CS_Cop_1_2",
-					tactics = self._tactics.agent_snk
-				},
-				{
-					amount_max = 2,
-					freq_by_diff = { 0, 0.5, 1 },
-					rank = 2,
-					unit = "CS_Cop_3_4",
-					tactics = self._tactics.agent_snk
-				}
-			}
-		}
-	else
-		self.enemy_spawn_groups.recon_a = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq_by_diff = { 1, 0.5, 0 },
-					rank = 1,
-					unit = "FBI_Agent_1_2",
-					tactics = self._tactics.agent_snk
-				},
-				{
-					amount_max = 2,
-					freq_by_diff = { 0, 0.5, 1 },
-					rank = 2,
-					unit = "FBI_Agent_2_3",
-					tactics = self._tactics.agent_snk
-				}
-			}
-		}
-	end
-
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.recon_b = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "CS_Light",
-					tactics = self._tactics.agent_snk
-				}
-			}
-		}
-	else
-		self.enemy_spawn_groups.recon_b = {
-			amount = { 2, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "FBI_Light",
-					tactics = self._tactics.agent_snk
-				}
-			}
-		}
-	end
-	
-	local shield_random_tactics = { self._tactics.shield_agg, self._tactics.shield_def }
-	
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.shield = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					freq_by_diff = { 1, 1, 0.5 },
-					rank = 2,
-					unit = "CS_Light",
-					tactics = self._tactics.shield_support
-				},
-				{
-					freq_by_diff = { 0, 0, 1 },
-					rank = 2,
-					unit = "CS_Heavy",
-					tactics = self._tactics.shield_support
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "CS_Shield",
-					random_tactics = shield_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 36, 
-						difficulty_index / 27,  
-						difficulty_index / 18
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}				
-			}
-		}
-	elseif difficulty_index <= 5 then
-		self.enemy_spawn_groups.shield = {
-			amount = { 4, 4 },
-			spawn = {
-				{
-					freq_by_diff = { 1, 1, 0.5 },
-					rank = 2,
-					unit = "FBI_Light",
-					tactics = self._tactics.shield_support
-				},
-				{
-					freq_by_diff = { 0, 0, 1 },
-					rank = 2,
-					unit = "FBI_Heavy",
-					tactics = self._tactics.shield_support
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "FBI_Shield",
-					random_tactics = shield_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 36, 
-						difficulty_index / 27,  
-						difficulty_index / 18
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}				
-			}
-		}
-	else
-		self.enemy_spawn_groups.shield = {
-			amount = { 4, 4 },
-			spawn = {
-				{
-					freq_by_diff = { 1, 1, 0 },
-					rank = 2,
-					unit = "FBI_Light",
-					tactics = self._tactics.shield_support
-				},
-				{
-					freq_by_diff = { 0, 0, 0.5 },
-					rank = 2,
-					unit = "Elite_Light",
-					tactics = self._tactics.shield_support
-				},
-				{
-					freq_by_diff = { 0, 0, 1 },
-					rank = 2,
-					unit = "FBI_Heavy",
-					tactics = self._tactics.shield_support
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "FBI_Shield",
-					random_tactics = shield_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 36, 
-						difficulty_index / 27,  
-						difficulty_index / 18
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}
-			}
-		}
-	end
-
-	local taser_random_tactics = { self._tactics.taser_agg, self._tactics.taser_snk }
-
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.taser = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "CS_Light",
-					random_tactics = taser_random_tactics
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 2,
-					unit = "Taser",
-					random_tactics = taser_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 48, 
-						difficulty_index / 36,  
-						difficulty_index / 24
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}		
-			}
-		}
-	elseif difficulty_index <= 5 then
-		self.enemy_spawn_groups.taser = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 2,
-					unit = "FBI_Light",
-					random_tactics = taser_random_tactics
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "Taser",
-					random_tactics = taser_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 48, 
-						difficulty_index / 36,  
-						difficulty_index / 24
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}		
-			}
-		}
-	else
-		self.enemy_spawn_groups.taser = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq_by_diff = { 1, 1, 0 },
-					rank = 2,
-					unit = "FBI_Light",
-					random_tactics = taser_random_tactics
-				},
-				{
-					freq_by_diff = { 0, 0, 1 },
-					rank = 2,
-					unit = "Elite_Light",
-					random_tactics = taser_random_tactics
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "Taser",
-					random_tactics = taser_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 48, 
-						difficulty_index / 36,  
-						difficulty_index / 24
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}		
-			}
-		}
-	end
-
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.bulldozer = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "CS_Heavy",
-					tactics = self._tactics.bulldozer_support
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 2,
-					unit = "Bulldozer",
-					tactics = self._tactics.bulldozer
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 60, 
-						difficulty_index / 45,  
-						difficulty_index / 30
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}		
-			}
-		}
-	else
-		self.enemy_spawn_groups.bulldozer = {
-			amount = { 3, 4 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 2,
-					unit = "FBI_Heavy",
-					tactics = self._tactics.bulldozer_support
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "Bulldozer",
-					tactics = self._tactics.bulldozer
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 60, 
-						difficulty_index / 45,  
-						difficulty_index / 30
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}		
-			}
-		}
-	end
-	
-	local grenadier_random_tactics = { self._tactics.grenadier_agg, self._tactics.grenadier_snk }
-
-	if difficulty_index <= 3 then
-		self.enemy_spawn_groups.grenadier = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 1,
-					unit = "CS_Light",
-					random_tactics = grenadier_random_tactics
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 2,
-					unit = "Grenadier",
-					random_tactics = grenadier_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 48, 
-						difficulty_index / 36,  
-						difficulty_index / 24
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}		
-			}
-		}
-	elseif difficulty_index <= 5 then
-		self.enemy_spawn_groups.grenadier = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq = 1,
-					rank = 2,
-					unit = "FBI_Light",
-					random_tactics = grenadier_random_tactics
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "Grenadier",
-					random_tactics = grenadier_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 48, 
-						difficulty_index / 36,  
-						difficulty_index / 24
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}		
-			}
-		}
-	else
-		self.enemy_spawn_groups.grenadier = {
-			amount = { 3, 3 },
-			spawn = {
-				{
-					freq_by_diff = { 1, 1, 0 },
-					rank = 2,
-					unit = "FBI_Light",
-					random_tactics = grenadier_random_tactics
-				},
-				{
-					freq_by_diff = { 0, 0, 1 },
-					rank = 2,
-					unit = "Elite_Light",
-					random_tactics = grenadier_random_tactics
-				},
-				{
-					amount_min = 1,
-					freq = 1,
-					amount_max = 1,
-					rank = 3,
-					unit = "Grenadier",
-					random_tactics = grenadier_random_tactics
-				},
-				{
-					amount_max = 1,
-					freq_by_diff = { 
-						difficulty_index / 48, 
-						difficulty_index / 36,  
-						difficulty_index / 24
-					},
-					rank = 1,
-					unit = "Medic",
-					tactics = self._tactics.medic
-				}		
-			}
-		}
-	end
-	
-	self.enemy_spawn_groups.cloaker = {
-		amount = { 2, 2 },
+	self.enemy_spawn_groups.reinforce_b = {
+		amount = { 3, 3 },
 		spawn = {
 			{
 				freq = 1,
 				rank = 1,
-				unit = "Cloaker",
-				tactics = self._tactics.cloaker
+				unit = "swat",
+				tactics = self._tactics.none
+			}
+		}
+	}
+
+	self.enemy_spawn_groups.recon_a = {
+		amount = { 2, 3 },
+		spawn = {
+			{
+				freq_by_diff = { 0.5, 1, 1.5 },
+				rank = 2,
+				unit = "fbi_2_3",
+				tactics = self._tactics.hrt
+			},
+			{
+				freq_by_diff = { 1.5, 1, 0.5 },
+				rank = 1,
+				unit = "fbi_1_2",
+				tactics = self._tactics.hrt
 			}
 		}
 	}
 	
-	self.enemy_spawn_groups.marksman = {
+	self.enemy_spawn_groups.recon_b = {
+		amount = { 3, 3 },
+		spawn = {
+			{
+				freq = 1,
+				rank = 1,
+				unit = "swat",
+				tactics = self._tactics.hrt
+			}
+		}
+	}
+	
+	local shield_random_tactics = { self._tactics.shield_agg, self._tactics.shield_def }
+
+	self.enemy_spawn_groups.shield = {
+		amount = { 4, 4 },
+		spawn = {
+			{
+				amount_min = 1,
+				freq = 1,
+				amount_max = 1,
+				rank = 3,
+				unit = "shield",
+				random_tactics = shield_random_tactics
+			},
+			{
+				freq_by_diff = { 
+					0,
+					difficulty_index / 48,
+					difficulty_index / 24
+				},
+				amount_max = 1,
+				rank = 3,
+				unit = "marshal_shield",
+				random_tactics = shield_random_tactics
+			},
+			{
+				freq_by_diff = { 1.5, 1, 0.5 },
+				rank = 2,
+				unit = "swat",
+				tactics = self._tactics.shield_support
+			},
+			{
+				freq_by_diff = { 0, 0, 1 },
+				rank = 2,
+				unit = "heavy_swat",
+				tactics = self._tactics.shield_support
+			},
+			{
+				amount_max = 1,
+				freq_by_diff = { 
+					difficulty_index / 48, 
+					difficulty_index / 36,  
+					difficulty_index / 24
+				},
+				rank = 1,
+				unit = "medic",
+				tactics = self._tactics.medic
+			}				
+		}
+	}
+
+	local taser_random_tactics = { self._tactics.taser_agg, self._tactics.taser_snk }
+
+	self.enemy_spawn_groups.taser = {
+		amount = { 3, 3 },
+		spawn = {
+			{
+				amount_min = 1,
+				freq = 1,
+				amount_max = 1,
+				rank = 3,
+				unit = "taser",
+				random_tactics = taser_random_tactics
+			},
+			{
+				freq = 1,
+				rank = 2,
+				unit = "swat",
+				tactics = self._tactics.taser_support
+			},
+			{
+				amount_max = 1,
+				freq_by_diff = { 
+					difficulty_index / 64, 
+					difficulty_index / 48,  
+					difficulty_index / 32
+				},
+				rank = 1,
+				unit = "medic",
+				tactics = self._tactics.medic
+			}				
+		}
+	}
+	
+	self.enemy_spawn_groups.cloaker = {
 		amount = { 1, 1 },
 		spawn = {
 			{
 				freq = 1,
 				rank = 1,
-				unit = "Marksman",
-				tactics = self._tactics.marksman
+				unit = "cloaker",
+				tactics = self._tactics.cloaker
 			}
 		}
 	}
@@ -3013,43 +2262,25 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 			{
 				freq = 1,
 				rank = 1,
-				unit = "Cloaker",
+				unit = "cloaker",
 				tactics = self._tactics.cloaker
 			}
 		}
 	}
 
-	local soldier_random_tactics = { self._tactics.soldier_agg, self._tactics.soldier_def }
-
-	self.enemy_spawn_groups.soldiers = {
-		amount = { 3, 3 },
+	self.enemy_spawn_groups.marksman = {
+		amount = { 1, 1 },
 		spawn = {
 			{
-				amount_max = 1,
 				freq = 1,
 				rank = 1,
-				unit = "Soldier_1",
-				random_tactics = soldier_random_tactics
-			},
-			{
-				amount_max = 1,
-				freq = 1,
-				rank = 1,
-				unit = "Soldier_2",
-				random_tactics = soldier_random_tactics
-			},
-			{
-				amount_max = 1,
-				freq = 1,
-				rank = 1,
-				unit = "Soldier_3",
-				random_tactics = soldier_random_tactics
+				unit = "marshal_marksman",
+				tactics = self._tactics.marksman
 			}
 		}
 	}
 	
-	--Holdout related crap begins here
-	
+	--[[Holdout related crap begins here	
 	local heavy_freq_by_wave_1 = {}
 	for i = 0, 6, 1 do
 		local wave_factor = i - 1
@@ -3233,35 +2464,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 		}
 	}
 		
-	self.enemy_spawn_groups.SKM_grenadier = {
-		amount = { 3, 3 },
-		spawn = {
-			{
-				freq = 1,
-				rank = 2,
-				unit = "CS_Light",
-				random_tactics = grenadier_random_tactics
-			},
-			{
-				amount_min = 1,
-				freq = 1,
-				amount_max = 1,
-				rank = 3,
-				unit = "Grenadier",
-				random_tactics = grenadier_random_tactics
-			},
-			{
-				amount_max = 1,
-				freq_by_wave = medic_freq_by_wave_2,
-				rank = 1,
-				unit = "Medic",
-				tactics = self._tactics.medic
-			}		
-		}
-	}
-		
 	self.enemy_spawn_groups.SKM_cloaker = deep_clone(self.enemy_spawn_groups.cloaker)
 
 	self.enemy_spawn_groups.SKM_marksman = deep_clone(self.enemy_spawn_groups.marksman)
-		
+	]]--
 end)

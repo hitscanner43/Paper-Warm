@@ -1,15 +1,54 @@
+<?xml version="1.0"?>
 <table>
 	<unit>
 	<!--PW RANDOM SWAT SEQUENCES START HERE-->
-		<sequence editable_state="true" name="'swat_1'" once="true" triggable="true">
+		<sequence editable_state="true" name="'enable_torch'" once="true" triggable="true">
+			<effect_spawner 	enabled="true" name="'es_light'"/>
+			<light 				enabled="true" name="'ls_light'"/>
+			
+			<object 			enabled="true" name="'g_torch'"/>
+			<object 			enabled="true" name="'g_torch_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'murkywater_1'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+						
+			<object 			enabled="true" name="'g_gear_smg'"/>
+			<object 			enabled="true" name="'g_gear_smg_lod1'"/>
+		</sequence>
+		
+		
+		<sequence editable_state="true" name="'murkywater_2'" once="true" triggable="true">						
 			<object 			enabled="true" name="'g_gear_rifle'"/>
 			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
 		</sequence>
+		
+		
+		<sequence editable_state="true" name="'swat_1'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
+			<object 			enabled="false" name="'g_head'"/>
+			<object 			enabled="false" name="'g_head_lod1'"/>
+			
+			<object 			enabled="true" name="'g_gear_rifle'"/>
+			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
+		</sequence>
+
 
 		<sequence editable_state="true" name="'swat_2'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_shotgun'"/>
 			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
 		</sequence>
+
 
 		<sequence editable_state="true" name="'swat_3'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_smg'"/>
@@ -17,17 +56,29 @@
 			<object 			enabled="true" name="'g_glass'"/>
 		</sequence>
 
-		<sequence editable_state="true" name="'swat_heavy_1'" once="true" triggable="true">
+
+		<sequence editable_state="true" name="'swat_heavy_1'" once="true" triggable="true">			
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
 			<object 			enabled="true" name="'g_gear_rifle'"/>
 			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
 		</sequence>
+
 
 		<sequence editable_state="true" name="'swat_heavy_2'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_shotgun'"/>
 			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
 		</sequence>
 
+
 		<sequence editable_state="true" name="'sniper_1'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_head'"/>
+			<object 			enabled="false" name="'g_head_lod1'"/>
+			
 			<object 			enabled="false" name="'g_body'"/>
 			<object 			enabled="false" name="'g_body_lod1'"/>
 			
@@ -38,27 +89,47 @@
 			<object 			enabled="true" name="'g_gear_sniper_lod1'"/>
 		</sequence>
 
+
 		<sequence editable_state="true" name="'shield_2'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
 			<object 			enabled="true" name="'g_gear_shield'"/>
 			<object 			enabled="true" name="'g_gear_shield_lod1'"/>
 		</sequence>
 
+
 		<sequence editable_state="true" name="'fbi_swat_1'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+						
 			<object 			enabled="true" name="'g_gear_rifle'"/>
 			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
 		</sequence>
+
 
 		<sequence editable_state="true" name="'fbi_swat_2'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_shotgun'"/>
 			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
 		</sequence>
 
+
 		<sequence editable_state="true" name="'fbi_swat_3'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_smg'"/>
 			<object 			enabled="true" name="'g_gear_smg_lod1'"/>
 		</sequence>
 
+
 		<sequence editable_state="true" name="'sniper_2'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_head'"/>
+			<object 			enabled="false" name="'g_head_lod1'"/>
+			
 			<object 			enabled="false" name="'g_body'"/>
 			<object 			enabled="false" name="'g_body_lod1'"/>
 			
@@ -69,68 +140,101 @@
 			<object 			enabled="true" name="'g_gear_sniper_lod1'"/>
 		</sequence>
 
+
 		<sequence editable_state="true" name="'shield_1'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
 			<object 			enabled="true" name="'g_gear_shield'"/>
 			<object 			enabled="true" name="'g_gear_shield_lod1'"/>
 		</sequence>
+
 
 		<sequence editable_state="true" name="'fbi_heavy_1'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_rifle'"/>
 			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
 		</sequence>
 
+
 		<sequence editable_state="true" name="'fbi_heavy_2'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_shotgun'"/>
 			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
 		</sequence>
 		
-		<sequence editable_state="true" name="'taser'" once="true" triggable="true"/>
 		
-		<sequence editable_state="true" name="'grenadier'" once="true" triggable="true"/>
+		<sequence editable_state="true" name="'taser'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_rifle'"/>
+			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
+		</sequence>
+		
+		<sequence editable_state="true" name="'grenadier'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_rifle'"/>
+			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
+		</sequence>
+		
 		
 		<sequence editable_state="true" name="'medic'" once="true" triggable="true"/>
 
+
 		<sequence editable_state="true" name="'marshal_marksman_1'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_marksman'"/>
+			<object 			enabled="true" name="'g_gear_marksman_lod1'"/>
+			
 			<object 			enabled="true" name="'g_star'"/>
+			<object 			enabled="true" name="'g_star_lod1'"/>
 		</sequence>
+
 
 		<sequence editable_state="true" name="'marshal_marksman_2'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_marksman'"/>
+			<object 			enabled="true" name="'g_gear_marksman_lod1'"/>
 		</sequence>
+
 
 		<sequence editable_state="true" name="'marshal_shield_1'" once="true" triggable="true">
 			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+			
 			<object 			enabled="true" name="'g_body_shield'"/>
+			<object 			enabled="true" name="'g_body_shield_lod1'"/>
+			
 			<object 			enabled="true" name="'g_gear_shield'"/>
+			<object 			enabled="true" name="'g_gear_shield_lod1'"/>
 		</sequence>
+
 
 		<sequence editable_state="true" name="'marshal_shield_2'" once="true" triggable="true">
 			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+			
 			<object 			enabled="true" name="'g_body_shield'"/>
+			<object 			enabled="true" name="'g_body_shield_lod1'"/>
+			
 			<object 			enabled="true" name="'g_gear_shield'"/>
+			<object 			enabled="true" name="'g_gear_shield_lod1'"/>
 		</sequence>
 		
-		<sequence editable_state="true" name="'marshal_security_1'" once="true" triggable="true">
-			<effect_spawner 	enabled="true" name="'es_light'"/>
-			<light 				enabled="true" name="'ls_light'"/>
-			
+		
+		<sequence editable_state="true" name="'marshal_security_1'" once="true" triggable="true">		
 			<object 			enabled="true" name="'g_gear_security'"/>
+			<object 			enabled="true" name="'g_gear_security_lod1'"/>
 		</sequence>
+		
 		
 		<sequence editable_state="true" name="'marshal_security_2'" once="true" triggable="true">
-			<effect_spawner 	enabled="true" name="'es_light'"/>
-			<light 				enabled="true" name="'ls_light'"/>
-			
 			<object 			enabled="true" name="'g_gear_security'"/>
+			<object 			enabled="true" name="'g_gear_security_lod1'"/>
 		</sequence>
 		
-		<sequence editable_state="true" name="'marshal_security_3'" once="true" triggable="true">
-			<effect_spawner 	enabled="true" name="'es_light'"/>
-			<light 				enabled="true" name="'ls_light'"/>
-			
+		
+		<sequence editable_state="true" name="'marshal_security_3'" once="true" triggable="true">			
 			<object 			enabled="true" name="'g_gear_security'"/>
+			<object 			enabled="true" name="'g_gear_security_lod1'"/>
 		</sequence>
+		
 	<!--THE END-->
 		
 		<sequence editable_state="true" name="'kill_tazer_headshot'" triggable="true">

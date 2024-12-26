@@ -4,7 +4,6 @@ local ALLOWED_CREW_WEAPON_CATEGORIES = {
 	shotgun = true,
 	lmg = true,
 	snp = true,
-	dmr = true,
 	minigun = true,
 	flamethrower = true
 }

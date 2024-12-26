@@ -6,21 +6,12 @@ CopBrain._logic_variants.drug_lord_boss = CopBrain._logic_variants.triad_boss
 CopBrain._logic_variants.biker_boss = CopBrain._logic_variants.triad_boss
 CopBrain._logic_variants.heavy_swat_sniper = CopBrain._logic_variants.marshal_marksman
 CopBrain._logic_variants.security_heavy = CopBrain._logic_variants.security
-CopBrain._logic_variants.security_army = CopBrain._logic_variants.security
-CopBrain._logic_variants.hrt = CopBrain._logic_variants.security
 CopBrain._logic_variants.soldier = CopBrain._logic_variants.security
 CopBrain._logic_variants.murkywater = CopBrain._logic_variants.security
 CopBrain._logic_variants.security_mcmansion = CopBrain._logic_variants.security
-CopBrain._logic_variants.marksman = CopBrain._logic_variants.marshal_marksman
 
 CopBrain._logic_variants.medic = clone(CopBrain._logic_variants.swat)
 CopBrain._logic_variants.medic.attack = MedicLogicAttack
-
-CopBrain._logic_variants.grenadier = clone(CopBrain._logic_variants.swat)
-CopBrain._logic_variants.grenadier.attack = GrenadierLogicAttack
-
-CopBrain._logic_variants.commander = clone(CopBrain._logic_variants.swat)
-CopBrain._logic_variants.commander.attack = CommanderLogicAttack
 
 CopBrain._next_cover_grenade_chk_t = 0
 CopBrain._next_logic_upd_t = 0

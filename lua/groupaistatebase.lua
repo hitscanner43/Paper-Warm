@@ -13,10 +13,8 @@ Hooks:PostHook(GroupAIStateBase, "_init_misc_data", "hits_init_misc_data", funct
 		medic = true,
 		marksman = true,
 		taser = true,
-		grenadier = true,
 		tank = true,
 		spooc = true,
-		commander = true
 	}
 end)
 
@@ -26,10 +24,8 @@ Hooks:PostHook(GroupAIStateBase, "on_simulation_started", "hits_on_simulation_st
 		medic = true,
 		marksman = true,
 		taser = true,
-		grenadier = true,
 		tank = true,
-		spooc = true,
-		commander = true
+		spooc = true
 	}
 end)
 
@@ -218,6 +214,54 @@ Hooks:PostHook(GroupAIStateBase, "criminal_spotted", "sh_criminal_spotted", func
 		local sus = managers.blackmarket:get_suspicion_offset_of_peer(unit:network():peer(), tweak_data.player.SUSPICION_OFFSET_LERP or 0.75)
 		u_sighting.suspicion_mul = math.map_range_clamped(sus, 0.03, 0.75, 0.5, 1) -- map suspicion from 3-75 to a 0.5 to 1 attention weight multiplier
 		u_sighting.suspicion_upd_t = self._t + 0.5
+	end
+end)
+
+
+-- Do not update detected position and time on nav segment change
+-- Log time when criminals enter an area to use for the teargas check
+Hooks:OverrideFunction(GroupAIStateBase, "on_criminal_nav_seg_change", function (self, unit, nav_seg_id)
+	local u_key = unit:key()
+	local u_sighting = self._criminals[u_key]
+	if not u_sighting then
+		return
+	end
+
+	u_sighting.seg = nav_seg_id
+
+	local prev_area = u_sighting.area
+	local area = self:get_area_from_nav_seg_id(nav_seg_id)
+	if prev_area ~= area then
+		if prev_area and not u_sighting.ai then
+			if table.count(prev_area.criminal.units, function (c_data) return not c_data.ai end) <= 1 then
+				prev_area.criminal_left_t = self._t
+				prev_area.old_criminal_entered_t = prev_area.criminal_entered_t
+				prev_area.criminal_entered_t = nil
+			end
+
+			if not area.criminal_entered_t then
+				if area.criminal_left_t and area.old_criminal_entered_t then
+					area.criminal_entered_t = math.lerp(area.old_criminal_entered_t, self._t, math.min((self._t - area.criminal_left_t) / 20, 1))
+				else
+					area.criminal_entered_t = self._t
+				end
+			end
+		end
+
+		if prev_area then
+			prev_area.criminal.units[u_key] = nil
+		end
+
+		u_sighting.area = area
+		area.criminal.units[u_key] = u_sighting
+	end
+
+	if area.is_safe then
+		area.is_safe = nil
+		self:_on_area_safety_status(area, {
+			reason = "criminal",
+			record = u_sighting
+		})
 	end
 end)
 

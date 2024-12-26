@@ -37,15 +37,12 @@ ElementSpawnEnemyGroup.group_mapping = {
 		"assault_b",		
 		"assault_c",
 		"reinforce_a",
-		"reinforce_b",	
-		"reinforce_c",		
+		"reinforce_b",			
 		"recon_a",	
 		"recon_b",			
-		"grenadier",
 		"marksman",
 		"soldiers",
 		"SKM_assault",
-		"SKM_grenadier",
 		"SKM_marksman",
 	},
 	tac_shield_wall = {
@@ -63,8 +60,13 @@ ElementSpawnEnemyGroup.group_mapping = {
 	tac_bull_rush = {
 		"bulldozer",
 		"SKM_bulldozer"
+	},
+	single_spooc = {
+		"cloaker",
+		"SKM_cloaker"
 	}
 }
+
 ElementSpawnEnemyGroup.group_mapping.tac_swat_rifle_flank = ElementSpawnEnemyGroup.group_mapping.tac_swat_rifle
 ElementSpawnEnemyGroup.group_mapping.tac_shield_wall_ranged = ElementSpawnEnemyGroup.group_mapping.tac_shield_wall
 ElementSpawnEnemyGroup.group_mapping.tac_shield_wall_charge = ElementSpawnEnemyGroup.group_mapping.tac_shield_wall

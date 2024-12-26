@@ -1,107 +1,114 @@
 <?xml version="1.0" ?>
 <dynamic_object>
-	<diesel materials="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1" orientation_object="root_point"/>
-	<sequence_manager file="units/payday2/characters/ene_swat_1/ene_swat_1" /> <animation_def name="anims/units/enemies/cop/cop_def" />
 
+	<diesel materials="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1" orientation_object="root_point" />
+	
+	<sequence_manager file="units/payday2/characters/ene_swat_1/ene_swat_1" /> 
+	
+	<animation_def name="anims/units/enemies/cop/cop_def" />
+	
 
 	<bodies>
 		
-
 		<body collision_class="ragdoll" enabled="true" friction="0.6" name="body" template="character">
-			<object name="Spine1"/>
-			<object collision_type="capsule" name="c_capsule_body"/>
+			<object name="Spine1" />
+			<object collision_type="capsule" name="c_capsule_body" />
 		</body>
 		
 
 		<body collision_class="ragdoll" enabled="true" friction="0.6" name="head" template="character">
-			<object name="Head"/>
-			<object collision_type="sphere" name="c_sphere_head"/>
+			<object name="Head" />
+			<object collision_type="sphere" name="c_sphere_head" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="0" collision_class="ragdoll" collision_script_quiet_time="0.5" collision_script_tag="small" enabled="false" friction="0.01" keyframed="false" lin_damping="0.6" name="rag_Head" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="Neck"/>
-			<object collision_type="sphere" mass="4" name="c_sphere_head_ragdoll" padding="-15"/>
+			<object name="Neck" />
+			<object collision_type="sphere" mass="4" name="c_sphere_head_ragdoll" padding="-15" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="0" collision_class="ragdoll" collision_group="1" collision_script_quiet_time="0.5" collision_script_tag="large" enabled="false" friction="0.6" keyframed="false" lin_damping="0.4" name="rag_Hips" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="Hips"/>
-			<object collision_type="capsule" mass="22" name="c_sphere_Hips" padding="-5"/>
+			<object name="Hips" />
+			<object collision_type="capsule" mass="22" name="c_sphere_Hips" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="4 6" collision_class="ragdoll" collision_group="8" collision_script_quiet_time="0.5" collision_script_tag="large" enabled="false" friction="0.6" keyframed="false" lin_damping="0.4" name="rag_Spine" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="Spine"/>
-			<object collision_type="capsule" mass="18" name="c_sphere_Spine" padding="-5"/>
+			<object name="Spine" />
+			<object collision_type="capsule" mass="18" name="c_sphere_Spine" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="4 6" collision_class="ragdoll" collision_group="8" collision_script_quiet_time="0.5" collision_script_tag="large" enabled="false" enter_water_script_tag="medium" friction="0.6" keyframed="false" lin_damping="0.4" name="rag_Spine1" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="Spine1"/>
-			<object collision_type="capsule" mass="18" name="c_sphere_Spine1" padding="-5"/>
+			<object name="Spine1" />
+			<object collision_type="capsule" mass="18" name="c_sphere_Spine1" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="4 6" collision_class="ragdoll" collision_group="8" collision_script_quiet_time="0.5" collision_script_tag="large" enabled="false" enter_water_script_tag="medium" friction="0.6" keyframed="false" lin_damping="0.4" name="rag_Spine2" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="Spine2"/>
-			<object collision_type="capsule" mass="17" name="c_sphere_Spine2" padding="-5"/>
+			<object name="Spine2" />
+			<object collision_type="capsule" mass="17" name="c_sphere_Spine2" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="30" collision_class="ragdoll" collision_group="20" collision_script_quiet_time="0.5" collision_script_tag="small" enabled="false" friction="0.01" keyframed="false" lin_damping="0.4" name="rag_RightUpLeg" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="RightUpLeg"/>
-			<object collision_type="capsule" mass="22" name="c_capsule_RightUpLeg" padding="-5"/>
+			<object name="RightUpLeg" />
+			<object collision_type="capsule" mass="22" name="c_capsule_RightUpLeg" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="20" collision_class="ragdoll" collision_group="30" collision_script_quiet_time="0.5" collision_script_tag="small" enabled="false" friction="0.01" keyframed="false" lin_damping="0.4" name="rag_LeftUpLeg" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="LeftUpLeg"/>
-			<object collision_type="capsule" mass="22" name="c_capsule_LeftUpLeg" padding="-5"/>
+			<object name="LeftUpLeg" />
+			<object collision_type="capsule" mass="22" name="c_capsule_LeftUpLeg" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="1" collision_class="ragdoll" collision_script_quiet_time="0.5" collision_script_tag="small" enabled="false" friction="0.01" keyframed="false" lin_damping="0.4" name="rag_RightArm" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="RightArm"/>
-			<object collision_type="capsule" mass="4" name="c_capsule_RightArm" padding="-5"/>
+			<object name="RightArm" />
+			<object collision_type="capsule" mass="4" name="c_capsule_RightArm" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="1" collision_class="ragdoll" collision_script_quiet_time="0.5" collision_script_tag="small" enabled="false" friction="0.01" keyframed="false" lin_damping="0.4" name="rag_LeftArm" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="LeftArm"/>
-			<object collision_type="capsule" mass="4" name="c_capsule_LeftArm" padding="-5"/>
+			<object name="LeftArm" />
+			<object collision_type="capsule" mass="4" name="c_capsule_LeftArm" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="8" collision_class="ragdoll" collision_group="4" collision_script_quiet_time="0.5" collision_script_tag="small" enabled="false" friction="0.02" keyframed="false" lin_damping="0" name="rag_RightForeArm" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="RightForeArm"/>
-			<object collision_type="capsule" mass="3" name="c_capsule_RightForeArm" padding="-5"/>
+			<object name="RightForeArm" />
+			<object collision_type="capsule" mass="3" name="c_capsule_RightForeArm" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="8" collision_class="ragdoll" collision_group="6" collision_script_quiet_time="0.5" collision_script_tag="small" enabled="false" friction="0.02" keyframed="false" lin_damping="0" name="rag_LeftForeArm" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="LeftForeArm"/>
-			<object collision_type="capsule" mass="3" name="c_capsule_LeftForeArm" padding="-5"/>
+			<object name="LeftForeArm" />
+			<object collision_type="capsule" mass="3" name="c_capsule_LeftForeArm" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="31" collision_class="ragdoll" collision_group="21" collision_script_quiet_time="0.5" collision_script_tag="small" enabled="false" friction="0.03" keyframed="false" lin_damping="1" name="rag_RightLeg" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="RightLeg"/>
-			<object collision_type="capsule" mass="6" name="c_capsule_RightLeg" padding="-5"/>
+			<object name="RightLeg" />
+			<object collision_type="capsule" mass="6" name="c_capsule_RightLeg" padding="-5" />
 		</body>
 		
 
 		<body ang_damping="20" collides_with="21" collision_class="ragdoll" collision_group="31" collision_script_quiet_time="0.5" collision_script_tag="small" enabled="false" friction="0.03" keyframed="false" lin_damping="1" name="rag_LeftLeg" ray="block" restitution="0" sweep="true" tag="flesh" template="corpse">
-			<object name="LeftLeg"/>
-			<object collision_type="capsule" mass="6" name="c_capsule_LeftLeg" padding="-5"/>
+			<object name="LeftLeg" />
+			<object collision_type="capsule" mass="6" name="c_capsule_LeftLeg" padding="-5" />
 		</body>
+
+
 		<body collision_class="ragdoll" enabled="true" keyframed="true" name="mover_blocker" template="mover_blocker">
-			<object collision_type="capsule" name="c_capsule_mover_blocker"/>
+			<object collision_type="capsule" name="c_capsule_mover_blocker" />
 		</body>
+		
 	</bodies>
 	
 
 	<constraints>
+
 		<constraint enabled="false" name="RightArm" type="ragdoll">
 			<param body_a="rag_Spine2" body_b="rag_RightArm"/>
 			<param pivot="position:RightArm"/>
@@ -216,26 +223,122 @@
 			<param plane_axis="yaxis:LeftLeg"/>
 			<param damping="1" min_restitution="0" spring_constant="200"/>
 		</constraint>
-	</constraints>	
 
-	<decal_surfaces default_material="flesh"/>
+	</constraints>
+	
+
+	<decal_surfaces default_material="flesh" />
+
 
 	<effects>
 		<effect_spawner name="es_light" enabled="false" object="e_light" effect="effects/payday2/particles/character/flashlight_ss" />
 	</effects>
-
+	
+	
 	<graphics>
-		<graphic_group culling_object="co_box" enabled="true" name="character">
-			<object name="g_body" 			enabled="true" />		
-			<object name="g_body_shield" 	enabled="false" />					
-			<object name="g_gear_security" 	enabled="false" />	
-			<object name="g_gear_marksman" 	enabled="false" />			
-			<object name="g_star" 			enabled="false" />		
-			<object name="s_body" 			enabled="true" shadow_caster="true" />		
+
+		<graphic_group name="character" enabled="true" culling_object="co_box">	
+		
+			<lod_object name="lod_body">
+				<object name="g_body" 		enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+					<material materials="mtr_body, mtr_equipment" max_distance="1000" />
+					<material materials="mtr_body_lod_1, mtr_equipment_lod_1" max_distance="1500" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
+				</object>
+				<object name="g_body_lod1" 	enabled="true" lod="1" >
+					<material materials="mtr_body, mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
+				</object>
+			</lod_object>
+
+			
+			<lod_object name="lod_body_shield">
+				<object name="g_body_shield" 		enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+					<material materials="mtr_body, mtr_equipment" max_distance="1000" />
+					<material materials="mtr_body_lod_1, mtr_equipment_lod_1" max_distance="1500" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
+				</object>
+				<object name="g_body_shield_lod1" 	enabled="false" lod="1" >
+					<material materials="mtr_body, mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
+				</object>
+			</lod_object>
+
+
+			<lod_object name="lod_gear_marksman">
+				<object name="g_gear_marksman" 		enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+					<material materials="mtr_body, mtr_equipment" max_distance="1000" />
+					<material materials="mtr_body_lod_1, mtr_equipment_lod_1" max_distance="1500" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
+				</object>
+				<object name="g_gear_marksman_lod1" 	enabled="false" lod="1" >
+					<material materials="mtr_body, mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
+				</object>
+			</lod_object>
+
+
+			<lod_object name="lod_gear_security">
+				<object name="g_gear_security" 		enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+					<material materials="mtr_body, mtr_equipment" max_distance="1000" />
+					<material materials="mtr_body_lod_1, mtr_equipment_lod_1" max_distance="1500" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
+				</object>
+				<object name="g_gear_security_lod1" 	enabled="false" lod="1" >
+					<material materials="mtr_body, mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
+				</object>
+			</lod_object>
+
+
+			<lod_object name="lod_gear_shield">
+				<object name="g_gear_shield" 		enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+					<material materials="mtr_equipment_shield, mtr_equipment" max_distance="1000" />
+					<material materials="mtr_equipment_shield_lod_1, mtr_equipment_lod_1" max_distance="1500" />
+					<material materials="mtr_equipment_shield_lod_2, mtr_equipment_lod_2" />
+				</object>
+				<object name="g_gear_shield_lod1" 	enabled="false" lod="1" >
+					<material materials="mtr_equipment_shield, mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_equipment_shield_lod_2, mtr_equipment_lod_2" />
+				</object>
+			</lod_object>
+			
+
+			<lod_object name="lod_star">
+				<object name="g_star" 			enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+					<material materials="mtr_equipment" max_distance="1000" />
+					<material materials="mtr_equipment_lod_1" max_distance="1500" />
+					<material materials="mtr_equipment_lod_2" />
+				</object>
+				<object name="g_star_lod1" 		enabled="false" lod="1" >
+					<material materials="mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_equipment_lod_2" />
+				</object>
+			</lod_object>
+
+
+			<lod_object name="lod_torch">
+				<object name="g_torch" 			enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+					<material materials="mtr_equipment_shield" max_distance="1000" />
+					<material materials="mtr_equipment_shield_lod_1" max_distance="1500" />
+					<material materials="mtr_equipment_shield_lod_2" />
+				</object>
+				<object name="g_torch_lod1" 	enabled="false" lod="1" >
+					<material materials="mtr_equipment_shield" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_equipment_shield_lod_2" />
+				</object>
+			</lod_object>
+
+			
+			<object name="s_body" 	enabled="true" shadow_caster="true" />
+			
 		</graphic_group>
+
 	</graphics>
+
 
 	<lights>
 		<light multiplier="identity" far_range="400" name="ls_light" enabled="false" type="spot|specular" />
 	</lights>
+	
 </dynamic_object>

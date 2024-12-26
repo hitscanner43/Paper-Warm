@@ -3,26 +3,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hits_init", function (self)
 		return Application:digest_value(value, true)
 	end
 	
-	for _, skill_data in pairs(self.skills) do
-		skill_data.icon_xy = { 0, 0 }
-	
-		for _, tier_data in ipairs(skill_data) do
-			tier_data.upgrades = {}
-		end
-		
-	end
-
-	for _, deck_data in pairs(self.specializations) do
-		for _, card_data in ipairs(deck_data) do
-			card_data.upgrades = {}
-			if card_data.multi_choice then
-				for _, multi_choice_data in ipairs(card_data.multi_choice) do
-					multi_choice_data.upgrades = {}
-				end
-			end
-		end
-	end
-	
 	self.default_upgrades = {
 		"player_primary_weapon_when_downed",
 		"player_intimidate_enemies",
