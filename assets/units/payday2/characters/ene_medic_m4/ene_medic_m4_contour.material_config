@@ -1,4 +1,5 @@
-<materials version="3" group="ene_fbi_swat_1">
+<?xml version="1.0" ?>
+<materials version="3" group="ene_medic_m4">
 	<material render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:SKINNED_3WEIGHTS" unique="true" version="2" name="mtr_head">
 		<bump_normal_texture 	file="units/payday2/characters/shared_textures/heads_atlas_nm"/>
 		<diffuse_texture 		file="units/payday2/characters/shared_textures/heads_atlas_df"/>

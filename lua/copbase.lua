@@ -80,7 +80,6 @@ local sequence_mapping_clean = {
 	["units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"] = "fbi_heavy_2",	
 	
 	["units/payday2/characters/ene_tazer_1/ene_tazer_1"] = "taser",	
-	["units/payday2/characters/ene_grenadier_1/ene_grenadier_1"] = "grenadier",		
 	["units/payday2/characters/ene_medic_m4/ene_medic_m4"] = "medic",		
 	
 	["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"] = "marshal_marksman_1",	

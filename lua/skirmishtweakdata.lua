@@ -34,7 +34,6 @@ Hooks:PostHook(SkirmishTweakData, "_init_special_unit_spawn_limits", "sh__init_s
 			taser = math.max(math.floor(0.7 + wave_factor * 0.3), 0),
 			tank = math.max(math.floor(0 + wave_factor * 0.25), 0),
 			spooc = math.max(math.floor(0 + wave_factor * 0.4), 0),
-			grenadier = math.max(math.floor(0 + wave_factor * 0.4), 0),
 			marksman = math.max(math.floor(-2 + wave_factor * 0.5), 0),
 		}
 	end
@@ -121,7 +120,6 @@ Hooks:PostHook(SkirmishTweakData, "_init_spawn_group_weights", "sh__init_spawn_g
 		SKM_shield = { 0, 5, 10 },
 		SKM_taser = { 0, 4, 8 },
 		SKM_cloaker = { 0, 4, 8 },
-		SKM_grenadier = { 0, 4, 8 },
 		SKM_marksman = { 0, 4, 8 },
 		SKM_bulldozer = { 0, 3, 6 },
 		

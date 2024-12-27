@@ -65,6 +65,18 @@
 			<sound 				filter="'check_visor'" action="'play'" event="'swat_heavy_visor_shatter'" object="'e_visor_break'" />
 		</sequence>
 
+		<sequence editable_state="true" name="'security_2'" once="true" triggable="true" />
+		
+		<sequence editable_state="true" name="'security_7'" once="true" triggable="true" />
+		
+		<sequence editable_state="true" name="'cop_2'" once="true" triggable="true" />
+		
+		<sequence editable_state="true" name="'cop_3'" once="true" triggable="true" />
+		
+		<sequence editable_state="true" name="'cop_4'" once="true" triggable="true" />
+		
+		<sequence editable_state="true" name="'fbi_1'" once="true" triggable="true" />
+
 		<sequence editable_state="true" name="'murkywater_1'" once="true" triggable="true">
 			<set_variables 		has_mandibles="1"/>
 		</sequence>	
@@ -82,7 +94,7 @@
 			<object 			enabled="true" name="'g_goggles_lod1'"/>
 		</sequence>
 
-		<sequence editable_state="true" name="'swat_3'" once="true" triggable="true"/>
+		<sequence editable_state="true" name="'swat_3'" once="true" triggable="true" />
 
 		<sequence editable_state="true" name="'sniper_1'" once="true" triggable="true">	
 			<set_variables 		has_goggles="1"/>
@@ -220,10 +232,16 @@
 			
 			<decal_mesh 		enabled="true" name="'dm_mandibles'"/>
 
-			<object 			enabled="true" name="'g_goggles'"/> 			
-			<object 			enabled="true" name="'g_glass'"/> 
-			<object 			enabled="true" name="'g_mandibles'"/>
-			<object 			enabled="true" name="'g_torch'"/>
+			<object 			enabled="true" name="'g_glass'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/> 
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			
+			<object 			enabled="true" name="'g_mandibles'"/> 
+			<object 			enabled="true" name="'g_mandibles_lod1'"/>
+
+			<object 			enabled="true" name="'g_torch'"/> 
+			<object 			enabled="true" name="'g_torch_lod1'"/>
 		</sequence>		
 
 		<sequence editable_state="true" name="'marshal_shield_2'" once="true" triggable="true">	
@@ -233,10 +251,16 @@
 			
 			<decal_mesh 		enabled="true" name="'dm_mandibles'"/>
 
-			<object 			enabled="true" name="'g_goggles'"/> 			
-			<object 			enabled="true" name="'g_glass'"/> 
-			<object 			enabled="true" name="'g_mandibles'"/>
-			<object 			enabled="true" name="'g_torch'"/>
+			<object 			enabled="true" name="'g_glass'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/> 
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			
+			<object 			enabled="true" name="'g_mandibles'"/> 
+			<object 			enabled="true" name="'g_mandibles_lod1'"/>
+
+			<object 			enabled="true" name="'g_torch'"/> 
+			<object 			enabled="true" name="'g_torch_lod1'"/>
 		</sequence>				
 	</unit>
 </table>

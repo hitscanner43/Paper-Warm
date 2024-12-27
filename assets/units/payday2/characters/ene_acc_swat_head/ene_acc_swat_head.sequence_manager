@@ -185,10 +185,6 @@
 		<sequence editable_state="true" name="'taser'" once="true" triggable="true">
 			<run_sequence	name="'taser_head'"/>
 		</sequence>
-
-		<sequence editable_state="true" name="'grenadier'" once="true" triggable="true">
-			<run_sequence	name="'taser_head'"/>
-		</sequence>
 		
 		<sequence editable_state="true" name="'medic'" once="true" triggable="true">
 			<run_sequence	name="'swat_head_a'"/>

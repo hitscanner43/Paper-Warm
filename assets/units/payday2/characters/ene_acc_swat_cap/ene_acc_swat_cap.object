@@ -1,46 +1,114 @@
 <?xml version="1.0"?>
 <dynamic_object>
+
 	<diesel materials="units/payday2/characters/ene_acc_swat_helmet/ene_acc_swat_helmet" orientation_object="rp_ene_acc_swat_cap" />
-	<sequence_manager file="units/payday2/characters/ene_acc_swat_helmet/ene_acc_swat_helmet" /> 
+	
+	<sequence_manager file="units/payday2/characters/helmet" /> 
+	
 	
 	<bodies>
-		<body name="collision_helmet" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
-			<object name="rp_ene_acc_swat_cap"/>
-			<object name="c_convex_1" collision_type="convex" mass="1.5" />
-			<object name="c_convex_2" collision_type="convex" mass="1.5" />
-			<object name="c_convex_3" collision_type="convex" mass="1.5" />
-			<object name="c_convex_4" collision_type="convex" mass="1.5" />
+	
+		<body name="collision_helmet" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9" >
+		
+			<object name="rp_ene_acc_swat_cap" />
+			<object name="c_convex_1" 	collision_type="convex" mass="1.5" />
+			<object name="c_convex_2" 	collision_type="convex" mass="1.5" />
+			<object name="c_convex_3" 	collision_type="convex" mass="1.5" />
+			<object name="c_convex_4" 	collision_type="convex" mass="1.5" />
+			
 		</body>
 
-		<body name="collision_goggles" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
-			<object name="rp_ene_acc_swat_cap"/>
-			<object name="c_convex_5" collision_type="convex" mass="1.5" />
+
+		<body name="collision_goggles" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9" >
+		
+			<object name="rp_ene_acc_swat_cap" />
+			<object name="c_convex_5" 	collision_type="convex" mass="1.5" />
+			
 		</body>
+		
 	</bodies>
 
+
 	<decal_surfaces default_material="cloth" />
-	
+
+
 	<graphics>
-		<graphic_group name="character" enabled="true" culling_object="co_culling">			
-			<lod_object name="lod_goggles">
-				<object name="g_goggles" 				enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_goggles_lod1" 			enabled="false"  lod="1" />
+	
+		<graphic_group name="hat" enabled="true" culling_object="co_box" >
+
+			<lod_object name="lod_hat">		
+			
+				<object name="g_hat" enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
+				
+					<material materials="mtr_helmet" 		max_distance="1000" />
+					<material materials="mtr_helmet_lod_1" 	max_distance="1500" />
+					<material materials="mtr_helmet_lod_2" />
+					
+				</object>
+				
+				
+				<object name="g_hat_lod1" enabled="true" lod="1" >
+				
+					<material materials="mtr_helmet"		max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_helmet_lod_2" />
+					
+				</object>	
+				
 			</lod_object>
 			
-			<lod_object name="lod_helmet">
-				<object name="g_helmet" 				enabled="true"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_helmet_lod1" 			enabled="true"  lod="1" />
+
+			<lod_object name="lod_hat_backwards">		
+			
+				<object name="g_hat_backwards" enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
+				
+					<material materials="mtr_helmet" 		max_distance="1000" />
+					<material materials="mtr_helmet_lod_1" 	max_distance="1500" />
+					<material materials="mtr_helmet_lod_2" />
+					
+				</object>
+				
+				
+				<object name="g_hat_backwards_lod1" enabled="false" lod="1" >
+				
+					<material materials="mtr_helmet" 		max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_helmet_lod_2" />
+					
+				</object>	
+				
+			</lod_object>
+			
+
+			<lod_object name="lod_gogles">		
+			
+				<object name="g_goggles" enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
+				
+					<material materials="mtr_helmet" 		max_distance="1000" />
+					<material materials="mtr_helmet_lod_1" 	max_distance="1500" />
+					<material materials="mtr_helmet_lod_2" />
+					
+				</object>
+				
+				
+				<object name="g_goggles_lod1" enabled="false" lod="1" >
+				
+					<material materials="mtr_helmet" 		max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_helmet_lod_2" />
+					
+				</object>	
+				
 			</lod_object>
 
-			<lod_object name="lod_helmet_backwards">
-				<object name="g_helmet_backwards" 		enabled="false"  max_distance="2000"  max_draw_lod="0" />
-				<object name="g_helmet_backwards_lod1" 	enabled="false"  lod="1" />
-			</lod_object>
-
+			
 			<object name="g_fbi" 						enabled="false" />
+			
+			
 			<object name="g_fbi_backwards" 				enabled="false" />	
 			
+			
 			<object name="g_glass" 						enabled="false" />	
+			
 		</graphic_group>
+		
 	</graphics>
+	
 </dynamic_object>

@@ -1,7 +1,0 @@
-<table>
-	<unit>	
-		<sequence editable_state="true" name="'detach'" once="true" triggable="true">
-			<body 				enabled="true" name="'collision_hat'"/>
-		</sequence>
-	</unit>
-</table>

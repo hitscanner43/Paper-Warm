@@ -723,7 +723,7 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 	-- If players camp a specific area for too long, turn a smoke grenade into a teargas grenade instead
 	local use_teargas
 	if grenade_type == "smoke_grenade" and not assault_area.hostages and assault_area.criminal_entered_t and table.size(assault_area.neighbours) <= 2 then
-		local teargas_chance_times = tweak_data.group_ai.cs_grenade_chance_times or { 60, 240 }
+		local teargas_chance_times = tweak_data.group_ai.cs_grenade_chance_times or { 30, 150 }
 		local teargas_chance = math.map_range(self._t - assault_area.criminal_entered_t, teargas_chance_times[1], teargas_chance_times[2], 0, 1)
 		if math.random() < teargas_chance then
 			local teargas_pos = managers.navigation:find_random_position_in_segment(assault_area.pos_nav_seg)
@@ -742,14 +742,14 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 	local use_frag
 	if grenade_type == "flash_grenade" and not assault_area.hostages then
 		local frag_pos = managers.navigation:find_random_position_in_segment(assault_area.pos_nav_seg)
-		mvec_lerp(detonate_offset_pos, frag_pos, assault_area.pos, 0.75)
+		mvec_lerp(detonate_offset_pos, frag_pos, assault_area.pos, 0.5)
 
 		local c_key = table.random_key(assault_area.criminal.units)
 		if c_key then
 			mvec_lerp(detonate_offset_pos, detonate_offset_pos, assault_area.criminal.units[c_key].m_pos, 0.5)
 		end
 
-		use_teargas = true
+		use_frag = true
 	end
 	
 	-- Make sure the grenade stays inside AI navigation (on the ground)

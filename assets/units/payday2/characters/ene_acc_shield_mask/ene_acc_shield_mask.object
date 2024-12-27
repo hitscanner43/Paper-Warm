@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <dynamic_object>
 	<diesel materials="units/payday2/characters/ene_acc_swat_helmet/ene_acc_swat_helmet" orientation_object="rp_ene_acc_shield_mask" />
-	<sequence_manager file="units/payday2/characters/ene_acc_swat_helmet/ene_acc_swat_helmet" /> 
+	<sequence_manager file="units/payday2/characters/helmet" /> 
 	
 	<bodies>
 		<body name="collision_helmet" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9">

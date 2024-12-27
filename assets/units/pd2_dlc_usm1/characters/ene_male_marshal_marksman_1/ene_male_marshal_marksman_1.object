@@ -3,7 +3,7 @@
 
 	<diesel materials="units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1" orientation_object="root_point" />
 	
-	<sequence_manager file="units/payday2/characters/ene_swat_1/ene_swat_1" /> 
+	<sequence_manager file="units/payday2/characters/ragdoll_new" /> 
 	
 	<animation_def name="anims/units/enemies/cop/cop_def" />
 	

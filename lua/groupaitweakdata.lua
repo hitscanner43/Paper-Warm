@@ -339,15 +339,15 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 	}
 	
 	self.besiege.reenforce.interval = { 
-		60, 
-		45, 
-		30
+		40, 
+		30, 
+		20
 	}
 
 	self.spawn_rate = { 
 		diff_lerp(3, 2.5),
 		diff_lerp(2.5, 2),
-		diff_lerp(2, 1)
+		diff_lerp(2, 1.5)
 	}
 	
 	self.spawn_kill_cooldown = 10
@@ -373,13 +373,6 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 		40 * timeout_mult
 	}
 
-	self.cs_grenade_lifetime = 25
-	self.cs_grenade_chance_times = { 60, math.lerp(240, 120, f) }
-	self.cs_grenade_timeout =  {
-		60 * timeout_mult, 
-		80 * timeout_mult
-	}
-
 	self.frag_grenade = {
 		damage = 0,
 		player_damage = diff_lerp(16, 24),
@@ -401,6 +394,13 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 		60 * timeout_mult
 	}
 	
+	self.cs_grenade_lifetime = 25
+	self.cs_grenade_chance_times = { 30, diff_lerp(150, 90) }
+	self.cs_grenade_timeout =  {
+		60 * timeout_mult, 
+		80 * timeout_mult
+	}
+
 	local special_weight_mult = diff_lerp(0.4, 1)
 
 	self.besiege.assault.groups = {
@@ -409,28 +409,28 @@ Hooks:PostHook(GroupAITweakData, "_init_task_data", "hits_init_task_data", funct
 		assault_c = { 0, 0, 2 },	
 		shield = { 
 			0, 
-			0.25 * special_weight_mult, 
-			0.5 * special_weight_mult
+			0.3 * special_weight_mult, 
+			0.6 * special_weight_mult
 		},
 		cloaker = { 
 			0, 
-			0.25 * special_weight_mult, 
-			0.5 * special_weight_mult
+			0.3 * special_weight_mult, 
+			0.6 * special_weight_mult
 		},
 		marksman = { 
 			0, 
-			0.2 * special_weight_mult, 
-			0.4 * special_weight_mult
+			0.25 * special_weight_mult, 
+			0.5 * special_weight_mult
 		},
 		taser = { 
 			0, 
-			0.2 * special_weight_mult, 
-			0.4 * special_weight_mult,   
+			0.25 * special_weight_mult, 
+			0.5 * special_weight_mult,   
 		},
 		bulldozer = { 
 			0, 
 			0, 
-			0.3 * special_weight_mult 
+			0.4 * special_weight_mult 
 		},
 		single_spooc = { 0, 0, 0 },
 		custom_assault = { 0, 0, 0 },

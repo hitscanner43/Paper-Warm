@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<dynamic_object>
+	<diesel materials="units/pd2_dlc_usm2/characters/ene_acc_marshal_shield_helmet/ene_acc_marshal_shield_helmet" orientation_object="rp_ene_acc_marshal_shield_helmet" />
+	
+	<sequence_manager file="units/payday2/characters/helmet" /> 
+	
+	<bodies>
+	
+		<body name="collision_helmet" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9" >
+		
+			<object name="rp_ene_acc_marshal_shield_helmet"/>
+			<object name="c_convex_1" collision_type="convex" mass="1.5" />
+			<object name="c_convex_2" collision_type="convex" mass="1.5" />
+			<object name="c_convex_3" collision_type="convex" mass="1.5" />
+			<object name="c_convex_4" collision_type="convex" mass="1.5" />
+			
+		</body>
+
+
+		<body name="collision_goggles" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9" >
+		
+			<object name="rp_ene_acc_marshal_shield_helmet"/>
+			<object name="c_convex_5" collision_type="convex" mass="1.5" />
+			
+		</body>
+
+
+		<body name="collision_mandibles" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9" >
+		
+			<object name="rp_ene_acc_marshal_shield_helmet"/>
+			<object name="c_convex_6" collision_type="convex" mass="1.5" />
+			<object name="c_convex_7" collision_type="convex" mass="1.5" />
+			<object name="c_convex_8" collision_type="convex" mass="1.5" />
+			<object name="c_convex_9" collision_type="convex" mass="1.5" />
+			
+		</body>
+
+
+		<body name="collision_torch" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9" >
+		
+			<object name="rp_ene_acc_marshal_shield_helmet"/>
+			<object name="c_convex_10" collision_type="convex" mass="1.5" />
+			
+		</body>
+		
+	</bodies>
+
+
+	<decal_surfaces default_material="steel_no_decal" >
+	
+		<decal_mesh name="g_glass" 			enabled="false" material="glass_no_decal" />
+		<decal_mesh name="dm_mandibles" 	enabled="false" material="steel_no_decal" />
+		
+	</decal_surfaces>
+
+
+	<graphics>
+	
+		<graphic_group name="helmet" enabled="true" culling_object="co_box" >	
+
+			<lod_object name="lod_helmet">		
+			
+				<object name="g_helmet" enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
+				
+					<material materials="mtr_equipment_shield" 		max_distance="1000" />
+					<material materials="mtr_equipment_shield_lod_1" 	max_distance="1500" />
+					<material materials="mtr_equipment_shield_lod_2" />
+					
+				</object>
+				
+				
+				<object name="g_helmet_lod1" enabled="true" lod="1" >
+				
+					<material materials="mtr_equipment_shield"		max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_equipment_shield_lod_2" />
+					
+				</object>	
+				
+			</lod_object>
+
+
+			<lod_object name="lod_goggles">		
+			
+				<object name="g_goggles" enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
+				
+					<material materials="mtr_equipment_shield" 		max_distance="1000" />
+					<material materials="mtr_equipment_shield_lod_1" 	max_distance="1500" />
+					<material materials="mtr_equipment_shield_lod_2" />
+					
+				</object>
+				
+				
+				<object name="g_goggles_lod1" enabled="false" lod="1" >
+				
+					<material materials="mtr_equipment_shield"		max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_equipment_shield_lod_2" />
+					
+				</object>	
+				
+			</lod_object>
+
+
+			<lod_object name="lod_mandibles">		
+			
+				<object name="g_mandibles" enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
+				
+					<material materials="mtr_equipment_shield" 		max_distance="1000" />
+					<material materials="mtr_equipment_shield_lod_1" 	max_distance="1500" />
+					<material materials="mtr_equipment_shield_lod_2" />
+					
+				</object>
+				
+				
+				<object name="g_mandibles_lod1" enabled="false" lod="1" >
+				
+					<material materials="mtr_equipment_shield"		max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_equipment_shield_lod_2" />
+					
+				</object>	
+				
+			</lod_object>
+
+
+			<lod_object name="lod_torch">		
+			
+				<object name="g_torch" enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
+				
+					<material materials="mtr_equipment_shield" 		max_distance="1000" />
+					<material materials="mtr_equipment_shield_lod_1" 	max_distance="1500" />
+					<material materials="mtr_equipment_shield_lod_2" />
+					
+				</object>
+				
+				
+				<object name="g_torch_lod1" enabled="false" lod="1" >
+				
+					<material materials="mtr_equipment_shield"		max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_equipment_shield_lod_2" />
+					
+				</object>	
+				
+			</lod_object>
+
+			
+			<object name="g_glass" 		enabled="false" />
+			
+		</graphic_group>
+		
+	</graphics>
+	
+</dynamic_object>
