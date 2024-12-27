@@ -25,7 +25,7 @@
 	
 		<graphic_group name="hat" enabled="true" culling_object="co_box" >
 
-			<lod_object name="lod_hat">		
+			<lod_object name="lod_hat" >		
 			
 				<object name="g_hat" enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
 				

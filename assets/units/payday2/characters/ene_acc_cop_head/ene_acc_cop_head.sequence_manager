@@ -251,7 +251,6 @@
 		<sequence editable_state="true" name="'fbi_1'" once="true" triggable="true">
 			<run_sequence	name="'cop_head'"/>
 			<run_sequence	name="'disable_arms'"/>
-			<run_sequence	name="'disable_hands'"/>
 		</sequence>
 		
 		<sequence editable_state="true" name="'fbi_2'" once="true" triggable="true">
