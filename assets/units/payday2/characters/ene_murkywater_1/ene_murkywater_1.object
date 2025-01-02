@@ -231,7 +231,9 @@
 
 
 	<effects>
+	
 		<effect_spawner name="es_light" enabled="false" object="e_light" effect="effects/payday2/particles/character/flashlight_ss" />
+		
 	</effects>
 	
 	

@@ -1,34 +1,17 @@
 local level_id = PaperWarm:level_id()
 local lvl_tweak_data = tweak_data.levels[level_id]	
 
--- Dynamically load throwable if we have one
-local unit_ids = Idstring("unit")
-Hooks:PostHook(CopBase, "init", "sh_init", function (self)
-	local throwable = self._char_tweak.throwable
-	if not throwable then
-		return
-	end
-
-	local tweak_entry = tweak_data.blackmarket.projectiles[throwable]
-	local unit_name = Idstring(Network:is_client() and tweak_entry.local_unit or tweak_entry.unit)
-	local sprint_unit_name = tweak_entry.sprint_unit and Idstring(tweak_entry.sprint_unit)
-
-	if not PackageManager:has(unit_ids, unit_name) then
-		PaperWarm:log("Loading projectile unit %s", throwable)
-		managers.dyn_resource:load(unit_ids, unit_name, managers.dyn_resource.DYN_RESOURCES_PACKAGE)
-	end
-
-	if sprint_unit_name and not PackageManager:has(unit_ids, sprint_unit_name) then
-		PaperWarm:log("Loading projectile sprint unit %s", throwable)
-		managers.dyn_resource:load(unit_ids, sprint_unit_name, managers.dyn_resource.DYN_RESOURCES_PACKAGE)
-	end
-end)
-
 
 local sequence_mapping_clean = {
 	["units/payday2/characters/ene_security_1/ene_security_1"] = "security_1",	
 	["units/payday2/characters/ene_security_2/ene_security_2"] = "security_2",	
 	["units/payday2/characters/ene_security_3/ene_security_3"] = "security_3",	
+
+	["units/payday2/characters/ene_security_4/ene_security_4"] = "security_4",	
+	["units/payday2/characters/ene_security_5/ene_security_5"] = "security_5",	
+	["units/payday2/characters/ene_security_6/ene_security_6"] = "security_6",	
+	["units/payday2/characters/ene_security_7/ene_security_7"] = "security_7",	
+	["units/payday2/characters/ene_security_8/ene_security_8"] = "security_8",	
 	
 	["units/payday2/characters/ene_cop_1/ene_cop_1"] = "cop_1",	
 	["units/payday2/characters/ene_cop_2/ene_cop_2"] = "cop_2",	
@@ -38,11 +21,6 @@ local sequence_mapping_clean = {
 	["units/payday2/characters/ene_fbi_1/ene_fbi_1"] = "fbi_1",	
 	["units/payday2/characters/ene_fbi_2/ene_fbi_2"] = "fbi_2",	
 	["units/payday2/characters/ene_fbi_3/ene_fbi_3"] = "fbi_3",	
-	
-	["units/payday2/characters/ene_security_4/ene_security_4"] = "security_4",	
-	["units/payday2/characters/ene_security_5/ene_security_5"] = "security_5",	
-	["units/payday2/characters/ene_security_6/ene_security_6"] = "security_6",	
-	["units/payday2/characters/ene_security_7/ene_security_7"] = "security_7",	
 
 	["units/payday2/characters/ene_secret_service_1/ene_secret_service_1"] = "secret_service_1",	
 	["units/payday2/characters/ene_secret_service_2/ene_secret_service_2"] = "secret_service_2",	
@@ -78,15 +56,47 @@ local sequence_mapping_clean = {
 
 	["units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"] = "fbi_heavy_1",	
 	["units/payday2/characters/ene_fbi_heavy_r870/ene_fbi_heavy_r870"] = "fbi_heavy_2",	
+
+	["units/payday2/characters/ene_city_swat_1/ene_city_swat_1"] = "city_swat_1",		
+	["units/payday2/characters/ene_city_swat_2/ene_city_swat_2"] = "city_swat_2",	
+	["units/payday2/characters/ene_city_swat_3/ene_city_swat_3"] = "city_swat_3",	
+
+	["units/payday2/characters/ene_city_heavy_g36/ene_city_heavy_g36"] = "city_heavy_1",	
+	["units/payday2/characters/ene_city_heavy_r870/ene_city_heavy_r870"] = "city_heavy_2",	
 	
-	["units/payday2/characters/ene_tazer_1/ene_tazer_1"] = "taser",	
-	["units/payday2/characters/ene_medic_m4/ene_medic_m4"] = "medic",		
+	["units/payday2/characters/ene_sniper_3/ene_sniper_3"] = "sniper_3",	
+	["units/payday2/characters/ene_city_shield/ene_city_shield"] = "shield_3",	
+	
+	["units/payday2/characters/ene_tazer_1/ene_tazer_1"] = "taser",		
+	
+	["units/payday2/characters/ene_medic_m4/ene_medic_m4"] = "medic_1",		
+	["units/payday2/characters/ene_medic_r870/ene_medic_r870"] = "medic_2",	
 	
 	["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_1/ene_male_marshal_marksman_1"] = "marshal_marksman_1",	
 	["units/pd2_dlc_usm1/characters/ene_male_marshal_marksman_2/ene_male_marshal_marksman_2"] = "marshal_marksman_2",	
 	
 	["units/pd2_dlc_usm2/characters/ene_male_marshal_shield_1/ene_male_marshal_shield_1"] = "marshal_shield_1",	
 	["units/pd2_dlc_usm2/characters/ene_male_marshal_shield_2/ene_male_marshal_shield_2"] = "marshal_shield_2",	
+
+	["units/pd2_dlc1/characters/ene_security_gensec_1/ene_security_gensec_1"] = "gensec_1",	
+	["units/pd2_dlc1/characters/ene_security_gensec_2/ene_security_gensec_2"] = "gensec_2",	
+	
+	["units/pd2_dlc_casino/characters/ene_secret_service_1_casino/ene_secret_service_1_casino"] = "secret_service_casino",	
+
+	["units/pd2_dlc_rvd/characters/ene_la_cop_1/ene_la_cop_1"] = "la_cop_1",	
+	["units/pd2_dlc_rvd/characters/ene_la_cop_2/ene_la_cop_2"] = "la_cop_2",	
+	["units/pd2_dlc_rvd/characters/ene_la_cop_3/ene_la_cop_3"] = "la_cop_3",	
+	["units/pd2_dlc_rvd/characters/ene_la_cop_4/ene_la_cop_4"] = "la_cop_4",	
+
+	["units/pd2_dlc_chas/characters/ene_male_chas_police_01/ene_male_chas_police_01"] = "chas_police_1",	
+	["units/pd2_dlc_chas/characters/ene_male_chas_police_02/ene_male_chas_police_02"] = "chas_police_2",		
+	["units/pd2_dlc_chas/characters/ene_male_chas_police_03/ene_male_chas_police_03"] = "chas_police_3",	
+	["units/pd2_dlc_chas/characters/ene_male_chas_police_04/ene_male_chas_police_04"] = "chas_police_4",	
+		
+	["units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_01/ene_male_ranc_ranger_01"] = "ranc_ranger_1",	
+	["units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_02/ene_male_ranc_ranger_02"] = "ranc_ranger_2",		
+	["units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_03/ene_male_ranc_ranger_03"] = "ranc_ranger_3",	
+	["units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_04/ene_male_ranc_ranger_04"] = "ranc_ranger_4",	
 	
 	["units/pd2_dlc_deep/characters/ene_deep_security_1/ene_deep_security_1"] = "marshal_security_1",	
 	["units/pd2_dlc_deep/characters/ene_deep_security_2/ene_deep_security_2"] = "marshal_security_2",	
@@ -123,22 +133,57 @@ for name, value in pairs(use_torch_clean) do
 end
 
 
-local hoxout_fbi_male = { "m4", "mp5", "r870" } 
-local hoxout_fbi_female = { "c45", "raging_bull" } 
-
-local cop_light = { "c45", "raging_bull" }
-local cop_heavy = { "mp5", "r870" }
-
-local cobras = { "c45", "mac11", "mossberg" }
-local mendozas = { "deagle", "ak47", "r870", "c45"  }
-local bikers_male = { "m4", "r870" }
-local bikers_female = { "mossberg", "c45", "raging_bull" }
-local russians = { "ak47", "mac11", "raging_bull", "r870" }
-local mobsters = { "ak47", "mossberg", "raging_bull", "r870" }
-local sosa_outdoor = { "c45", "mac10", "deagle" }
-local sosa_indoor = { "ak47", "r870" }
-local triads = { "c45", "mac11", "mossberg" }
-local triads_pent = { "deagle", "m4", "mp5" }
+local hoxout_fbi_male = { 
+	mp5 = 4,
+	m4 = 3, 
+	r870 = 2
+}
+local hoxout_fbi_female = { 
+	c45 = 3, 
+	raging_bull = 1 
+} 
+local cobras = { 
+	c45 = 3,
+	mac11 = 2
+}
+local mendozas = { 
+	mac11 = 3,
+	deagle = 1
+}
+local bikers_male = { 
+	m4 = 2,
+	r870 = 1
+}
+local bikers_female = { 
+	c45 = 3, 
+	mossberg = 1, 
+	raging_bull = 1 
+}
+local russians = { 
+	mac11 = 3,
+	raging_bull = 1
+}
+local mobsters = {
+	ak47 = 2,
+	r870 = 1,
+	raging_bull = 1
+}
+local sosa_outdoor = { 
+	mac11 = 3,
+	deagle = 1
+}
+local sosa_indoor = { 
+	ak47 = 2,
+	r870 = 1
+}
+local triads = { 
+	c45 = 3,
+	mac11 = 2
+}
+local triads_pent = { 
+	c45 = 2,
+	mp5 = 1
+}
 
 
 local weapon_mapping = {
@@ -176,12 +221,6 @@ local weapon_mapping = {
 	[("units/payday2/characters/ene_fbi_female_2/ene_fbi_female_2"):key()] = hoxout_fbi_female,
 	[("units/payday2/characters/ene_fbi_female_3/ene_fbi_female_3"):key()] = hoxout_fbi_female,
 	[("units/payday2/characters/ene_fbi_female_4/ene_fbi_female_4"):key()] = hoxout_fbi_female,
-
-	[("units/pd2_dlc_chas/characters/ene_male_chas_police_01/ene_male_chas_police_01"):key()] = cop_light,
-	[("units/pd2_dlc_chas/characters/ene_male_chas_police_02/ene_male_chas_police_02"):key()] = cop_heavy,
-		
-	[("units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_01/ene_male_ranc_ranger_01"):key()] = cop_light,
-	[("units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_02/ene_male_ranc_ranger_02"):key()] = cop_heavy,
 				
 	[("units/payday2/characters/ene_gang_black_1/ene_gang_black_1"):key()] = cobras,
 	[("units/payday2/characters/ene_gang_black_2/ene_gang_black_2"):key()] = cobras,
@@ -286,14 +325,26 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 		end
 	end
 	
-	local weapon_swap = weapon_mapping[name]
-
-	if weapon_swap then
-		self._default_weapon_id = type(weapon_swap) == "table" and table.random(weapon_swap) or weapon_swap
+	local mapping = weapon_mapping[name]
+	
+	local mapping_type = type(mapping)
+	if mapping_type == "table" then
+		local selector = WeightedSelector:new()
+		for k, v in pairs(mapping) do
+			if type(k) == "number" then
+				selector:add(v, 1)
+			else
+				selector:add(k, v)
+			end
+		end
+		self._default_weapon_id = selector:select() or self._default_weapon_id
+	elseif mapping_type == "string" then
+		self._default_weapon_id = mapping
 	end
 end)
 
 
+local unit_ids = Idstring("unit")
 Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
 	local name = self._unit:name():key()
 
@@ -305,23 +356,26 @@ Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
 	end
 	
 	local damage_ext = self._unit:character_damage()
-	local head_gear = damage_ext._head_gear
-	
-	if not damage_ext._nr_head_gear_objects then
-		if head_gear then	
-			self._head_gear_unit = safe_spawn_unit(head_gear, Vector3(), Rotation())
 
-			if self._head_gear_unit:damage() and self._head_gear_unit:damage():has_sequence(random_character_sequence or character_sequence) then
-				self._head_gear_unit:damage():run_sequence_simple(random_character_sequence or character_sequence)
+	if damage_ext then	
+		if not damage_ext._nr_head_gear_objects then
+			local head_gear = damage_ext._head_gear
+			
+			if head_gear then
+				self._head_gear_unit = safe_spawn_unit(head_gear, Vector3(), Rotation())
 			end
-		end
-		
-		if self._head_gear_unit then
-			local align_obj_name = Idstring("Head")
-			local align_obj = self._unit:get_object(align_obj_name)
 
-			self._unit:link(align_obj_name, self._head_gear_unit, self._head_gear_unit:orientation_object():name())
-		end	
+			if alive(self._head_gear_unit) then			
+				if self._head_gear_unit:damage() and self._head_gear_unit:damage():has_sequence(random_character_sequence or character_sequence) then
+					self._head_gear_unit:damage():run_sequence_simple(random_character_sequence or character_sequence)
+				end
+				
+				local align_obj_name = Idstring("Head")
+				local align_obj = self._unit:get_object(align_obj_name)
+
+				self._unit:link(align_obj_name, self._head_gear_unit, self._head_gear_unit:orientation_object():name())
+			end	
+		end
 	end
 end)
 
@@ -337,6 +391,29 @@ function CopBase:melee_weapon()
 	end
 	return self._melee_weapon
 end
+
+
+-- Dynamically load throwable if we have one
+Hooks:PostHook(CopBase, "init", "sh_init", function (self)
+	local throwable = self._char_tweak.throwable
+	if not throwable then
+		return
+	end
+
+	local tweak_entry = tweak_data.blackmarket.projectiles[throwable]
+	local unit_name = Idstring(Network:is_client() and tweak_entry.local_unit or tweak_entry.unit)
+	local sprint_unit_name = tweak_entry.sprint_unit and Idstring(tweak_entry.sprint_unit)
+
+	if not PackageManager:has(unit_ids, unit_name) then
+		PaperWarm:log("Loading projectile unit %s", throwable)
+		managers.dyn_resource:load(unit_ids, unit_name, managers.dyn_resource.DYN_RESOURCES_PACKAGE)
+	end
+
+	if sprint_unit_name and not PackageManager:has(unit_ids, sprint_unit_name) then
+		PaperWarm:log("Loading projectile sprint unit %s", throwable)
+		managers.dyn_resource:load(unit_ids, sprint_unit_name, managers.dyn_resource.DYN_RESOURCES_PACKAGE)
+	end
+end)
 
 
 Hooks:PostHook(CopBase, "pre_destroy", "hits_pre_destroy", function (self)	

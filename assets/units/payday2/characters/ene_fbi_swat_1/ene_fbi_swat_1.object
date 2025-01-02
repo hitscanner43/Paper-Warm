@@ -258,20 +258,7 @@
 					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
 				</object>
 			</lod_object>
-
 			
-			<lod_object name="lod_body_sniper">
-				<object name="g_body_sniper" 		enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
-					<material materials="mtr_body, mtr_equipment" max_distance="1000" />
-					<material materials="mtr_body_lod_1, mtr_equipment_lod_1" max_distance="1500" />
-					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
-				</object>
-				<object name="g_body_sniper_lod1" 	enabled="false" lod="1" >
-					<material materials="mtr_body, mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
-					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
-				</object>
-			</lod_object>
-
 
 			<lod_object name="lod_head">
 				<object name="g_head" 		enabled="true"  max_distance="3000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
@@ -286,15 +273,41 @@
 			</lod_object>
 
 
+			<lod_object name="lod_goggles">
+				<object name="g_goggles" 		enabled="false"  max_distance="3000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+					<material materials="mtr_head" max_distance="1000" />
+					<material materials="mtr_head_lod_1" max_distance="1500" />
+					<material materials="mtr_head_lod_2" />
+				</object>
+				<object name="g_goggles_lod1" 	enabled="false" lod="1" >
+					<material materials="mtr_head" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_head_lod_2" />
+				</object>
+			</lod_object>
+			
+
+			<lod_object name="lod_headset">
+				<object name="g_headset" 		enabled="false"  max_distance="3000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+					<material materials="mtr_head" max_distance="1000" />
+					<material materials="mtr_head_lod_1" max_distance="1500" />
+					<material materials="mtr_head_lod_2" />
+				</object>
+				<object name="g_headset_lod1" 	enabled="false" lod="1" >
+					<material materials="mtr_head" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_head_lod_2" />
+				</object>
+			</lod_object>
+			
+			
 			<lod_object name="lod_gear_rifle">
 				<object name="g_gear_rifle" 		enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
-					<material materials="mtr_body, mtr_equipment, mtr_head" max_distance="1000" />
-					<material materials="mtr_body_lod_1, mtr_equipment_lod_1, mtr_head_lod_1" max_distance="1500" />
-					<material materials="mtr_body_lod_2, mtr_equipment_lod_2, mtr_head_lod_2" />
+					<material materials="mtr_body, mtr_equipment" max_distance="1000" />
+					<material materials="mtr_body_lod_1, mtr_equipment_lod_1" max_distance="1500" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
 				</object>
 				<object name="g_gear_rifle_lod1" 	enabled="false" lod="1" >
-					<material materials="mtr_body, mtr_equipment, mtr_head" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
-					<material materials="mtr_body_lod_2, mtr_equipment_lod_2, mtr_head_lod_2" />
+					<material materials="mtr_body, mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
 				</object>
 			</lod_object>
 
@@ -314,26 +327,26 @@
 
 			<lod_object name="lod_gear_smg">
 				<object name="g_gear_smg" 		enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
-					<material materials="mtr_body, mtr_equipment, mtr_head" max_distance="1000" />
-					<material materials="mtr_body_lod_1, mtr_equipment_lod_1, mtr_head_lod_1" max_distance="1500" />
-					<material materials="mtr_body_lod_2, mtr_equipment_lod_2, mtr_head_lod_2" />
+					<material materials="mtr_body, mtr_equipment" max_distance="1000" />
+					<material materials="mtr_body_lod_1, mtr_equipment_lod_1" max_distance="1500" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
 				</object>
 				<object name="g_gear_smg_lod1" 	enabled="false" lod="1" >
-					<material materials="mtr_body, mtr_equipment, mtr_head" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
-					<material materials="mtr_body_lod_2, mtr_equipment_lod_2, mtr_head_lod_2" />
+					<material materials="mtr_body, mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
 				</object>
 			</lod_object>
 
 
 			<lod_object name="lod_gear_sniper">
 				<object name="g_gear_sniper" 		enabled="false"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
-					<material materials="mtr_body, mtr_equipment, mtr_head" max_distance="1000" />
-					<material materials="mtr_body_lod_1, mtr_equipment_lod_1, mtr_head_lod_1" max_distance="1500" />
-					<material materials="mtr_body_lod_2, mtr_equipment_lod_2, mtr_head_lod_2" />
+					<material materials="mtr_body, mtr_equipment" max_distance="1000" />
+					<material materials="mtr_body_lod_1, mtr_equipment_lod_1" max_distance="1500" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
 				</object>
 				<object name="g_gear_sniper_lod1" 	enabled="false" lod="1" >
-					<material materials="mtr_body, mtr_equipment, mtr_head" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
-					<material materials="mtr_body_lod_2, mtr_equipment_lod_2, mtr_head_lod_2" />
+					<material materials="mtr_body, mtr_equipment" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_body_lod_2, mtr_equipment_lod_2" />
 				</object>
 			</lod_object>
 
@@ -349,6 +362,9 @@
 					<material materials="mtr_body_lod_2, mtr_head_lod_2" />
 				</object>
 			</lod_object>
+			
+			
+			<object name="g_glass" 	enabled="false" />
 			
 			
 			<object name="s_body" 	enabled="true" shadow_caster="true" />

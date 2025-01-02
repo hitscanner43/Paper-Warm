@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<unit type="gen" slot="30">
+
+	<object file="units/pd2_dlc_rvd/characters/ene_acc_la_cop_hat/ene_acc_la_cop_hat" />
+	
+	
+    <extensions>
+	
+        <extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+		<extension name="contour" class="ContourExt" />
+		
+    </extensions>
+	
+</unit>

@@ -39,18 +39,18 @@
 
 
 		<sequence editable_state="true" name="'security_4'" once="true" triggable="true">
-			<object 			enabled="false" name="'g_body'"/>
-			<object 			enabled="false" name="'g_body_lod1'"/>
-
-			<object 			enabled="true" name="'g_body_2'"/>
-			<object 			enabled="true" name="'g_body_2_lod1'"/>
-			
 			<object 			enabled="true" name="'g_gear_1'"/>
 			<object 			enabled="true" name="'g_gear_1_lod1'"/>
 		</sequence>
 
 
 		<sequence editable_state="true" name="'security_5'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
 			<object 			enabled="true" name="'g_gear_2'"/>
 			<object 			enabled="true" name="'g_gear_2_lod1'"/>
 		</sequence>
@@ -80,6 +80,12 @@
 
 			<object 			enabled="true" name="'g_glasses'"/>
 			<object 			enabled="true" name="'g_glasses_lod1'"/>
+		</sequence>
+		
+
+		<sequence editable_state="true" name="'security_8'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_1'"/>
+			<object 			enabled="true" name="'g_gear_1_lod1'"/>
 		</sequence>
 		
 		
@@ -165,7 +171,7 @@
 			<object 			enabled="true" name="'g_gear_rifle'"/>
 			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
 		</sequence>
-		
+
 		
 		<sequence editable_state="true" name="'swat_1'" once="true" triggable="true">
 			<object 			enabled="false" name="'g_body'"/>
@@ -191,6 +197,10 @@
 		<sequence editable_state="true" name="'swat_3'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_smg'"/>
 			<object 			enabled="true" name="'g_gear_smg_lod1'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/>
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			
 			<object 			enabled="true" name="'g_glass'"/>
 		</sequence>
 
@@ -219,16 +229,21 @@
 			
 			<object 			enabled="false" name="'g_body'"/>
 			<object 			enabled="false" name="'g_body_lod1'"/>
-			
-			<object 			enabled="true" name="'g_body_sniper'"/>
-			<object 			enabled="true" name="'g_body_sniper_lod1'"/>	
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
 
 			<object 			enabled="true" name="'g_gear_sniper'"/>
 			<object 			enabled="true" name="'g_gear_sniper_lod1'"/>
+
+			<object 			enabled="true" name="'g_headset'"/> 
+			<object 			enabled="true" name="'g_headset_lod1'"/>
 		</sequence>
 
 
 		<sequence editable_state="true" name="'shield_2'" once="true" triggable="true">
+			<body 				enabled="false" name="'body_plate'"/>
+			
 			<object 			enabled="false" name="'g_body'"/>
 			<object 			enabled="false" name="'g_body_lod1'"/>
 
@@ -249,18 +264,29 @@
 						
 			<object 			enabled="true" name="'g_gear_rifle'"/>
 			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
+
+			<object 			enabled="true" name="'g_headset'"/> 
+			<object 			enabled="true" name="'g_headset_lod1'"/>
 		</sequence>
 
 
 		<sequence editable_state="true" name="'fbi_swat_2'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_shotgun'"/>
 			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/>
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			
+			<object 			enabled="true" name="'g_glass'"/>
 		</sequence>
 
 
 		<sequence editable_state="true" name="'fbi_swat_3'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_smg'"/>
 			<object 			enabled="true" name="'g_gear_smg_lod1'"/>
+
+			<object 			enabled="true" name="'g_headset'"/> 
+			<object 			enabled="true" name="'g_headset_lod1'"/>
 		</sequence>
 
 
@@ -270,12 +296,20 @@
 			
 			<object 			enabled="false" name="'g_body'"/>
 			<object 			enabled="false" name="'g_body_lod1'"/>
-			
-			<object 			enabled="true" name="'g_body_sniper'"/>
-			<object 			enabled="true" name="'g_body_sniper_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
 
 			<object 			enabled="true" name="'g_gear_sniper'"/>
 			<object 			enabled="true" name="'g_gear_sniper_lod1'"/>
+
+			<object 			enabled="true" name="'g_headset'"/> 
+			<object 			enabled="true" name="'g_headset_lod1'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/>
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			
+			<object 			enabled="true" name="'g_glass'"/>
 		</sequence>
 
 
@@ -288,6 +322,9 @@
 			
 			<object 			enabled="true" name="'g_gear_shield'"/>
 			<object 			enabled="true" name="'g_gear_shield_lod1'"/>
+
+			<object 			enabled="true" name="'g_headset'"/> 
+			<object 			enabled="true" name="'g_headset_lod1'"/>
 		</sequence>
 
 
@@ -302,14 +339,119 @@
 			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
 		</sequence>
 		
-		
-		<sequence editable_state="true" name="'taser'" once="true" triggable="true">
+
+		<sequence editable_state="true" name="'city_swat_1'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+						
+			<object 			enabled="true" name="'g_gear_rifle'"/>
+			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
+
+			<object 			enabled="true" name="'g_headset'"/> 
+			<object 			enabled="true" name="'g_headset_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'city_swat_2'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_shotgun'"/>
+			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/>
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			
+			<object 			enabled="true" name="'g_glass'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'city_swat_3'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_smg'"/>
+			<object 			enabled="true" name="'g_gear_smg_lod1'"/>
+
+			<object 			enabled="true" name="'g_headset'"/> 
+			<object 			enabled="true" name="'g_headset_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'sniper_3'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_head'"/>
+			<object 			enabled="false" name="'g_head_lod1'"/>
+			
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+
+			<object 			enabled="true" name="'g_gear_sniper'"/>
+			<object 			enabled="true" name="'g_gear_sniper_lod1'"/>
+
+			<object 			enabled="true" name="'g_headset'"/> 
+			<object 			enabled="true" name="'g_headset_lod1'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/>
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			
+			<object 			enabled="true" name="'g_glass'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'shield_3'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
+			<object 			enabled="true" name="'g_gear_shield'"/>
+			<object 			enabled="true" name="'g_gear_shield_lod1'"/>
+
+			<object 			enabled="true" name="'g_headset'"/> 
+			<object 			enabled="true" name="'g_headset_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'city_heavy_1'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_rifle'"/>
 			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
 		</sequence>
+
+
+		<sequence editable_state="true" name="'city_heavy_2'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_shotgun'"/>
+			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
+		</sequence>
 		
 		
-		<sequence editable_state="true" name="'medic'" once="true" triggable="true"/>
+		<sequence editable_state="true" name="'medic_1'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
+			<object 			enabled="true" name="'g_gear_rifle'"/>
+			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/>
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			
+			<object 			enabled="true" name="'g_glass'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'medic_2'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_head'"/>
+			<object 			enabled="false" name="'g_head_lod1'"/>
+
+			<object 			enabled="true" name="'g_head_2'"/>
+			<object 			enabled="true" name="'g_head_2_lod1'"/>
+			
+			<object 			enabled="true" name="'g_gear_shotgun'"/>
+			<object 			enabled="true" name="'g_gear_shotgun_lod1'"/>
+		</sequence>
 
 
 		<sequence editable_state="true" name="'marshal_marksman_1'" once="true" triggable="true">
@@ -348,6 +490,144 @@
 			
 			<object 			enabled="true" name="'g_gear_shield'"/>
 			<object 			enabled="true" name="'g_gear_shield_lod1'"/>
+		</sequence>
+		
+		
+		<sequence editable_state="true" name="'gensec_2'" once="true" triggable="true">						
+			<object 			enabled="true" name="'g_vest'"/>
+			<object 			enabled="true" name="'g_vest_lod1'"/>
+		</sequence>
+		
+
+		<sequence editable_state="true" name="'la_cop_1'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_1'"/>
+			<object 			enabled="true" name="'g_gear_1_lod1'"/>
+
+			<object 			enabled="true" name="'g_glasses'"/>
+			<object 			enabled="true" name="'g_glasses_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'la_cop_2'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
+			<object 			enabled="true" name="'g_gear_2'"/>
+			<object 			enabled="true" name="'g_gear_2_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'la_cop_3'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_3'"/>
+			<object 			enabled="true" name="'g_gear_3_lod1'"/>
+
+			<object 			enabled="true" name="'g_glasses'"/>
+			<object 			enabled="true" name="'g_glasses_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'la_cop_4'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
+			<object 			enabled="true" name="'g_gear_4'"/>
+			<object 			enabled="true" name="'g_gear_4_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'chas_police_1'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_1'"/>
+			<object 			enabled="true" name="'g_gear_1_lod1'"/>
+
+			<object 			enabled="true" name="'g_glasses'"/>
+			<object 			enabled="true" name="'g_glasses_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'chas_police_2'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
+			<object 			enabled="true" name="'g_gear_2'"/>
+			<object 			enabled="true" name="'g_gear_2_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'chas_police_3'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_badge'"/>
+			<object 			enabled="false" name="'g_badge_lod1'"/>
+
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
+			<object 			enabled="true" name="'g_gear_3'"/>
+			<object 			enabled="true" name="'g_gear_3_lod1'"/>
+
+			<object 			enabled="true" name="'g_glasses'"/>
+			<object 			enabled="true" name="'g_glasses_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'chas_police_4'" once="true" triggable="true">							
+			<object 			enabled="true" name="'g_gear_4'"/>
+			<object 			enabled="true" name="'g_gear_4_lod1'"/>
+
+			<object 			enabled="true" name="'g_glasses_up'"/>
+			<object 			enabled="true" name="'g_glasses_up_lod1'"/>
+		</sequence>
+
+		
+		<sequence editable_state="true" name="'ranc_ranger_1'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_1'"/>
+			<object 			enabled="true" name="'g_gear_1_lod1'"/>
+
+			<object 			enabled="true" name="'g_glasses'"/>
+			<object 			enabled="true" name="'g_glasses_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'ranc_ranger_2'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
+			<object 			enabled="true" name="'g_gear_2'"/>
+			<object 			enabled="true" name="'g_gear_2_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'ranc_ranger_3'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_gear_3'"/>
+			<object 			enabled="true" name="'g_gear_3_lod1'"/>
+
+			<object 			enabled="true" name="'g_glasses'"/>
+			<object 			enabled="true" name="'g_glasses_lod1'"/>
+		</sequence>
+
+
+		<sequence editable_state="true" name="'ranc_ranger_4'" once="true" triggable="true">		
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+					
+			<object 			enabled="true" name="'g_gear_4'"/>
+			<object 			enabled="true" name="'g_gear_4_lod1'"/>
 		</sequence>
 		
 		

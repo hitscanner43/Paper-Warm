@@ -9,7 +9,7 @@
 	<dependencies>
 		
 		<depends_on unit="units/payday2/characters/ene_acc_cop_hat/ene_acc_cop_hat" />
-		<depends_on unit="units/payday2/characters/ene_acc_cop_head/ene_acc_cop_head" />
+		<depends_on unit="units/payday2/characters/ene_acc_security_head/ene_acc_security_head" />
 		
 	</dependencies>
 
@@ -109,7 +109,7 @@
 		<extension name="character_damage" class="HuskCopDamage" >
 		
 			<var name="_head_body_name" value="head" />
-			<var name="_head" value="units/payday2/characters/ene_acc_cop_head/ene_acc_cop_head" />
+			<var name="_head" value="units/payday2/characters/ene_acc_security_head/ene_acc_security_head" />
 			<var name="_head_gear" value="units/payday2/characters/ene_acc_cop_hat/ene_acc_cop_hat" />
 			
 		</extension>

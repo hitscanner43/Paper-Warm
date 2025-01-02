@@ -146,9 +146,9 @@ function CopDamage:_spawn_head_gadget(params)
 		return
 	end
 	
-	local head_gear_unit = self._unit:base()._head_gear_unit
+	local head_gear_unit = self._unit:base() and self._unit:base()._head_gear_unit
 	
-	if not head_gear_unit then
+	if not alive(head_gear_unit) then
 		return
 	end
 	

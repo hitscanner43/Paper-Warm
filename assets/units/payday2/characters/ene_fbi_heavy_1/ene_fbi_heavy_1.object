@@ -9,7 +9,7 @@
 	
 
 	<bodies>
-		
+
 		<body collision_class="ragdoll" enabled="true" friction="0.6" name="body" template="character">
 			<object name="Spine1" />
 			<object collision_type="capsule" name="c_capsule_body" />
@@ -20,7 +20,7 @@
 			<object name="Head" />
 			<object collision_type="sphere" name="c_sphere_head" />
 		</body>
-	
+		
 
 		<body name="body_plate" enabled="true" template="character" friction="0.6" collision_class="ragdoll">
 			<object name="Spine1" />
@@ -234,7 +234,9 @@
 	
 
 	<decal_surfaces default_material="flesh" >
+	
 		<decal_mesh name="c_body_plate" enabled="true" material="heavy_swat_steel_no_decal" />
+		
 	</decal_surfaces>
 
 

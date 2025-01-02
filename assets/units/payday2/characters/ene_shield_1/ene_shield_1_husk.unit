@@ -5,7 +5,7 @@
 
 	<dependencies>	
 		<depends_on bnk="soundbanks/regular_vox" />
-		<depends_on unit="units/payday2/characters/ene_acc_shield_mask/ene_acc_shield_mask" />
+		<depends_on unit="units/payday2/characters/ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet" />
 		<depends_on unit="units/payday2/characters/ene_acc_shield_lights/ene_acc_shield_lights" />
 		<depends_on unit="units/payday2/weapons/wpn_npc_smg_mp9/wpn_npc_smg_mp9" />
 		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
@@ -101,7 +101,7 @@
 		<extension name="character_damage" class="HuskCopDamage" >
 			<var name="_head_body_name" value="head" />
 			<var name="_head" value="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
-			<var name="_head_gear" value="units/payday2/characters/ene_acc_shield_mask/ene_acc_shield_mask" />
+			<var name="_head_gear" value="units/payday2/characters/ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet" />
 		</extension>
 		<extension name="movement" class="HuskCopMovement" >
 			<var name="_footwear" value="hardsole" />

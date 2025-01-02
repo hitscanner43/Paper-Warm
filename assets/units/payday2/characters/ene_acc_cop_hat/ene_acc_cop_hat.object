@@ -8,7 +8,7 @@
 	
 	<bodies>
 	
-		<body name="collision_helmet" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9">
+		<body name="collision_helmet" enabled="false" template="small_prop" pushed_by_mover="false" ang_damping="0.9" >
 		
 			<object name="rp_ene_acc_cop_hat" />
 			<object name="c_convex" collision_type="convex" mass="1.5" />
@@ -25,18 +25,47 @@
 	
 		<graphic_group name="hat" enabled="true" culling_object="co_box">
 
-			<lod_object name="lod_hat">			
-				<object name="g_hat" 		enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
-					<material materials="mtr_hat" max_distance="1000" />
-					<material materials="mtr_hat_lod_1" max_distance="1500" />
+			<lod_object name="lod_badge" >	
+			
+				<object name="g_badge" 		enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+				
+					<material materials="mtr_hat" 			max_distance="1000" />
+					<material materials="mtr_hat_lod_1" 	max_distance="1500" />
 					<material materials="mtr_hat_lod_2" />
+					
 				</object>
-				<object name="g_hat_lod1" 	enabled="true" lod="1" >
-					<material materials="mtr_hat" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+				
+				
+				<object name="g_badge_lod1" 	enabled="true" lod="1" >
+				
+					<material materials="mtr_hat" 			max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
 					<material materials="mtr_hat_lod_2" />
-				</object>				
+					
+				</object>	
+				
 			</lod_object>
-	
+
+
+			<lod_object name="lod_hat" >	
+			
+				<object name="g_hat" 		enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+				
+					<material materials="mtr_hat" 			max_distance="1000" />
+					<material materials="mtr_hat_lod_1" 	max_distance="1500" />
+					<material materials="mtr_hat_lod_2" />
+					
+				</object>
+				
+				
+				<object name="g_hat_lod1" 	enabled="true" lod="1" >
+				
+					<material materials="mtr_hat" 			max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_hat_lod_2" />
+					
+				</object>	
+				
+			</lod_object>
+			
 		</graphic_group>
 		
 	</graphics>

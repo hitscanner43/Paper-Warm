@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<unit type="gen" slot="30">
+
+	<object file="units/payday2/characters/ene_acc_city_swat_cap/ene_acc_city_swat_cap" />
+	
+	
+    <extensions>
+	
+        <extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage"/>
+		<extension name="contour" class="ContourExt" />
+		
+    </extensions>
+	
+</unit>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<unit type="gen" slot="30">
+
+	<object file="units/pd2_dlc_ranc/characters/ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat" />
+	
+	
+    <extensions>
+	
+        <extension name="unit_data" class="ScriptUnitData" />
+		<extension name="damage" class="UnitDamage" />
+		<extension name="contour" class="ContourExt" />
+		
+    </extensions>
+	
+</unit>

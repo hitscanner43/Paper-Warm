@@ -56,7 +56,7 @@
 				<post :hook_id="dlcmanager"/>
 				<post :hook_id="killzonemanager"/>					
 				<post :hook_id="gameplaycentralmanager"/>
-				<post :hook_id="explosionmanager"/>						
+				<post :hook_id="explosionmanager"/>									
 			</group>
 
 			<post :hook_id="modifiers/modifierheavies"/>
@@ -309,25 +309,37 @@
 			<file :name="shared_textures/murkywater_equipment_nm.texture" />
 			<file :name="shared_textures/swat_equipment_df.texture" />
 			<file :name="shared_textures/swat_equipment_nm.texture" />
+			<file :name="shared_textures/swat_city_head_df.texture" />
+			<file :name="shared_textures/swat_city_head_nm.texture" />
 			<file :name="shared_textures/taser_body_df.texture" />
 			<file :name="shared_textures/swat_head_df.texture" />		
 			<file :name="shared_textures/swat_head_nm.texture" />			
-			<file :name="shared_textures/cop_head_df.texture" />		
-			<file :name="shared_textures/cop_head_nm.texture" />	
 			<file :name="shared_textures/taser_head_df.texture" />		
 			<file :name="shared_textures/taser_head_nm.texture" />
 			<file :name="shared_textures/visor_glass_df.texture" />
 			<file :name="shared_textures/visor_glass_2_df.texture" />
-
+			<file :name="shared_textures/security_equipment_df.texture" />
+			<file :name="shared_textures/security_equipment_nm.texture" />
+			<file :name="shared_textures/security_arms_df.texture" />
+			<file :name="shared_textures/security_arms_nm.texture" />
+			<file :name="shared_textures/security_head_df.texture" />
+			<file :name="shared_textures/security_head_nm.texture" />
+			<file :name="shared_textures/security_arms_fat_df.texture" />
+			<file :name="shared_textures/security_arms_fat_nm.texture" />
+			<file :name="shared_textures/security_head_fat_df.texture" />
+			<file :name="shared_textures/security_head_fat_nm.texture" />
+			
 			<xml  :name="ragdoll_new.sequence_manager" />	
+			
+			<xml  :name="head.sequence_manager" />	
+			
 			<xml  :name="helmet.sequence_manager" />
 		
-			<xml  :name="ene_acc_cop_head/ene_acc_cop_head.sequence_manager" />
-			<file :name="ene_acc_cop_head/ene_acc_cop_head.material_config" />
-			<file :name="ene_acc_cop_head/ene_acc_cop_head.cooked_physics" />
-			<file :name="ene_acc_cop_head/ene_acc_cop_head.model" />
-			<file :name="ene_acc_cop_head/ene_acc_cop_head.object" />
-			<file :name="ene_acc_cop_head/ene_acc_cop_head.unit" />
+			<file :name="ene_acc_security_head/ene_acc_security_head.material_config" />
+			<file :name="ene_acc_security_head/ene_acc_security_head.cooked_physics" />
+			<file :name="ene_acc_security_head/ene_acc_security_head.model" />
+			<file :name="ene_acc_security_head/ene_acc_security_head.object" />
+			<file :name="ene_acc_security_head/ene_acc_security_head.unit" />
 			
 			<xml  :name="ene_acc_swat_head/ene_acc_swat_head.sequence_manager" />
 			<file :name="ene_acc_swat_head/ene_acc_swat_head.material_config" />
@@ -342,43 +354,17 @@
 			<file :name="ene_acc_tazer_head/ene_acc_tazer_head.object" />
 			<file :name="ene_acc_tazer_head/ene_acc_tazer_head.unit" />
 
+			<file :name="ene_acc_security_head_fat/ene_acc_security_head_fat.cooked_physics" />
+			<file :name="ene_acc_security_head_fat/ene_acc_security_head_fat.material_config" />
+			<file :name="ene_acc_security_head_fat/ene_acc_security_head_fat.model" />
+			<file :name="ene_acc_security_head_fat/ene_acc_security_head_fat.object" />
+			<file :name="ene_acc_security_head_fat/ene_acc_security_head_fat.unit" />
+			
 			<file :name="ene_acc_murkywater_helmet/ene_acc_murkywater_helmet.cooked_physics" />			
 			<file :name="ene_acc_murkywater_helmet/ene_acc_murkywater_helmet.material_config" />
 			<file :name="ene_acc_murkywater_helmet/ene_acc_murkywater_helmet.model" />
 			<file :name="ene_acc_murkywater_helmet/ene_acc_murkywater_helmet.object" />
 			<file :name="ene_acc_murkywater_helmet/ene_acc_murkywater_helmet.unit" />
-
-			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.material_config" />
-			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.model" />
-			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.object" />
-			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.unit" />
-
-			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.cooked_physics" />	
-			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.model" />
-			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.object" />
-			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.unit" />
-
-			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.model" />
-			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.object" />
-			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.unit" />
-	
-			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.model" />
-			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.object" />
-			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.unit" />
-
-			<file :name="ene_acc_shield_mask/ene_acc_shield_mask.cooked_physics" />	
-			<file :name="ene_acc_shield_mask/ene_acc_shield_mask.model" />
-			<file :name="ene_acc_shield_mask/ene_acc_shield_mask.object" />
-			<file :name="ene_acc_shield_mask/ene_acc_shield_mask.unit" />
-			
-			<file :name="ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet.material_config" />
-			<file :name="ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet.model" />
-			<file :name="ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet.object" />
-			<file :name="ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet.unit" />
-
-			<file :name="ene_acc_tazer_helmet/ene_acc_tazer_helmet.model" />
-			<file :name="ene_acc_tazer_helmet/ene_acc_tazer_helmet.object" />
-			<file :name="ene_acc_tazer_helmet/ene_acc_tazer_helmet.unit" />
 
 			<file :name="ene_acc_security_cap/ene_acc_security_cap.material_config" />
 			<file :name="ene_acc_security_cap/ene_acc_security_cap.model" />
@@ -419,6 +405,11 @@
 			<file :name="ene_security_7/ene_security_7.unit" />
 			<file :name="ene_security_7/ene_security_7_husk.unit" />
 
+			<file :name="ene_security_8/ene_security_8.model" />
+			<file :name="ene_security_8/ene_security_8.object" />	
+			<file :name="ene_security_8/ene_security_8.unit" />	
+			<file :name="ene_security_8/ene_security_8_husk.unit" />	
+			
 			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.material_config" />
 			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.model" />
 			<file :name="ene_acc_cop_hat/ene_acc_cop_hat.object" />
@@ -457,7 +448,17 @@
 	
 			<file :name="ene_fbi_3/ene_fbi_3.unit" />
 			<file :name="ene_fbi_3/ene_fbi_3_husk.unit" />
-		
+
+			<file :name="ene_secret_service_1/ene_secret_service_1.material_config" />	
+			<file :name="ene_secret_service_1/ene_secret_service_1_contour.material_config" />
+			<file :name="ene_secret_service_1/ene_secret_service_1.model" />
+			<file :name="ene_secret_service_1/ene_secret_service_1.object" />	
+			<file :name="ene_secret_service_1/ene_secret_service_1.unit" />
+			<file :name="ene_secret_service_1/ene_secret_service_1_husk.unit" />
+
+			<file :name="ene_secret_service_2/ene_secret_service_2.unit" />
+			<file :name="ene_secret_service_2/ene_secret_service_2_husk.unit" />
+			
 			<file :name="ene_murkywater_1/ene_murkywater_1.material_config" />	
 			<file :name="ene_murkywater_1/ene_murkywater_1_contour.material_config" />
 			<file :name="ene_murkywater_1/ene_murkywater_1.model" />
@@ -467,6 +468,16 @@
 
 			<file :name="ene_murkywater_2/ene_murkywater_2.unit" />
 			<file :name="ene_murkywater_2/ene_murkywater_2_husk.unit" />
+
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.material_config" />
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.model" />
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.object" />
+			<file :name="ene_acc_swat_helmet/ene_acc_swat_helmet.unit" />
+
+			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.cooked_physics" />	
+			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.model" />
+			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.object" />
+			<file :name="ene_acc_swat_cap/ene_acc_swat_cap.unit" />
 			
 			<file :name="ene_swat_1/ene_swat_1.material_config" />	
 			<file :name="ene_swat_1/ene_swat_1_contour.material_config" />
@@ -481,6 +492,10 @@
 			<file :name="ene_swat_3/ene_swat_3.unit" />
 			<file :name="ene_swat_3/ene_swat_3_husk.unit" />
 
+			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.model" />
+			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.object" />
+			<file :name="ene_acc_shield_helmet/ene_acc_shield_helmet.unit" />
+			
 			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.model" />
 			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.object" />	
 			<file :name="ene_swat_heavy_1/ene_swat_heavy_1.unit" />
@@ -495,6 +510,10 @@
 			<file :name="ene_shield_2/ene_shield_2.unit" />
 			<file :name="ene_shield_2/ene_shield_2_husk.unit" />
 
+			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.model" />
+			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.object" />
+			<file :name="ene_acc_fbi_swat_helmet/ene_acc_fbi_swat_helmet.unit" />
+			
 			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.material_config" />	
 			<file :name="ene_fbi_swat_1/ene_fbi_swat_1_contour.material_config" />
 			<file :name="ene_fbi_swat_1/ene_fbi_swat_1.model" />
@@ -514,6 +533,11 @@
 			<file :name="ene_shield_1/ene_shield_1.unit" />
 			<file :name="ene_shield_1/ene_shield_1_husk.unit" />
 
+			<file :name="ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet.material_config" />
+			<file :name="ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet.model" />
+			<file :name="ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet.object" />
+			<file :name="ene_acc_swat_heavy_helmet/ene_acc_swat_heavy_helmet.unit" />
+			
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.material_config" />	
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1_contour.material_config" />
 			<file :name="ene_fbi_heavy_1/ene_fbi_heavy_1.model" />
@@ -524,13 +548,74 @@
 			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870.unit" />
 			<file :name="ene_fbi_heavy_r870/ene_fbi_heavy_r870_husk.unit" />
 
+			<file :name="ene_acc_city_swat_cap/ene_acc_city_swat_cap.cooked_physics" />
+			<file :name="ene_acc_city_swat_cap/ene_acc_city_swat_cap.model" />
+			<file :name="ene_acc_city_swat_cap/ene_acc_city_swat_cap.object" />
+			<file :name="ene_acc_city_swat_cap/ene_acc_city_swat_cap.unit" />
+		
+			<file :name="ene_acc_city_swat_helmet/ene_acc_city_swat_helmet.model" />
+			<file :name="ene_acc_city_swat_helmet/ene_acc_city_swat_helmet.object" />
+			<file :name="ene_acc_city_swat_helmet/ene_acc_city_swat_helmet.unit" />
+			
+			<file :name="ene_city_swat_1/ene_city_swat_1.material_config" />	
+			<file :name="ene_city_swat_1/ene_city_swat_1_contour.material_config" />
+			<file :name="ene_city_swat_1/ene_city_swat_1.model" />
+			<file :name="ene_city_swat_1/ene_city_swat_1.object" />	
+			<file :name="ene_city_swat_1/ene_city_swat_1.unit" />
+			<file :name="ene_city_swat_1/ene_city_swat_1_husk.unit" />
+
+			<file :name="ene_city_swat_2/ene_city_swat_2.unit" />
+			<file :name="ene_city_swat_2/ene_city_swat_2_husk.unit" />
+
+			<file :name="ene_city_swat_3/ene_city_swat_3.unit" />
+			<file :name="ene_city_swat_3/ene_city_swat_3_husk.unit" />
+
+			<file :name="ene_sniper_3/ene_sniper_3.unit" />
+			<file :name="ene_sniper_3/ene_sniper_3_husk.unit" />
+
+			<file :name="ene_city_shield/ene_city_shield.unit" />
+			<file :name="ene_city_shield/ene_city_shield_husk.unit" />
+	
+			<file :name="ene_acc_city_heavy_helmet/ene_acc_city_heavy_helmet.model" />
+			<file :name="ene_acc_city_heavy_helmet/ene_acc_city_heavy_helmet.object" />
+			<file :name="ene_acc_city_heavy_helmet/ene_acc_city_heavy_helmet.unit" />
+			
+			<file :name="ene_city_heavy_g36/ene_city_heavy_g36.material_config" />	
+			<file :name="ene_city_heavy_g36/ene_city_heavy_g36_contour.material_config" />
+			<file :name="ene_city_heavy_g36/ene_city_heavy_g36.model" />
+			<file :name="ene_city_heavy_g36/ene_city_heavy_g36.object" />	
+			<file :name="ene_city_heavy_g36/ene_city_heavy_g36.unit" />
+			<file :name="ene_city_heavy_g36/ene_city_heavy_g36_husk.unit" />
+
+			<file :name="ene_city_heavy_r870/ene_city_heavy_r870.unit" />
+			<file :name="ene_city_heavy_r870/ene_city_heavy_r870_husk.unit" />
+			
+			<file :name="ene_acc_tazer_helmet/ene_acc_tazer_helmet.model" />
+			<file :name="ene_acc_tazer_helmet/ene_acc_tazer_helmet.object" />
+			<file :name="ene_acc_tazer_helmet/ene_acc_tazer_helmet.unit" />
+			
 			<file :name="ene_tazer_1/ene_tazer_1.material_config" />	
 			<file :name="ene_tazer_1/ene_tazer_1_contour.material_config" />
 			<file :name="ene_tazer_1/ene_tazer_1.model" />
 			<file :name="ene_tazer_1/ene_tazer_1.object" />	
 			<file :name="ene_tazer_1/ene_tazer_1.unit" />
 			<file :name="ene_tazer_1/ene_tazer_1_husk.unit" />
-		
+
+			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.material_config" />
+			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.model" />
+			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.object" />
+			<file :name="ene_acc_medic_helmet/ene_acc_medic_helmet.unit" />
+			
+			<file :name="ene_medic_m4/ene_medic_m4.material_config" />	
+			<file :name="ene_medic_m4/ene_medic_m4_contour.material_config" />
+			<file :name="ene_medic_m4/ene_medic_m4.model" />
+			<file :name="ene_medic_m4/ene_medic_m4.object" />	
+			<file :name="ene_medic_m4/ene_medic_m4.unit" />
+			<file :name="ene_medic_m4/ene_medic_m4_husk.unit" />
+
+			<file :name="ene_medic_r870/ene_medic_r870.unit" />
+			<file :name="ene_medic_r870/ene_medic_r870_husk.unit" />
+			
 			<file :name="ene_bulldozer_1/ene_bulldozer_1.material_config" />	
 			<file :name="ene_bulldozer_1/ene_bulldozer_1_contour.material_config" />		
 			<file :name="ene_bulldozer_1/ene_bulldozer_1.model" />
@@ -552,6 +637,57 @@
 			<file :name="ene_bulldozer_3/ene_bulldozer_3.unit" />
 			<file :name="ene_bulldozer_3/ene_bulldozer_3_husk.unit" />
 		</group>
+
+		<group name="units/pd2_dlc_usm1/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<xml  :name="ene_acc_marshal_head/ene_acc_marshal_head.sequence_manager" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.material_config" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.cooked_physics" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.model" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.object" />
+			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.unit" />
+			
+			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.material_config" />
+			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.model" />
+			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.object" />	
+			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.unit" />
+
+			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.material_config" />
+			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.model" />
+			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.object" />	
+			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.unit" />	
+
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.material_config" />
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1_contour.material_config" />
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.model" />
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.object" />	
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.unit" />	
+			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1_husk.unit" />	
+
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.material_config" />
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2_contour.material_config" />
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.model" />
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.object" />	
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.unit" />	
+			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2_husk.unit" />	
+		</group>		
+
+		<group name="units/pd2_dlc_usm2/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_acc_marshal_shield_helmet/ene_acc_marshal_shield_helmet.cooked_physics" />
+			<file :name="ene_acc_marshal_shield_helmet/ene_acc_marshal_shield_helmet.model" />
+			<file :name="ene_acc_marshal_shield_helmet/ene_acc_marshal_shield_helmet.object" />	
+			<file :name="ene_acc_marshal_shield_helmet/ene_acc_marshal_shield_helmet.unit" />
+
+			<file :name="ene_acc_marshal_shield_helmet_2/ene_acc_marshal_shield_helmet_2.cooked_physics" />
+			<file :name="ene_acc_marshal_shield_helmet_2/ene_acc_marshal_shield_helmet_2.model" />
+			<file :name="ene_acc_marshal_shield_helmet_2/ene_acc_marshal_shield_helmet_2.object" />	
+			<file :name="ene_acc_marshal_shield_helmet_2/ene_acc_marshal_shield_helmet_2.unit" />	
+
+			<file :name="ene_male_marshal_shield_1/ene_male_marshal_shield_1.unit" />	
+			<file :name="ene_male_marshal_shield_1/ene_male_marshal_shield_1_husk.unit" />	
+
+			<file :name="ene_male_marshal_shield_2/ene_male_marshal_shield_2.unit" />	
+			<file :name="ene_male_marshal_shield_2/ene_male_marshal_shield_2_husk.unit" />	
+		</group>	
 		
 		<group name="units/pd2_dlc_drm/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
 			<file :name="shared_textures/bulldozer_equipment_df.texture" />
@@ -621,57 +757,121 @@
 			<file :name="ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic.unit" />
 			<file :name="ene_bulldozer_minigun_classic/ene_bulldozer_minigun_classic_husk.unit" />
 		</group>
-		
-		<group name="units/pd2_dlc_usm1/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
-			<xml  :name="ene_acc_marshal_head/ene_acc_marshal_head.sequence_manager" />
-			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.material_config" />
-			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.cooked_physics" />
-			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.model" />
-			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.object" />
-			<file :name="ene_acc_marshal_head/ene_acc_marshal_head.unit" />
+
+		<group name="units/pd2_dlc1/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_acc_security_gensec_beret/ene_acc_security_gensec_beret.cooked_physics" />
+			<file :name="ene_acc_security_gensec_beret/ene_acc_security_gensec_beret.material_config" />
+			<file :name="ene_acc_security_gensec_beret/ene_acc_security_gensec_beret.model" />
+			<file :name="ene_acc_security_gensec_beret/ene_acc_security_gensec_beret.object" />	
+			<file :name="ene_acc_security_gensec_beret/ene_acc_security_gensec_beret.unit" />
 			
-			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.material_config" />
-			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.model" />
-			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.object" />	
-			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.unit" />
+			<file :name="ene_security_gensec_1/ene_security_gensec_1.material_config" />	
+			<file :name="ene_security_gensec_1/ene_security_gensec_1_contour.material_config" />
+			<file :name="ene_security_gensec_1/ene_security_gensec_1.model" />
+			<file :name="ene_security_gensec_1/ene_security_gensec_1.object" />	
+			<file :name="ene_security_gensec_1/ene_security_gensec_1.unit" />
+			<file :name="ene_security_gensec_1/ene_security_gensec_1_husk.unit" />
 
-			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.material_config" />
-			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.model" />
-			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.object" />	
-			<file :name="ene_acc_marksman_hat_2/ene_acc_marksman_hat_2.unit" />	
+			<file :name="ene_security_gensec_2/ene_security_gensec_2.unit" />
+			<file :name="ene_security_gensec_2/ene_security_gensec_2_husk.unit" />
+		</group>
 
-			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.material_config" />
-			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1_contour.material_config" />
-			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.model" />
-			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.object" />	
-			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1.unit" />	
-			<file :name="ene_male_marshal_marksman_1/ene_male_marshal_marksman_1_husk.unit" />	
+		<group name="units/pd2_dlc_casino/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_secret_service_1_casino/ene_secret_service_1_casino.material_config" />	
+			<file :name="ene_secret_service_1_casino/ene_secret_service_1_casino_contour.material_config" />
+			<file :name="ene_secret_service_1_casino/ene_secret_service_1_casino.model" />
+			<file :name="ene_secret_service_1_casino/ene_secret_service_1_casino.object" />	
+			<file :name="ene_secret_service_1_casino/ene_secret_service_1_casino.unit" />
+			<file :name="ene_secret_service_1_casino/ene_secret_service_1_casino_husk.unit" />
+		</group>
 
-			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.material_config" />
-			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2_contour.material_config" />
-			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.model" />
-			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.object" />	
-			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2.unit" />	
-			<file :name="ene_male_marshal_marksman_2/ene_male_marshal_marksman_2_husk.unit" />	
-		</group>		
+		<group name="units/pd2_dlc_rvd/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">
+			<file :name="ene_acc_la_cop_hat/ene_acc_la_cop_hat.cooked_physics" />
+			<file :name="ene_acc_la_cop_hat/ene_acc_la_cop_hat.material_config" />
+			<file :name="ene_acc_la_cop_hat/ene_acc_la_cop_hat.model" />
+			<file :name="ene_acc_la_cop_hat/ene_acc_la_cop_hat.object" />
+			<file :name="ene_acc_la_cop_hat/ene_acc_la_cop_hat.unit" />
+			
+			<file :name="ene_la_cop_1/ene_la_cop_1.material_config" />	
+			<file :name="ene_la_cop_1/ene_la_cop_1_contour.material_config" />
+			<file :name="ene_la_cop_1/ene_la_cop_1.model" />
+			<file :name="ene_la_cop_1/ene_la_cop_1.object" />	
+			<file :name="ene_la_cop_1/ene_la_cop_1.unit" />
+			<file :name="ene_la_cop_1/ene_la_cop_1_husk.unit" />
 
-		<group name="units/pd2_dlc_usm2/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
-			<file :name="ene_acc_marshal_shield_helmet/ene_acc_marshal_shield_helmet.cooked_physics" />
-			<file :name="ene_acc_marshal_shield_helmet/ene_acc_marshal_shield_helmet.model" />
-			<file :name="ene_acc_marshal_shield_helmet/ene_acc_marshal_shield_helmet.object" />	
-			<file :name="ene_acc_marshal_shield_helmet/ene_acc_marshal_shield_helmet.unit" />
+			<file :name="ene_la_cop_2/ene_la_cop_2.unit" />
+			<file :name="ene_la_cop_2/ene_la_cop_2_husk.unit" />
+	
+			<file :name="ene_la_cop_3/ene_la_cop_3.unit" />
+			<file :name="ene_la_cop_3/ene_la_cop_3_husk.unit" />
+	
+			<file :name="ene_la_cop_4/ene_la_cop_4.unit" />
+			<file :name="ene_la_cop_4/ene_la_cop_4_husk.unit" />
+		</group>
 
-			<file :name="ene_acc_marshal_shield_helmet_2/ene_acc_marshal_shield_helmet_2.cooked_physics" />
-			<file :name="ene_acc_marshal_shield_helmet_2/ene_acc_marshal_shield_helmet_2.model" />
-			<file :name="ene_acc_marshal_shield_helmet_2/ene_acc_marshal_shield_helmet_2.object" />	
-			<file :name="ene_acc_marshal_shield_helmet_2/ene_acc_marshal_shield_helmet_2.unit" />	
+		<group name="units/pd2_dlc_chas/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_male_chas_police_01/ene_male_chas_police_01.material_config" />	
+			<file :name="ene_male_chas_police_01/ene_male_chas_police_01_contour.material_config" />
+			<file :name="ene_male_chas_police_01/ene_male_chas_police_01.model" />
+			<file :name="ene_male_chas_police_01/ene_male_chas_police_01.object" />	
+			<file :name="ene_male_chas_police_01/ene_male_chas_police_01.unit" />
+			<file :name="ene_male_chas_police_01/ene_male_chas_police_01_husk.unit" />
 
-			<file :name="ene_male_marshal_shield_1/ene_male_marshal_shield_1.unit" />	
-			<file :name="ene_male_marshal_shield_1/ene_male_marshal_shield_1_husk.unit" />	
+			<file :name="ene_male_chas_police_02/ene_male_chas_police_02.unit" />
+			<file :name="ene_male_chas_police_02/ene_male_chas_police_02_husk.unit" />
 
-			<file :name="ene_male_marshal_shield_2/ene_male_marshal_shield_2.unit" />	
-			<file :name="ene_male_marshal_shield_2/ene_male_marshal_shield_2_husk.unit" />	
-		</group>	
+			<file :name="ene_male_chas_police_03/ene_male_chas_police_03.unit" />
+			<file :name="ene_male_chas_police_03/ene_male_chas_police_03_husk.unit" />
+
+			<file :name="ene_male_chas_police_04/ene_male_chas_police_04.unit" />
+			<file :name="ene_male_chas_police_04/ene_male_chas_police_04_husk.unit" />
+		</group>
+
+		<group name="units/pd2_dlc_ranc/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.cooked_physics" />
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.material_config" />
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.model" />
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.object" />	
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.unit" />
+			
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01.material_config" />	
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01_contour.material_config" />
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01.model" />
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01.object" />	
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01.unit" />
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01_husk.unit" />
+
+			<file :name="ene_male_ranc_ranger_02/ene_male_ranc_ranger_02.unit" />
+			<file :name="ene_male_ranc_ranger_02/ene_male_ranc_ranger_02_husk.unit" />
+
+			<file :name="ene_male_ranc_ranger_03/ene_male_ranc_ranger_03.unit" />
+			<file :name="ene_male_ranc_ranger_03/ene_male_ranc_ranger_03_husk.unit" />
+
+			<file :name="ene_male_ranc_ranger_04/ene_male_ranc_ranger_04.unit" />
+			<file :name="ene_male_ranc_ranger_04/ene_male_ranc_ranger_04_husk.unit" />
+		</group>		<group name="units/pd2_dlc_ranc/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.cooked_physics" />
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.material_config" />
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.model" />
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.object" />	
+			<file :name="ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat.unit" />
+			
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01.material_config" />	
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01_contour.material_config" />
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01.model" />
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01.object" />	
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01.unit" />
+			<file :name="ene_male_ranc_ranger_01/ene_male_ranc_ranger_01_husk.unit" />
+
+			<file :name="ene_male_ranc_ranger_02/ene_male_ranc_ranger_02.unit" />
+			<file :name="ene_male_ranc_ranger_02/ene_male_ranc_ranger_02_husk.unit" />
+
+			<file :name="ene_male_ranc_ranger_03/ene_male_ranc_ranger_03.unit" />
+			<file :name="ene_male_ranc_ranger_03/ene_male_ranc_ranger_03_husk.unit" />
+
+			<file :name="ene_male_ranc_ranger_04/ene_male_ranc_ranger_04.unit" />
+			<file :name="ene_male_ranc_ranger_04/ene_male_ranc_ranger_04_husk.unit" />
+		</group>
 
 		<group name="units/pd2_dlc_deep/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
 			<file :name="ene_deep_security_1/ene_deep_security_1.unit" />	

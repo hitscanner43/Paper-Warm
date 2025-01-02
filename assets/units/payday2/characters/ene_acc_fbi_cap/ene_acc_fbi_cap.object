@@ -25,16 +25,45 @@
 	
 		<graphic_group name="hat" enabled="true" culling_object="co_box">
 
-			<lod_object name="lod_hat">			
-				<object name="g_hat" 		enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity">
+			<lod_object name="lod_fbi" >		
+			
+				<object name="g_fbi" 		enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
+				
 					<material materials="mtr_hat" max_distance="1000" />
 					<material materials="mtr_hat_lod_1" max_distance="1500" />
 					<material materials="mtr_hat_lod_2" />
+					
 				</object>
-				<object name="g_hat_lod1" 	enabled="true" lod="1" >
+				
+				
+				<object name="g_fbi_lod1" 	enabled="true" lod="1" >
+				
 					<material materials="mtr_hat" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
 					<material materials="mtr_hat_lod_2" />
-				</object>				
+					
+				</object>	
+				
+			</lod_object>
+			
+			
+			<lod_object name="lod_hat" >		
+			
+				<object name="g_hat" 		enabled="true"  max_distance="2000"  max_draw_lod="0" cpy_material_vars="contour_color, contour_opacity" >
+				
+					<material materials="mtr_hat" max_distance="1000" />
+					<material materials="mtr_hat_lod_1" max_distance="1500" />
+					<material materials="mtr_hat_lod_2" />
+					
+				</object>
+				
+				
+				<object name="g_hat_lod1" 	enabled="true" lod="1" >
+				
+					<material materials="mtr_hat" max_distance="0" cpy_material_vars="contour_color, contour_opacity" />
+					<material materials="mtr_hat_lod_2" />
+					
+				</object>	
+				
 			</lod_object>
 	
 		</graphic_group>

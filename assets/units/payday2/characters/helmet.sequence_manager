@@ -65,18 +65,6 @@
 			<sound 				filter="'check_visor'" action="'play'" event="'swat_heavy_visor_shatter'" object="'e_visor_break'" />
 		</sequence>
 
-		<sequence editable_state="true" name="'security_2'" once="true" triggable="true" />
-		
-		<sequence editable_state="true" name="'security_7'" once="true" triggable="true" />
-		
-		<sequence editable_state="true" name="'cop_2'" once="true" triggable="true" />
-		
-		<sequence editable_state="true" name="'cop_3'" once="true" triggable="true" />
-		
-		<sequence editable_state="true" name="'cop_4'" once="true" triggable="true" />
-		
-		<sequence editable_state="true" name="'fbi_1'" once="true" triggable="true" />
-
 		<sequence editable_state="true" name="'murkywater_1'" once="true" triggable="true">
 			<set_variables 		has_mandibles="1"/>
 		</sequence>	
@@ -84,8 +72,6 @@
 		<sequence editable_state="true" name="'murkywater_2'" once="true" triggable="true">
 			<set_variables 		has_mandibles="1"/>
 		</sequence>	
-	
-		<sequence editable_state="true" name="'swat_1'" once="true" triggable="true"/>
 
 		<sequence editable_state="true" name="'swat_2'" once="true" triggable="true">
 			<set_variables 		has_goggles="1"/>
@@ -94,8 +80,6 @@
 			<object 			enabled="true" name="'g_goggles_lod1'"/>
 		</sequence>
 
-		<sequence editable_state="true" name="'swat_3'" once="true" triggable="true" />
-
 		<sequence editable_state="true" name="'sniper_1'" once="true" triggable="true">	
 			<set_variables 		has_goggles="1"/>
 		
@@ -103,55 +87,6 @@
 			<object 			enabled="true" name="'g_goggles_lod1'"/>		
 			<object 			enabled="true" name="'g_glass'"/> 
 		</sequence>
-
-		<sequence editable_state="true" name="'fbi_swat_1'" once="true" triggable="true">	
-			<set_variables 		has_goggles="1"/>
-			
-			<object 			enabled="true" name="'g_goggles'"/> 
-			<object 			enabled="true" name="'g_goggles_lod1'"/>
-			<object 			enabled="true" name="'g_glass'"/>
-		</sequence>
-		
-		<sequence editable_state="true" name="'fbi_swat_2'" once="true" triggable="true">
-			<set_variables 		has_nvg="1"/>
-				
-			<object 			enabled="true" name="'g_nvg'"/> 
-			<object 			enabled="true" name="'g_nvg_lod1'"/>
-		</sequence>
-
-		<sequence editable_state="true" name="'fbi_swat_3'" once="true" triggable="true">
-			<object 			enabled="true" name="'g_fbi'"/> 
-		</sequence>
-
-		<sequence editable_state="true" name="'sniper_2'" once="true" triggable="true">
-			<object 			enabled="false" name="'g_helmet'"/> 
-			<object 			enabled="false" name="'g_helmet_lod1'"/>
-
-			<object 			enabled="true" name="'g_helmet_backwards'"/> 
-			<object 			enabled="true" name="'g_helmet_backwards_lod1'"/>
-
-			<object 			enabled="true" name="'g_fbi_backwards'"/>
-		</sequence>
-
-		<sequence editable_state="true" name="'shield_1'" once="true" triggable="true"/>
-		
-		<sequence editable_state="true" name="'city_swat_1'" once="true" triggable="true">		
-			<set_variables 		has_chops="1"/>
-	
-			<object 			enabled="true" name="'g_chops'"/> 
-			<object 			enabled="true" name="'g_chops_lod1'"/>
-		</sequence>
-
-		<sequence editable_state="true" name="'city_swat_2'" once="true" triggable="true">	
-			<set_variables 		has_nvg="1"/>
-			
-			<object 			enabled="true" name="'g_nvg'"/> 
-			<object 			enabled="true" name="'g_nvg_lod1'"/>
-		</sequence>
-
-		<sequence editable_state="true" name="'city_swat_3'" once="true" triggable="true"/>
-		
-		<sequence editable_state="true" name="'sniper_3'" once="true" triggable="true"/>
 
 		<sequence editable_state="true" name="'swat_heavy_1'" once="true" triggable="true">	
 			<set_variables 		has_visor="1"/>
@@ -184,6 +119,44 @@
 			<object 			enabled="true" name="'g_visor_lod1'"/>
 		</sequence>
 		
+		<sequence editable_state="true" name="'fbi_swat_1'" once="true" triggable="true">	
+			<set_variables 		has_goggles="1"/>
+			
+			<object 			enabled="true" name="'g_goggles'"/> 
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			<object 			enabled="true" name="'g_glass'"/>
+		</sequence>
+		
+		<sequence editable_state="true" name="'fbi_swat_2'" once="true" triggable="true">
+			<set_variables 		has_nvg="1"/>
+				
+			<object 			enabled="true" name="'g_nvg'"/> 
+			<object 			enabled="true" name="'g_nvg_lod1'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'fbi_swat_3'" once="true" triggable="true">
+			<object 			enabled="true" name="'g_fbi'"/> 
+		</sequence>
+		
+		<sequence editable_state="true" name="'sniper_2'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_hat'"/> 
+			<object 			enabled="false" name="'g_hat_lod1'"/>
+
+			<object 			enabled="true" name="'g_hat_backwards'"/> 
+			<object 			enabled="true" name="'g_hat_backwards_lod1'"/>
+
+			<object 			enabled="true" name="'g_fbi_backwards'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'shield_1'" once="true" triggable="true">	
+			<set_variables 		has_visor="1"/>
+			
+			<decal_mesh 		enabled="true" name="'dm_visor'"/>
+			
+			<object 			enabled="true" name="'g_visor'"/> 
+			<object 			enabled="true" name="'g_visor_lod1'"/>
+		</sequence>
+		
 		<sequence editable_state="true" name="'fbi_heavy_1'" once="true" triggable="true">	
 			<set_variables 		has_visor="1"/>
 			
@@ -208,6 +181,71 @@
 			<object 			enabled="true" name="'g_torch_lod1'"/>
 		</sequence>
 
+		<sequence editable_state="true" name="'city_swat_1'" once="true" triggable="true">		
+			<set_variables 		has_chops="1"/>
+	
+			<decal_mesh 		enabled="true" name="'dm_chops'"/>
+			
+			<object 			enabled="true" name="'g_chops'"/> 
+			<object 			enabled="true" name="'g_chops_lod1'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'city_swat_2'" once="true" triggable="true">	
+			<set_variables 		has_nvg="1"/>
+			<set_variables 		has_chops="1"/>
+
+			<decal_mesh 		enabled="true" name="'dm_chops'"/>
+			
+			<object 			enabled="true" name="'g_chops'"/> 
+			<object 			enabled="true" name="'g_chops_lod1'"/>
+			
+			<object 			enabled="true" name="'g_nvg'"/> 
+			<object 			enabled="true" name="'g_nvg_lod1'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'sniper_3'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_hat'"/> 
+			<object 			enabled="false" name="'g_hat_lod1'"/>
+
+			<object 			enabled="true" name="'g_hat_backwards'"/> 
+			<object 			enabled="true" name="'g_hat_backwards_lod1'"/>
+
+			<object 			enabled="true" name="'g_fbi_backwards'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'shield_3'" once="true" triggable="true">	
+			<set_variables 		has_visor="1"/>
+			
+			<decal_mesh 		enabled="true" name="'dm_visor'"/>
+			
+			<object 			enabled="true" name="'g_visor'"/> 
+			<object 			enabled="true" name="'g_visor_lod1'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'city_heavy_1'" once="true" triggable="true">	
+			<set_variables 		has_visor="1"/>
+			
+			<decal_mesh 		enabled="true" name="'dm_visor'"/>
+			
+			<object 			enabled="true" name="'g_visor'"/> 
+			<object 			enabled="true" name="'g_visor_lod1'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'city_heavy_2'" once="true" triggable="true">	
+			<set_variables 		has_mask="1"/>
+			<set_variables 		has_torch="1"/>
+			
+			<decal_mesh 		enabled="true" name="'dm_mask'"/>
+			
+			<object 			enabled="true" name="'g_glass'"/>
+			
+			<object 			enabled="true" name="'g_mask'"/> 
+			<object 			enabled="true" name="'g_mask_lod1'"/>
+
+			<object 			enabled="true" name="'g_torch'"/> 
+			<object 			enabled="true" name="'g_torch_lod1'"/>
+		</sequence>
+		
 		<sequence editable_state="true" name="'taser'" once="true" triggable="true">	
 			<set_variables 		has_visor="1"/>
 			<set_variables 		has_torch="1"/>
@@ -221,10 +259,20 @@
 			<object 			enabled="true" name="'g_torch_lod1'"/>
 		</sequence>
 
-		<sequence editable_state="true" name="'marshal_marksman_1'" once="true" triggable="true"/>
-
-		<sequence editable_state="true" name="'marshal_marksman_2'" once="true" triggable="true"/>
-
+		<sequence editable_state="true" name="'medic_1'" once="true" triggable="true">	
+			<set_variables 		has_torch="1"/>
+			
+			<object 			enabled="true" name="'g_torch'"/> 
+			<object 			enabled="true" name="'g_torch_lod1'"/>
+		</sequence>
+		
+		<sequence editable_state="true" name="'medic_2'" once="true" triggable="true">	
+			<set_variables 		has_torch="1"/>
+			
+			<object 			enabled="true" name="'g_torch'"/> 
+			<object 			enabled="true" name="'g_torch_lod1'"/>
+		</sequence>
+		
 		<sequence editable_state="true" name="'marshal_shield_1'" once="true" triggable="true">	
 			<set_variables 		has_goggles="1"/>
 			<set_variables 		has_mandibles="1"/>

@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<materials version="3" group="ene_acc_la_cop_hat">
+
+	<material name="mtr_hat" render_template="generic:DIFFUSE_TEXTURE:GLOBAL_ENVIRONMENT_MAPPING:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" version="2">
+		<bump_normal_texture 	file="units/pd2_dlc_rvd/characters/ene_la_cop_texture/ene_la_cop_nm" />
+		<diffuse_texture 		file="units/pd2_dlc_rvd/characters/ene_la_cop_texture/ene_la_cop_df" />
+		<material_texture 		file="units/pd2_dlc_rvd/characters/ene_la_cop_texture/ene_la_cop_gsma" />
+	</material>
+	<material name="mtr_hat_lod_1" render_template="generic:DIFFUSE_TEXTURE:GLOBAL_ENVIRONMENT_MAPPING:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" version="2">
+		<bump_normal_texture 	file="units/pd2_dlc_rvd/characters/ene_la_cop_texture/ene_la_cop_nm" mip="1" />
+		<diffuse_texture 		file="units/pd2_dlc_rvd/characters/ene_la_cop_texture/ene_la_cop_df" mip="1" />
+		<material_texture 		file="units/pd2_dlc_rvd/characters/ene_la_cop_texture/ene_la_cop_gsma" mip="1"/>
+	</material>
+	<material name="mtr_hat_lod_2" render_template="generic:DIFFUSE_TEXTURE:GLOBAL_ENVIRONMENT_MAPPING:GLOSS_BLURS_CUBEMAP:GSMA_TEXTURE:NORMALMAP" version="2">
+		<bump_normal_texture 	file="units/pd2_dlc_rvd/characters/ene_la_cop_texture/ene_la_cop_nm" mip="4" />
+		<diffuse_texture 		file="units/pd2_dlc_rvd/characters/ene_la_cop_texture/ene_la_cop_df" mip="4" />
+		<material_texture 		file="units/pd2_dlc_rvd/characters/ene_la_cop_texture/ene_la_cop_gsma" mip="4"/>
+	</material>
+	
+</materials>
