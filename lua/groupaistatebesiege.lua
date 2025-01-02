@@ -720,6 +720,8 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 	mvec_set(detonate_offset_pos, detonate_pos)
 	mvec_add(detonate_offset_pos, detonate_offset)
 
+	local tactics_map = u_data and u_data.tactics_map or {}
+	
 	-- If players camp a specific area for too long, turn a smoke grenade into a teargas grenade instead
 	local use_teargas
 	if grenade_type == "smoke_grenade" and not assault_area.hostages and assault_area.criminal_entered_t and table.size(assault_area.neighbours) <= 2 then
@@ -740,16 +742,18 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 	end
 
 	local use_frag
-	if grenade_type == "flash_grenade" and not assault_area.hostages then
-		local frag_pos = managers.navigation:find_random_position_in_segment(assault_area.pos_nav_seg)
-		mvec_lerp(detonate_offset_pos, frag_pos, assault_area.pos, 0.5)
+	if tactics_map.frag_grenade then
+		if grenade_type == "flash_grenade" and not assault_area.hostages then
+			local frag_pos = managers.navigation:find_random_position_in_segment(assault_area.pos_nav_seg)
+			mvec_lerp(detonate_offset_pos, frag_pos, assault_area.pos, 0.5)
 
-		local c_key = table.random_key(assault_area.criminal.units)
-		if c_key then
-			mvec_lerp(detonate_offset_pos, detonate_offset_pos, assault_area.criminal.units[c_key].m_pos, 0.5)
+			local c_key = table.random_key(assault_area.criminal.units)
+			if c_key then
+				mvec_lerp(detonate_offset_pos, detonate_offset_pos, assault_area.criminal.units[c_key].m_pos, 0.5)
+			end
+
+			use_frag = true
 		end
-
-		use_frag = true
 	end
 	
 	-- Make sure the grenade stays inside AI navigation (on the ground)
@@ -1136,12 +1140,6 @@ end
 function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_objective, ai_task)
 	local spawn_group_desc = tweak_data.group_ai.enemy_spawn_groups[spawn_group_type]
 
-	for _, enemy in pairs(spawn_group_desc.spawn) do
-		if enemy.random_tactics then
-			enemy.tactics = table.random(enemy.random_tactics)
-		end
-	end
-	
 	local wanted_nr_units
 	if type(spawn_group_desc.amount) == "number" then
 		wanted_nr_units = spawn_group_desc.amount
@@ -1161,10 +1159,10 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 	}
 
 	table.insert(self._spawning_groups, spawn_task)
-
+	
 	local is_skirmish = managers.skirmish:is_skirmish()	
-	local current_wave = managers.skirmish:current_wave_number()
-
+	local current_wave = managers.skirmish:current_wave_number()	
+	
 	local function _add_unit_type_to_spawn_task(i, spawn_entry)
 		local add_amount = 1
 		if spawn_entry.amount_min then
@@ -1185,11 +1183,10 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 
 		group_size = group_size + add_amount
 		wanted_nr_units = wanted_nr_units - add_amount
-		
+
 		if spawn_entry.amount_max then
 			if add_amount >= spawn_entry.amount_max then
 				table.remove(valid_unit_types, i)
-			
 				total_weight = total_weight - (is_skirmish and spawn_entry.freq_by_wave and spawn_entry.freq_by_wave[current_wave] or spawn_entry.freq_by_diff and self:_get_difficulty_dependent_value(spawn_entry.freq_by_diff) or spawn_entry.freq)
 				return true
 			else
@@ -1209,7 +1206,8 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 			i = i + 1
 		end
 	end
-
+	
+	
 	local unit_categories = tweak_data.group_ai.unit_categories
 	while wanted_nr_units > 0 and #valid_unit_types > 0 do
 		local roll = math.random() * total_weight
@@ -1218,14 +1216,12 @@ function GroupAIStateBesiege:_spawn_in_group(spawn_group, spawn_group_type, grp_
 		i = 1
 		repeat
 			rand_entry = valid_unit_types[i]
-
 			roll = roll - (is_skirmish and rand_entry.freq_by_wave and rand_entry.freq_by_wave[current_wave] or rand_entry.freq_by_diff and self:_get_difficulty_dependent_value(rand_entry.freq_by_diff) or rand_entry.freq)
 			i = i + 1
 		until roll <= 0
 
 		local cat_data = unit_categories[rand_entry.unit]
 		local special_type = cat_data and not cat_data.is_captain and cat_data.special_type
-
 		if special_type and managers.job:current_spawn_limit(special_type) <= self:_get_special_unit_type_count(special_type) then
 			table.remove(valid_unit_types, i - 1)
 			total_weight = total_weight - (is_skirmish and rand_entry.freq_by_wave and rand_entry.freq_by_wave[current_wave] or rand_entry.freq_by_diff and self:_get_difficulty_dependent_value(rand_entry.freq_by_diff) or rand_entry.freq)

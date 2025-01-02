@@ -41,7 +41,6 @@ ElementSpawnEnemyGroup.group_mapping = {
 		"recon_a",	
 		"recon_b",			
 		"marksman",
-		"soldiers",
 		"SKM_assault",
 		"SKM_marksman",
 	},

@@ -1,5 +1,3 @@
-local deathwish = PaperWarm:deathwish()
-
 -- Make Bulldozer armor prevent damage
 TankCopDamage.IS_TANK = true
 

@@ -82,6 +82,7 @@ function CharacterTweakData:character_map(...)
 	safe_add(char_map.basic, "ene_swat_3")
 	safe_add(char_map.basic, "ene_fbi_swat_3")
 	safe_add(char_map.basic, "ene_city_swat_r870")
+	safe_add(char_map.basic, "ene_sniper_3")
 	safe_add(char_map.basic, "ene_city_shield")
 	safe_add(char_map.basic, "ene_swat_heavy_r870")
 
@@ -100,6 +101,12 @@ function CharacterTweakData:character_map(...)
 	safe_add(char_map.bex, "ene_swat_policia_federale_city_mp5")
 	safe_add(char_map.bex, "ene_swat_policia_marksman")
 
+	safe_add(char_map.chas, "ene_male_chas_police_03")
+	safe_add(char_map.chas, "ene_male_chas_police_04")
+	
+	safe_add(char_map.ranc, "ene_male_ranc_ranger_03")
+	safe_add(char_map.ranc, "ene_male_ranc_ranger_04")
+	
 	return char_map
 end
 
@@ -166,7 +173,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		melee_retry_delay = { 1, 2 },
 		melee_range = 125,
 		melee_force = 400,
-		range = { close = 750, optimal = 1500, far = 3000 }
+		range = { close = 750, optimal = 1500, far = 3000 },
+		use_secondary = false
 	})
 	
 	presets.weapon.default.is_rifle.autofire_rounds = { 1, 5 }
@@ -294,9 +302,10 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	damage_multiplier(presets.weapon.medic, 0.75)
 	
 	presets.weapon.sniper = based_on(presets.weapon.swat, {
-		aim_delay = { 0, 2.5 * aim_delay_mul },
+		aim_delay = { 0, 2 * aim_delay_mul },
 		range = { close = 5000, optimal = 10000, far = 15000 },
-		use_laser = true
+		use_laser = true,
+		use_secondary = true
 	})
 	
 	presets.weapon.sniper.is_sniper.FALLOFF = {
@@ -306,7 +315,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	}
 	
 	presets.weapon.marshal_marksman = based_on(presets.weapon.swat, {
-		aim_delay = { 0, 2.5 * aim_delay_mul }
+		aim_delay = { 0, 2 * aim_delay_mul },
+		use_secondary = true
 	})
 
 	presets.weapon.marshal_marksman.is_sniper.FALLOFF = {
@@ -316,11 +326,6 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	}
 
 	presets.weapon.marshal_shield = based_on(presets.weapon.shield)
-
-	presets.weapon.marshal_shield.is_pistol.FALLOFF = {
-		{ dmg_mul = 6 * dmg_mul_lin, r = 0, acc = { 0.7, 0.9 }, recoil = { 0.3, 0.4 }, mode = { 1, 0, 0, 0 } },
-		{ dmg_mul = 3 * dmg_mul_lin, r = 3000, acc = { 0.3, 0.5 }, recoil = { 0.6, 0.8 }, mode = { 1, 0, 0, 0 } }
-	}
 	
 	presets.weapon.taser = based_on(presets.weapon.swat, {
 		aim_delay_tase = { 0, 1 * aim_delay_mul },
@@ -338,7 +343,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	recoil_multiplier(presets.weapon.spooc, 0.75)
 	
 	presets.weapon.tank = based_on(presets.weapon.swat, {
-		aim_delay = { 0, 2 * aim_delay_mul },
+		aim_delay = { 0, 1.5 * aim_delay_mul },
 		melee_speed = 0.8,
 		melee_dmg = 30 * special_dmg_mul,
 		melee_force = 600,
@@ -723,7 +728,27 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	}
 	
 	presets.base.surrender_break_time = { 10, 15 }
+	
 	presets.base.limb_dmg_mul = 0.8
+	
+	presets.base.weapon_switch = {
+		max_chance = 1,
+		reasons = {
+			weapon_down = 0,
+			flanked = 0,
+			hostage = 0
+		},
+		factors = {
+			health = {
+				[0.5] = 0,
+				[0.0] = 0
+			},
+			aggressor_dis = {
+				[100] = 0,
+				[500] = 0
+			}
+		}	
+	}
 
 	return presets
 end
@@ -753,10 +778,12 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security.steal_loot = nil
 	self.security.rescue_hostages = false
 	
-	self.security_heavy = deep_clone(self.security)	
-	self.security_heavy.HEALTH_INIT = 24
-	self.security_heavy.headshot_dmg_mul = 3
-	table.insert(self._enemy_list, "security_heavy")
+	self.security_fat = deep_clone(self.security)	
+	self.security_fat.HEALTH_INIT = 24
+	self.security_fat.melee_weapon = "fists"
+	self.security_fat.move_speed = self.presets.move_speed.slow
+	self.security_fat.dodge = nil
+	table.insert(self._enemy_list, "security_fat")
 
 	self.security_undominatable = deep_clone(self.security)		
 	self.security_undominatable.surrender = nil
@@ -778,11 +805,11 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security_triad.no_arrest = true
 	table.insert(self._enemy_list, "security_triad")
 
-	self.security_army = deep_clone(self.security)
-	self.security_army.dodge = self.presets.dodge.average
-	self.security_army.weapon = self.presets.weapon.soldier	
-	self.security_army.no_arrest = true
-	table.insert(self._enemy_list, "security_army")
+	self.security_trai = deep_clone(self.security)
+	self.security_trai.dodge = self.presets.dodge.average
+	self.security_trai.weapon = self.presets.weapon.soldier	
+	self.security_trai.no_arrest = true
+	table.insert(self._enemy_list, "security_trai")
 
 	self.cop.HEALTH_INIT = 18
 	self.cop.headshot_dmg_mul = 3
@@ -820,9 +847,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.fbi_female.speech_prefix_p2 = "n"
 	self.fbi_female.speech_prefix_count = 1
 
-	self.hrt = deep_clone(self.fbi)
-	table.insert(self._enemy_list, "hrt")
-	
 	self.gangster.HEALTH_INIT = 24
 	self.gangster.headshot_dmg_mul = 3
 	self.gangster.melee_weapon = "fists"
@@ -890,7 +914,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.swat.suppression = self.presets.suppression.hard_def
 	self.swat.hurt_severity = self.presets.hurt_severities.base
 	self.swat.ecm_vulnerability = 1
-	self.swat.ecm_hurts = ecm_hurts_short
+	self.swat.ecm_hurts = ecm_hurts_long
 	self.swat.chatter = self.presets.enemy_chatter.swat
 	self.swat.no_arrest = nil
 
@@ -930,11 +954,16 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.heavy_swat.ecm_hurts = ecm_hurts_short
 
 	self.fbi_heavy_swat = deep_clone(self.heavy_swat)	
+	
+	self.city_heavy_swat = deep_clone(self.fbi_heavy_swat)	
+	table.insert(self._enemy_list, "city_heavy_swat")
+	
 	self.zeal_heavy_swat = deep_clone(self.fbi_heavy_swat)	
 	
 	if self._unit_prefixes.heavy_swat == "l" then --use the "d" prefix if the voiceover supports it
 		self.heavy_swat.speech_prefix_p2 = "d"
 		self.fbi_heavy_swat.speech_prefix_p2 = "d"
+		self.city_heavy_swat.speech_prefix_p2 = "d"
 		self.zeal_heavy_swat.speech_prefix_p2 = "d"
 		self.shield.speech_prefix_p2 = "d"
 		self.marshal_shield.speech_prefix_p2 = "d"
@@ -947,18 +976,18 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.sniper.weapon = self.presets.weapon.sniper
 	self.sniper.move_speed = self.presets.move_speed.normal
 	self.sniper.suppression = self.presets.suppression.easy
+	self.sniper.ecm_vulnerability = 1
 	self.sniper.ecm_hurts = ecm_hurts_long
-	self.sniper.do_not_drop_ammo = true
 	
-	self.shield.HEALTH_INIT = 36
+	self.shield.HEALTH_INIT = 30
 	self.shield.headshot_dmg_mul = 2.5
 	self.shield.speech_prefix_p1 = self._unit_prefixes.swat
-	self.shield.can_be_tased = false
 	self.shield.damage.explosion_damage_mul = 1
 	self.shield.weapon = self.presets.weapon.shield
 	self.shield.move_speed = self.presets.move_speed.very_fast
 	self.shield.min_obj_interrupt_dis = 600
-	self.shield.ecm_vulnerability = 0
+	self.shield.ecm_vulnerability = 0.6
+	self.shield.ecm_hurts = ecm_hurts_short
 	self.shield.spawn_sound_event = "shield_identification" 
 	self.shield.die_sound_event = nil
 	
@@ -1013,13 +1042,13 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	}
 
 	table.insert(self.marshal_marksman.tags, "marksman")
-	self.marshal_marksman.HEALTH_INIT = 36
+	self.marshal_marksman.HEALTH_INIT = 48
 	self.marshal_marksman.headshot_dmg_mul = 2.5
-	self.marshal_marksman.move_and_shoot_cooldown = 1
+	--self.marshal_marksman.move_and_shoot_cooldown = 1
 	self.marshal_marksman.weapon = self.presets.weapon.marshal_marksman
 	self.marshal_marksman.move_speed = self.presets.move_speed.fast
 	self.marshal_marksman.chatter = self.presets.enemy_chatter.no_chatter
-	self.marshal_marksman.misses_first_player_shot = nil
+	self.marshal_marksman.misses_first_player_shot = false
 	self.marshal_marksman.suppression = nil	
 	self.marshal_marksman.surrender = nil
 	self.marshal_marksman.surrender = nil
@@ -1028,14 +1057,14 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.heavy_swat_sniper = deep_clone(self.heavy_swat)	
 	self.heavy_swat_sniper.tags = { "law", "marksman", "special" }
-	self.heavy_swat_sniper.move_and_shoot_cooldown = 1
+	--self.heavy_swat_sniper.move_and_shoot_cooldown = 1
 	self.heavy_swat_sniper.weapon = self.presets.weapon.marshal_marksman
 	self.heavy_swat_sniper.move_speed = self.presets.move_speed.normal
 	self.heavy_swat_sniper.chatter = self.presets.enemy_chatter.no_chatter
 	self.heavy_swat_sniper.suppression = nil	
 	self.heavy_swat_sniper.surrender = nil
 	self.heavy_swat_sniper.surrender = nil
-	self.heavy_swat_sniper.misses_first_player_shot = nil
+	self.heavy_swat_sniper.misses_first_player_shot = false
 	self.heavy_swat_sniper.shooting_death = false
 	self.heavy_swat_sniper.rescue_hostages = false
 	self.heavy_swat_sniper.no_retreat = true
@@ -1047,12 +1076,12 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.marshal_shield.HEALTH_INIT = 48
 	self.marshal_shield.headshot_dmg_mul = 2.5
 	self.marshal_shield.speech_prefix_p1 = self._unit_prefixes.swat
-	self.marshal_shield.can_be_tased = false
 	self.marshal_shield.damage.explosion_damage_mul = 1
 	self.marshal_shield.weapon = self.presets.weapon.marshal_shield
 	self.marshal_shield.move_speed = self.presets.move_speed.very_fast
 	self.marshal_shield.min_obj_interrupt_dis = 600
-	self.marshal_shield.ecm_vulnerability = 0
+	self.marshal_shield.ecm_vulnerability = 0.6
+	self.marshal_shield.ecm_hurts = ecm_hurts_short	
 	self.marshal_shield.spawn_sound_event = "shield_identification" 
 	self.marshal_shield.die_sound_event = nil
 	
@@ -1063,9 +1092,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.marshal_shield_break.move_speed = self.presets.move_speed.fast
 	self.marshal_shield_break.damage.hurt_severity = self.presets.hurt_severities.tough
 	self.marshal_shield_break.tmp_invulnerable_on_tweak_change = 1.5
-	
-	self.commander = deep_clone(self.swat)	
-	table.insert(self._enemy_list, "commander")
 	
 	self.tank.HEALTH_INIT = 800
 	self.tank.headshot_dmg_mul = 20
@@ -1326,7 +1352,7 @@ function CharacterTweakData:_set_presets()
 		
 	self.flashbang_multiplier = diff_lerp(1, 1.5)
 	
-	self.tase_shock_strength = diff_lerp(5, 8)
+	self.tase_shock_strength = diff_lerp(3, 8)
 
 	self.shield_explosion_damage_mul = 0.5
 

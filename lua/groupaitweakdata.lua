@@ -1829,6 +1829,45 @@ Hooks:PostHook(GroupAITweakData, "_init_unit_categories", "hits_init_unit_catego
 	self.unit_categories.medic = {
 		special_type = "medic",
 		unit_types = {
+			america = { 
+				Idstring("units/payday2/characters/ene_medic_m4/ene_medic_m4"),
+				Idstring("units/payday2/characters/ene_medic_r870/ene_medic_r870"),
+			},
+			russia = { 
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_medic_ak47_ass/ene_akan_medic_ak47_ass"),
+				Idstring("units/pd2_dlc_mad/characters/ene_akan_medic_r870/ene_akan_medic_r870") 
+			},
+			zombie = { 
+				Idstring("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"),
+				Idstring("units/pd2_dlc_bph/characters/ene_medic_hvh_r870/ene_medic_hvh_r870") 
+			},
+			murkywater = { 
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_medic/ene_murkywater_medic"),
+				Idstring("units/pd2_dlc_bph/characters/ene_murkywater_medic_r870/ene_murkywater_medic_r870") 
+			},
+			federales = { 
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale/ene_swat_medic_policia_federale"),
+				Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870") 
+			}
+		},
+		access = access_type_all
+	}
+
+	self.unit_categories.medic_1 = {
+		special_type = "medic",
+		unit_types = {
+			america = { Idstring("units/payday2/characters/ene_medic_r870/ene_medic_r870") },
+			russia = { Idstring("units/pd2_dlc_mad/characters/ene_akan_medic_r870/ene_akan_medic_r870") },
+			zombie = { Idstring("units/pd2_dlc_hvh/characters/ene_medic_hvh_r870/ene_medic_hvh_r870") },
+			murkywater = { Idstring("units/pd2_dlc_bph/characters/ene_murkywater_medic_r870/ene_murkywater_medic_r870") },
+			federales = { Idstring("units/pd2_dlc_bex/characters/ene_swat_medic_policia_federale_r870/ene_swat_medic_policia_federale_r870") }
+		},
+		access = access_type_all
+	}
+
+	self.unit_categories.medic_2 = {
+		special_type = "medic",
+		unit_types = {
 			america = { Idstring("units/payday2/characters/ene_medic_m4/ene_medic_m4") },
 			russia = { Idstring("units/pd2_dlc_mad/characters/ene_akan_medic_ak47_ass/ene_akan_medic_ak47_ass") },
 			zombie = { Idstring("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4") },
@@ -2239,6 +2278,37 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				},
 				rank = 1,
 				unit = "medic",
+				tactics = self._tactics.medic
+			}				
+		}
+	}
+
+	self.enemy_spawn_groups.bulldozer = {
+		amount = { 3, 4 },
+		spawn = {
+			{
+				amount_min = 1,
+				freq = 1,
+				amount_max = 1,
+				rank = 3,
+				unit = "bulldozer",
+				tactics = self._tactics.bulldozer
+			},
+			{
+				freq = 1,
+				rank = 2,
+				unit = "heavy_swat",
+				tactics = self._tactics.bulldozer_support
+			},
+			{
+				amount_max = 1,
+				freq_by_diff = { 
+					difficulty_index / 96, 
+					difficulty_index / 72,  
+					difficulty_index / 48
+				},
+				rank = 1,
+				unit = "medic_2",
 				tactics = self._tactics.medic
 			}				
 		}
