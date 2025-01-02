@@ -183,6 +183,13 @@ Hooks:PreHook(PlayerDamage, "damage_bullet", "hits_damage_bullet", function (sel
 	end
 	
 	self._unit:camera()._damage_bullet_shake_multiplier = math.clamp(attack_data.damage, 0, 16) * shake_armor_multiplier
+
+	if pro_job then
+		self._unit:camera()._camera_unit:base():start_shooting()
+		
+		local camera_kick = 4 * math.clamp(attack_data.damage / 16, 0, 1) * shake_armor_multiplier
+		self._unit:camera()._camera_unit:base():recoil_kick(-camera_kick, camera_kick, -camera_kick, camera_kick)
+	end
 end)
 
 
