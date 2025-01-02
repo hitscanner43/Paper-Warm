@@ -119,9 +119,9 @@ function WeaponTweakData:_init_weapons()
 		
 		local base_penetration_damage_mul = {
 			shield = 0.5,
-			wall = 0.4,
-			armor = 0.6,
-			enemy = 0.8
+			wall = 0.5,
+			armor = 0.75,
+			enemy = 0.75
 		}
 	
 		if type(weap_data) == "table" and weap_data.stats then
@@ -2190,7 +2190,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.tti.stats_modifiers = nil
 	
 	self.msr.CLIP_AMMO_MAX = 10
-	self.msr.stats.damage = 240
+	self.msr.stats.damage = 300
 	self.msr.stats.spread = 23
 	self.msr.stats.recoil = 4
 	self.msr.stats.concealment = 16
@@ -2198,7 +2198,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.msr.stats_modifiers = nil
 
 	self.winchester1874.CLIP_AMMO_MAX = 10
-	self.winchester1874.stats.damage = 240
+	self.winchester1874.stats.damage = 300
 	self.winchester1874.stats.spread = 23
 	self.winchester1874.stats.recoil = 4
 	self.winchester1874.stats.concealment = 16
@@ -2206,7 +2206,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.winchester1874.stats_modifiers = nil
 	
 	self.desertfox.CLIP_AMMO_MAX = 5
-	self.desertfox.stats.damage = 240
+	self.desertfox.stats.damage = 300
 	self.desertfox.stats.spread = 18
 	self.desertfox.stats.recoil = 4
 	self.desertfox.stats.concealment = 22
@@ -2214,7 +2214,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.desertfox.stats_modifiers = nil
 		
 	self.r700.CLIP_AMMO_MAX = 5
-	self.r700.stats.damage = 240
+	self.r700.stats.damage = 300
 	self.r700.stats.spread = 24
 	self.r700.stats.recoil = 4
 	self.r700.stats.concealment = 18
@@ -2223,7 +2223,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.r700.stats_modifiers = nil
 	
 	self.scout.CLIP_AMMO_MAX = 5
-	self.scout.stats.damage = 240
+	self.scout.stats.damage = 300
 	self.scout.stats.spread = 22
 	self.scout.stats.recoil = 5
 	self.scout.stats.concealment = 18
@@ -2231,7 +2231,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.scout.stats_modifiers = nil
 	
 	self.r93.CLIP_AMMO_MAX = 5
-	self.r93.stats.damage = 300
+	self.r93.stats.damage = 360
 	self.r93.stats.spread = 24
 	self.r93.stats.recoil = 4
 	self.r93.stats.concealment = 16
@@ -2239,7 +2239,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.r93.stats_modifiers = nil
 
 	self.mosin.CLIP_AMMO_MAX = 5
-	self.mosin.stats.damage = 300
+	self.mosin.stats.damage = 360
 	self.mosin.stats.spread = 24
 	self.mosin.stats.recoil = 4
 	self.mosin.stats.concealment = 16
@@ -2248,7 +2248,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.mosin.stats_modifiers = nil
 
 	self.model70.CLIP_AMMO_MAX = 5
-	self.model70.stats.damage = 300
+	self.model70.stats.damage = 360
 	self.model70.stats.spread = 24
 	self.model70.stats.recoil = 4
 	self.model70.stats.concealment = 16
@@ -2257,7 +2257,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.model70.stats_modifiers = nil
 
 	self.sbl.CLIP_AMMO_MAX = 6
-	self.sbl.stats.damage = 300
+	self.sbl.stats.damage = 360
 	self.sbl.stats.spread = 22
 	self.sbl.stats.recoil = 6
 	self.sbl.stats.concealment = 20
@@ -2265,7 +2265,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.sbl.stats_modifiers = nil
 	
 	self.contender.CLIP_AMMO_MAX = 1
-	self.contender.stats.damage = 300
+	self.contender.stats.damage = 360
 	self.contender.stats.spread = 19
 	self.contender.stats.recoil = 4
 	self.contender.stats.concealment = 26
@@ -2279,7 +2279,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.contender.rays = nil --??
 	
 	self.awp.CLIP_AMMO_MAX = 10
-	self.awp.stats.damage = 300
+	self.awp.stats.damage = 360
 	self.awp.stats.spread = 24
 	self.awp.stats.recoil = 4
 	self.awp.stats.concealment = 14
@@ -2288,7 +2288,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	
 	self.m95.categories = { "snp", "fifty" }	
 	self.m95.CLIP_AMMO_MAX = 5
-	self.m95.stats.damage = 360
+	self.m95.stats.damage = 480
 	self.m95.stats.spread = 25
 	self.m95.stats.recoil = 3
 	self.m95.stats.concealment = 12
@@ -2713,7 +2713,9 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	}
 
 	self.deagle_npc.CLIP_AMMO_MAX = 7
-
+	self.deagle_npc.usage = "is_revolver"
+	self.deagle_npc.anim_usage = "is_pistol"
+	
 	self.m14_npc.trail = "effects/particles/weapons/sniper_trail" --EBR
 	self.m14_npc.CLIP_AMMO_MAX = 10
 	--self.m14_npc.armor_piercing = nil
@@ -2822,6 +2824,12 @@ local crew_weapon_mapping = {
 	x_c45 = "x_g17"
 }
 
+local alert_sizes = {
+	is_sniper = 10000,
+	is_smg = 3000,
+	is_pistol = 2500
+}
+
 function WeaponTweakData:_set_presets()	
 	local crew_presets = self.tweak_data.character.presets.weapon.gang_member
 	for k, v in pairs(self) do
@@ -2841,7 +2849,8 @@ function WeaponTweakData:_set_presets()
 			v.DAMAGE = 1
 			v.suppression = v.armor_piercing and 3 or v.is_shotgun and 2 or 1
 			v.spread = v.rays and v.rays > 1 and 6 or 0
-
+			v.alert_size = (alert_sizes[v.usage] or 5000) * (v.has_suppressor and 0.2 or 1)
+			
 			if v.usage == "is_rifle" or v.usage == "is_bullpup" then
 				v.auto = { fire_rate = 0.2 }
 			elseif v.usage == "is_smg" then
@@ -2853,7 +2862,6 @@ function WeaponTweakData:_set_presets()
 			else		
 				v.auto = { fire_rate = 0.25 }
 			end
-			
 		elseif k:match("_crew$") then
 			local player_id = k:gsub("_crew$", ""):gsub("_secondary$", ""):gsub("_primary$", "")
 			local player_weapon = crew_weapon_mapping[player_id] and self[crew_weapon_mapping[player_id]] or self[player_id]
