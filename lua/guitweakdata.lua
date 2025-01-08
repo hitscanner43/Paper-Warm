@@ -16,7 +16,6 @@ Hooks:PostHook(GuiTweakData, "init", "hits_init", function(self)
     self.buy_weapon_categories = {
         primaries = {
             { "assault_rifle" },
-            { "dmr" },
             { "smg" },
             { "shotgun" },
             { "lmg" },
@@ -27,7 +26,6 @@ Hooks:PostHook(GuiTweakData, "init", "hits_init", function(self)
         },
         secondaries = {
             { "pistol" },
-            { "revolver" },	
             { "assault_rifle" },			
             { "smg" },
             { "shotgun" },

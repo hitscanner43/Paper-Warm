@@ -1983,8 +1983,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 		},	
 		swat_agg = {
 			"charge",
-			"smoke_grenade",
-			"flash_grenade"	
+			"deathguard",
+			"smoke_grenade"
 		},	
 		swat_snk = {
 			"flank",
@@ -1998,8 +1998,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 		},	
 		shield_agg = {
 			"shield",
-			"charge",
-			"deathguard"	
+			"charge"	
 		},	
 		shield_support = {
 			"shield_cover",
@@ -2026,11 +2025,15 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 			"ranged_fire",
 			"no_push"
 		},
-		cloaker = {
-			"charge",
+		cloaker_agg = {
 			"flank",
+			"smoke_grenade",
 			"target_isolated"	
 		},	
+		cloaker_snk = {
+			"no_push",
+			"target_isolated"	
+		},
 		bulldozer = {
 			"shield",
 			"murder",
@@ -2313,6 +2316,8 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 			}				
 		}
 	}
+
+	local cloaker_random_tactics = { self._tactics.cloaker_agg, self._tactics.cloaker_snk }
 	
 	self.enemy_spawn_groups.cloaker = {
 		amount = { 1, 1 },
@@ -2321,7 +2326,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				freq = 1,
 				rank = 1,
 				unit = "cloaker",
-				tactics = self._tactics.cloaker
+				random_tactics = cloaker_random_tactics
 			}
 		}
 	}

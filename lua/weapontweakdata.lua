@@ -1788,7 +1788,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.type54.fire_mode_data.fire_rate = 60 / 500
 	
 	--Revolvers
-	self.mateba.categories = { "revolver" }
 	self.mateba.CLIP_AMMO_MAX = 6
 	self.mateba.stats.damage = 150
 	self.mateba.stats.spread = 20
@@ -1797,7 +1796,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.mateba.stats.reload = 150
 	self.mateba.fire_mode_data.fire_rate = 60 / 300
 
-	self.korth.categories = { "revolver" }
 	self.korth.CLIP_AMMO_MAX = 8
 	self.korth.stats.damage = 150
 	self.korth.stats.spread = 19
@@ -1805,7 +1803,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.korth.stats.concealment = 27
 	self.korth.fire_mode_data.fire_rate = 60 / 300
 	
-	self.new_raging_bull.categories = { "revolver" }
 	self.new_raging_bull.CLIP_AMMO_MAX = 6
 	self.new_raging_bull.stats.damage = 180
 	self.new_raging_bull.stats.spread = 20
@@ -1813,7 +1810,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.new_raging_bull.stats.concealment = 27
 	self.new_raging_bull.fire_mode_data.fire_rate = 60 / 300
 
-	self.chinchilla.categories = { "revolver" }
 	self.chinchilla.CLIP_AMMO_MAX = 6
 	self.chinchilla.stats.damage = 180
 	self.chinchilla.stats.spread = 21
@@ -1822,7 +1818,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.chinchilla.stats.reload = 125
 	self.chinchilla.fire_mode_data.fire_rate = 60 / 300
 
-	self.x_chinchilla.categories = { "akimbo", "revolver" }
 	self.x_chinchilla.CLIP_AMMO_MAX = 12
 	self.x_chinchilla.stats.damage = 180
 	self.x_chinchilla.stats.spread = 21
@@ -1830,7 +1825,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.x_chinchilla.stats.concealment = 28
 	self.x_chinchilla.fire_mode_data.fire_rate = 60 / 300
 	
-	self.model3.categories = { "revolver" }
 	self.model3.CLIP_AMMO_MAX = 6
 	self.model3.stats.damage = 180
 	self.model3.stats.spread = 19
@@ -1838,15 +1832,15 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.model3.stats.concealment = 27
 	self.model3.fire_mode_data.fire_rate = 60 / 300
 	
-	self.deagle.categories = { "handcannon", "pistol" }
+	table.insert(self.deagle.categories, "handcannon")
 	self.deagle.CLIP_AMMO_MAX = 7
 	self.deagle.stats.damage = 180
 	self.deagle.stats.spread = 17
 	self.deagle.stats.recoil = 3
 	self.deagle.stats.concealment = 26
 	self.deagle.fire_mode_data.fire_rate = 60 / 400
-
-	self.x_deagle.categories = { "akimbo", "handcannon", "pistol" }
+	
+	table.insert(self.x_deagle.categories, "handcannon")
 	self.x_deagle.CLIP_AMMO_MAX = 14
 	self.x_deagle.stats.damage = 180
 	self.x_deagle.stats.spread = 17
@@ -1854,7 +1848,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.x_deagle.stats.concealment = 26
 	self.x_deagle.fire_mode_data.fire_rate = 60 / 400
 
-	self.peacemaker.categories = { "revolver" }
 	self.peacemaker.CLIP_AMMO_MAX = 6
 	self.peacemaker.stats.damage = 240
 	self.peacemaker.stats.spread = 20
@@ -1864,7 +1857,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.peacemaker.fire_mode_data.fire_rate = 60 / 300
 	self.peacemaker.stats_modifiers = nil
 
-	self.rsh12.categories = { "revolver" }
 	self.rsh12.CLIP_AMMO_MAX = 5
 	self.rsh12.stats.damage = 240
 	self.rsh12.stats.spread = 21
