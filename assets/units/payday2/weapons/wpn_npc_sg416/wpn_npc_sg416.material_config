@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<materials version="3" group="wpn_npc_sg416">
+
+    <material name="mtr_weapon" version="2" render_template="generic:DIFFUSE_TEXTURE:NORMALMAP:RL_3RD_WEAPONS">
+        <bump_normal_texture file="units/payday2/weapons/wpn_npc_sg416/sg416_nm"/>
+        <diffuse_texture file="units/payday2/weapons/wpn_npc_sg416/sg416_df"/>
+    </material>
+    <material name="mtr_weapon_lod_1" version="2" render_template="generic:DIFFUSE_TEXTURE:RL_3RD_WEAPONS">
+        <diffuse_texture file="units/payday2/weapons/wpn_npc_sg416/sg416_df" mip="1" /> 
+    </material>
+	
+</materials>

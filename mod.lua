@@ -407,6 +407,11 @@ if not PaperWarm then
 	local diff_i = diff_tbl[difficulty] or 2
 
 
+	function PaperWarm:difficulty_index()	
+		return diff_i
+	end
+	
+	
 	function PaperWarm:difficulty_groups()	
 		local easy = diff_i < 4
 		local normal = diff_i < 6

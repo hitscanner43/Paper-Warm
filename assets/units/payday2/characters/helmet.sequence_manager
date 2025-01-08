@@ -188,6 +188,10 @@
 			
 			<object 			enabled="true" name="'g_chops'"/> 
 			<object 			enabled="true" name="'g_chops_lod1'"/>
+
+			<object 			enabled="true" name="'g_goggles'"/> 
+			<object 			enabled="true" name="'g_goggles_lod1'"/>
+			<object 			enabled="true" name="'g_glass'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'city_swat_2'" once="true" triggable="true">	
@@ -309,6 +313,17 @@
 
 			<object 			enabled="true" name="'g_torch'"/> 
 			<object 			enabled="true" name="'g_torch_lod1'"/>
-		</sequence>				
+		</sequence>
+
+		<sequence editable_state="true" name="'mcmansion_security_1'" once="true" triggable="true">			
+			<object 			enabled="true" name="'g_fbi'"/> 
+		</sequence>
+
+		<sequence editable_state="true" name="'mcmansion_security_2'" once="true" triggable="true">			
+			<object 			enabled="true" name="'g_goggles_2'"/> 
+			<object 			enabled="true" name="'g_goggles_2_lod1'"/> 
+			<object 			enabled="true" name="'g_glass_2'"/> 
+		</sequence>
+		
 	</unit>
 </table>

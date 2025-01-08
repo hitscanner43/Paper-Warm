@@ -761,6 +761,16 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 	detonate_pos = grenade_tracker:field_position()
 	managers.navigation:destroy_nav_tracker(grenade_tracker)
 
+	if not grenade_user.unit:movement():chk_action_forbidden("action") then
+		if not grenade_user.char_tweak.no_grenade_anim then
+			local redirect = "throw_grenade"
+			
+			if grenade_user.unit:movement():play_redirect(redirect) then
+				managers.network:session():send_to_peers_synched("play_distance_interact_redirect", grenade_user.unit, redirect)
+			end
+		end
+	end
+
 	local timeout
 	if use_teargas then
 		self:detonate_cs_grenade(detonate_pos, mvec_cpy(grenade_user.m_pos), tweak_data.group_ai.cs_grenade_lifetime or 25)
@@ -781,7 +791,7 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 
 		timeout = tweak_data.group_ai[grenade_type .. "_timeout"] or tweak_data.group_ai.smoke_and_flash_grenade_timeout
 	end
-				
+
 	task_data.use_smoke = false
 	-- Minimum grenade cooldown
 	task_data.use_smoke_timer = self._t + tweak_data.group_ai.min_grenade_timeout

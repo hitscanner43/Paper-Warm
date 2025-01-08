@@ -204,7 +204,7 @@ function CopLogicIdle._get_priority_attention(data, attention_objects, reaction_
 				local alert_dt = attention_data.alert_t and (data.t - attention_data.alert_t) * weight_mul or 10000
 				local dmg_dt = attention_data.dmg_t and (data.t - attention_data.dmg_t) * weight_mul or 10000
 				distance = distance * weight_mul * (crim_record and crim_record.suspicion_mul or 1)
---here
+
 				if crim_record then
 					if data.tactics and data.tactics.target_isolated then
 						local closest_dis = nil

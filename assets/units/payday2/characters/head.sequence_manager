@@ -284,6 +284,26 @@
 			<run_sequence	name="'security_head'"/>
 			<run_sequence	name="'disable_arms'"/>
 		</sequence>
+
+		<sequence editable_state="true" name="'marshal_marksman_1'" once="true" triggable="true">
+			<run_sequence	name="'security_head'"/>
+			<run_sequence	name="'disable_hands'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'marshal_marksman_2'" once="true" triggable="true">
+			<run_sequence	name="'security_head'"/>
+			<run_sequence	name="'disable_hands'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'marshal_shield_1'" once="true" triggable="true">
+			<run_sequence	name="'security_head'"/>
+			<run_sequence	name="'disable_hands'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'marshal_shield_2'" once="true" triggable="true">
+			<run_sequence	name="'security_head'"/>
+			<run_sequence	name="'disable_hands'"/>
+		</sequence>
 		
 		<sequence editable_state="true" name="'gensec_1'" once="true" triggable="true">
 			<run_sequence	name="'security_head'"/>
@@ -293,6 +313,18 @@
 			<run_sequence	name="'security_head'"/>
 		</sequence>
 
+		<sequence editable_state="true" name="'mcmansion_security_1'" once="true" triggable="true">
+			<run_sequence	name="'security_head'"/>
+			<run_sequence	name="'disable_arms'"/>
+			<run_sequence	name="'disable_hands'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'mcmansion_security_2'" once="true" triggable="true">
+			<run_sequence	name="'security_head'"/>
+			<run_sequence	name="'disable_arms'"/>
+			<run_sequence	name="'disable_hands'"/>
+		</sequence>
+		
 		<sequence editable_state="true" name="'secret_service_casino'" once="true" triggable="true">
 			<run_sequence	name="'security_head'"/>
 			<run_sequence	name="'disable_arms'"/>
@@ -309,12 +341,12 @@
 		
 		<sequence editable_state="true" name="'la_cop_3'" once="true" triggable="true">
 			<run_sequence	name="'security_head'"/>
+			<run_sequence	name="'disable_arms'"/>
 			<run_sequence	name="'disable_hands'"/>
 		</sequence>
 
 		<sequence editable_state="true" name="'la_cop_4'" once="true" triggable="true">
 			<run_sequence	name="'security_head'"/>
-			<run_sequence	name="'disable_arms'"/>
 			<run_sequence	name="'disable_hands'"/>
 		</sequence>
 
@@ -337,7 +369,12 @@
 			<run_sequence	name="'security_head'"/>
 			<run_sequence	name="'disable_hands'"/>
 		</sequence>
-		
+
+		<sequence editable_state="true" name="'cruise_security'" once="true" triggable="true">
+			<run_sequence	name="'security_head'"/>
+			<run_sequence	name="'disable_arms'"/>
+		</sequence>
+
 		<sequence editable_state="true" name="'ranc_ranger_1'" once="true" triggable="true">
 			<run_sequence	name="'security_head'"/>
 		</sequence>
@@ -356,6 +393,10 @@
 			<run_sequence	name="'security_head'"/>
 			<run_sequence	name="'disable_arms'"/>
 			<run_sequence	name="'disable_hands'"/>
+		</sequence>
+
+		<sequence editable_state="true" name="'deep_security'" once="true" triggable="true">
+			<run_sequence	name="'security_head'"/>
 		</sequence>
 	</unit>
 </table>

@@ -131,7 +131,7 @@ function WeaponTweakData:_init_weapons()
 			--catch-all stat setups
 			if cat_map.assault_rifle then
 				weap_data.stats.suppression = cat_map.dmr and 1 or 11 
-				weap_data.stats.alert_size = cat_map.dmr and 19 or 16
+				weap_data.stats.alert_size = cat_map.dmr and 19 or 15
 				weap_data.steelsight_time = 0.3
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "auto", "single" }
 
@@ -179,7 +179,7 @@ function WeaponTweakData:_init_weapons()
 				
 			elseif cat_map.smg then
 				weap_data.stats.suppression = 16
-				weap_data.stats.alert_size = 15
+				weap_data.stats.alert_size = 13
 				weap_data.steelsight_time = 0.25
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or weap_data.CAN_TOGGLE_FIREMODE and { "auto", "single" } or { "auto" }
 
@@ -223,7 +223,7 @@ function WeaponTweakData:_init_weapons()
 				
 			elseif cat_map.pistol then
 				weap_data.stats.suppression = 16
-				weap_data.stats.alert_size = 14
+				weap_data.stats.alert_size = 11
 				weap_data.steelsight_time = 0.2
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or weap_data.CAN_TOGGLE_FIREMODE and { "auto", "single" } or { "single" }
 
@@ -281,7 +281,7 @@ function WeaponTweakData:_init_weapons()
 				
 			elseif cat_map.shotgun then
 				weap_data.stats.suppression = 1
-				weap_data.stats.alert_size = 18
+				weap_data.stats.alert_size = 17
 				weap_data.steelsight_time = 0.3
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or weap_data.CAN_TOGGLE_FIREMODE and { "auto", "single" } or { "single" }
 				
@@ -472,7 +472,7 @@ function WeaponTweakData:_init_weapons()
 				
 			elseif cat_map.revolver then
 				weap_data.stats.suppression = 9
-				weap_data.stats.alert_size = 17
+				weap_data.stats.alert_size = 15
 				weap_data.steelsight_time = 0.2
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
 
@@ -519,7 +519,7 @@ function WeaponTweakData:_init_weapons()
 				
 			elseif cat_map.handcannon then
 				weap_data.stats.suppression = 9
-				weap_data.stats.alert_size = 17
+				weap_data.stats.alert_size = 15
 				weap_data.steelsight_time = 0.2
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
 				
@@ -643,7 +643,7 @@ function WeaponTweakData:_init_weapons()
 				
 			elseif cat_map.grenade_launcher or cat_map.rocket_launcher then
 				weap_data.stats.suppression = 1
-				weap_data.stats.alert_size = 18
+				weap_data.stats.alert_size = 17
 				weap_data.steelsight_time = 0.3		
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
 						
@@ -1257,14 +1257,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.aug.stats.spread = 16
 	self.aug.stats.recoil = 11
 	self.aug.stats.concealment = 22
-	self.aug.fire_mode_data.fire_rate = 60 / 750
+	self.aug.fire_mode_data.fire_rate = 60 / 650
 	
 	self.l85a2.CLIP_AMMO_MAX = 30
 	self.l85a2.stats.damage = 60
 	self.l85a2.stats.spread = 15
 	self.l85a2.stats.recoil = 14
 	self.l85a2.stats.concealment = 20
-	self.l85a2.fire_mode_data.fire_rate = 60 / 650
+	self.l85a2.fire_mode_data.fire_rate = 60 / 700
 	self.l85a2.timers.reload_not_empty = 3
 	self.l85a2.timers.reload_empty = 4	
 	
@@ -2705,7 +2705,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	self.asval_smg_npc.muzzleflash_silenced = "effects/payday2/particles/weapons/9mm_auto_silence"
 	self.asval_smg_npc.has_suppressor = "suppressed_a"
 
-	self.mp9_npc.CLIP_AMMO_MAX = 20	
 	self.mp9_npc.hold = {
 		"uzi",
 		"bullpup",
@@ -2716,11 +2715,19 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	self.deagle_npc.usage = "is_revolver"
 	self.deagle_npc.anim_usage = "is_pistol"
 	
-	self.m14_npc.trail = "effects/particles/weapons/sniper_trail" --EBR
+	--EBR
+	self.m14_npc.trail = "effects/particles/weapons/sniper_trail" 
 	self.m14_npc.CLIP_AMMO_MAX = 10
-	--self.m14_npc.armor_piercing = nil
 	self.m14_npc.usage = "is_sniper"
 
+	self.heavy_snp_npc.trail = "effects/particles/weapons/sniper_trail"
+	self.heavy_snp_npc.CLIP_AMMO_MAX = 10
+	self.heavy_snp_npc.usage = "is_sniper"
+	
+	self.dmr_npc.trail = "effects/particles/weapons/sniper_trail"
+	self.dmr_npc.CLIP_AMMO_MAX = 10
+	self.dmr_npc.usage = "is_sniper"
+	
 	self.m14_sniper_npc.trail = "effects/particles/weapons/sniper_trail"
 	self.m14_sniper_npc.muzzleflash = "effects/payday2/particles/weapons/big_762_auto"
 	self.m14_sniper_npc.shell_ejection = "effects/payday2/particles/weapons/shells/shell_sniper"
@@ -2738,14 +2745,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	self.svdsil_snp_npc.shell_ejection = "effects/payday2/particles/weapons/shells/shell_sniper"
 	self.svdsil_snp_npc.CLIP_AMMO_MAX = 5
 	self.svdsil_snp_npc.usage = "is_sniper"
-
-	self.heavy_snp_npc.trail = "effects/particles/weapons/sniper_trail"
-	self.heavy_snp_npc.CLIP_AMMO_MAX = 10
-	self.heavy_snp_npc.usage = "is_sniper"
-	
-	self.dmr_npc.trail = "effects/particles/weapons/sniper_trail"
-	self.dmr_npc.CLIP_AMMO_MAX = 20
-	self.dmr_npc.usage = "is_sniper"
 	
 	self.benelli_npc.sounds.prefix = "benelli_m4_npc" 
 	
@@ -2760,15 +2759,19 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	self.sko12_conc_npc.CLIP_AMMO_MAX = 25
 	self.sko12_conc_npc.FIRE_MODE = "auto"
 	self.sko12_conc_npc.auto = { fire_rate = 0.25 }
-	self.sko12_conc_npc.bullet_class = nil --screw you and your stupid concussion ammo
 
 	self.flamethrower_npc.flame_max_range = 1000
-	self.flamethrower_npc.CLIP_AMMO_MAX = 300
+	self.flamethrower_npc.CLIP_AMMO_MAX = 600
 	self.flamethrower_npc.armor_piercing = true
+
+	self.mini_npc.CLIP_AMMO_MAX = 750
 	
 	self.beretta92_npc.has_suppressor = "suppressed_b"
 	
 	self.sr2_smg_npc.sounds.prefix = self.sr2_crew.sounds.prefix
+	
+	self.sg416_npc = based_on(self.m4_npc, self.m4_crew)
+	self.sg416_npc.sounds.prefix = self.tecci_crew.sounds.prefix
 	
 	self.aa12_npc = based_on(self.saiga_npc, self.aa12_crew)
 	--self.r700_npc = based_on(self.m14_sniper_npc, self.r700_crew)
@@ -2826,18 +2829,25 @@ local crew_weapon_mapping = {
 
 local alert_sizes = {
 	is_sniper = 10000,
+	is_lmg = 6000,
+	is_shotgun_pump = 5000,
+	is_shotgun_mag = 5000,
+	is_double_barrel = 5000,
 	is_smg = 3000,
 	is_pistol = 2500
 }
 
+local diff_i = PaperWarm:difficulty_index()
+local diff_i_no_normal = diff_i - 2
+		
 function WeaponTweakData:_set_presets()	
 	local crew_presets = self.tweak_data.character.presets.weapon.gang_member
 	for k, v in pairs(self) do
 		if k:match("_turret_module") then
-			v.DAMAGE = 1
+			v.DAMAGE = 1 + (0.25 * diff_i_no_normal)
 			v.DAMAGE_MUL_RANGE = turret_damage_mul
-			v.HEALTH_INIT = 200
-			v.SHIELD_HEALTH_INIT = 200
+			v.HEALTH_INIT = 400 + (100 * diff_i_no_normal)
+			v.SHIELD_HEALTH_INIT = 100  + (25 * diff_i_no_normal)
 			v.CLIP_SIZE = 400
 			v.BAG_DMG_MUL = 20
 			v.SHIELD_DMG_MUL = 1
@@ -2849,7 +2859,7 @@ function WeaponTweakData:_set_presets()
 			v.DAMAGE = 1
 			v.suppression = v.armor_piercing and 3 or v.is_shotgun and 2 or 1
 			v.spread = v.rays and v.rays > 1 and 6 or 0
-			v.alert_size = (alert_sizes[v.usage] or 5000) * (v.has_suppressor and 0.2 or 1)
+			v.alert_size = (alert_sizes[v.usage] or 4000) * (v.has_suppressor and 0.2 or 1)
 			
 			if v.usage == "is_rifle" or v.usage == "is_bullpup" then
 				v.auto = { fire_rate = 0.2 }

@@ -1,3 +1,4 @@
+local diff_i = PaperWarm:difficulty_index()
 local deathwish = PaperWarm:deathwish()
 
 local function diff_lerp(value_1, value_2)
@@ -113,7 +114,9 @@ end
 
 --New Weapons
 Hooks:PostHook(CharacterTweakData, "_create_table_structure", "hits_create_table_structure", function (self)
-
+	table.insert(self.weap_ids, "sg416")
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_sg416/wpn_npc_sg416"))
+	
 	table.insert(self.weap_ids, "aa12")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_aa12/wpn_npc_aa12"))
 	
@@ -124,8 +127,7 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "hits_create_table
 	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_bex/weapons/wpn_npc_hajk/wpn_npc_hajk"))
 
 	table.insert(self.weap_ids, "fal")
-	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_bex/weapons/wpn_npc_fal/wpn_npc_fal"))
-		
+	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_bex/weapons/wpn_npc_fal/wpn_npc_fal"))	
 end)
 
 
@@ -154,7 +156,6 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	local aim_delay_mul_tbl = { 1.1, 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4 }
 	local focus_delay_mul_tbl = { 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2 }
 
-	local diff_i = tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
 	local dmg_mul = dmg_mul_tbl[diff_i]
 	local dmg_mul_lin = dmg_mul_lin_tbl[diff_i]
 	local special_dmg_mul = special_dmg_mul_tbl[diff_i]
@@ -167,6 +168,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		focus_dis = 300,
 		spread = 5,
 		RELOAD_SPEED = 1,
+		reload_speed_new = 1,
 		miss_dis = 40,
 		melee_speed = 1,
 		melee_dmg = 6 * dmg_mul_lin,
@@ -219,6 +221,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	}
 
 	presets.weapon.default.is_double_barrel = deep_clone(presets.weapon.default.is_shotgun_pump)
+	presets.weapon.default.is_double_barrel.RELOAD_SPEED = 6	
 	presets.weapon.default.is_double_barrel.FALLOFF = {
 		{ dmg_mul = 8 * dmg_mul_lin, r = 0, acc = { 0.8, 1 }, recoil = { 0.5, 0.75 }, mode = { 1, 0, 0, 0 } },
 		{ dmg_mul = 6 * dmg_mul_lin, r = 1000, acc = { 0.6, 0.8 }, recoil = { 0.75, 1 }, mode = { 1, 0, 0, 0 } },
@@ -990,6 +993,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.shield.ecm_hurts = ecm_hurts_short
 	self.shield.spawn_sound_event = "shield_identification" 
 	self.shield.die_sound_event = nil
+	self.shield.no_grenade_anim = true
 	
 	self.medic.HEALTH_INIT = 48
 	self.medic.headshot_dmg_mul = 2.5
@@ -1084,6 +1088,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.marshal_shield.ecm_hurts = ecm_hurts_short	
 	self.marshal_shield.spawn_sound_event = "shield_identification" 
 	self.marshal_shield.die_sound_event = nil
+	self.marshal_shield.no_grenade_anim = trueself.marshal_shield.no_grenade_anim = true
 	
 	self.marshal_shield_break = deep_clone(self.fbi_heavy_swat)
 	self.marshal_shield_break.HEALTH_INIT = 72
@@ -1335,12 +1340,12 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 end) 
 
-function CharacterTweakData:_set_presets()
-	local difficulty_index = self.tweak_data:difficulty_to_index(Global.game_settings and Global.game_settings.difficulty or "normal")
-	local f = math.max(0, difficulty_index - 2) / 4
 
+function CharacterTweakData:_set_presets()
 	local health_mul_tbl = { 1, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5 }
-	local health_mul = health_mul_tbl[difficulty_index]
+	local health_mul = health_mul_tbl[diff_i]
+	
+	local health_mul_tbl = { 1, 1, 1.125, 1.25, 1.375, 1.5, 1.75, 2 }
 	
 	self.chavez_boss.HEALTH_INIT = self.chavez_boss.HEALTH_INIT * health_mul
 	self.mobster_boss.HEALTH_INIT = self.mobster_boss.HEALTH_INIT * health_mul	

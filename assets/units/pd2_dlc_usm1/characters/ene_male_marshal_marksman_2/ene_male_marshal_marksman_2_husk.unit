@@ -5,7 +5,7 @@
 
 	<dependencies>
 		<depends_on unit="units/pd2_dlc_usm1/weapons/wpn_npc_dmr/wpn_npc_dmr" />
-		<depends_on unit="units/pd2_dlc_usm1/characters/ene_acc_marshal_head/ene_acc_marshal_head" />
+		<depends_on unit="units/payday2/characters/ene_acc_security_head/ene_acc_security_head" />
 	</dependencies>
 
 	<extensions>
@@ -96,7 +96,7 @@
 		<extension name="anim_data" class="PlayerAnimationData" />
 		<extension name="character_damage" class="HuskCopDamage">
 			<var name="_head_body_name" value="head" />
-			<var name="_head" value="units/pd2_dlc_usm1/characters/ene_acc_marshal_head/ene_acc_marshal_head" />
+			<var name="_head" value="units/payday2/characters/ene_acc_security_head/ene_acc_security_head" />
 			<var name="_head_gear" value="units/pd2_dlc_usm1/characters/ene_acc_marksman_hat_2/ene_acc_marksman_hat_2" />
 		</extension>
 		<extension name="movement" class="HuskCopMovement" >

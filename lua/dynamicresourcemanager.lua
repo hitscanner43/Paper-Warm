@@ -51,11 +51,15 @@ Hooks:PostHook(DynamicResourceManager, "preload_units", "sh_preload_units", func
 	load_unload_unit("units/pd2_dlc_rvd/characters/ene_acc_la_cop_hat/ene_acc_la_cop_hat", dlc1_needed, true)
 
 	local chas_needed = PackageManager:has(ids_unit, Idstring("units/pd2_dlc_chas/characters/ene_male_chas_police_01/ene_male_chas_police_01"))			
-	load_unload_unit("units/pd2_dlc_chas/characters/ene_male_chas_police_03/ene_male_chas_police_03", chas_needed)
-	load_unload_unit("units/pd2_dlc_chas/characters/ene_male_chas_police_04/ene_male_chas_police_04", chas_needed)
+	load_unload_unit("units/pd2_dlc_chas/characters/ene_male_chas_police_03/ene_male_chas_police_03", chas_needed, false)
+	load_unload_unit("units/pd2_dlc_chas/characters/ene_male_chas_police_04/ene_male_chas_police_04", chas_needed, false)
 	
 	local ranc_needed = PackageManager:has(ids_unit, Idstring("units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_01/ene_male_ranc_ranger_01"))			
 	load_unload_unit("units/pd2_dlc_ranc/characters/ene_acc_ranc_ranger_hat/ene_acc_ranc_ranger_hat", ranc_needed, true)
-	load_unload_unit("units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_03/ene_male_ranc_ranger_03", ranc_needed)
-	load_unload_unit("units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_04/ene_male_ranc_ranger_04", ranc_needed)
+	load_unload_unit("units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_03/ene_male_ranc_ranger_03", ranc_needed, false)
+	load_unload_unit("units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_04/ene_male_ranc_ranger_04", ranc_needed, false)
+
+	local deep_needed = PackageManager:has(ids_unit, Idstring("units/pd2_dlc_deep/characters/ene_deep_security_1/ene_deep_security_1"))			
+	load_unload_unit("units/pd2_dlc_deep/characters/ene_acc_deep_security_cap/ene_acc_deep_security_cap", deep_needed, true)
+	
 end)

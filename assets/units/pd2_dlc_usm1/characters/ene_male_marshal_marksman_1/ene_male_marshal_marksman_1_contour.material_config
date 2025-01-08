@@ -61,6 +61,7 @@
 	</material>
 
 	
+	
     <material name="shadow_caster" render_template="shadow_caster_only:SKINNED_1WEIGHT" version="2" />
 	
 </materials>

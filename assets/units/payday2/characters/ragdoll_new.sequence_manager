@@ -499,6 +499,18 @@
 		</sequence>
 		
 
+		<sequence editable_state="true" name="'mcmansion_security_1'" once="true" triggable="true">						
+			<object 			enabled="true" name="'g_gear_smg'"/>
+			<object 			enabled="true" name="'g_gear_smg_lod1'"/>
+		</sequence>
+		
+		
+		<sequence editable_state="true" name="'mcmansion_security_2'" once="true" triggable="true">						
+			<object 			enabled="true" name="'g_gear_rifle'"/>
+			<object 			enabled="true" name="'g_gear_rifle_lod1'"/>
+		</sequence>
+		
+		
 		<sequence editable_state="true" name="'la_cop_1'" once="true" triggable="true">
 			<object 			enabled="true" name="'g_gear_1'"/>
 			<object 			enabled="true" name="'g_gear_1_lod1'"/>
@@ -521,6 +533,12 @@
 
 
 		<sequence editable_state="true" name="'la_cop_3'" once="true" triggable="true">
+			<object 			enabled="false" name="'g_body'"/>
+			<object 			enabled="false" name="'g_body_lod1'"/>
+
+			<object 			enabled="true" name="'g_body_2'"/>
+			<object 			enabled="true" name="'g_body_2_lod1'"/>
+			
 			<object 			enabled="true" name="'g_gear_3'"/>
 			<object 			enabled="true" name="'g_gear_3_lod1'"/>
 
@@ -530,14 +548,11 @@
 
 
 		<sequence editable_state="true" name="'la_cop_4'" once="true" triggable="true">
-			<object 			enabled="false" name="'g_body'"/>
-			<object 			enabled="false" name="'g_body_lod1'"/>
-
-			<object 			enabled="true" name="'g_body_2'"/>
-			<object 			enabled="true" name="'g_body_2_lod1'"/>
-			
 			<object 			enabled="true" name="'g_gear_4'"/>
 			<object 			enabled="true" name="'g_gear_4_lod1'"/>
+
+			<object 			enabled="true" name="'g_glasses_up'"/>
+			<object 			enabled="true" name="'g_glasses_up_lod1'"/>
 		</sequence>
 
 
@@ -631,19 +646,7 @@
 		</sequence>
 		
 		
-		<sequence editable_state="true" name="'marshal_security_1'" once="true" triggable="true">		
-			<object 			enabled="true" name="'g_gear_security'"/>
-			<object 			enabled="true" name="'g_gear_security_lod1'"/>
-		</sequence>
-		
-		
-		<sequence editable_state="true" name="'marshal_security_2'" once="true" triggable="true">
-			<object 			enabled="true" name="'g_gear_security'"/>
-			<object 			enabled="true" name="'g_gear_security_lod1'"/>
-		</sequence>
-		
-		
-		<sequence editable_state="true" name="'marshal_security_3'" once="true" triggable="true">			
+		<sequence editable_state="true" name="'deep_security'" once="true" triggable="true">		
 			<object 			enabled="true" name="'g_gear_security'"/>
 			<object 			enabled="true" name="'g_gear_security_lod1'"/>
 		</sequence>

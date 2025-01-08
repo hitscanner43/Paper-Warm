@@ -27,6 +27,17 @@ function CopMovement:speed_modifier()
 	return final_modifier ~= 1 and final_modifier
 end
 
+
+function CopMovement:get_reload_speed_multiplier()
+	local weapon_unit = self._ext_inventory:equipped_unit()
+	local weap_tweak = weapon_unit:base():weapon_tweak_data()
+	
+	self._reload_speed_multiplier = self._reload_speed_multiplier * self._tweak_data.weapon[weap_tweak.usage].reload_speed_new
+	
+	return self._reload_speed_multiplier
+end
+
+
 -- Fix enemies playing the suppressed stand-to-crouch animation when shot even if they are already crouching
 local play_redirect_original = CopMovement.play_redirect
 function CopMovement:play_redirect(redirect_name, ...)
@@ -86,17 +97,32 @@ end
 
 
 -- Toggle flashlights when set to cool or uncool
-Hooks:PreHook(CopMovement, "_post_init", "sh__post_init", function (self)
+Hooks:PreHook(CopMovement, "_post_init", "sh__post_init", function(self)
 	local equipped_weapon = self._ext_inventory:equipped_unit()
-	if equipped_weapon then
+	if alive(equipped_weapon) then
 		equipped_weapon:base():set_flashlight_enabled(false)
 	end
 end)
 
-
-Hooks:PostHook(CopMovement, "set_cool", "sh_set_cool", function (self, state)
+function CopMovement:_chk_flashlight_state()
 	local equipped_weapon = self._ext_inventory:equipped_unit()
-	if equipped_weapon then
-		equipped_weapon:base():set_flashlight_enabled(not state)
+	if not alive(equipped_weapon) then
+		return
 	end
-end)
+
+	local flashlight_on = not self:cool() and not self._ext_inventory:shield_unit() and managers.game_play_central:flashlights_on()
+	if flashlight_on then
+		local lights = self._unit:get_objects_by_type(Idstring("light"))
+		if #lights > 0 and lights[1]:enable() then
+			flashlight_on = false
+		end
+	end
+
+	equipped_weapon:base():set_flashlight_enabled(flashlight_on)
+end
+
+Hooks:PostHook(CopMovement, "set_cool", "sh_set_cool", CopMovement._chk_flashlight_state)
+
+function CopMovement:sync_equip_weapon()
+	self:_chk_flashlight_state()
+end

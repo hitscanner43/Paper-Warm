@@ -80,6 +80,9 @@ local sequence_mapping_clean = {
 
 	["units/pd2_dlc1/characters/ene_security_gensec_1/ene_security_gensec_1"] = "gensec_1",	
 	["units/pd2_dlc1/characters/ene_security_gensec_2/ene_security_gensec_2"] = "gensec_2",	
+
+	["units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_1/ene_hoxton_breakout_guard_1"] = "mcmansion_security_1",	
+	["units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_2/ene_hoxton_breakout_guard_2"] = "mcmansion_security_2",
 	
 	["units/pd2_dlc_casino/characters/ene_secret_service_1_casino/ene_secret_service_1_casino"] = "secret_service_casino",	
 
@@ -92,15 +95,19 @@ local sequence_mapping_clean = {
 	["units/pd2_dlc_chas/characters/ene_male_chas_police_02/ene_male_chas_police_02"] = "chas_police_2",		
 	["units/pd2_dlc_chas/characters/ene_male_chas_police_03/ene_male_chas_police_03"] = "chas_police_3",	
 	["units/pd2_dlc_chas/characters/ene_male_chas_police_04/ene_male_chas_police_04"] = "chas_police_4",	
-		
+
+	["units/pd2_dlc_chca/characters/ene_security_cruise_1/ene_security_cruise_1"] = "cruise_security",	
+	["units/pd2_dlc_chca/characters/ene_security_cruise_2/ene_security_cruise_2"] = "cruise_security",		
+	["units/pd2_dlc_chca/characters/ene_security_cruise_3/ene_security_cruise_3"] = "cruise_security",
+	
 	["units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_01/ene_male_ranc_ranger_01"] = "ranc_ranger_1",	
 	["units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_02/ene_male_ranc_ranger_02"] = "ranc_ranger_2",		
 	["units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_03/ene_male_ranc_ranger_03"] = "ranc_ranger_3",	
 	["units/pd2_dlc_ranc/characters/ene_male_ranc_ranger_04/ene_male_ranc_ranger_04"] = "ranc_ranger_4",	
 	
-	["units/pd2_dlc_deep/characters/ene_deep_security_1/ene_deep_security_1"] = "marshal_security_1",	
-	["units/pd2_dlc_deep/characters/ene_deep_security_2/ene_deep_security_2"] = "marshal_security_2",	
-	["units/pd2_dlc_deep/characters/ene_deep_security_3/ene_deep_security_3"] = "marshal_security_3",	
+	["units/pd2_dlc_deep/characters/ene_deep_security_1/ene_deep_security_1"] = "deep_security",	
+	["units/pd2_dlc_deep/characters/ene_deep_security_2/ene_deep_security_2"] = "deep_security",	
+	["units/pd2_dlc_deep/characters/ene_deep_security_3/ene_deep_security_3"] = "deep_security",	
 }
 
 
@@ -139,7 +146,7 @@ local hoxout_fbi_male = {
 	r870 = 2
 }
 local hoxout_fbi_female = { 
-	c45 = 3, 
+	c45 = 2, 
 	raging_bull = 1 
 } 
 local cobras = { 
@@ -176,15 +183,26 @@ local sosa_indoor = {
 	ak47 = 2,
 	r870 = 1
 }
+local secret_service = { 
+	beretta92 = 2,
+	mp5 = 1
+}
 local triads = { 
 	c45 = 3,
 	mac11 = 2
+}
+local cruise_security = { 
+	c45 = 2, 
+	raging_bull = 1 
 }
 local triads_pent = { 
 	c45 = 2,
 	mp5 = 1
 }
-
+local bellmead_security = { 
+	ump = 3,
+	s552 = 2
+}
 
 local weapon_mapping = {
 	--make CS tier SWAT units use rifles
@@ -193,7 +211,12 @@ local weapon_mapping = {
 	[("units/pd2_dlc_bph/characters/ene_murkywater_light/ene_murkywater_light"):key()] = "m4",	
 	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale/ene_swat_policia_federale"):key()] = "m4",		
 	[("units/pd2_dlc_mad/characters/ene_akan_cs_swat_ak47_ass/ene_akan_cs_swat_ak47_ass"):key()] = "ak47_ass",
-
+	
+	[("units/payday2/characters/ene_fbi_2/ene_fbi_2"):key()] = "sg416",		
+	[("units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"):key()] = "sg416",		
+	[("units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3"):key()] = "ump",	
+	[("units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key()] = "sg416",		
+	
 	--make Medics use SMGs
 	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = "mp5",	
 	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"):key()] = "mp5",	
@@ -208,10 +231,10 @@ local weapon_mapping = {
 	[("units/pd2_dlc_bph/characters/ene_murkywater_shield/ene_murkywater_shield"):key()] = "c45",
 
 	--make FBI guard use more appropriate weapons
-	[("units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_1/ene_hoxton_breakout_guard_1"):key()] = "mp5",	
-	[("units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_2/ene_hoxton_breakout_guard_2"):key()] = "m4",	
+	[("units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_1/ene_hoxton_breakout_guard_1"):key()] = "ump",	
+	[("units/pd2_mcmansion/characters/ene_hoxton_breakout_guard_2/ene_hoxton_breakout_guard_2"):key()] = "sg416",	
 		
-	--make a bunch of units use random weapons 
+	--make a bunch of units use random weapons 	
 	[("units/payday2/characters/ene_fbi_office_1/ene_fbi_office_1"):key()] = hoxout_fbi_male,
 	[("units/payday2/characters/ene_fbi_office_2/ene_fbi_office_2"):key()] = hoxout_fbi_male,
 	[("units/payday2/characters/ene_fbi_office_3/ene_fbi_office_3"):key()] = hoxout_fbi_male,
@@ -265,11 +288,27 @@ local weapon_mapping = {
 	[("units/pd2_dlc_chas/characters/ene_male_triad_gang_3/ene_male_triad_gang_3"):key()] = triads,
 	[("units/pd2_dlc_chas/characters/ene_male_triad_gang_4/ene_male_triad_gang_4"):key()] = triads,
 
+	[("units/pd2_dlc_chca/characters/ene_security_cruise_1/ene_security_cruise_1"):key()] = cruise_security,
+	[("units/pd2_dlc_chca/characters/ene_security_cruise_2/ene_security_cruise_2"):key()] = cruise_security,
+	[("units/pd2_dlc_chca/characters/ene_security_cruise_3/ene_security_cruise_3"):key()] = cruise_security,
+
 	[("units/pd2_dlc_pent/characters/ene_male_triad_penthouse_1/ene_male_triad_penthouse_1"):key()] = triads_pent,
 	[("units/pd2_dlc_pent/characters/ene_male_triad_penthouse_2/ene_male_triad_penthouse_2"):key()] = triads_pent,
 	[("units/pd2_dlc_pent/characters/ene_male_triad_penthouse_3/ene_male_triad_penthouse_3"):key()] = triads_pent,
 	[("units/pd2_dlc_pent/characters/ene_male_triad_penthouse_4/ene_male_triad_penthouse_4"):key()] = triads_pent,
+	
+	[("units/pd2_dlc_deep/characters/ene_deep_security_1/ene_deep_security_1"):key()] = bellmead_security,
+	[("units/pd2_dlc_deep/characters/ene_deep_security_2/ene_deep_security_2"):key()] = bellmead_security,
+	[("units/pd2_dlc_deep/characters/ene_deep_security_3/ene_deep_security_3"):key()] = bellmead_security,
 
+	[("units/payday2/characters/ene_secret_service_1/ene_secret_service_1"):key()] = secret_service,
+	[("units/payday2/characters/ene_secret_service_2/ene_secret_service_2"):key()] = secret_service,
+	[("units/pd2_dlc_casino/characters/ene_secret_service_1_casino/ene_secret_service_1_casino"):key()] = secret_service,
+	[("units/pd2_dlc_short/characters/ene_secret_service_1_undominatable/ene_secret_service_1_undominatable"):key()] = secret_service,
+	[("units/payday2/characters/ene_secret_service_1_casino/ene_secret_service_1_casino"):key()] = secret_service,
+	[("units/pd2_dlc_vit/characters/ene_murkywater_secret_service/ene_murkywater_secret_service"):key()] = secret_service,
+	[("units/pd2_dlc_fex/characters/ene_secret_service_fex/ene_secret_service_fex"):key()] = secret_service,
+	
 	--set Federales weapons
 	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_city/ene_swat_policia_federale_city"):key()] = "hajk",
 	[("units/pd2_dlc_bex/characters/ene_swat_policia_marksman/ene_swat_policia_marksman"):key()] = "fal",
