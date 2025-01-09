@@ -430,6 +430,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	presets.gang_member_damage.FRIENDLY_FIRE_DAMAGE_MUL = presets.gang_member_damage.HEALTH_INIT / team_ai_base_hp
 	presets.gang_member_damage.MIN_DAMAGE_INTERVAL = 0.05
 	presets.gang_member_damage.BLEED_OUT_HEALTH_INIT = presets.gang_member_damage.HEALTH_INIT / 10
+	presets.gang_member_damage.HEALTH_REGEN = presets.gang_member_damage.HEALTH_INIT / 20
 	presets.gang_member_damage.REGENERATE_TIME = 5
 	presets.gang_member_damage.REGENERATE_TIME_AWAY = presets.gang_member_damage.REGENERATE_TIME
 	presets.gang_member_damage.hurt_severity.bullet = {
