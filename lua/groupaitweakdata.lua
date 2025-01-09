@@ -2338,7 +2338,7 @@ Hooks:PostHook(GroupAITweakData, "_init_enemy_spawn_groups", "hits_init_enemy_sp
 				freq = 1,
 				rank = 1,
 				unit = "cloaker",
-				tactics = self._tactics.cloaker
+				random_tactics = cloaker_random_tactics
 			}
 		}
 	}
