@@ -1,11 +1,10 @@
+local diff_i = PaperWarm:difficulty_index()
+local ponr_time = 200 - (diff_i * 5)
 local retrigger = {
 	values = {
 		trigger_times = 0,
 	}
 }
-local time_easy = 210	
-local time_normal = 195
-local time_hard = 180
 local security_unit = Idstring("units/pd2_dlc_trai/characters/ene_security_army_1/ene_security_army_1")
 local security_enemy = {
 	enemy = security_unit
@@ -23,14 +22,14 @@ return {
 	--Longer initial PONR. You should be able to blow up the pipelines while wearing the ICTV with time to spare now.
 	[103051] = {
 		values = {
-			time_easy = time_easy,
-			time_normal = time_easy,
-			time_hard = time_easy,
-			time_overkill = time_normal,
-			time_overkill_145 = time_normal,
-			time_easy_wish = time_hard,
-			time_overkill_290 = time_hard,
-			time_sm_wish = time_hard
+			time_easy = ponr_time,
+			time_normal = ponr_time,
+			time_hard = ponr_time,
+			time_overkill = ponr_time,
+			time_overkill_145 = ponr_time,
+			time_easy_wish = ponr_time,
+			time_overkill_290 = ponr_time,
+			time_sm_wish = ponr_time
 		}
 	},
 	--allow sniper respawns

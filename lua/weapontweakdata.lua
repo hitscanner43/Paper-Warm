@@ -65,7 +65,6 @@ Hooks:PostHook(WeaponTweakData, "_init_stats", "hits_init_stats", function(self)
 end)
 
 function WeaponTweakData:_init_weapons()
-
 	local akimbo_mappings = {}
 			
 	for k, v in pairs(self:get_akimbo_mappings()) do

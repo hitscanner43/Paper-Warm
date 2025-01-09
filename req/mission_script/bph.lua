@@ -1,4 +1,6 @@
 local easy, normal, hard = PaperWarm:difficulty_groups()
+local diff_i = PaperWarm:difficulty_index()
+local ponr_time = 450 - (diff_i * 15)
 local sniper_amount = {
 	values = {
 		amount = easy and 2 or normal and 3 or 4
@@ -46,11 +48,11 @@ return {
 	--scale PONR with difficulty
 	[101161] = {
 		values = {
-			time_normal = 420,
-			time_hard = 420,
-			time_overkill = 360,
-			time_overkill_145 = 360,
-			time_easy_wish = 300
+			time_normal = ponr_time,
+			time_hard = ponr_time,
+			time_overkill = ponr_time,
+			time_overkill_145 = ponr_time,
+			time_easy_wish = ponr_time
 		}
 	},
 	[102736] = {
