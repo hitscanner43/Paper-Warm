@@ -175,8 +175,9 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		melee_retry_delay = { 1, 2 },
 		melee_range = 125,
 		melee_force = 400,
+		switch_speed = 1,
+		weapon_switch = { max_chance = 1, reasons = { reloading = 0.5 } },
 		range = { close = 750, optimal = 1500, far = 3000 },
-		use_secondary = false
 	})
 	
 	presets.weapon.default.is_rifle.autofire_rounds = { 1, 5 }
@@ -205,6 +206,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 0.5 * dmg_mul, r = 3000, acc = { 0.1, 0.2 }, recoil = { 2, 3 }, mode = { 1, 0, 0, 0 } }
 	}
 
+	presets.weapon.default.is_shotgun_pump.weapon_switch = { max_chance = 1, reasons = { reloading = 0.5, hostage = 1 } }
 	presets.weapon.default.is_shotgun_pump.range = { close = 500, optimal = 1000, far = 2000 }
 	presets.weapon.default.is_shotgun_pump.FALLOFF = {
 		{ dmg_mul = 6 * dmg_mul_lin, r = 0, acc = { 0.8, 1 }, recoil = { 0.75, 1 }, mode = { 1, 0, 0, 0 } },
@@ -212,6 +214,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 0.5 * dmg_mul_lin, r = 2000, acc = { 0.4, 0.6 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 
+	presets.weapon.default.is_shotgun_mag.weapon_switch = { max_chance = 1, reasons = { reloading = 0.5, hostage = 1 } }
 	presets.weapon.default.is_shotgun_mag.autofire_rounds = { 1, 4 }
 	presets.weapon.default.is_shotgun_mag.range = { close = 500, optimal = 1000, far = 2000 }
 	presets.weapon.default.is_shotgun_mag.FALLOFF = {
@@ -219,7 +222,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 3 * dmg_mul_lin, r = 1000, acc = { 0.5, 0.7 }, recoil = { 0.75, 1.5 }, mode = { 1, 0, 0, 0 } },
 		{ dmg_mul = 0.5 * dmg_mul_lin, r = 2000, acc = { 0.3, 0.5 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 } }
 	}
-
+	
 	presets.weapon.default.is_double_barrel = deep_clone(presets.weapon.default.is_shotgun_pump)
 	presets.weapon.default.is_double_barrel.RELOAD_SPEED = 6	
 	presets.weapon.default.is_double_barrel.FALLOFF = {
@@ -260,7 +263,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	}
 
 	presets.weapon.default.is_sniper = deep_clone(presets.weapon.default.is_revolver)
-	presets.weapon.default.is_sniper.range = { close = 2000, optimal = 4000, far = 6000 }
+	presets.weapon.default.is_sniper.range = { close = 2000, optimal = 4000, far = 8000 }
+	presets.weapon.default.is_sniper.weapon_switch = { max_chance = 1, reasons = { cornered = 0.5 } }
 	presets.weapon.default.is_sniper.FALLOFF = {
 		{ dmg_mul = 8 * dmg_mul_lin, r = 0, acc = { 0, 0.5 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
 		{ dmg_mul = 8 * dmg_mul_lin, r = 1000, acc = { 0.5, 1 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
@@ -271,14 +275,20 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	presets.weapon.default.bow = deep_clone(presets.weapon.default.is_sniper)
 
 	presets.weapon.security = based_on(presets.weapon.default, {
-		melee_dmg = 4 * dmg_mul_lin
+		melee_dmg = 4 * dmg_mul_lin,
+		weapon_switch = nil_value
 	})
 
 	accuracy_multiplier(presets.weapon.security, 0.8)
 	
-	presets.weapon.cop = based_on(presets.weapon.default)
+	presets.weapon.cop = based_on(presets.weapon.default, {
+		melee_dmg = 4 * dmg_mul_lin,
+		weapon_switch = nil_value
+	})
 
-	presets.weapon.gangster = based_on(presets.weapon.default)
+	presets.weapon.gangster = based_on(presets.weapon.default, {
+		weapon_switch = nil_value
+	})
 
 	accuracy_multiplier(presets.weapon.gangster, 0.6)
 	recoil_multiplier(presets.weapon.gangster, 0.8)
@@ -292,6 +302,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		melee_range = 150,
 		melee_force = 500,
 		range = { close = 500, optimal = 1000, far = 2000 },
+		weapon_switch = nil_value
 	})
 
 	accuracy_multiplier(presets.weapon.shield, 0.9)
@@ -306,11 +317,10 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.sniper = based_on(presets.weapon.swat, {
 		aim_delay = { 0, 2 * aim_delay_mul },
-		range = { close = 5000, optimal = 10000, far = 15000 },
-		use_laser = true,
-		use_secondary = true
+		use_laser = true
 	})
 	
+	presets.weapon.sniper.is_sniper.range = { close = 5000, optimal = 10000, far = 15000 }
 	presets.weapon.sniper.is_sniper.FALLOFF = {
 		{ dmg_mul = 20 * special_dmg_mul, r = 0, acc = { 0, 0.5 }, recoil = { 3, 4 }, mode = { 1, 0, 0, 0 } },
 		{ dmg_mul = 20 * special_dmg_mul, r = 1000, acc = { 0.5, 1 }, recoil = { 3, 4 }, mode = { 1, 0, 0, 0 } },
@@ -318,10 +328,10 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	}
 	
 	presets.weapon.marshal_marksman = based_on(presets.weapon.swat, {
-		aim_delay = { 0, 2 * aim_delay_mul },
-		use_secondary = true
+		aim_delay = { 0, 2 * aim_delay_mul }
 	})
 
+	presets.weapon.marshal_marksman.is_sniper.range = { close = 1500, optimal = 3000, far = 6000 }
 	presets.weapon.marshal_marksman.is_sniper.FALLOFF = {
 		{ dmg_mul = 8 * special_dmg_mul, r = 0, acc = { 0, 0.5 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 } },
 		{ dmg_mul = 8 * special_dmg_mul, r = 1000, acc = { 0.5, 1 }, recoil = { 1, 1.5 }, mode = { 1, 0, 0, 0 } },
@@ -336,7 +346,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		tase_sphere_cast_radius = 15,
 		tase_distance = 1500,
 		melee_range = 175,
-		melee_force = 0
+		melee_force = 0,
+		weapon_switch = nil_value
 	})
 	
 	presets.weapon.spooc = based_on(presets.weapon.swat, {
@@ -350,7 +361,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		melee_speed = 0.8,
 		melee_dmg = 30 * special_dmg_mul,
 		melee_force = 600,
-		melee_retry_delay = { 2, 3 }
+		melee_retry_delay = { 2, 3 },
+		weapon_switch = nil_value
 	})
 
 	presets.weapon.tank.is_shotgun_pump.FALLOFF = {
@@ -386,14 +398,17 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 1.5 * special_dmg_mul, r = 3000, acc = { 0.3, 0.5 }, recoil = { 1, 2 }, mode = { 1, 0, 0, 0 }, autofire_rounds = { 4, 6 } }
 	}
 	
-	presets.weapon.boss = based_on(presets.weapon.default)
+	presets.weapon.boss = based_on(presets.weapon.default, {
+		weapon_switch = nil_value
+	})
 	
 	presets.weapon.friendly_npc = based_on(presets.weapon.default, {
 		aim_delay = { 0, 1 },
 		focus_delay = 0,
 		melee_speed = nil_value,
 		melee_dmg = nil_value,
-		melee_retry_delay = nil_value
+		melee_retry_delay = nil_value,
+		weapon_switch = nil_value
 	})
 	
 	local static_damage_mul = 1 / dmg_mul
@@ -410,7 +425,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		focus_delay = 0,
 		melee_speed = nil_value,
 		melee_dmg = nil_value,
-		melee_retry_delay = nil_value
+		melee_retry_delay = nil_value,
+		weapon_switch = nil_value
 	})
 
 	for _, v in pairs(presets.weapon.gang_member) do
@@ -734,25 +750,6 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	presets.base.surrender_break_time = { 10, 15 }
 	
 	presets.base.limb_dmg_mul = 0.8
-	
-	presets.base.weapon_switch = {
-		max_chance = 1,
-		reasons = {
-			weapon_down = 0,
-			flanked = 0,
-			hostage = 0
-		},
-		factors = {
-			health = {
-				[0.5] = 0,
-				[0.0] = 0
-			},
-			aggressor_dis = {
-				[100] = 0,
-				[500] = 0
-			}
-		}	
-	}
 
 	return presets
 end
@@ -1059,7 +1056,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.marshal_marksman.surrender = nil
 	self.marshal_marksman.ecm_vulnerability = 0.6
 	self.marshal_marksman.ecm_hurts = ecm_hurts_short
-
+	
 	self.heavy_swat_sniper = deep_clone(self.heavy_swat)	
 	self.heavy_swat_sniper.tags = { "law", "marksman", "special" }
 	--self.heavy_swat_sniper.move_and_shoot_cooldown = 1
@@ -1077,7 +1074,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.heavy_swat_sniper.steal_loot = nil
 	self.heavy_swat_sniper.ecm_vulnerability = 0.6
 	self.heavy_swat_sniper.ecm_hurts = ecm_hurts_short	
-	
+		
 	self.marshal_shield.HEALTH_INIT = 48
 	self.marshal_shield.headshot_dmg_mul = 2.5
 	self.marshal_shield.speech_prefix_p1 = self._unit_prefixes.swat
@@ -1089,7 +1086,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.marshal_shield.ecm_hurts = ecm_hurts_short	
 	self.marshal_shield.spawn_sound_event = "shield_identification" 
 	self.marshal_shield.die_sound_event = nil
-	self.marshal_shield.no_grenade_anim = trueself.marshal_shield.no_grenade_anim = true
+	self.marshal_shield.no_grenade_anim = true
 	
 	self.marshal_shield_break = deep_clone(self.fbi_heavy_swat)
 	self.marshal_shield_break.HEALTH_INIT = 72

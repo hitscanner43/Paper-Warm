@@ -15,8 +15,6 @@ local temp_rot1 = Rotation()
 local temp_vec1 = Vector3()
 local temp_vec2 = Vector3()
 
-local deathwish = PaperWarm:deathwish()
-
 --Sniper glare screen overlay
 Hooks:PostHook(CopActionShoot, "init", "hits_init", function (self)
 
@@ -34,7 +32,9 @@ Hooks:PostHook(CopActionShoot, "init", "hits_init", function (self)
 	})
 
 	if weapon_usage_tweak.use_laser then
-		self._glint_effect:kill_effect()
+		if self._glint_effect then
+			self._glint_effect:kill_effect()
+		end
 	end
 end)
 

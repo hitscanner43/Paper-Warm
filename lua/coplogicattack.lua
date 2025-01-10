@@ -1,10 +1,68 @@
 local tmp_vec1 = Vector3()
 local tmp_vec2 = Vector3()
 local tmp_vec3 = Vector3()
-
+local mvec3_dis_sq = mvector3.distance_sq
 
 -- Reuse function of idle logic to make enemies in an area aware of a player entering the area
 CopLogicAttack.on_area_safety = CopLogicIdle.on_area_safety
+
+
+function CopLogicAttack._evaluate_reason_to_switch(data, my_data)
+	local usage_tweak = data.char_tweak.weapon[data.unit:inventory():equipped_unit():base():weapon_tweak_data().usage]
+	local weapon_switch = usage_tweak.weapon_switch
+	
+	if not weapon_switch then
+		return
+	end
+
+	local focus_enemy = data.attention_obj
+	
+	local switch_chance = 0
+	local switch_chk = {
+
+		cornered = function (cornered_switch)
+			local agg_dis = mvec3_dis_sq(data.m_pos, focus_enemy.m_pos)
+			if agg_dis < (usage_tweak.melee_range * 6) ^ 2 then
+				switch_chance = switch_chance + cornered_switch
+			end
+		end,
+		
+		reloading = function (reloading_switch)
+			local anim_data = data.unit:anim_data()
+			if anim_data.reload or data.unit:inventory():equipped_unit():base():get_ammo_remaining_in_clip() == 0 then
+				switch_chance = switch_chance + reloading_switch
+			end
+		end,
+		
+		hostage = function (hostage_switch)
+			local nav_seg = data.unit:movement():nav_tracker():nav_segment()
+			local assault_area = managers.groupai:state():get_area_from_nav_seg_id(nav_seg)
+			local has_hostages = assault_area.hostages
+			
+			if has_hostages then
+				local my_radius = usage_tweak.range and usage_tweak.range.optimal or 1500
+				local target_radius = 1000
+				local my_distance = World:find_units_quick("sphere", data.m_pos, my_radius, 22)
+				local target_distance = World:find_units_quick("sphere", focus_enemy.m_pos, target_radius, 22)
+				
+				if my_distance and target_distance then
+					switch_chance = switch_chance + hostage_switch
+				end
+			end
+		end
+		
+	}
+
+	for reason, reason_data in pairs(weapon_switch.reasons) do
+		switch_chk[reason](reason_data)
+	end
+	
+	if switch_chance then
+		math.min(switch_chance, weapon_switch.max_chance)
+	end
+
+	return switch_chance
+end
 
 
 -- Remove some of the strict conditions for enemies shooting while on the move
@@ -15,8 +73,12 @@ function CopLogicAttack._upd_aim(data, my_data)
 	local verified = focus_enemy and focus_enemy.verified
 	local nearly_visible = focus_enemy and focus_enemy.nearly_visible
 
-	local aim, shoot, expected_pos = CopLogicAttack._check_aim_shoot(data, my_data, focus_enemy, verified, nearly_visible)
-
+	local aim, shoot, expected_pos, switching = CopLogicAttack._check_aim_shoot(data, my_data, focus_enemy, verified, nearly_visible)
+	
+	if switching then
+		return
+	end
+	
 	if aim or shoot then
 		if verified or nearly_visible then
 			if my_data.attention_unit ~= focus_enemy.u_key then
@@ -53,6 +115,7 @@ function CopLogicAttack._upd_aim(data, my_data)
 	CopLogicAttack.aim_allow_fire(shoot, aim, data, my_data)
 end
 
+
 -- Helper function to reuse in other enemy logic _upd_aim functions
 function CopLogicAttack._check_aim_shoot(data, my_data, focus_enemy, verified, nearly_visible)
 	if not focus_enemy or focus_enemy.reaction < AIAttentionObject.REACT_AIM then
@@ -71,6 +134,24 @@ function CopLogicAttack._check_aim_shoot(data, my_data, focus_enemy, verified, n
 	local aim = data.char_tweak.always_face_enemy or not advancing or pushing or verified_dt < math.map_range(enemy_dis, 0, firing_range, 6, 3)
 	local shoot = aim and my_data.shooting and AIAttentionObject.REACT_SHOOT <= focus_enemy.reaction and verified_dt < (running and 2 or 4)
 
+	local switch_chance = CopLogicAttack._evaluate_reason_to_switch(data, my_data)
+	local equippped_weapon = data.unit:inventory():equipped_unit():base()
+	local selection_index = equippped_weapon and equippped_weapon:selection_index()
+
+	if switch_chance then
+		if verified then
+			if selection_index == 2 and switch_chance > math.random() then
+				data.unit:movement():switch_weapon(data.unit:base():default_weapon_name("secondary"))
+				
+				return false, false, nil, true
+			end
+		elseif selection_index == 1 then
+			data.unit:movement():switch_weapon(data.unit:base():default_weapon_name("primary"))
+			
+			return false, false, nil, true
+		end
+	end
+	
 	if verified or nearly_visible then
 		if not shoot and AIAttentionObject.REACT_SHOOT <= focus_enemy.reaction then
 			local suppression_t = data.unit:character_damage():last_suppression_t()

@@ -205,8 +205,7 @@ local bellmead_security = {
 }
 
 local weapon_mapping = {
-	--make CS tier SWAT units use rifles
-	[("units/payday2/characters/ene_swat_1/ene_swat_1"):key()] = "m4",		
+	--make CS tier SWAT units use rifles	
 	[("units/pd2_dlc_hvh/characters/ene_swat_hvh_1/ene_swat_hvh_1"):key()] = "m4",	
 	[("units/pd2_dlc_bph/characters/ene_murkywater_light/ene_murkywater_light"):key()] = "m4",	
 	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale/ene_swat_policia_federale"):key()] = "m4",		

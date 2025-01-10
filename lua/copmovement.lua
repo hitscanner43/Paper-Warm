@@ -5,6 +5,43 @@ CopMovement._action_variants.security_trai = CopMovement._action_variants.swat
 CopMovement._action_variants.murkywater = CopMovement._action_variants.swat
 CopMovement._action_variants.soldier = CopMovement._action_variants.swat
 CopMovement._action_variants.city_heavy_swat = CopMovement._action_variants.swat
+CopMovement.switch_weapon_times = HuskPlayerMovement.switch_weapon_times
+CopMovement.sync_switch_weapon = HuskPlayerMovement.sync_switch_weapon
+CopMovement.sync_equip_weapon = HuskPlayerMovement.sync_equip_weapon
+CopMovement._can_play_weapon_switch_anim = function () return true end
+
+
+function CopMovement:switch_weapon(weapon_name)
+    if Network:is_client() then
+        return
+    end
+
+    weapon_name = weapon_name or self._unit:base():default_weapon_name()
+
+    if self._switch_weapon_name == weapon_name or self._ext_inventory:equipped_unit():name() == weapon_name then
+        return
+    end
+
+    self._switch_weapon_name = weapon_name
+	
+	local switch_speed = self._tweak_data.weapon[self._ext_inventory:equipped_unit():base():weapon_tweak_data().usage].switch_speed
+	
+    self:sync_switch_weapon(switch_speed , switch_speed)
+    self._unit:network():send("switch_weapon", 1, 1)
+end
+
+
+
+function CopMovement:anim_clbk_switch_weapon()
+    if Network:is_client() then
+        return
+    end
+
+    self._ext_inventory:add_unit_by_name(self._switch_weapon_name, true)
+
+    self:sync_equip_weapon()
+end
+
 
 --Make Cloakers move faster while charging
 function CopMovement:speed_modifier()
