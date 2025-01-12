@@ -182,7 +182,9 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.25
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or weap_data.CAN_TOGGLE_FIREMODE and { "auto", "single" } or { "auto" }
 
-				weap_data.steelsight_move_speed_mul = 0.7
+				weap_data.total_ammo_mul = weap_data.total_ammo_mul or 1.25
+				weap_data.pickup_mul = weap_data.pickup_mul or 1.5
+				weap_data.steelsight_move_speed_mul = 0.8
 				
 				weap_data.spread_multiplier = {
 					standing = {
@@ -226,6 +228,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.2
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or weap_data.CAN_TOGGLE_FIREMODE and { "auto", "single" } or { "single" }
 
+				weap_data.total_ammo_mul = weap_data.total_ammo_mul or 1.5
 				weap_data.swap_speed_multiplier = 1.5
 				weap_data.steelsight_move_speed_mul = 0.8
 
@@ -284,6 +287,8 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.3
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or weap_data.CAN_TOGGLE_FIREMODE and { "auto", "single" } or { "single" }
 				
+				weap_data.total_ammo_mul = weap_data.total_ammo_mul or 1.5
+				weap_data.pickup_mul = weap_data.pickup_mul or 2.5
 				weap_data.rays = 8
 				weap_data.steelsight_move_speed_mul = 0.6
 				weap_data.headshot_dmg_mul = 0.5						
@@ -350,6 +355,8 @@ function WeaponTweakData:_init_weapons()
 				weap_data.bipod_camera_spin_limit = 40
 				weap_data.bipod_camera_pitch_limit = 15		
 
+				weap_data.total_ammo_mul = weap_data.total_ammo_mul or 2
+				weap_data.pickup_mul = weap_data.pickup_mul or 1.5
 				weap_data.steelsight_move_speed_mul = 0.4
 				weap_data.headshot_dmg_mul = 0.75
 		
@@ -427,12 +434,9 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.35
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
 
+				weap_data.pickup_mul = weap_data.pickup_mul or 1.25
 				weap_data.steelsight_move_speed_mul = 0.5
-				weap_data.headshot_dmg_mul = 1.5
-
-				weap_data.trail_effect = "effects/payday2/particles/weapons/hailstorm_streak"
-				weap_data.muzzleflash = cat_map.intermediate and "effects/payday2/particles/weapons/556_auto_fps" or cat_map.fifty and "effects/payday2/particles/weapons/50cal_auto_fps" or "effects/payday2/particles/weapons/big_762_auto_fps"
-					
+				
 				weap_data.spread_multiplier = {
 					standing = {
 						hipfire = 3,
@@ -474,7 +478,8 @@ function WeaponTweakData:_init_weapons()
 				weap_data.stats.alert_size = 15
 				weap_data.steelsight_time = 0.2
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
-
+				
+				weap_data.total_ammo_mul = weap_data.total_ammo_mul or 1.5
 				weap_data.swap_speed_multiplier = 1.5
 				weap_data.steelsight_move_speed_mul = 0.8
 				
@@ -522,6 +527,7 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.2
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
 				
+				weap_data.total_ammo_mul = weap_data.total_ammo_mul or 1.5
 				weap_data.swap_speed_multiplier = 1.5
 				weap_data.steelsight_move_speed_mul = 0.8
 
@@ -569,8 +575,10 @@ function WeaponTweakData:_init_weapons()
 				weap_data.steelsight_time = 0.4
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "auto" }
 
-				weap_data.steelsight_move_speed_mul = 0.5
-				weap_data.headshot_dmg_mul = 0.4
+				weap_data.total_ammo_mul = weap_data.total_ammo_mul or 2.25
+				weap_data.pickup_mul = weap_data.pickup_mul or 1.5
+				weap_data.steelsight_move_speed_mul = 0.4
+				weap_data.headshot_dmg_mul = 0.75
 				
 				if weap_data.no_steelsight then
 					weap_data.spread_multiplier = {
@@ -645,10 +653,11 @@ function WeaponTweakData:_init_weapons()
 				weap_data.stats.alert_size = 17
 				weap_data.steelsight_time = 0.3		
 				weap_data.fire_mode_data.toggable = weap_data.fire_mode_data and weap_data.fire_mode_data.toggable or { "single" }
-						
+				
+				weap_data.pickup_mul = weap_data.pickup_mul or 0.25
 				weap_data.rays = 8
-				weap_data.steelsight_move_speed_mul = 0.75
-				weap_data.headshot_dmg_mul = 0.6
+				weap_data.steelsight_move_speed_mul = 0.6
+				weap_data.headshot_dmg_mul = 0.5
 	
 				weap_data.spread_multiplier = {
 					standing = {
@@ -684,7 +693,9 @@ function WeaponTweakData:_init_weapons()
 				weap_data.stats.alert_size = 11
 				weap_data.steelsight_time = 0.35
 				
-				weap_data.steelsight_move_speed_mul = 0.75
+				weap_data.total_ammo_mul = weap_data.total_ammo_mul or 1.5
+				weap_data.pickup_mul = weap_data.pickup_mul or 0.25
+				weap_data.steelsight_move_speed_mul = 0.6
 
 				weap_data.spread_multiplier = no_stance_mults
 				weap_data.recoil_multiplier = no_stance_mults
@@ -1006,32 +1017,14 @@ function WeaponTweakData:_init_weapons()
 			end
 			
 			--set total damage
-			weap_data.total_damage = 720
-
-			--modify total damage based weapon category
-			if cat_map.minigun then
-				weap_data.total_damage = weap_data.total_damage * 2.25
-				
-			elseif cat_map.lmg or cat_map.rocket_launcher or cat_map.saw then
-				weap_data.total_damage = weap_data.total_damage * 2
-								
-			elseif cat_map.shotgun then
-				weap_data.total_damage = weap_data.total_damage * 1.7
-				
-			elseif cat_map.pistol or cat_map.flamethrower or cat_map.revolver then
-				weap_data.total_damage = weap_data.total_damage * 1.5
-				
-			elseif cat_map.smg or cat_map.dmr then 
-				weap_data.total_damage = weap_data.total_damage * 1.25
-				
-			end		
+			weap_data.total_damage = 720 * (weap_data.total_ammo_mul or 1)
 			
 			if cat_map.akimbo then
 				weap_data.total_damage = weap_data.total_damage * 1.5
 			end
 			
 			--set pickup damage	
-			weap_data.pickup_damage = 24
+			weap_data.pickup_damage = 24 * (weap_data.pickup_mul or 1)
 			
 			--modify total damage based on weapon slot 
 			if weap_data.use_data and weap_data.use_data.selection_index == 2 then --primaries
@@ -1059,27 +1052,6 @@ function WeaponTweakData:_init_weapons()
 			if weap_data.has_underbarrel then
 				weap_data.total_damage = weap_data.total_damage / 2
 			end		
-			
-			--modify pickup damage based on weapon category	
-			if cat_map.shotgun then
-				weap_data.pickup_damage = weap_data.pickup_damage * 2.5
-
-			elseif cat_map.lmg or cat_map.minigun then
-				weap_data.pickup_damage = weap_data.pickup_damage * 2
-		
-			elseif cat_map.smg or cat_map.snp then
-				weap_data.pickup_damage = weap_data.pickup_damage * 1.5
-
-			elseif cat_map.flamethrower then
-				weap_data.pickup_damage = weap_data.pickup_damage * 0.5
-				
-			elseif cat_map.grenade_launcher then
-				weap_data.pickup_damage = weap_data.pickup_damage * 0.2
-				
-			elseif cat_map.bow or cat_map.crossbow or cat_map.saw then
-				weap_data.pickup_damage = 0 
-				
-			end	
 
 			if weap_data.can_shoot_through_enemy and not (cat_map.snp or cat_map.dmr) then
 				weap_data.pickup_damage = weap_data.pickup_damage / 2
@@ -1730,42 +1702,42 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.sparrow.fire_mode_data.fire_rate = 60 / 500
 	
 	self.colt_1911.CLIP_AMMO_MAX = 10
-	self.colt_1911.stats.damage = 100
+	self.colt_1911.stats.damage = 120
 	self.colt_1911.stats.spread = 16
 	self.colt_1911.stats.recoil = 9
 	self.colt_1911.stats.concealment = 29
 	self.colt_1911.fire_mode_data.fire_rate = 60 / 500
 
 	self.x_1911.CLIP_AMMO_MAX = 20
-	self.x_1911.stats.damage = 100
+	self.x_1911.stats.damage = 120
 	self.x_1911.stats.spread = 16
 	self.x_1911.stats.recoil = 9
 	self.x_1911.stats.concealment = 29
 	self.x_1911.fire_mode_data.fire_rate = 60 / 500
 	
 	self.usp.CLIP_AMMO_MAX = 12
-	self.usp.stats.damage = 100
+	self.usp.stats.damage = 120
 	self.usp.stats.spread = 14
 	self.usp.stats.recoil = 10
 	self.usp.stats.concealment = 29
 	self.usp.fire_mode_data.fire_rate = 60 / 500
 
 	self.x_usp.CLIP_AMMO_MAX = 24
-	self.x_usp.stats.damage = 100
+	self.x_usp.stats.damage = 120
 	self.x_usp.stats.spread = 14
 	self.x_usp.stats.recoil = 10
 	self.x_usp.stats.concealment = 29
 	self.x_usp.fire_mode_data.fire_rate = 60 / 500
 
 	self.breech.CLIP_AMMO_MAX = 8
-	self.breech.stats.damage = 100
+	self.breech.stats.damage = 120
 	self.breech.stats.spread = 13
 	self.breech.stats.recoil = 11
 	self.breech.stats.concealment = 30
 	self.breech.fire_mode_data.fire_rate = 60 / 500
 	
 	self.shrew.CLIP_AMMO_MAX = 8
-	self.shrew.stats.damage = 100
+	self.shrew.stats.damage = 120
 	self.shrew.stats.spread = 14
 	self.shrew.stats.recoil = 9
 	self.shrew.stats.concealment = 30
@@ -1773,14 +1745,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.shrew.fire_mode_data.fire_rate = 60 / 500
 	
 	self.m1911.CLIP_AMMO_MAX = 8
-	self.m1911.stats.damage = 100
+	self.m1911.stats.damage = 120
 	self.m1911.stats.spread = 17
 	self.m1911.stats.recoil = 9
 	self.m1911.stats.concealment = 29
 	self.m1911.fire_mode_data.fire_rate = 60 / 500
 
 	self.type54.CLIP_AMMO_MAX = 10
-	self.type54.stats.damage = 100
+	self.type54.stats.damage = 120
 	self.type54.stats.spread = 15
 	self.type54.stats.recoil = 10
 	self.type54.stats.concealment = 29
@@ -2135,7 +2107,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	end
 	
 	--Sniper Rifles
-	self.victor.categories = { "snp", "intermediate" }
+	table.insert(self.victor.categories, "semi_snp")
 	self.victor.CLIP_AMMO_MAX = 20
 	self.victor.stats.damage = 120
 	self.victor.stats.spread = 19
@@ -2144,7 +2116,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.victor.fire_mode_data.fire_rate = 60 / 300
 	self.victor.stats_modifiers = nil
 
-	self.qbu88.categories = { "snp", "intermediate" }
+	table.insert(self.qbu88.categories, "semi_snp")
 	self.qbu88.CLIP_AMMO_MAX = 10
 	self.qbu88.stats.damage = 120
 	self.qbu88.stats.spread = 21
@@ -2154,6 +2126,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.qbu88.fire_mode_data.fire_rate = 60 / 150
 	self.qbu88.stats_modifiers = nil
 	
+	table.insert(self.siltstone.categories, "semi_snp")
 	self.siltstone.CLIP_AMMO_MAX = 10
 	self.siltstone.stats.damage = 180
 	self.siltstone.stats.spread = 21
@@ -2162,6 +2135,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.siltstone.fire_mode_data.fire_rate = 60 / 200
 	self.siltstone.stats_modifiers = nil
 
+	table.insert(self.wa2000.categories, "semi_snp")
 	self.wa2000.CLIP_AMMO_MAX = 6
 	self.wa2000.stats.damage = 180
 	self.wa2000.stats.spread = 21
@@ -2171,6 +2145,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.wa2000.fire_mode_data.fire_rate = 60 / 200
 	self.wa2000.stats_modifiers = nil
 
+	table.insert(self.tti.categories, "semi_snp")
 	self.tti.CLIP_AMMO_MAX = 20
 	self.tti.stats.damage = 180
 	self.tti.stats.spread = 19
@@ -2203,7 +2178,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.desertfox.stats.concealment = 22
 	self.desertfox.fire_mode_data.fire_rate = 60 / 40
 	self.desertfox.stats_modifiers = nil
-		
+
 	self.r700.CLIP_AMMO_MAX = 5
 	self.r700.stats.damage = 300
 	self.r700.stats.spread = 24
