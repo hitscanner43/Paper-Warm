@@ -7,15 +7,29 @@ local roof_spawn = {
 	values = {
 		interval = 25
 	},
-	groups = tweak_data.group_ai:allowed_groups("no_cops_shields")
+	groups = tweak_data.group_ai:allowed_groups("no_cops_shields_tanks")
 }
 return {
-	[100109] = { 
+	[100768] = { 
 		reinforce = {
 			{
 				name = "santa",
 				force = 2,
 				position = Vector3(-367, -278, -98),
+			}
+		}
+	},
+	[100699] = { 
+		reinforce = {
+			{
+				name = "escalator1",
+				force = 2,
+				position = Vector3(-900, 250, 400),
+			},
+			{
+				name = "escalator2",
+				force = 2,
+				position = Vector3(250, -900, 400),
 			}
 		}
 	},
