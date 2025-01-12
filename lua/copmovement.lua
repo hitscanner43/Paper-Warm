@@ -11,18 +11,12 @@ CopMovement.sync_equip_weapon = HuskPlayerMovement.sync_equip_weapon
 CopMovement._can_play_weapon_switch_anim = function () return true end
 
 
-function CopMovement:switch_weapon(weapon_name)
+function CopMovement:switch_weapon(selection)
     if Network:is_client() then
         return
     end
 
-    weapon_name = weapon_name or self._unit:base():default_weapon_name()
-
-    if self._switch_weapon_name == weapon_name or self._ext_inventory:equipped_unit():name() == weapon_name then
-        return
-    end
-
-    self._switch_weapon_name = weapon_name
+    self._switch_selection = selection
 
     self:sync_switch_weapon(1, 1)
     self._unit:network():send("switch_weapon", 1, 1)
@@ -33,7 +27,7 @@ function CopMovement:anim_clbk_switch_weapon()
         return
     end
 
-    self._ext_inventory:add_unit_by_name(self._switch_weapon_name, true)
+    self._ext_inventory:equip_selection(self._switch_selection, false)
 
     self:sync_equip_weapon()
 end

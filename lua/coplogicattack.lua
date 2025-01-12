@@ -148,7 +148,7 @@ function CopLogicAttack._check_aim_shoot(data, my_data, focus_enemy, verified, n
 					})	
 				end
 				
-				data.unit:movement():switch_weapon(data.unit:base():default_weapon_name("secondary"))
+				data.unit:movement():switch_weapon(1)
 				
 				return false, false, nil, true
 			end
@@ -160,7 +160,7 @@ function CopLogicAttack._check_aim_shoot(data, my_data, focus_enemy, verified, n
 				})	
 			end
 			
-			data.unit:movement():switch_weapon(data.unit:base():default_weapon_name("primary"))
+			data.unit:movement():switch_weapon(2)
 			
 			return false, false, nil, true
 		end
