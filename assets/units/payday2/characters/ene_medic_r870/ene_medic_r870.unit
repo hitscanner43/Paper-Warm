@@ -13,6 +13,8 @@
 		<depends_on bnk="soundbanks/special_medic" />
 		<depends_on unit="units/payday2/characters/ene_acc_medic_helmet/ene_acc_medic_helmet" />
 		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
+		<depends_on unit="units/payday2/weapons/wpn_npc_r870/wpn_npc_r870" />
+		<depends_on unit="units/payday2/weapons/wpn_npc_c45/wpn_npc_c45" />
 		
 	</dependencies>
 
@@ -105,6 +107,13 @@
 			<var name="can_be_marked" value="true" />
 			<var name="_tweak_table" value="medic" />
 			<var name="_default_weapon_id" value="r870" />
+
+			<var name="_default_weapons" type="table">
+			
+				<var name="primary" value="r870" />
+				<var name="secondary" value="c45" />
+				
+			</var>
 			
 		</extension>
 		<extension name="inventory" class="CopInventory" />

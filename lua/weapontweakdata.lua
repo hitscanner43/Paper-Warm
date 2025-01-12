@@ -2765,8 +2765,9 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	self.sg416_npc.sounds.prefix = self.tecci_crew.sounds.prefix
 	
 	self.aa12_npc = based_on(self.saiga_npc, self.aa12_crew)
-	--self.r700_npc = based_on(self.m14_sniper_npc, self.r700_crew)
 
+	self.legacy_npc = based_on(self.c45_npc, self.legacy_crew)
+	
 	self.ak47_ass_npc = based_on(self.m4_npc, self.ak74_crew)
 	self.akmsu_smg_npc = based_on(self.m4_npc, self.akmsu_crew)	
 	self.rpk_lmg_npc = based_on(self.m249_npc, self.rpk_crew)

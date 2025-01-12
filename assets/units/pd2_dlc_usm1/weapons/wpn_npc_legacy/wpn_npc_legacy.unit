@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <unit type="wpn" slot="13">
 
-	<object file="units/payday2/weapons/wpn_npc_sg416/wpn_npc_sg416" />
+	<object file="units/pd2_dlc_usm1/weapons/wpn_npc_legacy/wpn_npc_legacy" />
 	
 	
 	<dependencies>
 	
-		<depends_on effect="effects/particles/weapons/rifle/muzzleflash_3dp" />
-		<depends_on bnk="soundbanks/weapon_tecci" />
+		<depends_on effect="effects/particles/weapons/c45/muzzleflash_3dp" />
+		<depends_on bnk="soundbanks/weapon_legacy"/>
 		
 	</dependencies>
 	
@@ -17,7 +17,7 @@
 		<extension name="unit_data" class="ScriptUnitData" />
 		<extension name="base" class="NPCRaycastWeaponBase" >
 		
-			<var name="name_id" value="sg416_npc" />
+			<var name="name_id" value="legacy_npc" />
 			<var name="_multivoice" value="true" />
 			
 		</extension>
@@ -27,8 +27,8 @@
 	
 	<sounds>
 	
-		<soundsource name="root" source="rp_sg416" />
-		<default_soundsource source="rp_sg416" />
+		<soundsource name="root" source="rp_legacy" />
+		<default_soundsource source="rp_legacy" />
 		
 	</sounds>
 	

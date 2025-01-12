@@ -646,6 +646,17 @@
 			<file :name="ene_bulldozer_3/ene_bulldozer_3_husk.unit" />
 		</group>
 
+		<group name="units/pd2_dlc_usm1/weapons/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="wpn_npc_legacy/legacy_df.texture" />
+			<file :name="wpn_npc_legacy/legacy_nm.texture" />
+			<file :name="wpn_npc_legacy/wpn_npc_legacy.unit"/>
+			<file :name="wpn_npc_legacy/wpn_npc_legacy.material_config" />
+			<file :name="wpn_npc_legacy/wpn_npc_legacy_contour.material_config" />
+			<file :name="wpn_npc_legacy/wpn_npc_legacy.model" />
+			<file :name="wpn_npc_legacy/wpn_npc_legacy.cooked_physics" />
+			<file :name="wpn_npc_legacy/wpn_npc_legacy.object" />	
+		</group>
+		
 		<group name="units/pd2_dlc_usm1/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
 			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.material_config" />
 			<file :name="ene_acc_marksman_hat/ene_acc_marksman_hat.model" />

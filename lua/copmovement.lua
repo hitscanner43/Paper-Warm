@@ -23,14 +23,10 @@ function CopMovement:switch_weapon(weapon_name)
     end
 
     self._switch_weapon_name = weapon_name
-	
-	local switch_speed = self._tweak_data.weapon[self._ext_inventory:equipped_unit():base():weapon_tweak_data().usage].switch_speed
-	
-    self:sync_switch_weapon(switch_speed , switch_speed)
+
+    self:sync_switch_weapon(1, 1)
     self._unit:network():send("switch_weapon", 1, 1)
 end
-
-
 
 function CopMovement:anim_clbk_switch_weapon()
     if Network:is_client() then

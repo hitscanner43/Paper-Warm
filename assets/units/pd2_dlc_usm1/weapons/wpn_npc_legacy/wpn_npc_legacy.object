@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <dynamic_object>
 
-  <diesel materials="units/payday2/weapons/wpn_npc_sg416/wpn_npc_sg416" orientation_object="rp_sg416" />
+  <diesel materials="units/pd2_dlc_usm1/weapons/wpn_npc_legacy/wpn_npc_legacy" orientation_object="rp_legacy" />
   
   <sequence_manager file="units/payday2/weapons/wpn_npc_m4/wpn_npc_m4" />
   
@@ -10,7 +10,7 @@
   
     <body name="body" enabled="false" template="debris" pushed_by_mover="false">
 	
-		<object name="rp_sg416" />
+		<object name="rp_legacy" />
 		<object name="c_convex" collision_type="convex" padding="-2.5" mass="2.5"/>
 		
     </body>
@@ -37,9 +37,7 @@
       </lod_object>
 	  
     </graphic_group>
-	
-    <object name="s_body" enabled="false" />
-	
+
   </graphics>
   
   

@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
-<materials version="3" group="wpn_npc_sg416">
+<materials version="3" group="wpn_npc_legacy">
 
     <material name="mtr_weapon" version="2" render_template="generic:CONTOUR:DIFFUSE_TEXTURE:NORMALMAP:RL_3RD_WEAPONS">
-        <bump_normal_texture file="units/payday2/weapons/wpn_npc_sg416/sg416_nm"/>
-        <diffuse_texture file="units/payday2/weapons/wpn_npc_sg416/sg416_df"/>
+        <bump_normal_texture file="units/pd2_dlc_usm1/weapons/wpn_npc_legacy/legacy_nm"/>
+        <diffuse_texture file="units/pd2_dlc_usm1/weapons/wpn_npc_legacy/legacy_df"/>
         <variable value="1 1 1" type="vector3" name="contour_color"/>
         <variable value="0.5" type="scalar" name="contour_opacity"/>
     </material>
     <material name="weapon_lod1" version="2" render_template="generic:CONTOUR:DIFFUSE_TEXTURE:RL_3RD_WEAPONS">
-        <diffuse_texture file="units/payday2/weapons/wpn_npc_sg416/sg416_df"/>
+        <diffuse_texture file="units/pd2_dlc_usm1/weapons/wpn_npc_legacy/legacy_df"/>
     </material>
 	
 </materials>

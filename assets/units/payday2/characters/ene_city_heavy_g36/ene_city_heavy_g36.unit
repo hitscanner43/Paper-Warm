@@ -12,6 +12,7 @@
 		<depends_on unit="units/payday2/characters/ene_acc_city_heavy_helmet/ene_acc_city_heavy_helmet" />
 		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 		<depends_on unit="units/payday2/weapons/wpn_npc_g36/wpn_npc_g36" />
+		<depends_on unit="units/payday2/weapons/wpn_npc_c45/wpn_npc_c45" />		
 		
 	</dependencies>
 
@@ -103,6 +104,13 @@
 		
 			<var name="_tweak_table" value="city_heavy_swat" />
 			<var name="_default_weapon_id" value="g36" />
+
+			<var name="_default_weapons" type="table">
+			
+				<var name="primary" value="g36" />
+				<var name="secondary" value="c45" />
+				
+			</var>
 			
 		</extension>
 		<extension name="inventory" class="CopInventory" />

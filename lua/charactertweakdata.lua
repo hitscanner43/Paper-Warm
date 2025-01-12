@@ -119,7 +119,10 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "hits_create_table
 	
 	table.insert(self.weap_ids, "aa12")
 	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_aa12/wpn_npc_aa12"))
-	
+
+	table.insert(self.weap_ids, "legacy")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_usm1/weapons/wpn_npc_legacy/wpn_npc_legacy"))
+		
 	table.insert(self.weap_ids, "hk21")
 	table.insert(self.weap_unit_names, Idstring("units/pd2_dlc_bex/weapons/wpn_npc_hk21/wpn_npc_hk21"))
 	
@@ -176,7 +179,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		melee_range = 125,
 		melee_force = 400,
 		switch_speed = 1,
-		weapon_switch = { max_chance = 1, reasons = { reloading = 0.5 } },
+		weapon_switch = { max_chance = 1, reasons = { reloading = 0.25 } },
 		range = { close = 750, optimal = 1500, far = 3000 },
 	})
 	
@@ -206,7 +209,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 0.5 * dmg_mul, r = 3000, acc = { 0.1, 0.2 }, recoil = { 2, 3 }, mode = { 1, 0, 0, 0 } }
 	}
 
-	presets.weapon.default.is_shotgun_pump.weapon_switch = { max_chance = 1, reasons = { reloading = 0.5, hostage = 1 } }
+	presets.weapon.default.is_shotgun_pump.RELOAD_SPEED = 1.5
+	presets.weapon.default.is_shotgun_pump.weapon_switch = { max_chance = 1, reasons = { reloading = 0.25, hostage = 1 } }
 	presets.weapon.default.is_shotgun_pump.range = { close = 500, optimal = 1000, far = 2000 }
 	presets.weapon.default.is_shotgun_pump.FALLOFF = {
 		{ dmg_mul = 6 * dmg_mul_lin, r = 0, acc = { 0.8, 1 }, recoil = { 0.75, 1 }, mode = { 1, 0, 0, 0 } },
@@ -214,7 +218,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 0.5 * dmg_mul_lin, r = 2000, acc = { 0.4, 0.6 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } }
 	}
 
-	presets.weapon.default.is_shotgun_mag.weapon_switch = { max_chance = 1, reasons = { reloading = 0.5, hostage = 1 } }
+	presets.weapon.default.is_shotgun_mag.weapon_switch = { max_chance = 1, reasons = { reloading = 0.25, hostage = 1 } }
 	presets.weapon.default.is_shotgun_mag.autofire_rounds = { 1, 4 }
 	presets.weapon.default.is_shotgun_mag.range = { close = 500, optimal = 1000, far = 2000 }
 	presets.weapon.default.is_shotgun_mag.FALLOFF = {
@@ -263,8 +267,8 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	}
 
 	presets.weapon.default.is_sniper = deep_clone(presets.weapon.default.is_revolver)
-	presets.weapon.default.is_sniper.range = { close = 2000, optimal = 4000, far = 8000 }
 	presets.weapon.default.is_sniper.weapon_switch = { max_chance = 1, reasons = { cornered = 0.5 } }
+	presets.weapon.default.is_sniper.range = { close = 2000, optimal = 4000, far = 8000 }
 	presets.weapon.default.is_sniper.FALLOFF = {
 		{ dmg_mul = 8 * dmg_mul_lin, r = 0, acc = { 0, 0.5 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
 		{ dmg_mul = 8 * dmg_mul_lin, r = 1000, acc = { 0.5, 1 }, recoil = { 1.5, 2 }, mode = { 1, 0, 0, 0 } },
@@ -905,7 +909,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 
 	self.swat.HEALTH_INIT = 24
 	self.swat.headshot_dmg_mul = 2.5
-	self.swat.melee_weapon = "weapon"
 	self.swat.speech_prefix_p2 = "n" 
 	self.swat.surrender_break_time = { 5, 10 }
 	self.swat.weapon = self.presets.weapon.swat
@@ -926,7 +929,6 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.soldier = deep_clone(self.swat)	
 	self.soldier.HEALTH_INIT = 36
 	self.soldier.headshot_dmg_mul = 2.5
-	self.soldier.melee_weapon = "knife_1"
 	self.soldier.surrender = self.presets.surrender.hard
 	self.soldier.no_arrest = true
 	table.insert(self._enemy_list, "soldier")

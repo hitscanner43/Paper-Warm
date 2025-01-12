@@ -9,12 +9,16 @@
 		<depends_on unit="units/payday2/characters/ene_acc_city_swat_cap/ene_acc_city_swat_cap" />
 		<depends_on unit="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 		<depends_on unit="units/payday2/weapons/wpn_npc_sniper/wpn_npc_sniper" />
+		<depends_on unit="units/payday2/weapons/wpn_npc_c45/wpn_npc_c45" />
 		
 	</dependencies>
 
 	<extensions>
+	
 		<extension name="spawn_manager" class="ManageSpawnedUnits" >
+		
 			<var name="_char_joint_names" type="table" >
+			
 				<var value="root_point" />
 				<var value="Hips" />
 				<var value="Spine" />
@@ -84,42 +88,68 @@
 				<var value="RightLeg" />
 				<var value="RightFoot" />
 				<var value="RightToeBase" />
+				
 			</var>
-			<var name="allow_client_spawn" value="true"/>
-			<var name="local_only" value="true"/>
+			
+			<var name="allow_client_spawn" value="true" />
+			<var name="local_only" value="true" />
+			
 		</extension>
 		<extension name="unit_data" class="ScriptUnitData" />
 		<extension name="base" class="CopBase" >
+		
 			<var name="can_be_marked" value="true" />
 			<var name="_tweak_table" value="sniper" />
 			<var name="_default_weapon_id" value="m14_sniper_npc" />
+
+			<var name="_default_weapons" type="table">
+			
+				<var name="primary" value="m14_sniper_npc" />
+				<var name="secondary" value="c45" />
+				
+			</var>
+			
 		</extension>
 		<extension name="inventory" class="CopInventory" />
 		<extension name="brain" class="CopBrain" />
 		<extension name="anim_data" class="PlayerAnimationData" />
 		<extension name="character_damage" class="CopDamage">
+		
 			<var name="_head_body_name" value="head" />
 			<var name="_head" value="units/payday2/characters/ene_acc_swat_head/ene_acc_swat_head" />
 			<var name="_head_gear" value="units/payday2/characters/ene_acc_city_swat_cap/ene_acc_city_swat_cap" />
+			
 		</extension>
 		<extension name="movement" class="CopMovement" >
+		
 			<var name="_footwear" value="hardsole" />
 			<var name="_anim_global" value="cop" />
+			
 		</extension>
 		<extension name="interaction" class="IntimitateInteractionExt" >
+		
 			<var name="tweak_data" value="intimidate" />
+			
 		</extension>
 		<extension name="network" class="NetworkBaseExtension" />
 		<extension name="damage" class="UnitDamage" >
+		
 			<var name="_skip_save_anim_state_machine" value="true" />
+			
 		</extension>
 		<extension name="contour" class="ContourExt" />
 		<extension name="sound" class="CopSound" />
+		
 	</extensions>
 
-	<network sync="spawn" remote_unit="units/payday2/characters/ene_sniper_3/ene_sniper_3_husk"/>
+
+	<network sync="spawn" remote_unit="units/payday2/characters/ene_sniper_3/ene_sniper_3_husk" />
+
 
 	<sounds>
-		<default_soundsource source="Hips"/>
+	
+		<default_soundsource source="Hips" />
+		
 	</sounds>
+	
 </unit>
