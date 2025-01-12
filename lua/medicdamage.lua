@@ -4,7 +4,7 @@ function MedicDamage:heal_unit(unit)
         return false
     end
 
-	self._unit:movement():action_request({ body_part = 2, type = "idle" })	
+	self._unit:movement():action_request({ body_part = 1, type = "idle" })	
 	self._heal_cooldown_t = TimerManager:game():time() + self._heal_cooldown
 
 	unit:character_damage():do_medic_heal()

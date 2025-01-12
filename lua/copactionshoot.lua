@@ -322,7 +322,6 @@ end
 
 -- Do all the melee related checks inside this function
 -- Adjust melee code to work against npcs
--- Adjust melee code to work against npcs
 function CopActionShoot:_chk_start_melee(t, target_dis, target_pos)
 	if self._shoot_t > t or self._mod_enable_t > t or not self._w_usage_tweak.melee_speed then
 		return

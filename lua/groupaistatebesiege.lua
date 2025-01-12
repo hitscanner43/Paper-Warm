@@ -765,7 +765,7 @@ function GroupAIStateBesiege:_chk_group_use_grenade(assault_area, group, detonat
 		if not grenade_user.char_tweak.no_grenade_anim then
 			local redirect = "throw_grenade"
 			
-			if grenade_user.unit:movement():play_redirect(redirect) then
+			if grenade_user.unit:movement():play_redirect(redirect) then		
 				managers.network:session():send_to_peers_synched("play_distance_interact_redirect", grenade_user.unit, redirect)
 			end
 		end

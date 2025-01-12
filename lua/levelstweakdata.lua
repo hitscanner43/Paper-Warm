@@ -99,7 +99,7 @@ end
 Hooks:PostHook(LevelsTweakData, "init", "hits_init_levels", function(self)
 
 	local level_sizes = {
-		nightmare = 0.4,
+		nightmare = 0.25,
 
 		very_small = 0.5,
 		small = 0.75,

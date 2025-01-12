@@ -28,7 +28,6 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 	}
 
 	self.values.rocket_launcher = self.values.rocket_launcher or {}
-	self.values.dmr = self.values.dmr or {}
 	
 	self.weapon_movement_penalty = {
 		lmg = 0.85, 
