@@ -382,7 +382,6 @@ Hooks:PreHook(CopBase, "post_init", "hits_post_init", function(self)
 end)
 
 
-local unit_ids = Idstring("unit")
 Hooks:PreHook(CopBase, "_chk_spawn_gear", "hits_chk_spawn_gear", function(self)
 	local name = self._unit:name():key()
 

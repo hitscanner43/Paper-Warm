@@ -537,7 +537,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 		1.225,
 		1.25
 	}
-	self.values.player.pick_up_ammo_multiplier = { 1.25, 1.25 }
+	self.values.player.pick_up_ammo_multiplier = { 1, 1 }
 
 	self.skill_descs.ammo_reservoir.multibasic = "5%"
 	self.skill_descs.ammo_reservoir.multipro = "25%"

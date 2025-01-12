@@ -26,6 +26,43 @@ Hooks:PostHook(CopDamage, "init", "sh_init", function (self)
 end)
 
 
+function CopDamage:hide_head_gear() end
+
+
+--Overhauled headgear system for popped helmets
+function CopDamage:_spawn_head_gadget(params)
+	if not self._head_gear or self._head_gear_spawned then
+		return
+	end
+	
+	local head_gear_unit = self._unit:base() and self._unit:base()._head_gear_unit
+	
+	if not alive(head_gear_unit) then
+		return
+	end
+	
+	if head_gear_unit:damage() and head_gear_unit:damage():has_sequence("detach") then
+		head_gear_unit:damage():run_sequence_simple("detach")
+	end
+	
+	head_gear_unit:unlink()
+	
+	if head_gear_unit:slot() ~= 18 then
+		head_gear_unit:set_slot(18)
+	end
+
+	if not params.skip_push then
+		local dir = math.UP - params.dir / 2
+		dir = dir:spread(25)
+		local body = head_gear_unit:body(0)
+
+		body:push_at(body:mass(), dir * math.lerp(300, 650, math.random()), head_gear_unit:position() + Vector3(math.rand(1), math.rand(1), math.rand(1)))
+	end
+
+	self._head_gear_spawned = true
+end
+
+
 -- Make these functions check that the attacker unit is a player (to make sure NPC vs NPC melee doesn't crash)
 local _dismember_condition_original = CopDamage._dismember_condition
 function CopDamage:_dismember_condition(attack_data, ...)
@@ -134,43 +171,6 @@ function CopDamage:sync_damage_explosion(attacker_unit, damage_percent, i_attack
 	self._no_blood = no_blood
 
 	return result
-end
-
-
-function CopDamage:hide_head_gear() end
-
-
---Overhauled headgear system for popped helmets
-function CopDamage:_spawn_head_gadget(params)
-	if not self._head_gear or self._head_gear_spawned then
-		return
-	end
-	
-	local head_gear_unit = self._unit:base() and self._unit:base()._head_gear_unit
-	
-	if not alive(head_gear_unit) then
-		return
-	end
-	
-	if head_gear_unit:damage() and head_gear_unit:damage():has_sequence("detach") then
-		head_gear_unit:damage():run_sequence_simple("detach")
-	end
-	
-	head_gear_unit:unlink()
-	
-	if head_gear_unit:slot() ~= 18 then
-		head_gear_unit:set_slot(18)
-	end
-
-	if not params.skip_push then
-		local dir = math.UP - params.dir / 2
-		dir = dir:spread(25)
-		local body = head_gear_unit:body(0)
-
-		body:push_at(body:mass(), dir * math.lerp(300, 650, math.random()), head_gear_unit:position() + Vector3(math.rand(1), math.rand(1), math.rand(1)))
-	end
-
-	self._head_gear_spawned = true
 end
 
 
