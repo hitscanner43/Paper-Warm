@@ -219,11 +219,6 @@ local weapon_mapping = {
 	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale/ene_swat_policia_federale"):key()] = "m4",		
 	[("units/pd2_dlc_mad/characters/ene_akan_cs_swat_ak47_ass/ene_akan_cs_swat_ak47_ass"):key()] = "ak47_ass",
 	
-	[("units/payday2/characters/ene_fbi_2/ene_fbi_2"):key()] = "sg416",		
-	[("units/payday2/characters/ene_fbi_swat_1/ene_fbi_swat_1"):key()] = "sg416",		
-	[("units/payday2/characters/ene_fbi_swat_3/ene_fbi_swat_3"):key()] = "ump",	
-	[("units/payday2/characters/ene_fbi_heavy_1/ene_fbi_heavy_1"):key()] = "sg416",		
-	
 	--make Medics use SMGs
 	[("units/payday2/characters/ene_medic_m4/ene_medic_m4"):key()] = "mp5",	
 	[("units/pd2_dlc_hvh/characters/ene_medic_hvh_m4/ene_medic_hvh_m4"):key()] = "mp5",	
@@ -315,13 +310,6 @@ local weapon_mapping = {
 	[("units/payday2/characters/ene_secret_service_1_casino/ene_secret_service_1_casino"):key()] = secret_service,
 	[("units/pd2_dlc_vit/characters/ene_murkywater_secret_service/ene_murkywater_secret_service"):key()] = secret_service,
 	[("units/pd2_dlc_fex/characters/ene_secret_service_fex/ene_secret_service_fex"):key()] = secret_service,
-	
-	--set Federales weapons
-	[("units/pd2_dlc_bex/characters/ene_swat_policia_federale_city/ene_swat_policia_federale_city"):key()] = "hajk",
-	[("units/pd2_dlc_bex/characters/ene_swat_policia_marksman/ene_swat_policia_marksman"):key()] = "fal",
-	[("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_saiga/ene_swat_dozer_policia_federale_saiga"):key()] = "aa12",
-	[("units/pd2_dlc_bex/characters/ene_swat_dozer_policia_federale_m249/ene_swat_dozer_policia_federale_m249"):key()] = "hk21",
-
 }
 
 
