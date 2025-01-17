@@ -809,6 +809,24 @@
 			<file :name="ene_secret_service_1_casino/ene_secret_service_1_casino_husk.unit" />
 		</group>
 
+		<group name="units/pd2_dlc_short/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">	
+			<file :name="ene_security_1_undominatable/ene_security_1_undominatable.unit"/>
+			<file :name="ene_security_1_undominatable/ene_security_1_undominatable_husk.unit"/>
+			
+			<file :name="ene_security_2_undominatable/ene_security_2_undominatable.unit"/>
+			<file :name="ene_security_2_undominatable/ene_security_2_undominatable_husk.unit"/>
+			
+			<file :name="ene_security_3_undominatable/ene_security_3_undominatable.unit"/>
+			<file :name="ene_security_3_undominatable/ene_security_3_undominatable_husk.unit"/>
+			
+			<file :name="ene_cop_2_shr/ene_cop_2_shr.unit"/>
+			<file :name="ene_cop_2_shr/ene_cop_2_shr_husk.unit"/>
+			
+			<file :name="ene_secret_service_1_undominatable/ene_secret_service_1_undominatable.unit"/>
+			<file :name="ene_secret_service_1_undominatable/ene_secret_service_1_undominatable_husk.unit"/>
+		</group>
+		
+		
 		<group name="units/pd2_dlc_rvd/characters/" dyn_package="false" from_type="custom_xml" to_type="binary">			
 			<file :name="ene_la_cop_1/ene_la_cop_1.material_config" />	
 			<file :name="ene_la_cop_1/ene_la_cop_1_contour.material_config" />
