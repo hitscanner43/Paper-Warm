@@ -214,7 +214,7 @@ end
 
 Hooks:PreHook(GroupAITweakData, "init", "hits_init", function(self, tweak_data)
 	self.tweak_data = tweak_data
-	self.ai_tick_rate = 1 / 90
+	self.ai_tick_rate = 1 / 60
 end)
 
 
