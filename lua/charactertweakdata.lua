@@ -157,7 +157,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	local dmg_mul_lin_tbl = { 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2 }
 	local special_dmg_mul_tbl = { 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1 }
 	local aim_delay_mul_tbl = { 1.1, 1, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4 }
-	local focus_delay_mul_tbl = { 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2 }
+	local focus_delay_mul_tbl = { 1.125, 1, 0.875, 0.75, 0.625, 0.5, 0.375, 0.25 }
 
 	local dmg_mul = dmg_mul_tbl[diff_i]
 	local dmg_mul_lin = dmg_mul_lin_tbl[diff_i]
@@ -167,7 +167,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	presets.weapon.default = based_on(presets.weapon.expert, {
 		aim_delay = { 0, 1 * aim_delay_mul },
-		focus_delay = 1 * focus_delay_mul,
+		focus_delay = 0.8 * focus_delay_mul,
 		focus_dis = 300,
 		spread = 5,
 		RELOAD_SPEED = 1,
@@ -324,11 +324,10 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	
 	damage_multiplier(presets.weapon.medic, 0.75)
 	
-	presets.weapon.sniper = based_on(presets.weapon.swat, {
-		aim_delay = { 0, 2 * aim_delay_mul },
-		use_laser = true
-	})
+	presets.weapon.sniper = based_on(presets.weapon.swat)
 	
+	presets.weapon.sniper.is_sniper.aim_delay = { 0, 2 * aim_delay_mul }
+	presets.weapon.sniper.is_sniper.use_laser = true
 	presets.weapon.sniper.is_sniper.range = { close = 5000, optimal = 10000, far = 15000 }
 	presets.weapon.sniper.is_sniper.FALLOFF = {
 		{ dmg_mul = 20 * special_dmg_mul, r = 0, acc = { 0, 0.5 }, recoil = { 3, 4 }, mode = { 1, 0, 0, 0 } },
@@ -336,10 +335,9 @@ function CharacterTweakData:_presets(tweak_data, ...)
 		{ dmg_mul = 20 * special_dmg_mul, r = 4000, acc = { 0.5, 1 }, recoil = { 3, 4 }, mode = { 1, 0, 0, 0 } }
 	}
 	
-	presets.weapon.marshal_marksman = based_on(presets.weapon.swat, {
-		aim_delay = { 0, 2 * aim_delay_mul }
-	})
+	presets.weapon.marshal_marksman = based_on(presets.weapon.swat)
 
+	presets.weapon.marshal_marksman.is_sniper.aim_delay = { 0, 2 * aim_delay_mul }
 	presets.weapon.marshal_marksman.is_sniper.range = { close = 1500, optimal = 3000, far = 6000 }
 	presets.weapon.marshal_marksman.is_sniper.FALLOFF = {
 		{ dmg_mul = 8 * special_dmg_mul, r = 0, acc = { 0, 0.5 }, recoil = { 0.5, 1 }, mode = { 1, 0, 0, 0 } },
