@@ -1139,6 +1139,13 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.s552.fire_mode_data.toggable = { "auto", "burst", "single" }
 	self.s552.FIRE_MODE = "auto"
 	self.s552.BURST_COUNT = 3
+
+	self.asval.CLIP_AMMO_MAX = 20
+	self.asval.stats.damage = 40
+	self.asval.stats.spread = 16
+	self.asval.stats.recoil = 17
+	self.asval.stats.concealment = 24
+	self.asval.fire_mode_data.fire_rate = 60 / 900
 	
 	self.corgi.CLIP_AMMO_MAX = 30
 	self.corgi.stats.damage = 40
@@ -1313,14 +1320,14 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.mp9.stats.damage = 30
 	self.mp9.stats.spread = 9
 	self.mp9.stats.recoil = 21
-	self.mp9.stats.concealment = 26
+	self.mp9.stats.concealment = 27
 	self.mp9.fire_mode_data.fire_rate = 60 / 900
 
 	self.p90.use_data.selection_index = 2
 	self.p90.CLIP_AMMO_MAX = 50
 	self.p90.stats.damage = 30
-	self.p90.stats.spread = 11
-	self.p90.stats.recoil = 17
+	self.p90.stats.spread = 10
+	self.p90.stats.recoil = 19
 	self.p90.stats.concealment = 26
 	self.p90.fire_mode_data.fire_rate = 60 / 850
 	self.p90.can_shoot_through_enemy = true
@@ -1328,9 +1335,9 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.mp7.CLIP_AMMO_MAX = 20
 	self.mp7.stats.damage = 30
-	self.mp7.stats.spread = 13
+	self.mp7.stats.spread = 11
 	self.mp7.stats.recoil = 17
-	self.mp7.stats.concealment = 26
+	self.mp7.stats.concealment = 27
 	self.mp7.fire_mode_data.fire_rate = 60 / 950
 	self.mp7.can_shoot_through_enemy = true
 	self.mp7.armor_piercing_chance = 1
@@ -1343,6 +1350,13 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.tec9.stats.reload = 115
 	self.tec9.fire_mode_data.fire_rate = 60 / 1000
 
+	self.scorpion.CLIP_AMMO_MAX = 20
+	self.scorpion.stats.damage = 30
+	self.scorpion.stats.spread = 9
+	self.scorpion.stats.recoil = 20
+	self.scorpion.stats.concealment = 28
+	self.scorpion.fire_mode_data.fire_rate = 60 / 850
+	
 	self.baka.CLIP_AMMO_MAX = 32
 	self.baka.stats.damage = 30
 	self.baka.stats.spread = 7
@@ -1352,9 +1366,9 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 
 	self.pm9.CLIP_AMMO_MAX = 25
 	self.pm9.stats.damage = 30
-	self.pm9.stats.spread = 9
-	self.pm9.stats.recoil = 19
-	self.pm9.stats.concealment = 26
+	self.pm9.stats.spread = 8
+	self.pm9.stats.recoil = 20
+	self.pm9.stats.concealment = 27
 	self.pm9.fire_mode_data.fire_rate = 60 / 1100
 	
 	self.new_mp5.CLIP_AMMO_MAX = 30
@@ -1375,13 +1389,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.x_mp5.fire_mode_data.fire_rate = 60 / 800
 	self.x_mp5.timers.reload_not_empty = 1.95		
 	self.x_mp5.timers.reload_empty = 2.6	
-
-	self.scorpion.CLIP_AMMO_MAX = 20
-	self.scorpion.stats.damage = 40
-	self.scorpion.stats.spread = 10
-	self.scorpion.stats.recoil = 19
-	self.scorpion.stats.concealment = 28
-	self.scorpion.fire_mode_data.fire_rate = 60 / 850
 	
 	self.cobray.use_data.selection_index = 2
 	self.cobray.CLIP_AMMO_MAX = 40
@@ -1873,14 +1880,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits_init", function(self, tweak_data)
 	self.galil.stats.concealment = 20
 	self.galil.stats.reload = 100
 	self.galil.fire_mode_data.fire_rate = 60 / 650
-
-	table.insert(self.asval.categories, "dmr")
-	self.asval.CLIP_AMMO_MAX = 20
-	self.asval.stats.damage = 120
-	self.asval.stats.spread = 17
-	self.asval.stats.recoil = 6
-	self.asval.stats.concealment = 24
-	self.asval.fire_mode_data.fire_rate = 60 / 900
 	
 	table.insert(self.contraband.categories, "dmr")
 	self.contraband.CLIP_AMMO_MAX = 20
@@ -2666,7 +2665,17 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	self.mac11_npc.sounds.prefix = self.mac10_crew.sounds.prefix
 	self.mac11_npc.hold = "pistol"
 	self.mac11_npc.reload = "uzi"
+
+	self.mp5_npc.use_data.selection_index = 2
+
+	self.mp5_tactical_npc.use_data.selection_index = 2 
 	
+	self.ump_npc.use_data.selection_index = 2
+	self.ump_npc.sounds.prefix = self.schakal_crew.sounds.prefix
+	
+	self.akmsu_smg_npc.use_data.selection_index = 2
+
+	self.asval_smg_npc.use_data.selection_index = 2
 	self.asval_smg_npc.sounds.prefix = "val_npc"
 	self.asval_smg_npc.muzzleflash_silenced = "effects/payday2/particles/weapons/9mm_auto_silence"
 	self.asval_smg_npc.has_suppressor = "suppressed_a"
@@ -2724,7 +2733,7 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	
 	self.sko12_conc_npc.CLIP_AMMO_MAX = 25
 	self.sko12_conc_npc.FIRE_MODE = "auto"
-	self.sko12_conc_npc.auto = { fire_rate = 0.25 }
+	self.sko12_conc_npc.auto = { fire_rate = 0.2 }
 
 	self.flamethrower_npc.flame_max_range = 1000
 	self.flamethrower_npc.CLIP_AMMO_MAX = 600
@@ -2746,14 +2755,6 @@ Hooks:PostHook(WeaponTweakData, "init", "hits-init-npcweapons", function(self, t
 	self.ak47_ass_npc = based_on(self.m4_npc, self.ak74_crew)
 	self.akmsu_smg_npc = based_on(self.m4_npc, self.akmsu_crew)	
 	self.rpk_lmg_npc = based_on(self.m249_npc, self.rpk_crew)
-
-	--Murky Weapons
-	self.hs2000_npc = based_on(self.c45_npc, self.hs2000_crew)
-	self.scar_npc = based_on(self.m4_npc, self.scar_crew)
-	self.ksg_npc = based_on(self.r870_npc, self.ksg_crew)
-	self.ump_npc = based_on(self.mp5_npc, self.schakal_crew)
-	self.mp7_npc = based_on(self.mp9_npc, self.mp7_crew)
-	self.m60_npc = based_on(self.m249_npc, self.m60_crew)
 
 	--Federales Weapons
 	self.hk21_npc = based_on(self.m249_npc, self.hk21_crew)
@@ -2829,15 +2830,15 @@ function WeaponTweakData:_set_presets()
 			v.alert_size = (alert_sizes[v.usage] or 4000) * (v.has_suppressor and 0.2 or 1)
 			
 			if v.usage == "is_rifle" or v.usage == "is_bullpup" then
-				v.auto = { fire_rate = 0.2 }
-			elseif v.usage == "is_smg" then
 				v.auto = { fire_rate = 0.15 }
+			elseif v.usage == "is_smg" then
+				v.auto = { fire_rate = 0.125 }
 			elseif v.usage == "is_lmg" or v.reload == "uzi" then
 				v.auto = { fire_rate = 0.1 }
 			elseif v.usage == "mini" or v.usage == "is_flamethrower" then
 				v.auto = { fire_rate = 0.05 }
 			else		
-				v.auto = { fire_rate = 0.25 }
+				v.auto = { fire_rate = 0.2 }
 			end
 		elseif k:match("_crew$") then
 			local player_id = k:gsub("_crew$", ""):gsub("_secondary$", ""):gsub("_primary$", "")
