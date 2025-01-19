@@ -10,13 +10,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 
 	self.close_combat_distance = 1000
 	self.far_combat_distance = 1500
-	
-	self.explosive_bullet = {
-		curve_pow = 1,
-		player_dmg_mul = 1 / 4,
-		range = 300
-	}
-	
+
 	self.values.player.body_armor = {
 		armor = { 2, 4, 6, 8, 10, 12, 14 },
 		movement = { 1, 0.925, 0.85, 0.775, 0.7, 0.625, 0.55 },
@@ -27,8 +21,13 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 		regen_time = { 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4 }
 	}
 
-	self.values.rocket_launcher = self.values.rocket_launcher or {}
-	
+
+	self.explosive_bullet = {
+		curve_pow = 1,
+		player_dmg_mul = 1 / 4,
+		range = 300
+	}
+
 	self.weapon_movement_penalty = {
 		lmg = 0.85, 
 		minigun = 0.7
@@ -113,6 +112,16 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 			category = "player"
 		}
 	}
+	
+	self.values.rocket_launcher = self.values.rocket_launcher or {}
+	
+	self.values.player.passive_health_multiplier = { 1.1, 1.2, 1.3, 1.4, 1.5, 1.6 }
+	self.values.player.tier_armor_multiplier = { 1.05, 1.1, 1.15, 1.25, 1.3, 1.35 }
+	self.values.player.passive_dodge_chance = { 0.05, 0.1, 0.15, 0.2, 0.25, 0.3 }
+	
+	self.values.player.passive_health_regen = { 0.4 }
+
+	self.values.weapon.passive_damage_multiplier = { 1 }
 	
 	self.values.player.smoke_screen_ally_dodge_bonus = { 0.25 }
 
@@ -361,7 +370,7 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 		}
 	}
 
-	self.values.dmr.graze_damage = {
+	self.values.snp.graze_damage = {
 		{
 			radius = 400,
 			times = 2,
@@ -370,19 +379,6 @@ Hooks:PostHook(UpgradesTweakData, "init", "hits_init", function (self, tweak_dat
 		{
 			radius = 400,
 			times = 4,
-			damage_factor_ricochet = 0.75
-		}
-	}
-
-	self.values.snp.graze_damage = {
-		{
-			radius = 400,
-			times = 3,
-			damage_factor_ricochet = 0.75
-		},
-		{
-			radius = 400,
-			times = 5,
 			damage_factor_ricochet = 0.75
 		}
 	}

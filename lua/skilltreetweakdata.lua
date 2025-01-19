@@ -46,8 +46,8 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hits_init", function (self)
 		"player_regain_throwable_from_ammo_1",
 		"player_smoke_screen_ally_dodge_bonus",
 		
-		"temporary_stim_shot",
-		"stim_shot",
+		--"temporary_stim_shot",
+		--"stim_shot",
 		"smoke_screen_grenade",
 	}
 
@@ -260,25 +260,6 @@ Hooks:PostHook(SkillTreeTweakData, "init", "hits_init", function (self)
 	self.skills.dance_instructor[1].upgrades = { "pistol_empty_quickdraw" } 
 	self.skills.dance_instructor[2].upgrades = { "pistol_holstered_autoreload" } 
 	self.skills.dance_instructor.icon_xy = { 0, 9 } 
-
-	--Akimbo --> Ambidexterity
-	self.skills.akimbo[1].upgrades = { 
-		"x_sr2", 
-		"jowi", 
-		"x_1911", 
-		"x_akmsu", 
-		"x_b92fs", 
-		"x_chinchilla", 
-		"x_deagle", 
-		"x_g17", 
-		"x_g22c", 
-		"x_judge", 
-		"x_mac10", 
-		"x_mp5", 
-		"x_usp", 
-	} 
-	self.skills.akimbo[2].upgrades = { "akimbo_extra_ammo_multiplier_1" } 
-	self.skills.akimbo.icon_xy = { 3, 11 } 
 	
 	--Nine Lives --> Daredevil
 	self.skills.nine_lives[1].upgrades = { "player_bleed_out_health_multiplier" } 
