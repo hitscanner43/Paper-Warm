@@ -11,11 +11,20 @@ CopMovement.sync_equip_weapon = HuskPlayerMovement.sync_equip_weapon
 CopMovement._can_play_weapon_switch_anim = function () return true end
 
 
+--Force enemies to switch to their primaries upon spawning in to prevent a whole lot of issues
+Hooks:PostHook(CopMovement, "post_init", "hits_post_init", function (self)
+	self:switch_weapon(2)
+end)
+
 function CopMovement:switch_weapon(selection)
     if Network:is_client() then
         return
     end
-
+	
+	if not self._ext_inventory:is_selection_available(selection) then
+		return
+	end
+	
     self._switch_selection = selection
 
     self:sync_switch_weapon(1, 1)
