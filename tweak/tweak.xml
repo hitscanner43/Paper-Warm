@@ -28,7 +28,7 @@
 			<effects/>
 		</search>
 		<target mode="attach">
-			<effect_spawner name="sniper_glare" object="a_effect_flashlight" effect="effects/particles/weapons/sniper_glint" enabled="false" assign_parent="true"/>
+			<effect_spawner name="glint_scope" object="a_effect_flashlight" effect="effects/particles/weapons/sniper_glint" enabled="false" assign_parent="true"/>
 		</target>
 	</tweak>
 
@@ -39,7 +39,7 @@
 			<effects/>
 		</search>
 		<target mode="attach">
-			<effect_spawner name="sniper_glare" object="a_effect_flashlight" effect="effects/particles/weapons/sniper_glint" enabled="false" assign_parent="true"/>
+			<effect_spawner name="glint_scope" object="a_effect_flashlight" effect="effects/particles/weapons/sniper_glint" enabled="false" assign_parent="true"/>
 		</target>
 	</tweak>
 
@@ -50,7 +50,7 @@
 			<effects/>
 		</search>
 		<target mode="attach">
-			<effect_spawner name="sniper_glare" object="a_effect_flashlight" effect="effects/particles/weapons/sniper_glint" enabled="false" assign_parent="true"/>
+			<effect_spawner name="glint_scope" object="a_effect_flashlight" effect="effects/particles/weapons/sniper_glint" enabled="false" assign_parent="true"/>
 		</target>
 	</tweak>
 

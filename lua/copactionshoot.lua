@@ -30,12 +30,6 @@ Hooks:PostHook(CopActionShoot, "init", "hits_init", function (self)
 		w = 2048,
 		h = 2048
 	})
-
-	if weapon_usage_tweak.use_laser then
-		if self._glint_effect then
-			self._glint_effect:kill_effect()
-		end
-	end
 end)
 
 
