@@ -327,7 +327,7 @@ function CharacterTweakData:_presets(tweak_data, ...)
 	presets.weapon.sniper = based_on(presets.weapon.swat)
 	
 	presets.weapon.sniper.is_sniper.aim_delay = { 0, 2 * aim_delay_mul }
-	presets.weapon.sniper.is_sniper.use_laser = true
+	--presets.weapon.sniper.is_sniper.use_laser = true
 	presets.weapon.sniper.is_sniper.range = { close = 5000, optimal = 10000, far = 15000 }
 	presets.weapon.sniper.is_sniper.FALLOFF = {
 		{ dmg_mul = 20 * special_dmg_mul, r = 0, acc = { 0, 0.5 }, recoil = { 3, 4 }, mode = { 1, 0, 0, 0 } },
@@ -785,6 +785,11 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.security.no_arrest = nil
 	self.security.steal_loot = nil
 	self.security.rescue_hostages = false
+
+	self.heavy_security = deep_clone(self.security)	
+	self.heavy_security.HEALTH_INIT = 18
+	self.heavy_security.headshot_dmg_mul = 3
+	self.heavy_security = deep_clone(self.heavy_security)	
 	
 	self.security_fat = deep_clone(self.security)	
 	self.security_fat.HEALTH_INIT = 24
@@ -933,8 +938,10 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	
 	self.soldier = deep_clone(self.swat)	
 	self.soldier.HEALTH_INIT = 36
-	self.soldier.headshot_dmg_mul = 2.5
+	self.soldier.headshot_dmg_mul = 3
 	self.soldier.surrender = self.presets.surrender.hard
+	self.soldier.ecm_vulnerability = 0.75
+	self.soldier.ecm_hurts = ecm_hurts_short
 	self.soldier.no_arrest = true
 	table.insert(self._enemy_list, "soldier")
 
@@ -979,7 +986,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	end
 	
 	self.sniper.HEALTH_INIT = 12
-	self.sniper.headshot_dmg_mul = 3
+	self.sniper.headshot_dmg_mul = 2.5
 	self.sniper.speech_prefix_p1 = self._unit_prefixes.cop
 	self.sniper.weapon = self.presets.weapon.sniper
 	self.sniper.move_speed = self.presets.move_speed.normal
@@ -1025,7 +1032,7 @@ Hooks:PostHook(CharacterTweakData, "init", "hits_init", function(self)
 	self.taser.spawn_sound_event = deathwish and self.taser.speech_prefix_p1 .. "_entrance_elite" or self.taser.speech_prefix_p1 .. "_entrance"
 	
 	self.spooc.HEALTH_INIT = 48
-	self.spooc.headshot_dmg_mul = 2.5
+	self.spooc.headshot_dmg_mul = 3
 	self.spooc.melee_weapon = "baton"
 	self.spooc.weapon = self.presets.weapon.spooc
 	self.spooc.move_speed = self.presets.move_speed.lightning
